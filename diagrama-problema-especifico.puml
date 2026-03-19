@@ -1,0 +1,42 @@
+@startuml
+left to right direction
+
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam defaultTextAlignment center
+
+title Diagrama del problema especifico (interoperabilidad HCE SIS-MINSA)
+
+rectangle "Variables de entrada\n(factores/dimensiones)" as input {
+  rectangle "Cumplimiento CIE-10 y CPMS" as v1
+  rectangle "Sincronizacion IEDS\n(RNIEDS)" as v2
+  rectangle "Conectividad a PIDESALUD" as v3
+  rectangle "Completitud de HCE" as v4
+  rectangle "Trazabilidad y auditoria" as v5
+  rectangle "Tiempo de validacion SIS" as v6
+  rectangle "Tasa de duplicidad de registros" as v7
+}
+
+rectangle "Modelo de evaluacion/prediccion\ninteroperabilidad - fragmentacion" as model {
+  rectangle "Tecnicas/algoritmos\nRegresion Logistica\nArbol de Decision\nRandom Forest\nXGBoost" as alg
+}
+
+rectangle "Prediccion (TARGET)\nRiesgo de fragmentacion\nBajo / Medio / Alto" as target
+
+rectangle "Metricas de desempeno\nAUC-ROC, F1, Precision, Recall" as metrics
+
+rectangle "Resultado para gestion\nPriorizacion de brechas\nPlan de mejora por establecimiento" as result
+
+input --> model
+model --> target
+target --> metrics
+metrics --> result
+
+note bottom of model
+Problema especifico:
+Que variables y tecnicas permiten estimar
+la probabilidad de fragmentacion de historias
+clinicas SIS en centros MINSA.
+end note
+
+@enduml

@@ -1,0 +1,82 @@
+[
+  {
+    "Year": 2025,
+    "Title": "Assessing the value of health information exchange organizations to hospital interoperability",
+    "Journal": "Health Affairs Scholar",
+    "DOI": "10.1093/haschl/qxaf133",
+    "URL": "https://doi.org/10.1093/haschl/qxaf133",
+    "Type": "journal-article"
+  },
+  {
+    "Year": 2024,
+    "Title": "State-of-the-Art Fast Healthcare Interoperability Resources (FHIR)–Based Data Model and Structure Implementations: Systematic Scoping Review",
+    "Journal": "JMIR Medical Informatics",
+    "DOI": "10.2196/58445",
+    "URL": "https://doi.org/10.2196/58445",
+    "Type": "journal-article"
+  },
+  {
+    "Year": 2024,
+    "Title": "Electronic Health Record and Semantic Issues Using Fast Healthcare Interoperability Resources: Systematic Mapping Review",
+    "Journal": "Journal of Medical Internet Research",
+    "DOI": "10.2196/45209",
+    "URL": "https://doi.org/10.2196/45209",
+    "Type": "journal-article"
+  },
+  {
+    "Year": 2024,
+    "Title": "Interoperability of health data using FHIR Mapping Language: transforming HL7 CDA to FHIR with reusable visual components",
+    "Journal": "Frontiers in Digital Health",
+    "DOI": "10.3389/fdgth.2024.1480600",
+    "URL": "https://doi.org/10.3389/fdgth.2024.1480600",
+    "Type": "journal-article"
+  },
+  {
+    "Year": 2024,
+    "Title": "Electronic Health Record Interoperability System in Peru Using Blockchain",
+    "Journal": "International Journal of Online and Biomedical Engineering (iJOE)",
+    "DOI": "10.3991/ijoe.v20i03.44507",
+    "URL": "https://doi.org/10.3991/ijoe.v20i03.44507",
+    "Type": "journal-article"
+  },
+  {
+    "Year": 2023,
+    "Title": "Interoperability of heterogeneous health information systems: a systematic literature review",
+    "Journal": "BMC Medical Informatics and Decision Making",
+    "DOI": "10.1186/s12911-023-02115-5",
+    "URL": "https://doi.org/10.1186/s12911-023-02115-5",
+    "Type": "journal-article"
+  },
+  {
+    "Year": 2023,
+    "Title": "Interoperability with multiple Fast Healthcare Interoperability Resources (FHIR®) profiles and versions",
+    "Journal": "JAMIA Open",
+    "DOI": "10.1093/jamiaopen/ooad001",
+    "URL": "https://doi.org/10.1093/jamiaopen/ooad001",
+    "Type": "journal-article"
+  },
+  {
+    "Year": 2023,
+    "Title": "Federated electronic health records for the European Health Data Space",
+    "Journal": "The Lancet Digital Health",
+    "DOI": "10.1016/S2589-7500(23)00156-5",
+    "URL": "https://doi.org/10.1016/S2589-7500(23)00156-5",
+    "Type": "journal-article"
+  },
+  {
+    "Year": 2023,
+    "Title": "Electronic health record interoperability using FHIR and blockchain: A bibliometric analysis and future perspective",
+    "Journal": "Perspectives in Clinical Research",
+    "DOI": "10.4103/picr.picr_272_22",
+    "URL": "https://doi.org/10.4103/picr.picr_272_22",
+    "Type": "journal-article"
+  },
+  {
+    "Year": 2023,
+    "Title": "Interoperability of Clinical Data through FHIR: A review",
+    "Journal": "Procedia Computer Science",
+    "DOI": "10.1016/j.procs.2023.03.115",
+    "URL": "https://doi.org/10.1016/j.procs.2023.03.115",
+    "Type": "journal-article"
+  }
+]
