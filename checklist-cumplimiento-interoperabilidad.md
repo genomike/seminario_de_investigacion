@@ -6,9 +6,9 @@
 - RM N° 464-2019-MINSA: directiva de interoperabilidad asistencial (DA N° 266-MINSA/2019/OGTI).
 - RM N° 1193-2019-MINSA: catálogo IEDS para estandarización de datos.
 
-## Uso sugerido
+## Estado y Prioridad
 
-Marcar cada ítem con evidencia verificable (documento, captura, log, acta técnica).
+Cada ítem se debe de marcar con evidencia verificable (documento, captura, log, acta técnica).
 
 - Estado: `Cumple` | `Parcial` | `No cumple`
 - Prioridad: `Alta` | `Media` | `Baja`

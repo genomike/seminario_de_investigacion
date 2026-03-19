@@ -1,42 +1,59 @@
 @startuml
-left to right direction
+top to bottom direction
 
 skinparam shadowing false
 skinparam packageStyle rectangle
 skinparam defaultTextAlignment center
+skinparam rectangleBorderColor #555555
 
-title Diagrama del problema especifico (interoperabilidad HCE SIS-MINSA)
+title Modelo hibrido: diagnostico + implementacion + evaluacion\n(interoperabilidad HCE SIS-MINSA)
 
-rectangle "Variables de entrada\n(factores/dimensiones)" as input {
-  rectangle "Cumplimiento CIE-10 y CPMS" as v1
-  rectangle "Sincronizacion IEDS\n(RNIEDS)" as v2
-  rectangle "Conectividad a PIDESALUD" as v3
-  rectangle "Completitud de HCE" as v4
-  rectangle "Trazabilidad y auditoria" as v5
-  rectangle "Tiempo de validacion SIS" as v6
-  rectangle "Tasa de duplicidad de registros" as v7
+rectangle "FASE 1 — DIAGNOSTICO" as fase1 #CEE3F6 {
+  rectangle "Evaluacion de cumplimiento normativo\n(RM 1104, 464, 1193)" as d1
+  rectangle "Medicion de brechas de interoperabilidad\n(RNIEDS, PIDESALUD, HL7, CIE-10, CPMS)" as d2
+  rectangle "Linea base de calidad de HCE\n(indicadores pre-implementacion)" as d3
 }
 
-rectangle "Modelo de evaluacion/prediccion\ninteroperabilidad - fragmentacion" as model {
-  rectangle "Tecnicas/algoritmos\nRegresion Logistica\nArbol de Decision\nRandom Forest\nXGBoost" as alg
+rectangle "FASE 2 — IMPLEMENTACION PILOTO" as fase2 #D5E8D4 {
+  rectangle "Diseno de capa de integracion\nHL7 FHIR (perfiles, recursos, terminologias)" as i1
+  rectangle "Mapeo y transformacion\nde datos locales a FHIR" as i2
+  rectangle "Despliegue piloto en\nestablecimiento(s) seleccionado(s)" as i3
+  rectangle "Capacitacion del\npersonal operativo" as i4
 }
 
-rectangle "Prediccion (TARGET)\nRiesgo de fragmentacion\nBajo / Medio / Alto" as target
+rectangle "FASE 3 — EVALUACION DE IMPACTO" as fase3 #FFF2CC {
+  rectangle "Medicion post-implementacion\nde indicadores de calidad de HCE" as e1
+  rectangle "Comparacion pre/post\n(prueba estadistica pareada)" as e2
+  rectangle "Analisis de resultados\ny lecciones aprendidas" as e3
+}
 
-rectangle "Metricas de desempeno\nAUC-ROC, F1, Precision, Recall" as metrics
+rectangle "RESULTADOS ESPERADOS" as resultado #F8CECC {
+  rectangle "Reduccion de duplicidad\nde registros y examenes" as r1
+  rectangle "Mejora de completitud\ny codificacion de HCE" as r2
+  rectangle "Continuidad de atencion\ntrazable entre establecimientos" as r3
+  rectangle "Lineamientos de\nescalabilidad" as r4
+}
 
-rectangle "Resultado para gestion\nPriorizacion de brechas\nPlan de mejora por establecimiento" as result
+fase1 -down-> fase2 : Brechas priorizadas
+fase2 -down-> fase3 : Sistema piloto operativo
+fase3 -down-> resultado : Evidencia de impacto
 
-input --> model
-model --> target
-target --> metrics
-metrics --> result
+note bottom of fase1
+PE1: Cual es el nivel actual de
+cumplimiento y que brechas
+criticas existen?
+end note
 
-note bottom of model
-Problema especifico:
-Que variables y tecnicas permiten estimar
-la probabilidad de fragmentacion de historias
-clinicas SIS en centros MINSA.
+note bottom of fase2
+PE2: Como disenar e implementar
+una capa de integracion FHIR
+que atienda las brechas?
+end note
+
+note bottom of fase3
+PE3: En que medida la implementacion
+mejora la calidad de las historias
+clinicas respecto a la linea base?
 end note
 
 @enduml

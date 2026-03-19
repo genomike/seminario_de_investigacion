@@ -1,62 +1,14 @@
 [
   {
-    "Year": 2025,
-    "Title": "Assessing the value of health information exchange organizations to hospital interoperability",
-    "Journal": "Health Affairs Scholar",
-    "DOI": "10.1093/haschl/qxaf133",
-    "URL": "https://doi.org/10.1093/haschl/qxaf133",
+    "Year": "2023",
+    "Title": "Interoperability of Clinical Data through FHIR: A review",
+    "Journal": "Procedia Computer Science",
+    "DOI": "10.1016/j.procs.2023.03.115",
+    "URL": "https://doi.org/10.1016/j.procs.2023.03.115",
     "Type": "journal-article"
   },
   {
-    "Year": 2024,
-    "Title": "State-of-the-Art Fast Healthcare Interoperability Resources (FHIR)–Based Data Model and Structure Implementations: Systematic Scoping Review",
-    "Journal": "JMIR Medical Informatics",
-    "DOI": "10.2196/58445",
-    "URL": "https://doi.org/10.2196/58445",
-    "Type": "journal-article"
-  },
-  {
-    "Year": 2024,
-    "Title": "Electronic Health Record and Semantic Issues Using Fast Healthcare Interoperability Resources: Systematic Mapping Review",
-    "Journal": "Journal of Medical Internet Research",
-    "DOI": "10.2196/45209",
-    "URL": "https://doi.org/10.2196/45209",
-    "Type": "journal-article"
-  },
-  {
-    "Year": 2024,
-    "Title": "Interoperability of health data using FHIR Mapping Language: transforming HL7 CDA to FHIR with reusable visual components",
-    "Journal": "Frontiers in Digital Health",
-    "DOI": "10.3389/fdgth.2024.1480600",
-    "URL": "https://doi.org/10.3389/fdgth.2024.1480600",
-    "Type": "journal-article"
-  },
-  {
-    "Year": 2024,
-    "Title": "Electronic Health Record Interoperability System in Peru Using Blockchain",
-    "Journal": "International Journal of Online and Biomedical Engineering (iJOE)",
-    "DOI": "10.3991/ijoe.v20i03.44507",
-    "URL": "https://doi.org/10.3991/ijoe.v20i03.44507",
-    "Type": "journal-article"
-  },
-  {
-    "Year": 2023,
-    "Title": "Interoperability of heterogeneous health information systems: a systematic literature review",
-    "Journal": "BMC Medical Informatics and Decision Making",
-    "DOI": "10.1186/s12911-023-02115-5",
-    "URL": "https://doi.org/10.1186/s12911-023-02115-5",
-    "Type": "journal-article"
-  },
-  {
-    "Year": 2023,
-    "Title": "Interoperability with multiple Fast Healthcare Interoperability Resources (FHIR®) profiles and versions",
-    "Journal": "JAMIA Open",
-    "DOI": "10.1093/jamiaopen/ooad001",
-    "URL": "https://doi.org/10.1093/jamiaopen/ooad001",
-    "Type": "journal-article"
-  },
-  {
-    "Year": 2023,
+    "Year": "2023",
     "Title": "Federated electronic health records for the European Health Data Space",
     "Journal": "The Lancet Digital Health",
     "DOI": "10.1016/S2589-7500(23)00156-5",
@@ -64,7 +16,111 @@
     "Type": "journal-article"
   },
   {
-    "Year": 2023,
+    "Year": "2023",
+    "Title": "Health Information Exchange: Understanding the Policy Landscape and Future of Data Interoperability",
+    "Journal": "Yearbook of Medical Informatics",
+    "DOI": "10.1055/s-0043-1768719",
+    "URL": "https://doi.org/10.1055/s-0043-1768719",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2025",
+    "Title": "Assessing the value of health information exchange organizations to hospital interoperability",
+    "Journal": "Health Affairs Scholar",
+    "DOI": "10.1093/haschl/qxaf133",
+    "URL": "https://doi.org/10.1093/haschl/qxaf133",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2023",
+    "Title": "FHIR-up! Advancing knowledge from clinical data through application of standardized nursing terminologies with FHIR",
+    "Journal": "Journal of the American Medical Informatics Association",
+    "DOI": "10.1093/jamia/ocad131",
+    "URL": "https://doi.org/10.1093/jamia/ocad131",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2023",
+    "Title": "Interoperability with multiple Fast Healthcare Interoperability Resources (FHIR®) profiles and versions",
+    "Journal": "JAMIA Open",
+    "DOI": "10.1093/jamiaopen/ooad001",
+    "URL": "https://doi.org/10.1093/jamiaopen/ooad001",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2023",
+    "Title": "Interoperability of heterogeneous health information systems: a systematic literature review",
+    "Journal": "BMC Medical Informatics and Decision Making",
+    "DOI": "10.1186/s12911-023-02115-5",
+    "URL": "https://doi.org/10.1186/s12911-023-02115-5",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2026",
+    "Title": "End-to-End Clinical Data Interoperability: A Practical Implementation Blueprint Using HL7, FHIR, CCD, and EHR Standards",
+    "Journal": "International Journal of Multidisciplinary and Scientific Emerging Research",
+    "DOI": "10.15662/ijmserh.2026.1401004",
+    "URL": "https://doi.org/10.15662/ijmserh.2026.1401004",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2022",
+    "Title": "Fast Healthcare Interoperability Resources (FHIR) for Interoperability in Health Research: Systematic Review",
+    "Journal": "JMIR Medical Informatics",
+    "DOI": "10.2196/35724",
+    "URL": "https://doi.org/10.2196/35724",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2024",
+    "Title": "Electronic Health Record and Semantic Issues Using Fast Healthcare Interoperability Resources: Systematic Mapping Review",
+    "Journal": "Journal of Medical Internet Research",
+    "DOI": "10.2196/45209",
+    "URL": "https://doi.org/10.2196/45209",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2025",
+    "Title": "Fast Healthcare Interoperability Resources (FHIR)-Based Interoperability Design in Indonesia: Content Analysis",
+    "Journal": "JMIR Formative Research",
+    "DOI": "10.2196/51270",
+    "URL": "https://doi.org/10.2196/51270",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2024",
+    "Title": "State-of-the-Art Fast Healthcare Interoperability Resources (FHIR)–Based Data Model and Structure Implementations: Systematic Scoping Review",
+    "Journal": "JMIR Medical Informatics",
+    "DOI": "10.2196/58445",
+    "URL": "https://doi.org/10.2196/58445",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2024",
+    "Title": "Interoperability of health data using FHIR Mapping Language: transforming HL7 CDA to FHIR with reusable visual components",
+    "Journal": "Frontiers in Digital Health",
+    "DOI": "10.3389/fdgth.2024.1480600",
+    "URL": "https://doi.org/10.3389/fdgth.2024.1480600",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2023",
+    "Title": "Building an Electronic Medical Record System Exchanged in FHIR Format and Its Visual Presentation",
+    "Journal": "Healthcare",
+    "DOI": "10.3390/healthcare11172410",
+    "URL": "https://doi.org/10.3390/healthcare11172410",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2024",
+    "Title": "Electronic Health Record Interoperability System in Peru Using Blockchain",
+    "Journal": "International Journal of Online and Biomedical Engineering (iJOE)",
+    "DOI": "10.3991/ijoe.v20i03.44507",
+    "URL": "https://doi.org/10.3991/ijoe.v20i03.44507",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2023",
     "Title": "Electronic health record interoperability using FHIR and blockchain: A bibliometric analysis and future perspective",
     "Journal": "Perspectives in Clinical Research",
     "DOI": "10.4103/picr.picr_272_22",
@@ -72,11 +128,19 @@
     "Type": "journal-article"
   },
   {
-    "Year": 2023,
-    "Title": "Interoperability of Clinical Data through FHIR: A review",
-    "Journal": "Procedia Computer Science",
-    "DOI": "10.1016/j.procs.2023.03.115",
-    "URL": "https://doi.org/10.1016/j.procs.2023.03.115",
+    "Year": "2025",
+    "Title": "A Federated Interoperability Framework for Seamless Health Data Exchange Using FHIR Standards Across Multi-Hospital Systems",
+    "Journal": "Engineering and Technology Journal",
+    "DOI": "10.47191/etj/v10i05.03",
+    "URL": "https://doi.org/10.47191/etj/v10i05.03",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2024",
+    "Title": "HAPI-FHIR Server Implementation to Enhancing Interoperability among Primary Care Health Information Systems in Indonesia",
+    "Journal": "European Modern Studies Journal",
+    "DOI": "10.59573/emsj.7(6).2023.23",
+    "URL": "https://doi.org/10.59573/emsj.7(6).2023.23",
     "Type": "journal-article"
   }
 ]

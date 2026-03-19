@@ -2,43 +2,50 @@
 
 ## Título propuesto
 
-Deficiencias en la interoperabilidad y en la gestión de historias clínicas de pacientes SIS en centros de salud del MINSA.
+Modelo híbrido de diagnóstico e implementación de interoperabilidad basado en HL7 FHIR para la mejora de la gestión de historias clínicas de pacientes que tienen SIS en centros de salud MINSA en Lima.
 
 ## Resumen ejecutivo
 
-El problema de investigación integra dos niveles: un nivel estructural (interoperabilidad de sistemas de información en salud) y un nivel operativo (gestión real de la historia clínica de pacientes SIS en centros MINSA). Aunque el Perú cuenta con un marco normativo que define arquitectura, reglas técnicas y catálogos estandarizados, persiste una brecha entre norma y ejecución. Esta brecha se manifiesta en historias clínicas fragmentadas, duplicidad de registros y exámenes, demoras en validación administrativa, riesgos de error clínico y sobrecostos para el sistema.
+Esta investigación adopta un **enfoque híbrido de tres fases** (diagnóstico → implementación → evaluación) para abordar las deficiencias de interoperabilidad en centros de salud MINSA del ámbito SIS en Lima. Aunque el Perú cuenta con un marco normativo que define arquitectura (RNIEDS/PIDESALUD), estándares de intercambio (HL7, DICOM), codificación (CIE-10, CPMS) y catálogos IEDS, persiste una brecha entre norma y ejecución que se manifiesta en historias clínicas fragmentadas, duplicidad de registros y exámenes, demoras en validación administrativa y riesgos de error clínico.
+
+El modelo híbrido supera las limitaciones de un enfoque puramente diagnóstico (que describe la brecha pero no la cierra) o puramente implementador (que carece de línea base para medir impacto). Al integrar ambos, la investigación: (1) diagnostica las brechas reales de interoperabilidad, (2) diseña e implementa una capa piloto de integración HL7 FHIR que atiende las brechas críticas, y (3) evalúa cuantitativamente el impacto pre/post en la calidad de gestión de historias clínicas.
 
 ## Formulación integrada del problema
 
 Los centros de salud del MINSA presentan deficiencias en la interoperabilidad de sus sistemas de información y en la gestión de historias clínicas de pacientes afiliados al SIS, pese a la existencia del marco normativo RM N° 1104-2018-MINSA, RM N° 464-2019-MINSA y RM N° 1193-2019-MINSA. La persistencia de sistemas heredados, la implementación parcial de estándares de comunicación e integración (HL7, DICOM), el uso inconsistente de codificación clínica (CIE-10, CPMS), las brechas de conexión a PIDESALUD, las debilidades de gobernanza y normalización de datos (IEDS), y las limitaciones de infraestructura, talento y presupuesto ocasionan fragmentación y pérdida de información clínica, duplicidad de registros y exámenes, demoras asistenciales, dificultades en la validación administrativa y facturación SIS, mayor riesgo de errores médicos e insatisfacción del paciente.
 
+Ante esta situación, se requiere un modelo híbrido que no solo diagnostique las brechas existentes, sino que proponga e implemente una solución tecnológica concreta — una capa de integración basada en HL7 FHIR — y mida su efecto real en la calidad de gestión de las historias clínicas, generando evidencia para su escalamiento a nivel sectorial.
+
 ## Pregunta general de investigación
 
-¿En qué medida el nivel de cumplimiento de las exigencias técnicas y organizativas establecidas por las RM N° 1104-2018-MINSA, N° 464-2019-MINSA y N° 1193-2019-MINSA influye en la integridad, disponibilidad y continuidad de la historia clínica electrónica de pacientes SIS en los centros de salud del MINSA?
+¿De qué manera un modelo híbrido que integre el diagnóstico de brechas de interoperabilidad y la implementación piloto de una capa de integración basada en HL7 FHIR permitirá mejorar la gestión de historias clínicas de pacientes SIS en centros de salud del MINSA en Lima?
 
-## Preguntas específicas sugeridas
+## Preguntas específicas de investigación
 
-1. ¿Cuál es el nivel de adopción operativa de la arquitectura RNIEDS-PIDESALUD en IPRESS del ámbito SIS-MINSA?
-2. ¿Qué grado de cumplimiento existe en el uso de estándares de intercambio (HL7, DICOM) y codificación (CIE-10, CPMS)?
-3. ¿Qué brechas de calidad de dato (identidad de paciente, códigos de establecimiento, medicamentos y procedimientos) afectan la continuidad de atención?
-4. ¿Cómo impactan las brechas de interoperabilidad en tiempos de atención, duplicidad de exámenes y validación administrativa SIS?
-5. ¿Qué factores organizacionales y presupuestales explican el incumplimiento parcial en establecimientos periféricos?
+1. **Fase diagnóstica:** ¿Cuál es el nivel actual de cumplimiento de los estándares de interoperabilidad (RNIEDS, PIDESALUD, HL7, CIE-10, CPMS) en centros de salud MINSA del ámbito SIS en Lima y qué brechas críticas existen en la gestión de historias clínicas?
+2. **Fase de implementación:** ¿Cómo diseñar e implementar una capa de integración basada en HL7 FHIR que atienda las brechas de interoperabilidad identificadas en el diagnóstico?
+3. **Fase de evaluación:** ¿En qué medida la implementación piloto de la capa de integración FHIR mejora la integridad, continuidad y calidad de las historias clínicas de pacientes SIS respecto a la línea base diagnóstica?
 
 ## Objetivo general
 
-Evaluar el nivel de cumplimiento normativo y técnico de interoperabilidad en centros de salud del MINSA y su efecto en la gestión de historias clínicas de pacientes SIS.
+Mejorar la gestión de historias clínicas de pacientes SIS en centros de salud MINSA en Lima mediante un modelo híbrido que diagnostique las brechas de interoperabilidad e implemente una capa piloto de integración basada en HL7 FHIR.
 
-## Objetivos específicos sugeridos
+## Objetivos específicos
 
-1. Identificar el grado de implementación de componentes de interoperabilidad (RNIEDS, PIDESALUD) en establecimientos seleccionados.
-2. Medir el cumplimiento de estándares de comunicación y codificación clínica exigidos por la normativa.
-3. Analizar la calidad semántica del dato mediante catálogos IEDS críticos.
-4. Estimar el efecto de las brechas técnicas sobre continuidad asistencial, eficiencia operativa y riesgo clínico-administrativo.
-5. Proponer lineamientos de mejora priorizados para cerrar la brecha entre norma y práctica.
+1. **OE1 (Diagnóstico):** Determinar el nivel de cumplimiento de los estándares de interoperabilidad (RNIEDS, PIDESALUD, HL7, CIE-10, CPMS) y levantar una línea base de calidad de gestión de HCE en los establecimientos seleccionados.
+2. **OE2 (Implementación):** Diseñar e implementar una capa piloto de integración basada en HL7 FHIR que atienda las brechas críticas identificadas en el diagnóstico.
+3. **OE3 (Evaluación):** Evaluar el impacto de la implementación piloto comparando los indicadores de calidad de gestión de HCE antes y después de la intervención.
+4. **OE4 (Escalabilidad):** Formular lineamientos y lecciones aprendidas para el escalamiento del modelo a otros establecimientos MINSA.
 
 ## Hipótesis de trabajo
 
-Un mayor cumplimiento de los componentes normativos y técnicos de interoperabilidad definidos en las RM N° 1104-2018-MINSA, N° 464-2019-MINSA y N° 1193-2019-MINSA se asocia con una mejora significativa en la gestión de historias clínicas de pacientes SIS, expresada en mayor continuidad asistencial, menor duplicidad de procedimientos y menor riesgo de errores clínico-administrativos.
+**Hipótesis general:** La implementación piloto de una capa de integración basada en HL7 FHIR, diseñada a partir del diagnóstico de brechas de interoperabilidad, mejora significativamente la calidad de gestión de historias clínicas de pacientes SIS en centros de salud MINSA en Lima.
+
+**Hipótesis específicas:**
+
+1. **H1:** Los centros de salud MINSA del ámbito SIS en Lima presentan un nivel de cumplimiento inferior al 50 % en al menos tres de las cinco dimensiones de interoperabilidad evaluadas.
+2. **H2:** La capa de integración FHIR piloto es técnicamente viable de implementar con los recursos disponibles en establecimientos MINSA de nivel I y II.
+3. **H3:** Después de la implementación piloto, los indicadores de completitud, codificación correcta y continuidad de atención de las HCE mejoran en al menos un 20 % respecto a la línea base.
 
 ## Base normativa nacional consolidada
 
@@ -167,61 +174,94 @@ Un mayor cumplimiento de los componentes normativos y técnicos de interoperabil
 - Sobrecostos por ineficiencia y baja trazabilidad.
 - Insatisfacción del paciente y potencial afectación de derechos en salud.
 
-## Variables y operacionalización inicial
+## Variables y operacionalización
 
 ### Variable independiente
 
-Nivel de cumplimiento normativo y técnico de interoperabilidad.
+Modelo híbrido de interoperabilidad (diagnóstico + implementación FHIR).
 
 ### Dimensiones de la variable independiente
 
-1. Implementación de arquitectura RNIEDS-PIDESALUD.
-2. Cumplimiento de estándares de intercambio (HL7, DICOM).
-3. Cumplimiento de codificación y catálogos IEDS (CIE-10, CPMS, RENAES, DIGEMID, identidad paciente).
-4. Seguridad, privacidad y trazabilidad de acceso/uso de datos.
+#### Fase 1 — Diagnóstico
+
+| Dimensión | Indicador | Escala | Instrumento |
+|---|---|---|---|
+| Arquitectura RNIEDS-PIDESALUD | % de componentes implementados operativamente | Razón (0-100 %) | Checklist normativo |
+| Estándares de intercambio | Nivel de adopción de HL7/FHIR y DICOM | Ordinal (nulo/parcial/completo) | Ficha técnica |
+| Codificación clínica | % cumplimiento CIE-10, CPMS, catálogos IEDS | Razón (0-100 %) | Auditoría de registros |
+| Seguridad y trazabilidad | Existencia de políticas y logs de acceso | Nominal (sí/no) + ordinal | Revisión documental |
+| Infraestructura y conectividad | Disponibilidad de conexión operativa | Nominal (sí/no) + razón (% uptime) | Monitoreo técnico |
+
+#### Fase 2 — Implementación piloto
+
+| Componente | Indicador | Escala | Instrumento |
+|---|---|---|---|
+| Perfiles FHIR definidos | Número de recursos FHIR mapeados | Razón | Documentación técnica |
+| Mapeo de datos | % de campos locales mapeados a FHIR | Razón (0-100 %) | Matriz de mapeo |
+| Servicio desplegado | Disponibilidad del endpoint FHIR | Nominal (operativo/no operativo) | Pruebas de integración |
+| Capacitación | % de personal capacitado | Razón (0-100 %) | Registro de asistencia |
+
+#### Fase 3 — Evaluación de impacto
+
+- Comparación pre/post de todos los indicadores de la variable dependiente.
 
 ### Variable dependiente
 
-Calidad de gestión de historia clínica de pacientes SIS-MINSA.
+Calidad de gestión de historias clínicas de pacientes SIS.
 
-### Indicadores sugeridos
+### Indicadores de la variable dependiente (medidos pre y post implementación)
 
-- Porcentaje de establecimientos con conexión operativa a PIDESALUD.
-- Porcentaje de transacciones validadas bajo estándar de intercambio definido.
-- Porcentaje de diagnósticos correctamente codificados en CIE-10.
-- Porcentaje de procedimientos correctamente codificados en CPMS.
-- Tasa de duplicidad de pacientes y exámenes por cada 1000 atenciones.
-- Tiempo promedio de validación administrativa SIS.
-- Porcentaje de registros con trazabilidad completa de acceso y modificación.
+| Indicador | Fórmula / operacionalización | Escala | Fuente |
+|---|---|---|---|
+| Completitud de HCE | % de campos obligatorios completos | Razón (0-100 %) | Auditoría de registros |
+| Codificación CIE-10 | % de diagnósticos correctamente codificados | Razón (0-100 %) | Muestra de atenciones |
+| Codificación CPMS | % de procedimientos correctamente codificados | Razón (0-100 %) | Muestra de atenciones |
+| Duplicidad de pacientes | Tasa de duplicados por cada 1 000 atenciones | Razón | Base de datos HIS |
+| Duplicidad de exámenes | Tasa de exámenes duplicados por cada 1 000 atenciones | Razón | Base de datos HIS |
+| Tiempo de validación SIS | Tiempo promedio en horas | Razón | Registros SIS |
+| Continuidad de atención | % de HCE con trazabilidad entre establecimientos | Razón (0-100 %) | Cruce de registros |
+| Trazabilidad de accesos | % de registros con log completo | Razón (0-100 %) | Logs del sistema |
 
-## Diseño metodológico sugerido para tesis
+## Diseño metodológico
 
 ### Enfoque
 
-Mixto (cuantitativo + cualitativo) con predominio explicativo.
+Mixto (cuantitativo predominante + cualitativo complementario).
 
 ### Tipo de estudio
 
-- Aplicado, no experimental, transversal.
-- Alcance correlacional-explicativo.
+- **Aplicado:** propone e implementa una solución concreta (capa FHIR).
+- **Pre-experimental o cuasi-experimental:** diseño pre-test / post-test (con grupo único o con grupo control si la muestra lo permite).
+- **Alcance:** explicativo-propositivo.
+
+### Fases del diseño
+
+| Fase | Actividad | Técnica / instrumento | Producto |
+|---|---|---|---|
+| 1. Diagnóstico | Evaluar cumplimiento normativo-técnico | Checklist (RM 1104, 464, 1193), auditoría de registros, entrevistas | Línea base + mapa de brechas |
+| 2. Implementación | Diseñar y desplegar capa FHIR piloto | Diseño de perfiles FHIR, mapeo de datos, despliegue, capacitación | Servicio piloto operativo |
+| 3. Evaluación | Medir indicadores post y comparar con línea base | Auditoría post, prueba estadística pareada (Wilcoxon / t-test) | Evidencia de impacto |
 
 ### Unidades de análisis
 
-- Establecimientos de salud MINSA del ambito SIS.
+- Establecimientos de salud MINSA del ámbito SIS en Lima (mínimo 2-3 niveles de complejidad).
+- Historias clínicas electrónicas (muestra de registros por establecimiento).
 - Procesos de registro, codificación, intercambio y validación administrativa.
 
 ### Técnicas e instrumentos
 
 - Revisión documental normativa y técnica.
-- Lista de chequeo de cumplimiento (ver archivo de checklist).
-- Auditoria de registros clínico-administrativos.
+- Lista de chequeo de cumplimiento de interoperabilidad (ver archivo de checklist).
+- Auditoría de registros clínico-administrativos (pre y post).
 - Entrevistas semiestructuradas a responsables TI, estadística y jefaturas asistenciales.
+- Pruebas de integración técnica (validación de endpoints FHIR).
 
 ### Estrategia de análisis
 
-- Indice compuesto de cumplimiento de interoperabilidad.
-- Análisis de asociación entre cumplimiento y resultados operativos.
-- Priorización de brechas con matriz impacto-probabilidad.
+- Índice compuesto de cumplimiento de interoperabilidad (Fase 1).
+- Prueba de diferencias pareadas (Wilcoxon o t-test según normalidad) para comparar indicadores pre/post (Fase 3).
+- Análisis cualitativo de lecciones aprendidas y barreras de implementación.
+- Priorización de brechas con matriz impacto-viabilidad.
 
 ## Brechas críticas observadas hasta ahora
 
@@ -271,21 +311,30 @@ Mixto (cuantitativo + cualitativo) con predominio explicativo.
 3. Riesgo de baja disponibilidad de logs históricos.
    Mitigación: usar periodo de observación acotado y trazas disponibles.
 
-## Estructura sugerida de capítulo de tesis
+## Estructura sugerida de capítulos de tesis
 
-1. Problema y contexto de interoperabilidad en salud.
-2. Marco normativo y técnico nacional (RM 1104, 464, 1193).
-3. Marco internacional de estandarización (HL7, DICOM, clasificaciones OMS).
-4. Brecha norma-practica en IPRESS del ambito SIS-MINSA.
-5. Modelo de variables e indicadores.
-6. Resultados, brechas priorizadas y propuesta de mejora.
+1. **Planteamiento del problema** — contexto, formulación, preguntas, objetivos, hipótesis, justificación.
+2. **Marco teórico y normativo** — interoperabilidad en salud, estándares (HL7/FHIR, DICOM, CIE-10), marco normativo peruano (RM 1104, 464, 1193), antecedentes internacionales y nacionales.
+3. **Metodología** — diseño pre-experimental, población/muestra, operacionalización de variables, instrumentos, procedimiento por fases.
+4. **Fase 1: Diagnóstico** — resultados del levantamiento de línea base, mapa de brechas, priorización.
+5. **Fase 2: Implementación piloto** — diseño de la capa FHIR, arquitectura, mapeo de datos, despliegue, capacitación.
+6. **Fase 3: Evaluación de impacto** — comparación pre/post, pruebas estadísticas, análisis de resultados.
+7. **Discusión** — contraste con antecedentes, implicancias, limitaciones.
+8. **Conclusiones y recomendaciones** — hallazgos principales, lineamientos de escalabilidad, trabajo futuro.
 
 ## Lógica de la fusión (trazabilidad conceptual)
 
-- Problema macro original: limitaciones de interoperabilidad de sistemas de salud.
-- Problema aplicado original: deficiencias de gestión de historias clínicas SIS-MINSA.
-- Problema unificado: brecha de cumplimiento e implementación de interoperabilidad que impacta la continuidad clínica y la eficiencia administrativa.
+- **Problema macro original:** limitaciones de interoperabilidad de sistemas de salud.
+- **Problema aplicado original:** deficiencias de gestión de historias clínicas SIS-MINSA.
+- **Problema unificado:** brecha de cumplimiento e implementación de interoperabilidad que impacta la continuidad clínica y la eficiencia administrativa.
+- **Enfoque híbrido (evolución):** el diagnóstico identifica las brechas, la implementación FHIR las atiende, y la evaluación pre/post genera evidencia de mejora. Esto supera el enfoque diagnóstico-predictivo anterior (que solo estimaba riesgo de fragmentación sin cerrar la brecha).
 
-## Próxima ampliación recomendada
+## Siguientes pasos - ejecución
 
-Para una versión final de grado tesis, el siguiente bloque a construir es una matriz de operacionalización completa con escala de medición, fuente de verificación por indicador y ficha de instrumento para trabajo de campo.
+1. **Selección de establecimientos:** definir la muestra de IPRESS en Lima (mínimo 2-3 niveles de complejidad).
+2. **Validación de instrumentos:** someter el checklist diagnóstico y la ficha de auditoría a juicio de expertos.
+3. **Ejecución del diagnóstico (Fase 1):** levantar línea base en los establecimientos seleccionados.
+4. **Diseño FHIR (Fase 2):** definir perfiles de recursos, terminologías y arquitectura del servicio piloto.
+5. **Implementación y capacitación (Fase 2):** desplegar la capa piloto y formar al personal operativo.
+6. **Medición post y análisis (Fase 3):** recoger indicadores post-implementación y ejecutar pruebas estadísticas.
+7. **Redacción de tesis:** escribir capítulos con base en los resultados obtenidos.
