@@ -98,11 +98,6 @@ Se consolidó una muestra de 18 artículos recientes con DOI verificable, organi
 | 2023 | FHIR-up! Advancing knowledge from clinical data through application of standardized nursing terminologies with FHIR | Journal of the American Medical Informatics Association | 10.1093/jamia/ocad131 | doi.org + Oxford Academic |
 | 2022 | Fast Healthcare Interoperability Resources (FHIR) for Interoperability in Health Research: Systematic Review | JMIR Medical Informatics | 10.2196/35724 | doi.org + JMIR |
 
-Archivos de soporte:
-
-- articulos-seleccionados.csv (18 artículos)
-- articulos-seleccionados.json (18 artículos)
-
 ### Nota de validación de disponibilidad
 
 - La columna **En donde esta disponible** se completó con validación por resolución de DOI y plataforma editorial de publicación.
@@ -192,18 +187,18 @@ Formato: Aporte/Propuesta + Técnica + Problema + Escenario
 
 Título propuesto:
 
-**Modelo híbrido de diagnóstico e implementación de interoperabilidad basado en HL7 FHIR para la mejora de la gestión de historias clínicas de pacientes SIS en centros de salud MINSA en Lima.**
+**Modelo de interoperabilidad basado en HL7 FHIR para la mejora de la gestión de historias clínicas en centros de salud del MINSA - Perú.**
 
 Desglose del formato:
 
-- **Aporte/Propuesta:** Modelo híbrido de diagnóstico e implementación de interoperabilidad.
+- **Aporte/Propuesta:** Modelo de interoperabilidad.
 - **Técnica:** HL7 FHIR + estándares normativos (RNIEDS/PIDESALUD/CIE-10/CPMS).
 - **Problema:** Deficiencias en la gestión de historias clínicas de pacientes SIS.
 - **Escenario:** Centros de salud MINSA en Lima (con posibilidad de escalar a otras regiones).
 
-### Justificación del modelo híbrido
+### Justificación del modelo de interoperabilidad
 
-Un enfoque puramente diagnóstico describiría las brechas de interoperabilidad pero no las cerraría. Un enfoque puramente implementador carecería de línea base para medir impacto. El modelo híbrido integra tres fases complementarias que resuelven ambas limitaciones:
+Un enfoque puramente diagnóstico describiría las brechas de interoperabilidad pero no las cerraría. Un enfoque puramente implementador carecería de línea base para medir impacto. El modelo de interoperabilidad integra tres fases complementarias que resuelven ambas limitaciones:
 
 1. **Diagnóstico:** medir el nivel real de cumplimiento normativo-técnico y levantar una línea base de calidad de historia clínica electrónica (HCE).
 2. **Implementación:** diseñar y desplegar una capa piloto de integración basada en HL7 FHIR que atienda las brechas críticas encontradas.
@@ -213,7 +208,7 @@ De esta forma, la tesis propone una solución concreta, la ejecuta en un entorno
 
 ## Paso 5. Problema general
 
-¿De qué manera un modelo híbrido que integre el diagnóstico de brechas de interoperabilidad y la implementación piloto de una capa de integración basada en HL7 FHIR permitirá mejorar la gestión de historias clínicas de pacientes SIS en centros de salud del MINSA en Lima?
+¿De qué manera un modelo que integre el diagnóstico de brechas de interoperabilidad y la implementación piloto de una capa de integración basada en HL7 FHIR permitirá mejorar la gestión de historias clínicas de pacientes SIS en centros de salud del MINSA en Perú?
 
 ## Paso 6. Problemas específicos
 
@@ -221,75 +216,55 @@ De esta forma, la tesis propone una solución concreta, la ejecuta en un entorno
 2. **PE2 — Fase de implementación:** ¿Cómo diseñar e implementar una capa de integración basada en HL7 FHIR que atienda las brechas de interoperabilidad identificadas en el diagnóstico?
 3. **PE3 — Fase de evaluación:** ¿En qué medida la implementación piloto de la capa de integración FHIR mejora la integridad, continuidad y calidad de las historias clínicas de pacientes SIS respecto a la línea base diagnóstica?
 
-### Diagrama del modelo híbrido
+## Paso 6.1 Objetivo general y objetivos específicos
 
-```plantuml
-@startuml
-top to bottom direction
+### Objetivo general
 
-skinparam shadowing false
-skinparam packageStyle rectangle
-skinparam defaultTextAlignment center
-skinparam rectangleBorderColor #555555
+Desarrollar e implementar un modelo de interoperabilidad basado en HL7 FHIR que permita mejorar la gestión de historias clínicas de pacientes SIS en centros de salud del MINSA en Perú, mediante un proceso estructurado de diagnóstico, intervención y evaluación de resultados.
 
-title Modelo hibrido: diagnostico + implementacion + evaluacion\n(interoperabilidad HCE SIS-MINSA)
+### Objetivos específicos
 
-rectangle "FASE 1 — DIAGNOSTICO" as fase1 #CEE3F6 {
-  rectangle "Evaluacion de cumplimiento normativo\n(RM 1104, 464, 1193)" as d1
-  rectangle "Medicion de brechas de interoperabilidad\n(RNIEDS, PIDESALUD, HL7, CIE-10, CPMS)" as d2
-  rectangle "Linea base de calidad de HCE\n(indicadores pre-implementacion)" as d3
-}
+1. Identificar y analizar el nivel de cumplimiento de estándares de interoperabilidad (RNIEDS, PIDESALUD, HL7, CIE-10 y CPMS) y las brechas críticas de gestión de historias clínicas en centros de salud MINSA del ámbito SIS.
+2. Diseñar e implementar una capa piloto de integración basada en HL7 FHIR que responda a las brechas de interoperabilidad identificadas en la fase diagnóstica.
+3. Evaluar el desempeño e impacto del modelo implementado mediante comparación pre y post intervención, utilizando indicadores de integridad, continuidad y calidad de las historias clínicas.
+4. Proponer lineamientos técnicos y operativos para la escalabilidad del modelo de interoperabilidad en otros establecimientos de salud del MINSA.
 
-rectangle "FASE 2 — IMPLEMENTACION PILOTO" as fase2 #D5E8D4 {
-  rectangle "Diseno de capa de integracion\nHL7 FHIR (perfiles, recursos, terminologias)" as i1
-  rectangle "Mapeo y transformacion\nde datos locales a FHIR" as i2
-  rectangle "Despliegue piloto en\nestablecimiento(s) seleccionado(s)" as i3
-  rectangle "Capacitacion del\npersonal operativo" as i4
-}
+## Paso 6.2 Justificación de la investigación
 
-rectangle "FASE 3 — EVALUACION DE IMPACTO" as fase3 #FFF2CC {
-  rectangle "Medicion post-implementacion\nde indicadores de calidad de HCE" as e1
-  rectangle "Comparacion pre/post\n(prueba estadistica pareada)" as e2
-  rectangle "Analisis de resultados\ny lecciones aprendidas" as e3
-}
+### Justificación teórica
 
-rectangle "RESULTADOS ESPERADOS" as resultado #F8CECC {
-  rectangle "Reduccion de duplicidad\nde registros y examenes" as r1
-  rectangle "Mejora de completitud\ny codificacion de HCE" as r2
-  rectangle "Continuidad de atencion\ntrazable entre establecimientos" as r3
-  rectangle "Lineamientos de\nescalabilidad" as r4
-}
+La investigación aporta al campo de la interoperabilidad en salud al integrar en un mismo marco analítico los componentes organizativos, semánticos, técnicos y de evaluación de resultados en la gestión de historias clínicas electrónicas. Además, articula estándares internacionales (HL7 FHIR, HL7 CDA, DICOM) con el marco normativo nacional (RM N° 1104-2018-MINSA, RM N° 464-2019-MINSA y RM N° 1193-2019-MINSA), contribuyendo a cerrar vacíos de conocimiento sobre su aplicación efectiva en contextos de atención pública como el SIS-MINSA.
 
-fase1 -down-> fase2 : Brechas priorizadas
-fase2 -down-> fase3 : Sistema piloto operativo
-fase3 -down-> resultado : Evidencia de impacto
+### Justificación metodológica
 
-note bottom of fase1
-PE1: Cual es el nivel actual de
-cumplimiento y que brechas
-criticas existen?
-end note
+La propuesta sigue un procedimiento sistemático y replicable en tres fases: diagnóstico de brechas, implementación piloto y evaluación de impacto. Esta estructura metodológica facilita su reproducción en otros entornos de salud, al definir con claridad instrumentos, variables, métricas e indicadores de desempeño. Asimismo, la comparación pre y post intervención permite generar evidencia objetiva sobre la efectividad del modelo y sustentar decisiones de mejora continua basadas en datos.
 
-note bottom of fase2
-PE2: Como disenar e implementar
-una capa de integracion FHIR
-que atienda las brechas?
-end note
+### Justificación práctica
 
-note bottom of fase3
-PE3: En que medida la implementacion
-mejora la calidad de las historias
-clinicas respecto a la linea base?
-end note
+Desde el punto de vista operativo, la investigación ofrece una ruta concreta para mejorar la calidad de la historia clínica electrónica en establecimientos del MINSA, incluyendo lineamientos para mapeo de datos, integración entre sistemas y trazabilidad de información clínica. Los resultados esperados (mayor completitud, mejor codificación, menor duplicidad y menor tiempo de validación) pueden traducirse en procesos asistenciales y administrativos más eficientes, con reducción de reprocesos y costos asociados.
 
-@enduml
-```
+### Justificación social
 
-## Paso 7. Variables del modelo híbrido
+La mejora de la interoperabilidad impacta directamente en la continuidad y oportunidad de la atención de los pacientes afiliados al SIS, especialmente en poblaciones con mayor vulnerabilidad. Al disponer de información clínica más íntegra, accesible y trazable, se fortalece la seguridad del paciente, se reduce el riesgo de errores por información incompleta y se favorece una atención más equitativa. En consecuencia, la investigación contribuye al bienestar de la población y al fortalecimiento de la gobernanza digital del sistema público de salud.
+
+### Limitaciones
+
+- Disponibilidad y calidad de los datos.
+- Acceso a fuentes de información.
+- Alcance geográfico.
+- Limitaciones del modelo de interoperabilidad implementado.
+- Variables no identificadas.
+- Restricciones de tiempo y recursos.
+
+### Diagrama del modelo de interoperabilidad
+
+![Diagrama del modelo de interoperabilidad: diagnóstico + implementación + evaluación (interoperabilidad HCE SIS-MINSA)](diagrama-modelo-hibrido.png)
+
+## Paso 7. Variables del modelo de interoperabilidad
 
 ### Variable independiente
 
-Modelo híbrido de interoperabilidad (diagnóstico + implementación FHIR).
+Modelo de interoperabilidad (diagnóstico + implementación + evaluación basada en FHIR).
 
 ### Dimensiones de la variable independiente
 
