@@ -1,0 +1,1257 @@
+	
+136	
+International Journal of Online and Biomedical Engineering (iJOE)	
+iJOE | Vol. 20 No. 3 (2024)
+iJOE  |  eISSN: 2626-8493  |  Vol. 20 No. 3 (2024)  | 
+JOE
+International Journal of 
+Online and Biomedical Engineering
+Mauricio, D., Llanos-Colchado, P.C., Cutipa-Salazar, L.S., Castañeda, P., Chuquimbalqui-Maslucán, R., Rojas-Mezarina, L., Castillo-Sequera, J.L. (2024). 
+Electronic Health Record Interoperability System in Peru Using Blockchain. International Journal of Online and Biomedical Engineering (iJOE), 20(3), 
+pp. 136–153. https://doi.org/10.3991/ijoe.v20i03.44507
+Article submitted 2023-08-30. Revision uploaded 2023-11-22. Final acceptance 2023-11-22.
+© 2024 by the authors of this article. Published under CC-BY.
+Online-Journals.org
+PAPER
+Electronic Health Record Interoperability System 
+in Peru Using Blockchain
+ABSTRACT
+In Peru, there is currently no integrated electronic health record (EHR) system that can be 
+automatically shared between healthcare facilities. This leads to increased service costs due to 
+duplicated examinations and records, as well as additional time required to manage patients’ 
+clinical information. One alternative for ensuring the secure interoperability of EHRs while 
+preserving data privacy is the use of blockchain technology. However, existing works con-
+sider a pre-established format for exchanging EHRs, which is not applicable when systems 
+have different formats, as is the case in Peru. This work proposes an architecture and a web 
+application for exchanging EHRs in heterogeneous systems. The proposed system includes 
+the homologation of an EHR with rapid interoperability resources for medical attention 
+using FHIR HL7, and vice versa, to achieve interoperability. Additionally, it utilizes block-
+chain technology to ensure data security and privacy. The web application was tested using 
+a case simulation to demonstrate EHR interoperability between clinics in a clear, secure, and 
+efficient manner. In addition, a survey was conducted with 30 patients regarding adoption, 
+and another survey was conducted with 10 doctors from a public hospital in Peru regarding 
+usability. The results demonstrate a very high level of adoption and usability for them all. 
+Unlike other studies, the proposal does not necessitate alterations to existing EHR systems for 
+interoperability. In other words, the proposal presents a feasible and cost-effective alternative 
+to addressing the EHR interoperability issue in clinics and hospitals in Peru.
+KEYWORDS
+interoperability, electronic health record (EHR), blockchain-FHIR, HL7, IPFS
+1 
+INTRODUCTION
+The electronic health record (EHR) offers numerous benefits for clinical practice, 
+but it also presents several challenges that must be addressed to ensure effective 
+implementation and optimized use of the EHR [1]. These challenges include inte-
+grating with other medical information systems, ensuring information security 
+David Mauricio1(), Paulo 
+César Llanos-Colchado1, 
+Leandro Sebastián Cutipa-
+Salazar1, Pedro Castañeda1, 
+Robert Chuquimbalqui-
+Maslucán2, Leonardo 
+Rojas-Mezarina2, José Luis 
+Castillo-Sequera3
+1Universidad Peruana de 
+Ciencias Aplicadas (UPC), 
+Lima, Perú
+2Universidad Nacional Mayor 
+de San Marcos (UNMSM), 
+Lima, Perú
+3Universidad de Alcalá, 
+Madrid, España
+pcsidmau@upc.edu.pe
+https://doi.org/10.3991/ijoe.v20i03.44507
+iJOE | Vol. 20 No. 3 (2024)	
+International Journal of Online and Biomedical Engineering (iJOE)	
+137
+Electronic Health Record Interoperability System in Peru Using Blockchain
+and privacy, providing accessibility for all healthcare providers, managing the cost 
+of implementation and maintenance, training healthcare providers, and keeping 
+up with the constant evolution of technology [2]. In Peru, access to the EHR has 
+increased in recent years. However, many healthcare providers do not have access 
+to EHR information systems (EHRIS), especially in rural areas, making continuity of 
+care difficult for patients who move or change providers [3]. Furthermore, the secu-
+rity and privacy of medical information are major concerns for patients. Therefore, 
+it is essential that the EHR be designed and implemented securely to protect sensi-
+tive information [4]. However, EHR can be vulnerable to cyberattacks [5]. Therefore, 
+it is essential to take appropriate measures to ensure information security.
+Currently, many systems worldwide use EHR. However, these systems present 
+significant gaps, such as EHR incompatibility between systems and the digitiza-
+tion of patient medical files [6]. EHR incompatibility means that doctors and other 
+healthcare professionals are often unable to access or transfer a patient’s EHR if 
+it is on a different or incompatible system than the one they are using, delaying 
+diagnosis and treatment, and putting patients’ health at risk [7]. The interopera-
+bility of EHRs between healthcare facilities is essential for improving efficiency in 
+their use and in delivering health services. However, in many countries, this goal 
+has not been fully realized. In the Latin American region, Uruguay leads in EHR 
+interoperability at 34%, followed by Argentina at 21%, and Chile and Colombia at 
+11%. Peru occupies one of the last positions with less than a 10% maturity level in 
+interoperability [8]. On the other hand, there is a significant weakness in the secu-
+rity and privacy of EHR because health centers do not employ adequate techniques 
+to safeguard a patient’s data [9]. Additionally, most health centers store patient data 
+locally, and some do not have backup data [10]. The numerous instances of attacks 
+on healthcare data, such as those in the US and England, where there have been 
+significant losses of sensitive data [11], have underscored the critical importance of 
+EHR security and privacy.
+In Peru, Law No. 30024, enacted in 2013, establishes the national EHR registry. 
+This law is an interoperability platform and a repository for clinical information 
+for every patient registered in the medical institution chosen by the patient [12]. 
+It is a fact that private medical institutions in Peru operate a private system for stor-
+ing and managing EHRs. Ensuring the integrity and security of this data requires a 
+highly secure system to prevent patients’ personal information from falling into the 
+wrong hands. The Peruvian Ministry of Health (Minsa) has implemented measures 
+to address this issue by introducing various electronic record solutions, now collec-
+tively known as Electronic Health Record Information Systems (SIHCE in Spanish). 
+However, there are still challenges in implementing and complying with these sys-
+tems nationwide. Specifically, there is a lack of standardization and compatibility 
+between the various systems used by health centers at the national level. In addition, 
+many health centers still use paper-based EHR systems, which means they do not 
+have access to real-time information and may experience delays in receiving results 
+from tests and exams.
+There have been numerous studies on the interoperability of EHRs. In [7], a system 
+called OmniPHR is proposed for EHR interoperability, incorporating the HL7 FHIR and 
+openEHR standards. The study extends to include blockchain and MIMIC-III, along 
+with artificial intelligence using natural language processing (NLP), achieving an F1 
+score of 87.9% in integrating various standards into a single format, as presented 
+in [13]. In [14], Hyperledger Fabric is utilized to create a secure interoperability sys-
+tem known as MedHypChain. Each transaction is protected by a signature encryp-
+tion scheme, and tests show confidentiality, anonymity, traceability, and authenticity. 
+	
+138	
+International Journal of Online and Biomedical Engineering (iJOE)	
+iJOE | Vol. 20 No. 3 (2024)
+Mauricio et al.
+In reference [15], the SHealth system is proposed to be blockchain-based, utilizing 
+multiple layers to define the privileges and permissions of health entities without 
+compromising their authenticity. In reference [16], HonestChain was developed. 
+It utilizes blockchain technology to securely share patient data and employs digital 
+signature algorithms to ensure the authenticity of the data.
+Despite the abundance of literature on EHR interoperability, no studies on EHR 
+interoperability have been identified in Peru. In Peru, the law [17, 18] does not 
+mandate a clear implementation route for the EHR, making interoperability even 
+more challenging. This also means that the studies identified cannot be directly 
+applied to the Peruvian case, where centralized or isolated systems are gener-
+ally managed.
+This paper proposes an EHR interoperability system that facilitates the transfer 
+and transformation of patients’ EHR using the FHIR (fast healthcare interoperability 
+resources) standard and blockchain technology. This system aims to make individuals’ 
+medical histories available across various clinical facilities. In addition, the user is 
+assisted in maintaining a unique record and expediting care across various health 
+facilities, ensuring efficient, safe, and prompt treatment. Blockchain technology 
+works as a decentralized network without a central authority. Data is continuously 
+added in the form of blocks and validated by the network itself, ensuring transpar-
+ency and security [19]. It offers a wide range of applications and functions in the 
+healthcare sector [20, 21] and is known for its resistance to attacks. Additionally, it 
+provides easy access control methods and preserves data privacy [22]. Moreover, it 
+has been successfully applied to EHR exchange systems [23].
+The primary contributions of this work include:
+• Develop an interoperability architecture for her to facilitate communication 
+between healthcare facilities using diverse formats and systems.
+• Provide a web-based system for exchanging EHR and demonstrate its functionality.
+• Please provide a synthesis of 16 EHR exchange systems that utilize blockchain 
+technology.
+This paper is organized into six sections. In Section 2, a review of health sys-
+tems for exchanging EHR between different health centers is presented. The tech-
+nological proposal model and its implementation are described in Sections 3 and 4, 
+respectively. Section 5 presents the validation and results. Finally, the conclusions 
+are presented in Section 6.
+2 
+REVIEW OF EHR SYSTEMS WITH BLOCKCHAIN
+Electronic health record interoperability systems with blockchain are designed 
+in the health sector to facilitate the exchange and management of EHRs with 
+enhanced accessibility and security. These systems aim to improve the efficiency of 
+medical care by reducing time and costs per patient. In general, they consider the 
+following factors:
+• Information exchange standards: They ensure that interoperable systems can 
+communicate and share information efficiently and securely. Some of these stan-
+dards include HL7 FHIR [24], DICOM [25], SNOMED CT [26], and other related 
+standards [27].
+• System type: This refers to the front end of the system, which can be web or mobile.
+iJOE | Vol. 20 No. 3 (2024)	
+International Journal of Online and Biomedical Engineering (iJOE)	
+139
+Electronic Health Record Interoperability System in Peru Using Blockchain
+• Security and privacy technology: This is provided by blockchain technology, as well 
+as the signature algorithm (encryption) used for authentication and authorization.
+• Access levels: Patient, doctor, manager, and medical center
+Below are 14 blockchain-based EHR interoperability systems that were identified 
+in the indexed journals Scopus, Web of Science, IEEE Access, and PubMed (refer 
+to Table 1).
+Table 1. Blockchain-based interoperable EHR systems
+System
+Type of System
+Standards
+Blockchain
+Access Level
+Reference
+OmniPHR
+Web
+openEHR, HL7 FHIR 
+and MIMIC-III
+Ethereum and 
+Chord algorithm
+Patient and doctor
+[13]
+MedHypChain
+Web
+Standard proposed 
+by authors
+Hyperledger Fabric and 
+consensus algorithm
+Administrator, patient, 
+and doctor
+[14]
+HonestChain
+Web
+HIPAA
+Hyperledger and proof-of-
+information algorithm
+Administrator and doctor
+[16]
+Cloud-Assisted 
+EHR System
+Cloud Service
+Standard from the 
+same health entity
+Hyperledger 
+Fabric, consensus 
+algorithm and PBFT
+Patient and doctor, medical 
+centers, administrator
+[28]
+SHealth
+Web
+Standard from the 
+same health entity
+Hyperledger Fabric, SHA-256 
+algorithm, ECC algorithm and 
+AES algorithm
+Doctor, patients, 
+health centers
+[15]
+EC-ACS
+Cloud Service
+Standard from the 
+same health entity
+Blockchain and 17 different 
+algorithms
+Doctor, patients, auditor
+[29]
+MCPS
+Consortium 
+Blockchain
+Standard from the 
+same health entity
+Blockchain and 
+encryption algorithm
+Patients and doctors
+[30]
+Distributed EHR
+Cloud Service
+OmniPHR
+Ethereum, Hyperledger and 
+Chord algorithm
+Patients, doctors, and 
+health services
+[7]
+EHR System 
+– Cryptosystem
+Rest-API Service
+HL7 FHIR
+Hyperledger + C-AB/IB-ES
+Patients, doctors, and 
+health services
+[23]
+PHR System
+Mobile and Web 
+application
+FHIR
+Ethereum and Smart 
+Contract (IPFS)
+Patient, doctor, administrator, 
+and medical center
+[31]
+Wireless 
+sensor networks
+Web
+–
+Blockchain, wireless sensors 
+and Smart Contract
+Patient and administrator
+[32]
+MedChain
+Web
+–
+Blockchain (ECC)
+Medical Center
+[6]
+Health Wizz
+Mobile and Web 
+application
+FHIR
+Ethereum (IPFS)
+Patient and medical center
+[2]
+Secure 
+Cloud-Based EHR
+Web
+–
+Cryptosystem and blockchain 
+(C-AB/IB-ES)
+Patient and medical center
+[33]
+3 
+INTEROPERABLE EHR MODEL
+A model is proposed to enable the interoperability of EHRs for patients across 
+different healthcare facilities. The purpose of this model is to enable each patient to 
+easily access their clinical history, regardless of the healthcare facility where they 
+received treatment. To achieve this, the EHR of a healthcare facility is converted 
+	
+140	
+International Journal of Online and Biomedical Engineering (iJOE)	
+iJOE | Vol. 20 No. 3 (2024)
+Mauricio et al.
+into the standardized HL7 FHIR format. This format is then shared with other 
+healthcare facilities, enabling the sharing of patient data, including comprehensive 
+characteristics and clinical details. The model is based on blockchain, smart con-
+tracts, and the HL7 FHIR format. It consists of five modules: medical history consul-
+tation, external management, patient authorization, HL7 FHIR transformation, and 
+EHR search.
+Fig. 1. Interoperable EHR model with blockchain
+In the model (see Figure 1), initially, the patient visits a doctor at an HCA health 
+center, who then searches for the patient’s EHR in the system. If it exists, interop-
+erability will not be necessary. Otherwise, the doctor proceeds to initiate a process 
+to obtain the EHR from the previously visited health center (HCB health center). 
+This process, known as “external management of the EHR,” requires the patient’s 
+authorization for the transfer of their data. When the request arrives at the HCB 
+health center, the patient’s data will be verified. If the request is denied, the EHR will 
+not be shared. Otherwise, the search history will be conducted within the system, 
+and a copy will be created to be sent via the web application. The web application 
+will convert the patient’s medical history into the FHIR HL7 format, store it in the 
+blockchain, and then decrypt the history using a smart contract. Finally, the patient’s 
+information will be accessible at Center A, where the doctor can directly review the 
+patient’s medical history.
+Patient’s EHR request: The purpose of this module is to request a patient’s EHR 
+from one or more healthcare centers. Once entered into the system, the patient’s 
+identifying data, such as their ID, the reason for the request, and the clinic from 
+which the EHR is requested, is entered.
+Patient authorization: When the doctor requests a copy of the patient’s EHR, an 
+authorization from the patient. This authorization must be signed by the patient 
+to give consent for the sharing of their data, thereby accepting the terms and con-
+ditions of the document. Once the authorization has been granted, it will be sent 
+together with the EHR request.
+FHIR HL7 transformation: This module is responsible for reading and transform-
+ing the EHR that has been sent from the HCB health center into the HL7 format. For 
+this purpose, each text item in the EHR is transformed into the items of the HL7 stan-
+dard (see Figure 2). For example, the text “Fever, Cough” under the item “symptoms” 
+iJOE | Vol. 20 No. 3 (2024)	
+International Journal of Online and Biomedical Engineering (iJOE)	
+141
+Electronic Health Record Interoperability System in Peru Using Blockchain
+is transformed into [{“symptoms”: “Fever, Cough”}]. In addition, the information will 
+be stored on a blockchain to enhance security during the transfer. Smart contracts 
+will be utilized to decrypt the medical history and transmit it to Health Center A. 
+Once this process is completed, the doctor will be notified that the transfer has been 
+successfully completed and will be accessible to him.
+a)
+b)
+Fig. 2. EHR: a) HCB format; and b) HL7 format
+EHR transfer: The request is received at the HCB health center, where the 
+patient’s data is verified. If the information is not correct, the request will 
+be denied, and the clinic that submitted the request will be notified. Otherwise, 
+the patient will be looked up in the HCB health center system. Once the EHR 
+of the requested patient is located, a copy will be created and sent via the EHR 
+management system.
+4 
+HNC SYSTEM
+Next, the proposed interoperability model is implemented in a web system called 
+health net chain (HNC).
+4.1 
+Architecture
+Figure 3 depicts the high-level technology architecture for transferring an EHR 
+from the clinical system (HCA) to the clinical system (HCB). The architecture incor-
+porates blockchain technology, smart contracts, an IPFS server, and the FHIR HL7 
+format. Blockchain technology ensures decentralized and tamper-resistant storage. 
+Smart contracts establish rules and automate operations. The IPFS server facilitates 
+the storage and distribution of files, while the FHIR HL7 format standardizes the 
+representation and exchange of medical data, ensuring the integrity and interoper-
+ability of each patient’s clinical information. The project uses SQLite as the database, 
+which enhances portability and scalability. Additionally, it is lightweight and can be 
+stored on the same server.
+	
+142	
+International Journal of Online and Biomedical Engineering (iJOE)	
+iJOE | Vol. 20 No. 3 (2024)
+Mauricio et al.
+Fig. 3. Technological architecture of the HNC interoperability system
+4.2 
+Database diagram
+The database model focuses on the operation of the web system and will not store 
+any documents (EHR). Similarly, the model below enables us to organize accurate 
+and fundamental patient data for easier retrieval, along with clinic information and 
+the corresponding request.
+4.3 
+Implementation
+The HNC was developed using Node.js on the backend and technologies such 
+as HTML, CSS, and JavaScript on the frontend. To enhance the website, we utilized 
+plugins and libraries. The “Sash” UI component was implemented to enhance the 
+usability of the application’s administrative design. Additionally, it includes a local 
+IPFS server to generate hashes for the uploaded files. The blockchain will be exe-
+cuted locally, enabling the partial processing of file hashes. When necessary, a smart 
+contract will be used to provide access to documents. For the conversion of PDF files 
+to the FHIR HL7 standard format, the FHIR standard format of HL7 International 
+(http://hl7.org/fhir/) in JSON format was utilized [34].
+Patient request module: A form is completed with basic details including the 
+patient’s name, date of birth, and ID. It also explains the reason for needing to access 
+their records.
+Patient authorization module: The patient authorizes the EHR request by submit-
+ting a signed document, known as an authorization, which is then attached to the 
+documents in the request module. Once the request is authorized, the individual 
+responsible for the requested clinic (HCB) will verify the request for accuracy. If the 
+request is not in order, it will be rejected with reasons provided. If the request is in 
+order, it will be accepted, and a copy of the EHR will be sent in PDF format.
+FHIR HL7 transformation module: This module involves generating an HL7 FHIR 
+from an EHR. This is carried out through a procedure that takes into account:
+The EHRs, such as FHIRs are organized into field categories. Consider the cate-
+gories d R1, R2, …, Rc and H1, H2, …, Hc for FHIR and HCE respectively. For example, 
+Patient and Medication for FHIR and Patient and Medication for HCE. Each category 
+iJOE | Vol. 20 No. 3 (2024)	
+International Journal of Online and Biomedical Engineering (iJOE)	
+143
+Electronic Health Record Interoperability System in Peru Using Blockchain
+Rj is given as R
+a b
+a b
+j
+j
+j
+n
+j
+n
+j
+
+
+{(
+,
+),
+,(
+,
+)}
+1
+1
+, where a j
+1 is a FHIR field and b j
+1 represents its 
+corresponding field in HCE. For example, “name” in FHIR corresponds to “nombre” 
+in HCE. It should be noted that each EHR category is defined by a set of fields and their 
+associated data (if any), denoted as, H
+b d
+b d
+j
+j
+j
+n
+j
+n
+j
+
+
+{(
+,
+),
+,(
+,
+)}
+1
+1
+, where d j
+1 represents the 
+data corresponding to the b j
+1 field.
+The transformation is described by the following algorithm:
+Transformation Algorithm
+1.	O ← {}
+2.	for j = 1, c
+3.	   O = O + "Rj":{
+4.	   for i = 1, n
+5.	     d
+texto a b
+j
+j
+j
+1
+1
+1
+←
+(
+,
+)
+6.	     O
+O
+a
+d
+i
+j
+i
+j
+
+"
+" :"
+"
+    end – for
+7.	     O ← O +}
+    end – for
+8.	FHIR ← O
+Notes: (1) The temporary file O is initialized as empty; (2) Each category Rj is started in O; (3) The Rj 
+category is opened, adding “{” to the O file; (4) Each field of a category is counted; (5) For each field ai
+j 
+the data di
+j is obtained. This is done using the function texto(.,.), which determines the HCE text that is on 
+the right side of bi
+j. If this does not exist, it will return “” (empty); (6) The record "
+" : "
+"
+a
+d
+i
+j
+i
+j
+
+ is added to the 
+O file; (7) The Rj category is closed, adding “}” to the O file; and (8) The algorithm is finished.
+The transformation algorithm is implemented in a code from the JavaScript 
+library called pdf2json. This code transforms a text (see Figure 2a) to the FHIR HL7 
+format (see Figure 2b).
+EHR transfer module: The EHR in the FHIR HL7 format, produced by the transfor-
+mation module, is uploaded to the IPFS server for storage and to generate a unique 
+hash for the file. The file is then transferred to a blockchain, where its integrity and 
+security are guaranteed. Finally, a smart contract is utilized to decrypt the file and 
+retrieve it in the HCA. Ethereum was used for the implementation.
+5 
+VALIDATION
+Following this, the proposal is validated through a simulation of a case study 
+involving two clinics and expert judgment.
+5.1 
+Case study simulation
+Case. The case study examines the interoperability of EHR in two health cen-
+ters (HCA, HCB) that use different EHR formats and lack standardization. However, 
+their medical staff is familiar with the FHIR HL7 standard. The patient “Jesus Alberto 
+Gonzales Duarez” (a fictitious patient) is at HCA, a facility that does not have his EHR. 
+On the other hand, HCB does have the patient’s EHR in its system, so HCB is required 
+to transfer the patient’s EHR to HCA.
+Production start-up. To achieve interoperability between HCA and HCB clinics, 
+the following preparatory activities must be completed with the clinics: 1) Introduce 
+the HNC system, explaining its purpose, functionality, and benefits; 2) Formalize EHR 
+	
+144	
+International Journal of Online and Biomedical Engineering (iJOE)	
+iJOE | Vol. 20 No. 3 (2024)
+Mauricio et al.
+transfer agreements between the clinics; 3) Enroll clinics and users in the system; 
+4) Provide training on the system and the HL7 FHR standard to user personnel 
+(administrators, doctors).
+Simulation. For the simulation, Truffle and Ganache were used as development 
+and simulation tools. They facilitate the creation and testing of smart contracts with-
+out interfering with the main blockchain network.
+Patient EHR request: Since the HCA does not have the patient’s EHR, the doc-
+tor submits a request for it in the NCE through the patient’s EHR request module, 
+completing a form (see Figure 4a).
+Patient authorization: Next, the patient is informed that he needs to provide autho-
+rization for the sharing of his EHR with the HCB clinic. This is done under informed 
+consent, allowing the doctor to request access to the EHR. If this is the case, the 
+patient will authorize the order through the patient authorization module interface 
+(see Figure 4b).
+a)
+b)
+Fig. 4. EHR request: a) Request; and b) Patient authorization
+Request submission: After obtaining the patient’s authorization, HNC sends the 
+request to HCB along with the patient’s authorization as evidence of consent.
+Verification: Upon receiving the EHR transfer request (see Figure 5), the HCB clinic 
+user verifies the validity of the patient’s authorization. This process is not carried out 
+by the HNC system; however, it is essential to ensure that the privacy and security 
+requirements for medical information are met. Once the request is validated, HCB 
+sends the EHR in PDF format through the HNC system.
+Fig. 5. EHR requests received
+FHIR HL7 transformation: Next, HNC automatically converts the patient’s 
+EHR (see Figure 6a) to the FHIR HL7 format (see Figure 6b) using the FHIR HL7 
+transformation module.
+iJOE | Vol. 20 No. 3 (2024)	
+International Journal of Online and Biomedical Engineering (iJOE)	
+145
+Electronic Health Record Interoperability System in Peru Using Blockchain
+EHR transfer: Next, HNC automatically sends the patient’s EHR to HCA through 
+the EHR transfer module in the FHIR HL7 format.
+a)
+b)
+Fig. 6. HCE: a) Original format; and b) FHIR HL7 format
+The case simulation demonstrates that the proposal ensures compatibility and 
+understanding of EHRs among clinics that use different formats, thereby ensuring 
+safe and efficient EHR interoperability between clinics.
+Performance and latency: The simulation was conducted on a PC with an 
+11th Gen Intel(R) Core (TM) i7-11700 @ 2.50GHz (16 CPUs), 2.5GHz, 32 GB RAM, and 
+Windows 11 Pro 64-bit operating system (10.0, build 22621). The results show that 
+the average time for 10 transactions was 0.6452 ms and 0.2963 ms when using and 
+not using the blockchain, respectively. This indicates that the throughput is reduced 
+from 3.3750 to 1.5499 transactions per second when using the blockchain. It should 
+be noted that performance can be improved by increasing the processor’s power.
+Considering that the hashed file is similar in size to its original file, the sending 
+time of this file will be comparable whether blockchain is used or not. Therefore, the 
+latency difference when blockchain is used or not is determined by the transaction 
+time. In the simulation, the difference was 0.3489 (0.6452−0.2963), indicating that 
+the latency increases by 0.3489 ms for each transaction when blockchain is used. 
+It should be noted that this transaction cost is offset by the security that blockchain 
+provides, and it can also be reduced by increasing the processing power.
+5.2 
+Expert judgment
+Participants. A survey was conducted to assess the usability and satisfaction of 
+the HNC system. Ten doctors with experience ranging from 4 to 30 years (refer to 
+	
+146	
+International Journal of Online and Biomedical Engineering (iJOE)	
+iJOE | Vol. 20 No. 3 (2024)
+Mauricio et al.
+Table 2) participated in the survey, and 30 patients aged 19 to 44 years were sur-
+veyed to evaluate its adoption (refer to Table 3).
+Table 2. Profile of surveyed doctors
+Id
+Genre
+Age
+Years of Experience
+M01
+Female
+63
+25
+M02
+Female
+29
+4
+M03
+Female
+34
+5
+tavM04
+Female
+28
+5
+M05
+Female
+55
+28
+M06
+Female
+30
+3
+M07
+Male
+35
+8
+M08
+Male
+59
+30
+M09
+Male
+38
+10
+M10
+Male
+40
+12
+Table 3. Profile of surveyed patients
+Id
+Age
+Genre
+Id
+Age
+Genre
+Id
+Age
+Genre
+P01
+22
+Male
+P11
+22
+Male
+P21
+28
+Female
+P02
+19
+Female
+P12
+33
+Female
+P22
+33
+Female
+P03
+23
+Male
+P13
+29
+Female
+P23
+26
+Male
+P04
+20
+Male
+P14
+34
+Male
+P24
+35
+Male
+P05
+18
+Male
+P15
+27
+Male
+P25
+29
+Male
+P06
+25
+Male
+P16
+32
+Female
+P26
+31
+Female
+P07
+24
+Male
+P17
+26
+Male
+P27
+43
+Female
+P08
+21
+Male
+P18
+31
+Male
+P28
+36
+Male
+P09
+18
+Female
+P19
+35
+Male
+P29
+39
+Male
+P10
+22
+Male
+P20
+30
+Male
+P30
+44
+Female
+Experiment. A survey was conducted to assess the usability, satisfaction, and 
+adoption of the HNC system.
+• The perception of usability and satisfaction was assessed through surveys 
+distributed to doctors (refer to Table 4).
+• The perception of adoption was assessed through surveys given to patients 
+(refer to Table 5).
+Doctors received individual training on using the HNC for 30 minutes, which 
+included exercises to interact with the system and test its functionalities (see Figure 7). 
+Next, the usability and satisfaction surveys were administered. Patients received a 
+brief five-minute explanation about the benefits and limitations of a system that 
+enables secure sharing of EHRs between clinics, followed by the administration of 
+the adoption survey. All surveys were conducted at a level 3 hospital in Lima, Peru, 
+with anonymous identification.
+iJOE | Vol. 20 No. 3 (2024)	
+International Journal of Online and Biomedical Engineering (iJOE)	
+147
+Electronic Health Record Interoperability System in Peru Using Blockchain
+Fig. 7. Training of doctors in the use of HNC
+Survey. Two surveys have been conducted: a usability survey targeting doctors 
+(refer to Table 5), who are the primary users of HNC, and an adoption survey target-
+ing patients (refer to Table 6). It should be noted that patients do not interact directly 
+with HNC. However, their consent is required for their EHR to be shared between 
+the different health centers where they are treated. Therefore, it is necessary to eval-
+uate their perception of adoption. The usability questionnaire addresses the two 
+main functionalities: the transfer of EHR (QU1, QU2, QU3) and the conversion of 
+her to FHIR HL7 (QU4, QU5), as well as its adoption (QU6, QU7, QU8). The adoption 
+questionnaire considers the security provided by blockchain (QS1) and the useful-
+ness of the system (QS2, QS3). On the other hand, the responses to the questions 
+were evaluated using the Likert psychometric scale (1: nothing; 2: low; 3: moderate; 
+4: high; 5: very high).
+Table 4. Usability questionnaire (doctors)
+Id
+Questions
+QU1
+How easy is it to generate an EHR transfer request in the application?
+QU2
+How easy is it to download the patient’s authorization to request a copy of his EHR?
+QU3
+How easy is it to successfully send a patient’s EHR to another clinic?
+QU4
+How easy is it to correctly receive a request for a copy of a patient’s EHR from another clinic?
+QU5
+How much is a patient’s EHR understood in the FHIR HL7 format?
+QU6
+Are the design of the web system interfaces adequate?
+QU7
+How easy was it to learn how to use the application?
+QU8
+Would you recommend using HNC for EHR transfers?
+Table 5. Adoption questionnaire (patients)
+Id
+Questions
+QS1
+Do you agree that the system can safely share your EHR between healthcare facilities (where 
+you receive care) to support your healthcare?
+QS2
+Do you consider that the use of HNC reduces the cost and time in the consultation, because your 
+EHR is shared between health centers?
+QS3
+Would you recommend using HNC for secure and fast EHR exchange?
+Results. Considering that the Likert scale includes integer values and that the 
+average results can be fractions, the interpretation for the values has been defined 
+as follows: [1, 1.8): nothing; [1.8, 2.6): little [2.6, 3.4]: moderate, (3.4, 4.2]: high (4.2, 5]: 
+very high; scheme used in several works such as [35].
+	
+148	
+International Journal of Online and Biomedical Engineering (iJOE)	
+iJOE | Vol. 20 No. 3 (2024)
+Mauricio et al.
+Table 6 represents the results obtained from the survey conducted on patients. 
+In this table, the value 1 in row QS1 indicates that a patient answered the ques-
+tion with a value of 1, Similarly, the value 15 in the same column indicates that 
+15 patients responded with a value of 5. The average column indicates the 
+average of the responses for each question, which can be obtained by add-
+ing the values of each row by its corresponding Likert scale, thus the average 
+for QS1 is 4 30
+1 1
+2
+0
+3 3
+4
+11
+5 15
+30
+.
+(
+)
+
+
+
+
+
+
+
+
+
+
+.
+The results obtained from the survey conducted with patients indicate “totally agree” 
+(very high) that the system can safely share their EHR between health centers where 
+they are treated (QS1) and that I would recommend using HNC for secure and fast EHR 
+exchange (QS3). Furthermore, it has been demonstrated that patients “strongly agree” 
+(high) that using HNC will reduce the cost and time required for consultations (QS2). 
+These results show a very high perception (4.29) that this type of system can be adopted.
+Table 6. Patient adoption survey results
+Questions
+Response – Likert Scale
+Average
+1
+2
+3
+4
+5
+QS1
+1
+0
+3
+11
+15
+4.30
+QS2
+1
+1
+6
+10
+12
+4.03
+QS3
+1
+0
+2
+6
+21
+4.53
+Average
+4.29
+Table 7 presents the results of the system usability surveys administered to doctors. 
+The values in columns M01–M10 represent the responses on the Likert scale, and the 
+values in the “average” column indicate the average score of each question (on the left 
+side) and the average of the dimension (on the right side). For example, the value 4.6 
+in the average column for the row corresponding to QU1 is the average of the answers 
+to this question. The value 4.29, on the other hand, is the average of answers for the 
+transfer dimension, which includes the answers to questions QU1, QU2, and QU3.
+The results presented in Table 7 indicate that doctors “totally agree” (very high) with 
+the EHR functionalities: transfer, as it demonstrates success in transferring between 
+health centers; and transformation, as the system correctly transforms from HCE to 
+FHIR HL7. Furthermore, doctors highly rate the system’s interfaces and ease of use, and 
+they also recommend its use. Therefore, there is a high probability of EHR adoption.
+Table 7. System usability survey results in doctors
+Dimension
+Id
+Specialists
+Average
+M01
+M02
+M03
+M04
+M05
+M06
+M07
+M08
+M09
+M10
+Transfer
+QU1
+5
+5
+5
+4
+4
+5
+5
+5
+4
+4
+4.6
+4.29
+QU2
+5
+5
+5
+5
+3
+5
+5
+5
+5
+4
+4.7
+QU3
+5
+5
+5
+5
+4
+5
+5
+5
+4
+4
+4.7
+Transformation
+QU4
+5
+5
+5
+5
+3
+5
+5
+5
+4
+4
+4.6
+4.65
+QU5
+5
+5
+5
+4
+5
+5
+5
+5
+4
+4
+4.7
+Adoption
+QU6
+5
+5
+5
+4
+3
+5
+3
+5
+5
+5
+4.5
+4.63
+QU7
+5
+5
+5
+5
+3
+5
+5
+5
+4
+5
+4.7
+QU8
+5
+5
+5
+5
+4
+5
+4
+5
+4
+5
+4.7
+iJOE | Vol. 20 No. 3 (2024)	
+International Journal of Online and Biomedical Engineering (iJOE)	
+149
+Electronic Health Record Interoperability System in Peru Using Blockchain
+6 
+CONCLUSION
+This work proposes an architecture and a web application for securely interop-
+erating EHRs from different health facilities by transforming them into the standard 
+FHIR HL7 format and utilizing blockchain technology. Unlike other proposals that 
+necessitate substantial alterations to the clinics’ EHR systems to achieve interoper-
+ability, this proposal does not require changes to existing systems. Its high usability 
+would result in widespread adoption.
+The architecture was implemented in a web application using Node.js for the 
+frontend and Express.js for the backend. As for the database, since it does not con-
+tain a large amount of data, SQLite is being used. It was then tested using a case 
+simulation to demonstrate EHR interoperability between clinics in a clear, secure, 
+and efficient manner.
+In addition, a survey was conducted with 30 patients regarding adoption, and 
+another survey was conducted with 10 doctors from a public hospital in Peru regard-
+ing usability. The results demonstrate the very high adoption and usability of all of 
+them. This indicates that the proposal is a feasible, cost-effective, and secure alterna-
+tive for addressing the issue of EHR interoperability in clinics and hospitals in Peru.
+A limitation of the system is that health personnel must be familiar with the 
+standard FHIR HL7 format. Although this is taught in university health programs, 
+additional training is desirable, as many clinics use their own formats in practice. 
+In future work, the introduction of fingerprint, signature, and/or face recognition 
+algorithms could automate the authorization of EHR use, thereby facilitating the use 
+of the proposed system.
+7 
+ACKNOWLEDGMENT
+The authors express their gratitude to the Dirección de Investigación de la 
+Universidad Peruana de Ciencias Aplicadas for the support provided for this research 
+work through the UPC-B-047-2023 incentive, as well as to the patients and specialists 
+who participated in the surveys.
+8 
+REFERENCES
+	 [1]	 H. Li, X. Yang, H. Wang, W. Wei, and W. Xue, “A controllable secure blockchain-based 
+electronic healthcare records sharing scheme,” Journal of Healthcare Engineering, 
+vol. 2022, p. 2058497, 2022. https://doi.org/10.1155/2022/2058497
+	 [2]	 D. Dimitrov, “Blockchain applications for healthcare data management,” Healthcare 
+Informatics Research, vol. 25, no. 1, pp. 51–56, 2019. https://doi.org/10.4258/hir. 
+2019.25.1.51
+	 [3]	 E. M. Fernández Leon, “Desarrollo de un sistema Web de historias clínicas electróni-
+cas para mejorar la gestión en el proceso de consultas ambulatorias del Hospital Belén 
+de Lambayeque, [Tesis de grado],” Facultad de Ingeniería, Universidad Católica Santo 
+Toribio de Mogrovejo, Chiclayo, Perú, 2022.
+	 [4]	 J. Huang, Y. W. Qi, M. R. Asghar, A. Meads, and Y.-C. Tu, “MedBloc: A blockchain-based 
+secure EHR system for sharing and accessing medical data,” in 18th IEEE International 
+Conference on Trust, Security and Privacy in Computing and Communications/13th IEEE 
+International Conference on Big Data Science and Engineering (TrustCom/BigDataSE), 
+Rotorua, New Zealand, 2019, pp. 594–601. https://doi.org/10.1109/TrustCom/BigDataSE. 
+2019.00085
+	
+150	
+International Journal of Online and Biomedical Engineering (iJOE)	
+iJOE | Vol. 20 No. 3 (2024)
+Mauricio et al.
+	 [5]	 J. Xiong et al., “Impact of COVID-19 pandemic on mental health in the general popula-
+tion: A systematic review,” Journal of Affective Disorders, vol. 277, pp. 55–64, 2022. https://
+doi.org/10.1016/j.jad.2020.08.001
+	 [6]	 B. Shen, J. Guo, and Y. Yang, “MedChain: Efficient healthcare data sharing via block-
+chain,” Applied Sciences, vol. 9, no. 6, p. 1207, 2019. https://doi.org/10.3390/app9061207
+	 [7]	 A. Roehrs, C. A. da Costa, R. da Rosa Righi, V. F. da Silva, J. R. Goldim, and D. C. Schmidt, 
+“Analyzing the performance of a blockchain-based personal health record implementa-
+tion,” Journal of Biomedical Informatics, vol. 92, p. 103140, 2019. https://doi.org/10.1016/ 
+j.jbi.2019.103140
+	 [8]	 Minsait, “Perú: la interoperabilidad del sistema de salud es un reto pendiente,” 2021. 
+https://www.minsait.com/es/actualidad/media-room/peru-la-interoperabilidad- 
+del-sistema-de-salud-es-un-reto-pendiente
+	 [9]	 I. Abunadi and R. Kumar, “BSF-EHR: Blockchain security framework for elec-
+tronic health records of patients,” Sensors, vol. 21, no. 8, p. 2865, 2021. https://doi.
+org/10.3390/s21082865
+	[10]	 S. Kumar, A. Bharti, and R. Amin, “Decentralized secure storage of medical records 
+using Blockchain and IPFS: A comparative analysis with future directions,” Security and 
+Privacy, vol. 4, no. 5, 2021. https://doi.org/10.1002/spy2.162
+	[11]	 O. Abdullah, M. Bhuiyan, S. Kiyomoto, and S. Rahman, “Privacy-friendly platform for 
+healthcare data in cloud based on blockchain environment,” Future Gener. Comput. Syst., 
+vol. 95, pp. 511–521, 2019. https://doi.org/10.1016/j.future.2018.12.044
+	[12]	 L. Rojas-Mezarina, C. A. Cedamanos-Medina, and J. Vargas-Herrera, “Registro Nacional 
+De Historias Clínicas Electrónicas en Perú [carta],” Rev Peru Med Exp Salud Publica. 
+vol. 32, no. 2, pp. 395–396, 2015. https://doi.org/10.17843/rpmesp.2015.322.1639
+	[13]	 A. Roehrs, C. A. da Costa, R. da Rosa Righi, S. J. Rigo, and M. H. Wichman, “Toward a 
+model for personal health record interoperability,” IEEE Journal of Biomedical and 
+Health Informatics, vol. 23, no. 2, pp. 867–873, 2019. https://doi.org/10.1109/JBHI. 
+2018.2836138
+	[14]	 M. Kumar and C. Satish, “MedHypChain: A patient-centered interoperability hyperledger- 
+based medical healthcare system: Regulation in COVID-19 pandemic,” Journal of 
+Network and Computer Applications, vol. 179, p. 102975, 2021. https://doi.org/10.1016/j.
+jnca.2021.102975
+	[15]	 M. Zghaibeh, U. Farooq, N. U. Hasan and I. Baig, “SHealth: A blockchain-based health 
+system with smart contracts capabilities,” IEEE Access, vol. 8, pp. 70030–70043, 2020. 
+https://doi.org/10.1109/ACCESS.2020.2986789
+	[16]	 S. Purohit, P. Calyam, M. L. Alarcon, N. R. Bhamidipati, A. Mosa, and K. Salah, 
+“HonestChain: Consortium blockchain for protected data sharing in health information 
+systems,” Peer-to-Peer Networking and Applications, vol. 14, no. 5, pp. 3012–3028, 2021. 
+https://doi.org/10.1007/s12083-021-01153-y
+	[17]	 Ley N° 30024. Ley que crea el Registro Nacional de Historias Clínicas Electrónicas 
+(2013, mayo 22). Congreso de la República del Perú. https://busquedas.elperuano. 
+pe/normaslegales/ley-que-crea-el-registro-nacional-de-historias-clinicas-elec-ley- 
+n-30024-940383-2/
+	[18]	 Ley N° 31750. Ley que modifica los artículos 2 y 4 De la ley 30024, ley que crea el Registro 
+Nacional de Historias Clínicas Electrónicas (2023, mayo 24). Congreso de la República 
+del Perú. https://busquedas.elperuano.pe/normaslegales/ley-que-modifica-los-articulos-
+2-y-4-de-la-ley-30024-ley-qu-ley-n-31750-2180595-1/#:~:text=Se%20declara%20de%20
+inter%C3%A9s%20nacional,y%20tratamiento%20adecuado%20y%20oportuno
+	[19]	 S. M. Idrees, I. Aijaz, R. Jameel, and M. Nowostawski, “Exploring the blockchain tech-
+nology: Issues, applications and research potential,” International Journal of Online and 
+Biomedical Engineering (iJOE), vol. 17, no. 7, pp. 48–69, 2021. https://doi.org/10.3991/ijoe.
+v17i07.22803
+iJOE | Vol. 20 No. 3 (2024)	
+International Journal of Online and Biomedical Engineering (iJOE)	
+151
+Electronic Health Record Interoperability System in Peru Using Blockchain
+	[20]	 A. F. Abbas, N. A. Qureshi, N. Khan, R. Chandio, and J. Ali, “The blockchain technologies 
+in healthcare: Prospects, obstacles, and future recommendations; lessons learned from 
+digitalization,” International Journal of Online and Biomedical Engineering (iJOE), vol. 18, 
+no. 9, pp. 144–159, 2022. https://doi.org/10.3991/ijoe.v18i09.32253
+	[21]	 V. Rattanawiboomsom, M. S. Korejo, J. Ali, and U. Thatsaringkharnsakun, “Blockchain-
+enabled Internet of Things (IoT) applications in healthcare: A systematic review of cur-
+rent trends and future opportunities,” International Journal of Online and Biomedical 
+Engineering (iJOE), vol. 19, no. 10, pp. 99–117, 2023. https://doi.org/10.3991/ijoe.
+v19i10.41399
+	[22]	 M. Qaseem, Q. Basheer, and M. Mehdia, “Blockchain based EHR system architecture 
+and the need of blockchain inhealthcare,” Materials Today: Proceedings, vol. 80, part 3, 
+pp. 2064–2070, 2023. https://doi.org/10.1016/j.matpr.2021.06.114
+	[23]	 S. Wang, D. Zhang, and Y. Zhang, “Blockchain-based personal health records sharing 
+scheme with data integrity verifiable,” IEEE Access, vol. 7, pp. 102887–102901, 2019. 
+https://doi.org/10.1109/ACCESS.2019.2931531
+	[24]	 C. N. Vorisek et al., “Fast Healthcare Interoperability Resources (FHIR) for interopera-
+bility in health research: Systematic review,” JMIR Medical Informatics, vol. 10, no. 7, 
+p. e35724, 2022. https://doi.org/10.2196/35724
+	[25]	 C. Herz et al., “dcmqi: An open source library for standardized communication of 
+quantitative image analysis results using DICOM,” Cancer Research, vol. 77, no. 21, 
+pp. e87–e90, 2017. https://doi.org/10.1158/0008-5472.CAN-17-0336
+	[26]	 S. El-Sappagh, F. Franda, F. Ali, and K. S. Kwak, “SNOMED CT standard ontology based on 
+the ontology for general medical science,” BMC Medical Informatics and Decision Making, 
+vol. 18, no. 1, p. 76, 2018. https://doi.org/10.1186/s12911-018-0651-5
+	[27]	 HIMSS. “Interoperability in healthcare,” https://www.himss.org/resources/interoperability- 
+healthcare#Part2 (accedido el 31 de julio de 2023).
+	[28]	 M. Kim, S. Yu, J. Lee, Y. Park, and Y. Park, “Design of secure protocol for cloud-assisted 
+electronic health record system using blockchain,” Sensors, vol. 20, no. 10, p. 2913, 
+2020. https://doi.org/10.3390/s20102913
+	[29]	 T. Benil and J. Jasper, “Cloud based security on outsourcing using blockchain in 
+E-health systems,” Comput. Netw., vol. 178, p. 107344, 2020. https://doi.org/10.1016/ 
+j.comnet.2020.107344
+	[30]	 X. Cheng, F. Chen, D. Xie, H. Sun, and C. Huang, “Design of a secure medical data sharing 
+scheme based on blockchain,” J. Med. Syst., vol. 44, no. 52, 2020. https://doi.org/10.1007/
+s10916-019-1468-1
+	[31]	 M. M. Madine et al., “Blockchain for giving patients control over their medical 
+records,” IEEE Access, vol. 8, pp. 193102–193115, 2020. https://doi.org/10.1109/
+ACCESS.2020.3032553
+	[32]	 R. Casado-Vara, J. Corchado, S. M. Thampi, and E. M. El-Alfy, “Distributed e-health 
+wide-world accounting ledger via blockchain,” J. Intell. Fuzzy Syst., vol. 36, no. 3, 
+pp. 2381–2386, 2019. https://doi.org/10.3233/JIFS-169949
+	[33]	 H. Wang and S. Yujiao, “Secure cloud-based EHR system using attribute-based crypto­
+system and blockchain,” Journal of Medical Systems, vol. 42, no. 8, p. 152, 2018. https://
+doi.org/10.1007/s10916-018-0994-6
+	[34]	 HL7 International. (s.f.). FHIR – HL7.org. Recuperado el 5 de Marzo de 2023, de http://
+hl7.org/fhir/
+	[35]	 L. R. Wong and D. S. Mauricio, “New factors that affect the activities of the require-
+ments elicitation process,” Journal of Engineering Science and Technology, vol. 13, 
+pp. 1992–2015, 2019.
+	
+152	
+International Journal of Online and Biomedical Engineering (iJOE)	
+iJOE | Vol. 20 No. 3 (2024)
+Mauricio et al.
+9 
+AUTHORS
+David Mauricio has a PhD in Computer and Systems Engineering and a Master’s 
+degree in Applied Mathematics from the Federal University of Rio de Janeiro (Brazil). 
+He has been a professor at the Universidad Estadual Norte Fluminense in Brazil 
+(1994–1998), and since 1998 he is a full professor at the Universidad Nacional Mayor 
+de San Marcos in Peru. Areas of interest: Mathematical Programming, Artificial 
+Intelligence, Software Engineering, Entrepreneurship (E-mail: pcsidmau@upc.edu.pe; 
+ORCID: https://orcid.org/0000-0001-9262-626X).
+Paulo César Llanos-Colchado is a graduate of the Information Systems 
+Engineering program at the Universidad Peruana de Ciencias Aplicadas (UPC). 
+Fullstack developer with solid knowledge in web application development. Currently, 
+he is part of the Aceroyalty team, contributing to the success of the Rimac Seguros 
+project. He has experience in both frontend and backend, ensuring comprehensive 
+and efficient solutions (E-mail: U201616374@upc.edu.pe).
+Leandro Sebastián Cutipa-Salazar is a graduate of the Information Systems 
+Engineering program at the Universidad Peruana de Ciencias Aplicadas (UPC), 
+with experience in financial analysis at BBVA and as a Jr. Data Analyst at Tismart. 
+Currently, he works as a Data Engineer at Neoris, where he applies his experience in 
+data management and processing (E-mail: U201613373@upc.edu.pe).
+Pedro Castañeda has a PhD in Systems Engineering – UNMSM, a Master’s 
+Degree in Management and Information Technology Management – UNMSM and a 
+Master’s Degree in Business Administration (MBA) – ESAN. He currently leads proj-
+ects of electronic brokering, software development and process improvement, using 
+agile and traditional methodologies. He has the following certifications: Project 
+Management Professional (PMP), Scrum Certified Developer (CSD), IBM Certified 
+Professional in Rational Unified Process, ORACLE Certifications. Teacher of Project 
+Management Methodologies and Software Development in public and private uni-
+versities. Areas of Interest: Software Productivity, Business Intelligence, Machine 
+Learning, Software Engineering (E-mail: pcsipcas@upc.edu.pe; ORCID: https://orcid.
+org/0000-0003-1865-1293).
+Robert Chuquimbalqui-Maslucán is surgeon, Master in Project Management 
+and Social Programs, Professor at the Faculty of Medicine of the Universidad 
+Nacional Mayor de San Marcos. Extensive experience in Management and 
+Direction of Research, Development and Innovation projects. He is currently coor-
+dinator of Innovation and Business of the Center for Technological, Biomedical 
+and Environmental Research – CITBM “First Center of Excellence of Peru” certi-
+fied by CONCYTEC and linked to national companies and international centers of 
+excellence such as the University of Washington (USA), Federal University of Minas 
+Gerais (Brazil), National Institute of Health (INS-Ministry of Health of Peru) (E-mail: 
+rchuquimbalqui@citbm.pe).
+Leonardo Rojas-Mezarina is surgeon from the Universidad Nacional Mayor de 
+San Marcos (UNMSM), specialist in Health Administration and Management (UPCH), 
+Master (c) in Health Management (UPCH), RENACYT Researcher, Coordinator of 
+the Health Information and Innovation Technologies research group and Associate 
+Professor of the Academic Department of Preventive Medicine and Public Health 
+(UNMSM). Former General Director of the General Office of Information and 
+Systems of the National Institute of Health. He is currently Executive Director of 
+the Telemedicine Directorate of the Peruvian Ministry of Health and Head of the 
+Telehealth Unit of the UNMSM (E-mail: leonardo.rojas@unmsm.edu.pe).
+iJOE | Vol. 20 No. 3 (2024)	
+International Journal of Online and Biomedical Engineering (iJOE)	
+153
+Electronic Health Record Interoperability System in Peru Using Blockchain
+José Luis Castillo-Sequera received the degree in computing from the National 
+University of San Marcos, Peru, the master’s degree in computer project manage-
+ment and the master’s degree in university teaching in Spain, and the Ph.D. degree in 
+information systems, documentation, and knowledge from the University of Alcalá, 
+Spain. He is currently a Full Professor with the Department of Computer Science, 
+University of Alcalá (Spain). He has multiple publications at the level of high-level 
+indexed JCR journals and is the author of books and book chapters related to the 
+field of artificial intelligence. His research interests include information retrieval, 
+knowledge extraction and neural network, data mining and big data and machine 
+learning. He also leads projects of technological innovation oriented to the use of ICTs 
+in university research groups. His research interests include business technologies 
+(E-mail: jluis.castillo@uah.es).

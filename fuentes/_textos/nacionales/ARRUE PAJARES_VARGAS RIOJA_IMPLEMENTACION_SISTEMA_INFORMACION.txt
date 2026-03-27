@@ -1,0 +1,4287 @@
+PONTIFICIA UNIVERSIDAD CATÓLICA DEL PERÚ 
+FACULTAD DE CIENCIAS E INGENIERÍA 
+Implementación de un Sistema de Información Hospitalario (HIS) 
+interoperable basado en HL7 para un Centro Médico de categoría II-1 
+o superior
+Tesis para obtener el título profesional de Ingeniero Informático 
+AUTORES: 
+Carlos Alberto Vargas Rioja 
+Sebastián Daniel Arrué Pajares 
+ASESOR:  
+Mg. Ángel Gabriel Lena Valega 
+Lima, junio, 2022
+ii 
+ 
+ 
+ 
+     Resumen 
+Dada la coyuntura actual del COVID-19, en el Perú se ha puesto en evidencia que la falta 
+de un sistema de salud integrado e interoperable y ha repercutido en la gestión del manejo de esta 
+pandemia. El sistema de salud, tanto público como privado se encuentra fraccionado y cada 
+componente, como EsSalud, MINSA o privados; aislados de los demás. Así, hemos visto que el 
+comando Covid, liderado por los ministros de salud, ha tenido que hacer esfuerzos para tratar de 
+recopilar y consolidar la información de todos los centros médicos y de sus pacientes en todo el 
+país. A la capacidad de los sistemas de poder intercambiar información entre sí se le denomina 
+interoperabilidad; y cuando un sistema tiene características de interoperabilidad es más fácil su 
+integración con otros sistemas de información. Es por esta razón que en el presente proyecto se 
+presenta un sistema de salud hospitalario (HIS, por sus siglas en inglés), usando el protocolo 
+estándar HL7 y desarrollado en una plataforma web. Este sistema, una vez desplegado en distintos 
+centros de salud, permitirá el intercambio y recopilación de información entre todos los centros 
+de la red de salud y también estará preparado para interoperar e integrarse más fácilmente con 
+sistemas de salud de otras entidades. Usando este protocolo, pueden ser acoplados nuevos 
+sistemas al paquete de manera que es completamente interoperable y escalable. El HIS tiene como 
+objetivo gestionar la información administrativa de un centro de salud en lo que respecta a 
+finanzas, recursos humanos (personal y pacientes), instalaciones, citas, recursos, activos y el 
+proceso de hospitalización de un paciente. En conjunto con otros sistemas, como la Historia 
+Clínica Electrónica, Sistema de Farmacia, Laboratorio, Radiología y otros, el HIS permite 
+gestionar toda la información de salud y administrativa de un centro médico y sus pacientes. Para 
+ello, nuestra tesis “Implementar un Sistema de Información Hospitalario (HIS) interoperable 
+basado en estándares HL7 para un Centro Médico de categoría II-1 o superior” tiene por objetivos 
+específicos diseñar la arquitectura de este sistema HIS, implementar los servicios web necesarios, 
+desarrollar la aplicación web, diseñar e implementar el módulo de seguridad e identificar y evaluar 
+sus principios de usabilidad. Por lo mencionado anteriormente, el presente trabajo adquiere suma 
+relevancia debido a la coyuntura del COVID-19 y esperamos sea considerado para trabajos 
+futuros que busquen mejorar el colapsado sistema sanitario del país mediante sistemas de 
+información modernos e interoperables. 
+ 
+iii 
+ 
+ 
+ 
+Dedicatoria 
+ 
+Dedico este trabajo a mis padres, hermano y familiares que siempre me ha apoyado desde 
+que empecé el colegio. A mi esposa Pamela, que sin ella nada de esto hubiera sido posible. A mi 
+compañero de tesis Sebastián que entre los 2 pudimos lograr este logro y finalmente a mi asesor 
+Ángel Lena que con su apoyo y conocimiento nos guió durante todo el proceso. 
+Carlos Vargas Rioja 
+ 
+A mis abuelos, que me inculcaron valores y la motivación de ser un buen profesional. A 
+mis padres, por su esfuerzo en darme la siempre mejor educación. A mi tía Carola por apoyarme 
+a lo largo de mi carrera. A mí mismo, por estudiar tanto y no rendirme jamás. Y por último, a 
+todos los que se vieron involucrados en el desarrollo de este proyecto. 
+Sebastián Arrué Pajares 
+iv 
+ 
+ 
+ 
+Tabla de Contenido 
+Dedicatoria ................................................................................................................................... iii 
+Índice de Tablas ........................................................................................................................... ix 
+Índice de Figuras ........................................................................................................................... x 
+ 
+Generalidades ...................................................................................................... 13 
+1.1 
+Problemática ........................................................................................................ 13 
+1.2 
+Objetivos ............................................................................................................. 16 
+1.2.1 
+Objetivo general .......................................................................................... 16 
+1.2.2 
+Objetivos específicos .................................................................................. 16 
+1.2.3 
+Resultados esperados .................................................................................. 16 
+1.2.4 
+Mapeo de objetivos, resultados y verificación ............................................ 17 
+1.3 
+Herramientas y Métodos ..................................................................................... 19 
+1.3.1 
+Herramientas ............................................................................................... 20 
+1.3.2 
+Metodología ................................................................................................ 22 
+1.4 
+Alcances, Limitaciones y Riesgos ....................................................................... 25 
+1.4.1 
+Justificación del proyecto ............................................................................ 25 
+1.4.2 
+Alcance del proyecto ................................................................................... 26 
+1.4.3 
+Limitaciones del proyecto ........................................................................... 28 
+1.4.4 
+Riesgos del proyecto ................................................................................... 29 
+1.5 
+Viabilidad ............................................................................................................ 32 
+1.5.1 
+Viabilidad Técnica ...................................................................................... 32 
+1.5.2 
+Viabilidad Temporal ................................................................................... 32 
+1.5.3 
+Viabilidad Económica ................................................................................. 32 
+1.5.4 
+Conclusiones de Viabilidad ......................................................................... 32 
+ 
+Marco Legal/Regulatorio/Conceptual/otros ........................................................ 33 
+2.1 
+Marco Teórico ..................................................................................................... 33 
+2.1.1 
+Organización del Sector Salud en el Perú ................................................... 33 
+2.1.2 
+Categorización y niveles de los centros de salud en el Perú ....................... 35 
+v 
+ 
+ 
+ 
+2.1.3 
+Health Information Management System (HIMS) y sus módulos............... 37 
+2.2 
+Marco Conceptual ............................................................................................... 38 
+2.2.1 
+Centro de salud ............................................................................................ 38 
+2.2.2 
+Niveles de atención ..................................................................................... 39 
+2.2.3 
+Categorías de centros médicos .................................................................... 40 
+2.2.4 
+Sistema de información hospitalario (HIS) ................................................. 41 
+2.2.5 
+Historia Clínica Electrónica (HCE) ............................................................. 42 
+2.2.6 
+Sistema de Información de Farmacia (PIS) ................................................. 42 
+2.2.7 
+Sistema de Información de Laboratorio (LIS) ............................................ 42 
+2.2.8 
+Healthcare Information Management System (HIMS) ............................... 43 
+2.2.9 
+Seguro Integral de Salud (SIS) .................................................................... 43 
+2.2.10 
+Instituciones Prestadoras de Servicios de Salud (IPRESS)......................... 43 
+2.2.11 
+Institución Administradora de Fondos de Aseguramiento en Salud ........... 43 
+2.2.12 
+SUSALUD .................................................................................................. 43 
+2.2.13 
+Interoperabilidad ......................................................................................... 44 
+2.2.14 
+Health Level 7 (HL7) .................................................................................. 45 
+2.2.15 
+Sprint ........................................................................................................... 46 
+2.3 
+Marco Legal ........................................................................................................ 46 
+ 
+Estado del Arte .................................................................................................... 49 
+3.1 
+Revisión y discusión ........................................................................................... 49 
+3.1.1 
+Objetivos de revisión ................................................................................... 49 
+3.1.2 
+Metodología usada ...................................................................................... 49 
+3.1.3 
+Preguntas de investigación .......................................................................... 50 
+3.1.4 
+Estrategia de búsqueda ................................................................................ 50 
+3.1.5 
+Criterios de Inclusión y Exclusión .............................................................. 51 
+3.1.6 
+Población ..................................................................................................... 51 
+3.1.7 
+Respuestas a las preguntas de investigación ............................................... 52 
+vi 
+ 
+ 
+ 
+3.2 
+Software y tesis similares .................................................................................... 57 
+3.2.1 
+Software comercial similar.......................................................................... 57 
+3.3 
+Conclusiones ....................................................................................................... 58 
+ 
+Especificación de Requerimientos ...................................................................... 60 
+4.1 
+Objetivo ............................................................................................................... 60 
+4.2 
+Mapeo de Procesos .............................................................................................. 60 
+4.3 
+Requerimientos funcionales ................................................................................ 62 
+4.4 
+Requerimientos no funcionales ........................................................................... 66 
+4.5 
+Validación de requerimientos del sistema ........................................................... 67 
+4.6 
+Conclusiones ....................................................................................................... 67 
+ 
+Análisis del Sistema ............................................................................................ 69 
+5.1 
+Objetivo ............................................................................................................... 69 
+5.2 
+Diagrama de Actores ........................................................................................... 69 
+5.3 
+Diagramas de Casos de Uso ................................................................................ 69 
+5.4 
+Especificación de los casos de uso ...................................................................... 73 
+5.5 
+Validación de casos de uso ................................................................................. 73 
+5.6 
+Conclusiones ....................................................................................................... 73 
+ 
+Diseño del Sistema .............................................................................................. 74 
+6.1 
+Objetivo ............................................................................................................... 74 
+6.2 
+Vista Lógica ........................................................................................................ 74 
+6.3 
+Vista de Desarrollo .............................................................................................. 77 
+6.4 
+Vista de Proceso .................................................................................................. 78 
+6.5 
+Vista Física .......................................................................................................... 78 
+6.6 
+Diseño de la Interfaz Gráfica .............................................................................. 79 
+6.7 
+Justificación de la arquitectura ............................................................................ 79 
+6.8 
+Validación de la arquitectura del sistema ............................................................ 80 
+6.9 
+Conclusiones ....................................................................................................... 80 
+vii 
+ 
+ 
+ 
+ 
+Implementación del Sistema ............................................................................... 82 
+7.1 
+Implementación de la base de datos .................................................................... 82 
+7.2 
+Implementación de los servicios web.................................................................. 84 
+7.2.1 
+Objetivo ....................................................................................................... 84 
+7.2.2 
+Listado de servicios web ............................................................................. 84 
+7.3 
+Implementación del aplicativo web ..................................................................... 84 
+7.3.1 
+Objetivo ....................................................................................................... 84 
+7.3.2 
+Listado de las vistas principales .................................................................. 84 
+7.4 
+Estándar HL7 ...................................................................................................... 84 
+7.5 
+Pruebas de software ............................................................................................. 88 
+7.6 
+Conclusiones ....................................................................................................... 89 
+ 
+Módulo de Seguridad .......................................................................................... 91 
+8.1 
+Objetivo ............................................................................................................... 91 
+8.2 
+Front-End ............................................................................................................ 91 
+8.3 
+Back-End ............................................................................................................. 93 
+8.4 
+Base de datos ....................................................................................................... 95 
+8.5 
+Conclusiones ....................................................................................................... 96 
+ 
+Evaluación de Usabilidad .................................................................................... 98 
+9.1 
+Objetivo ............................................................................................................... 98 
+9.2 
+Evaluación Heurística ......................................................................................... 98 
+9.3 
+Pruebas con Usuarios ........................................................................................ 112 
+9.4 
+Conclusiones ..................................................................................................... 116 
+ 
+Conclusiones y trabajos futuros .................................................................... 118 
+10.1 
+Conclusiones ................................................................................................. 118 
+10.2 
+Trabajos futuros ............................................................................................ 118 
+Referencias ................................................................................................................................ 120 
+Anexos ........................................................................................................................................... i 
+Anexo A: Plan de Proyecto ............................................................................................................ i 
+viii 
+ 
+ 
+ 
+Anexo B: Cuestionario de levantamiento de procesos ................................................................. ix 
+Anexo C: Mapeo de Procesos y Procedimientos .......................................................................... x 
+Anexo D: Validación de Requerimientos del Sistema ................................................................. lii 
+Anexo E: Descripción de Casos de Uso ...................................................................................... liii 
+Anexo F: Especificación de Casos de Uso .................................................................................. lvi 
+Anexo G: Validación de Casos de Uso ................................................................................ clxxxv 
+Anexo H: Diagramas de Actividades .................................................................................. clxxxvi 
+Anexo I: Maquetados de Interfaz Gráfica ................................................................................ cxcii 
+Anexo J: Validación de la Arquitectura del Sistema ............................................................. cclxxv 
+Anexo K: Especificación de Servicios Web ........................................................................ cclxxvi 
+Anexo L: Listado de vistas principales ................................................................................. ccxciv 
+Anexo M: Pruebas Unitarias Back-end ............................................................................... ccxcviii 
+Anexo N: Pruebas Unitarias Front-end ............................................................................... dclxxvi 
+ 
+ 
+ 
+ix 
+ 
+ 
+ 
+Índice de Tablas 
+Tabla 1. Mapeo de objetivo 1. ..................................................................................................... 18 
+Tabla 2. Mapeo de objetivo 2. ..................................................................................................... 18 
+Tabla 3. Mapeo de objetivo 3. ..................................................................................................... 19 
+Tabla 4. Mapeo de objetivo 4. ..................................................................................................... 19 
+Tabla 5. Mapeo de objetivo 5. ..................................................................................................... 19 
+Tabla 6. Herramientas y Métodos. .............................................................................................. 19 
+Tabla 7. Alcance del proyecto. .................................................................................................... 27 
+Tabla 8. Riesgos del proyecto ..................................................................................................... 30 
+Tabla 9. Categorías de los centros médicos en el Perú. (Salaverry & Cárdenas, 2009). ............. 36 
+Tabla 10. Actividades en cada categoría de centros de salud según la norma técnica de salud 
+“CATEGORÍAS DE ESTABLECIMIENTOS DEL SECTOR SALUD”. ................................. 40 
+Tabla 11. Aplicación de la estrategia PICOC. ............................................................................ 50 
+Tabla 12. Criterios de inclusión y exclusión de la revisión ......................................................... 51 
+Tabla 13. Población obtenida ...................................................................................................... 51 
+Tabla 14. Población obtenida de la revisión ............................................................................... 51 
+Tabla 15. Resultados de implementar un HIS (Mohamed Khalifa, 2017) .................................. 54 
+Tabla 16. Beneficios de implementar un HIS (Prem Kumar, 2013) ........................................... 55 
+Tabla 17. Software comercial similar ......................................................................................... 57 
+Tabla 18. Tesis encontradas en el repositorio de tesis PUCP ..................................................... 58 
+Tabla 19. Conclusiones de la investigación ................................................................................ 58 
+Tabla 20. Mapeo de Procesos...................................................................................................... 60 
+Tabla 21. Especificación de Requerimientos Funcionales .......................................................... 63 
+Tabla 22. Especificación de Requerimientos no Funcionales ..................................................... 67 
+Tabla 23. Estándar HL7 para listar procedimientos .................................................................... 86 
+Tabla 24. Estándar HL7 para listar especialidades ..................................................................... 87 
+x 
+ 
+ 
+ 
+ 
+Índice de Figuras 
+Figura 1. Esquema de la situación actual de la salud en el Perú. ................................................ 33 
+Figura 2. Relación entre Asegurados, IAFAS e IPRESS (www.susalud.gob.pe). ...................... 35 
+Figura 3. Módulos del HIMS. ..................................................................................................... 38 
+Figura 4. Niveles y categorías de establecimientos de salud según la norma técnica de salud 
+“CATEGORÍAS DE ESTABLECIMIENTOS DEL SECTOR SALUD”. ................................. 40 
+Figura 5. Aumento de ahorro gracias al PIDE. ........................................................................... 45 
+Figura 6. Diagrama de Actores. .................................................................................................. 69 
+Figura 7. Diagrama de Caso de Uso del Médico......................................................................... 70 
+Figura 8. Diagrama de Caso de Uso del Personal de Admisión.................................................. 70 
+Figura 9. Diagrama de Caso de Uso del Personal de Logística. ................................................. 71 
+Figura 10. Diagrama de Caso de Uso del Personal de RRHH .................................................... 71 
+Figura 11. Diagrama de Caso de Uso del Asistente de Citas. ..................................................... 72 
+Figura 12. Diagrama de Caso de Uso del Personal de Finanzas. ................................................ 72 
+Figura 13. Diagrama de Caso de Uso del Personal de TI............................................................ 72 
+Figura 14. Diagrama de Caso de Uso del Personal de Administración. ..................................... 73 
+Figura 15. Diagrama de Clases – Vista Empleados y Pacientes. ................................................ 75 
+Figura 16. Diagrama de Clases – Vista Activos e Insumos. ....................................................... 75 
+Figura 17. Diagrama de Clases – Vista Finanzas. ....................................................................... 76 
+Figura 18. Diagrama de Clases – Vista Referencias y Contrarreferencias. ................................ 77 
+Figura 19. Diagrama Componentes del Sistema. ........................................................................ 78 
+Figura 20. Diagrama de Despliegue. ........................................................................................... 79 
+Figura 21. Diagrama Entidad Relación ....................................................................................... 83 
+Figura 22. Formato HL7 para pacientes ...................................................................................... 85 
+Figura 23. Fomrato HL7 para trabajadores de medicina ............................................................. 86 
+xi 
+ 
+ 
+ 
+Figura 24. Formato HL7 para citas ............................................................................................. 88 
+Figura 25. Certificado SSL ......................................................................................................... 93 
+Figura 26. Servicio sin Token ..................................................................................................... 94 
+Figura 27. Servicio con Token .................................................................................................... 94 
+Figura 28. Tabla con códigos por cada fila ................................................................................. 95 
+Figura 29. Front-End que muestra solo los códigos por cada item ............................................. 95 
+Figura 30. Usuarios con contraseña encriptada usando pbkdf2 .................................................. 95 
+Figura 31. Campos de auditoría para cada tabla ......................................................................... 96 
+Figura 32. Login para entrar a la Base de Datos ......................................................................... 96 
+Figura 33. Notificación de éxito .................................................................................................. 99 
+Figura 34. Notificación de error .................................................................................................. 99 
+Figura 35. Notificación de carga ................................................................................................. 99 
+Figura 36. Pantalla de Gestión de Empleados ........................................................................... 100 
+Figura 37. Pantalla de Precio Lista por Procedimiento ............................................................. 101 
+Figura 38. Pantalla de Tarifario por Aseguradora ..................................................................... 102 
+Figura 39. Pantalla de Edición de Tarifa de una Aseguradora para un Procedimiento ............. 102 
+Figura 40. Pantalla de Gestión de Activos. ............................................................................... 103 
+Figura 41. Profile Card del Usuario Logueado ......................................................................... 104 
+Figura 42. Opciones de Perfil en el Sidebar. ............................................................................. 104 
+Figura 43. Notification Card. .................................................................................................... 105 
+Figura 44. Ventana Emergente de Confirmación – Movimiento de Pacientes. ........................ 106 
+Figura 45. Ingreso de datos del paciente. .................................................................................. 106 
+Figura 46. Pantalla de Histórico de Movimientos del Paciente. ............................................... 107 
+Figura 47. Pantalla Final del flujo de Movimiento de Pacientes. ............................................. 107 
+Figura 48. Pantalla de Gestión de Referencias Entrantes. ......................................................... 108 
+Figura 49. Pantalla de Nómina de Empleados. ......................................................................... 109 
+xii 
+ 
+ 
+ 
+Figura 50. Login del Sistema .................................................................................................... 109 
+Figura 51. Pantalla de Gestión de Tipos de Activos. ................................................................ 110 
+Figura 52. Mensaje de error – Ingresar Paciente 1 .................................................................... 110 
+Figura 53. Mensaje de error – Ingresar Paciente 2 .................................................................... 111 
+Figura 54. Mensaje de error – Ingresar Paciente 3 .................................................................... 111 
+Figura 55. Mensaje de Ayuda en la pantalla de Nómina de Empleados ................................... 112 
+Figura 56. Cuestionario Pre-Test .............................................................................................. 113 
+Figura 57. Gráfico de elementos de usabilidad ......................................................................... 113 
+Figura 58. Gráfico de elementos fuera de lugar ........................................................................ 114 
+Figura 59. Instrucciones de la prueba de usabilidad ................................................................. 114 
+Figura 60. Gráfico de dificultad de uso ..................................................................................... 115 
+Figura 61. Gráfico de identificación de componentes ............................................................... 115 
+Figura 62 Gráfico de dificultad en el flujo ................................................................................ 116 
+Figura 63 Gráfico de entendimiento de la funcionalidad .......................................................... 116 
+ 
+13 
+ 
+ 
+Generalidades 
+1.1 Problemática 
+La situación de la salud en el Perú es uno de los temas más tratados y preocupantes en la 
+actualidad, tanto por la pésima atención que se le da al público como por las negligencias, crisis 
+de valores y demás problemas internos que se dan en los hospitales y centros médicos del país 
+(Aliaga, 2018). Debido a estas condiciones han surgido, en los últimos años, una serie de 
+herramientas tecnológicas para gestionar la información administrada por el centro médico y 
+agilizar los procesos de atención, como es el caso del Sistema General de Seguridad Social en 
+Salud (SGSS.) o LOLIMSA (M. Zuñiga, comunicación personal, 8 de junio de 2019).  
+Sin embargo, estas herramientas no han sido suficientes para atender la alta demanda de 
+los pacientes alrededor de nuestro país, sobre todo en hospitales grandes de nivel II en adelante, 
+por lo que se necesita urgentemente una mejora en su concepción e integración con los demás 
+sistemas existentes (Céspedes, 2015). A continuación, se mencionan los problemas con mayor 
+relevancia con respecto a los servicios de salud ofrecidos en el país, que debería tener en cuenta 
+cualquier Sistema de Información Hospitalario que busque automatizar los procesos de gestión 
+para dar soporte a una mejora en la atención y administración de la información del centro 
+médico. 
+En primer lugar, en el país se carece de sistemas de información que sean interoperables 
+(Ver 2.2.13) en su totalidad, tanto entre distintos sistemas implantados dentro de un centro de 
+salud, como entre sistemas de distintas sedes o redes de hospitales, debido a que no fueron 
+pensados para trabajar en conjunto con otros sistemas. Como consecuencia, se tiene una serie 
+de sistemas de información que funcionan de manera independiente, donde la información no 
+está al alcance, su comunicación no está estandarizada, su flujo es dificultoso y en muchos 
+casos está duplicada o es incoherente entre distintas sedes (Padilla, 2018). 
+Por otro lado, los sistemas de información actuales aún no satisfacen las necesidades 
+administrativas que muchos centros médicos requieren. Tales como la reserva de citas, control 
+de las horas de trabajo de los médicos, derivación de un paciente de una espacialidad a otra, 
+entre otros (Del Castillo, 2019).  Esto es debido a que los procesos dentro del centro hospitalario 
+no están definidos de manera correcta y tampoco se identifican aquellos que deben ser 
+optimizados a través de un sistema de información (Aliaga, 2018). 
+14 
+ 
+ 
+ 
+La escasez de sistemas de información interoperables que se comuniquen entre sí, así 
+como el diseño y arquitectura no apropiados de los que existen genera falta de información 
+oportuna y confiable que optimice las operaciones del centro médico, así como la atención de 
+los pacientes. Por ejemplo, las personas enfermas, al no contar con información de los distintos 
+nosocomios, muchas veces van a centros médicos de gran envergadura para ser tratados por 
+enfermedades que podrían ser atendidas en centros de nivel más bajo o a hospitales que no 
+presentan los implementos o especialidades necesarios para atender sus consultas (Del Castillo, 
+2019). Se presentan también problemas de ineficiencia en los flujos de atención. Hay una falta 
+de información en el proceso que deben seguir los pacientes para ser tratados. Esto genera 
+confusión, largas colas, citas médicas muy espaciadas y que los clientes no sean atendidos 
+oportunamente (Arroyo, 2015). 
+Asimismo, se carece de transparencia y efectividad en los procesos contables. Debido a 
+la carencia de interoperabilidad que permita integrar la información para realizar los procesos 
+financieros del centro médico como facturación a los clientes, pago a los médicos y 
+trabajadores en general y pagos a terceros como proveedores de materiales, equipos y servicios, 
+se tiene como consecuencia que los cálculos carezcan de exactitud y por ende, genere gastos y 
+pérdidas adicionales (Alva, 2015). 
+Además, en muchos centros médicos del país, sobre todo de zonas rurales, la contabilidad 
+se hace en sistemas o programas que son independientes del sistema principal de 
+administración (Lucidez, 2019). Lo que trae como consecuencia que información sea 
+susceptibles a adulteraciones en beneficio propio, errores del personal (ya que mucha 
+información se ingresa de manera manual), defectos de seguridad y pérdidas de información 
+(Siancas, 2018).  
+En cuanto a los activos fijos en el centro médico, la falta de un sistema de información 
+interoperable hace difícil optimizar los tiempos de uso de los consultorios, camas hospitalarias, 
+ambulancias y equipos médicos para análisis de diversa índole, por mencionar algunos 
+(Defensoría del Pueblo, 2016). Todo esto sumado a la sobredemanda de clientes (pacientes) 
+que tiene todo centro médico, impide atender las necesidades de hospitalización y salud de 
+pacientes (Vásquez, Amado, Ramírez-Calderón, Velásquez y Huari, 2015). 
+Así también los sistemas de gestión implementados actualmente son poco amigables, 
+confusos y carecen de usabilidad. Los médicos y usuarios requieren de constantes 
+capacitaciones en el uso de los sistemas para atender a los pacientes, ingresar citas o consultar 
+15 
+ 
+ 
+ 
+información. Además, incluso después de las capacitaciones, los médicos demoran al 
+interactuar con los sistemas, alargando la duración de las citas y perjudicando aún más la 
+atención de los demás pacientes (M. Zuñiga, comunicación personal, 8 de junio de 2019). 
+Por último, con relación a los datos que se manejan en un centro médico, existen sistemas 
+de firma digital y encriptación que permiten identificar al emisor del mensaje y asegurar la 
+integridad de las tramas entre cliente y servidor; sin embargo, los sistemas de gestión no 
+presentan módulos de seguridad para cifrar y encriptar los datos y tramas que viajan o están 
+presentes en los servidores de base de datos (ESSALUD, 2011). 
+Todos los problemas mencionados ocasionan una gran insatisfacción en los usuarios de 
+los centros médicos en el país, los cuales tienen que esperar meses para poder obtener una cita 
+y ni siquiera son atendidos con calidad. Se genera así desconfianza en los centros de salud y 
+esto se ve reflejado en las recientes encuestas de satisfacción de los pacientes (Zafra, 
+Veramendi & Veramendi, 2015). La crisis de salud en el Perú es bastante compleja y debe ser 
+atendida desde distintos frentes además del informático, como el social, político y económico. 
+Sin embargo, a través de esta tesis se busca ofrecer una alternativa de ayuda para facilitar la 
+gestión de los centros de salud con un sistema de información. 
+Ante este contexto, surge la pregunta de si la Implementación de un Sistema de 
+Información de Hospital (HIS, por sus siglas en inglés) para un Centro Médico de categoría II-
+1, colaboraría en la solución de los problemas descritos anteriormente.  
+Se propone como proyecto de fin de carrera desarrollar un Sistema de Información 
+Hospitalario que brindará soporte y herramientas de apoyo a los administradores del centro de 
+salud para mejorar el manejo y atención de los centros. Permitirá realizar procesos relacionados 
+a las finanzas del centro médico como facturación a los clientes, ayuda en el pago a los médicos 
+y trabajadores en general y pagos a terceros como proveedores de materiales, equipos y 
+servicios. A su vez, estará preparado para que, en el futuro, se pueda anexar otros módulos de 
+soporte a este ecosistema de salud (conjunto de sistemas de información en un centro médico) 
+que eventualmente gestione todas las operaciones de un centro médico. Para esta anexión se 
+propone utilizar el estándar de interoperabilidad para información clínica HL7 que es el más 
+utilizado en los Estados Unidos y en más de 35 países (HL7.org, 2021).   
+Además, el sistema de información se desarrollará como una aplicación web con la que 
+tanto médicos, trabajadores y pacientes podrán acceder rápidamente a través de una 
+16 
+ 
+ 
+ 
+computadora con internet; brindando al centro médico un sistema seguro e interoperable. Así, 
+a través de la implementación de estos sistemas, se tendrán las herramientas tecnológicas 
+necesarias para ofrecer un mejor servicio de calidad en los centros médicos del país y poder así 
+apoyar, al Estado y a los centros de salud, con brindar a los peruanos un nivel de calidad de 
+vida y salud que tanto ha escaseado por años (El Peruano, 2019). 
+1.2 Objetivos 
+1.2.1 Objetivo general 
+Implementar un Sistema de Información Hospitalario (HIS) interoperable basado en 
+estándares HL7 (Ver 2.2.14) para un Centro Médico de categoría II-1 o superior1. 
+1.2.2 Objetivos específicos  
+O 1. 
+Diseñar la arquitectura del Sistema de Información Hospitalario a implementar, que 
+presente interoperabilidad con los otros módulos del Healthcare Information 
+Management System (Ver 2.1.3). 
+O 2. 
+Implementar los servicios web necesarios para la conectividad entre la base de datos 
+del Sistema de Información Hospitalario y el aplicativo web. 
+O 3. 
+Desarrollar una aplicación web para la gestión de activos, finanzas y la información 
+relacionada a la administración del centro de salud y que brinde interoperabilidad 
+hacia los demás módulos del Healthcare Information Management System. 
+O 4. 
+Diseñar e implementar un módulo de seguridad que se utilizará en el Sistema de 
+Información Hospitalario. 
+O 5. 
+Identificar y evaluar los principios de usabilidad en la construcción del aplicativo 
+web. 
+1.2.3 Resultados esperados 
+R 1. 
+Documento de arquitectura de software de la solución a implementar. 
+R 2. 
+Interfaz de servicios web desplegados en un servidor. 
+R 3. 
+Aplicativo web que permita al usuario gestionar las finanzas, activos e información 
+relacionada a la administración de un centro médico. 
+ 
+1 Solo los centros médicos de categoría II-1 o superior permiten la hospitalización de 
+pacientes. 
+17 
+ 
+ 
+ 
+R 4. 
+Módulo de seguridad acoplado al aplicativo web del sistema de información 
+hospitalario. 
+R 5. 
+Reporte de resultados de usabilidad. 
+1.2.4 Mapeo de objetivos, resultados y verificación 
+A continuación, se realiza un mapeo entre los objetivos especificados, los resultados 
+esperados y los medios utilizados para validar y verificar su correcta ejecución. Entre los 
+medios de verificación se emplearon procedimientos y herramientas los cuales se detallan a 
+continuación (Abad, J.): 
+● Juicio experto: son opiniones que pueden brindar profesionales o personas 
+experimentadas en el rubro sobre el propósito planteado, la planificación y la ejecución 
+del proyecto. 
+● Pruebas unitarias: son pruebas para comprobar el funcionamiento de unidades de 
+código, es decir, una función o procedimiento por separado. 
+● Pruebas automatizadas: son pruebas para controlar la ejecución de pruebas y verificar 
+sus resultados. Son usadas para realizar tareas repetitivas cuya ejecución manual es 
+difícil o requiere de un gran número de personas. 
+● Pruebas de regresión: son pruebas de software que se utilizan para comprobar que una 
+aplicación siga funcionando como se esperaba después de haber sido actualizada o 
+modificada. Se deben ejecutar cada vez que el código fuente de una funcionalidad 
+cambie. Normalmente, este tipo de pruebas son automatizadas. 
+● Pruebas de integración: verifican el correcto ensamblaje entre los distintos 
+componentes una vez que han sido probados unitariamente con el fin de comprobar que 
+interactúan correctamente a través de sus interfaces, tanto internas como externas, 
+cubren la funcionalidad establecida y se ajustan a los requisitos no funcionales 
+especificados en las verificaciones correspondientes. 
+● Pruebas de seguridad: son pruebas que permiten revelar fallas en los mecanismos de 
+seguridad de los sistemas. Dependen de los requerimientos y no son indicadores de que 
+un sistema es totalmente seguro o no tiene fallas de seguridad. 
+● Pruebas con usuarios: son pruebas de usabilidad que consisten en observar y analizar 
+cómo los usuarios interactúan con una aplicación (Toledo, 2018). Se enfocan en 
+verificar el propósito del producto al satisfacer al usuario final, en lugar de que las 
+pruebas las realicen los programadores o expertos. 
+18 
+ 
+ 
+ 
+● Evaluación heurística: es un método para identificar errores de usabilidad y encontrar 
+oportunidades de optimización. Se realizan por varios evaluadores expertos, sin 
+presencia de usuarios, y se utilizan una serie de principios heurísticos para examinar la 
+calidad en uso de una interfaz. 
+● Arquitectura de software: “estructuras de un sistema, compuestas de elementos con 
+propiedades visibles de forma externa y las relaciones que existen entre ellos” (Bass, 
+2003). Representa un diseño de alto nivel del sistema y tiene como propósitos satisfacer 
+los atributos de calidad (desempeño, seguridad, modificabilidad) y servir como guía en 
+el desarrollo, por lo que se debería crear en etapas tempranas de desarrollo (Cervantes, 
+2018). 
+ 
+Tabla 1. Mapeo de objetivo 1. 
+Objetivo: Diseñar la arquitectura del Sistema de Información Hospitalario a 
+implementar con interoperabilidad hacia los otros módulos del Healthcare 
+Information Management System.  
+Resultado 
+Meta física 
+Medio de verificación 
+Documento 
+de 
+arquitectura de software 
+de 
+la 
+solución 
+a 
+implementar. 
+Documentación 
+- 
+Juicio experto 
+- 
+Prototipo de arquitectura de 
+software revisado por un 
+experto 
+ 
+Tabla 2. Mapeo de objetivo 2. 
+Objetivo: Implementar y desplegar los servicios web necesarios para la 
+conectividad entre la base de datos del Sistema de Información Hospitalario y el 
+aplicativo web. 
+Resultado 
+Meta física 
+Medio de verificación 
+Interfaz de servicios web 
+desplegados 
+en 
+un 
+servidor. 
+ 
+Documentación 
+- 
+Pruebas unitarias 
+- 
+Código fuente 
+ 
+ 
+ 
+19 
+ 
+ 
+ 
+Tabla 3. Mapeo de objetivo 3. 
+Objetivo: Desarrollar una aplicación web para administrar los activos y las 
+finanzas del centro de salud y que brinden interoperabilidad hacia los demás módulos 
+del Healthcare Information Management System. 
+Resultado 
+Meta física 
+Medio de verificación 
+Aplicativo web que permita 
+al usuario gestionar las 
+finanzas y activos fijos de 
+un centro médico. 
+Software 
+- 
+Pruebas unitarias 
+- 
+Pruebas de regresión 
+- 
+Pruebas de integración 
+ 
+Tabla 4. Mapeo de objetivo 4. 
+Objetivo: Diseñar e implementar el módulo de seguridad que se utilizará en el 
+Sistema de Información Hospitalario. 
+Resultado 
+Meta física 
+Medio de verificación 
+Módulo 
+de 
+seguridad 
+acoplado al aplicativo web 
+del sistema de información 
+hospitalario. 
+ 
+Software 
+Pruebas de seguridad 
+ 
+Tabla 5. Mapeo de objetivo 5. 
+Objetivo: Identificar y evaluar los principios de usabilidad en la construcción del 
+aplicativo web 
+Resultado 
+Meta física 
+Medio de verificación 
+Reporte de resultados de 
+usabilidad. 
+ 
+Documentación 
+- 
+Juicio experto 
+- 
+Prueba con usuarios 
+- 
+Evaluación heurística 
+1.3 Herramientas y Métodos 
+En esta sección se presentan las herramientas, métodos, procedimientos y metodologías 
+utilizados para la obtención de los resultados esperados en el proyecto. 
+Tabla 6. Herramientas y Métodos. 
+20 
+ 
+ 
+ 
+Resultado Esperado 
+Herramientas, métodos, 
+procedimientos y metodologías 
+Documento de arquitectura de software de 
+la solución a implementar. 
+● Herramientas: 
+○ StarUML 
+● Metodología: 
+○ Notación UML 
+○ Extreme Programming 
+(XP) 
+○ Modelo 4+1 
+Interfaz de servicios web desplegados en 
+un servidor. 
+ 
+● Herramientas 
+○ Framework Django 
+○ PostgreSQL Database 
+○ Amazon Web Services 
+(AWS) 
+● Metodología: 
+○  Extreme Programming 
+(XP) 
+Aplicativo web que permita al usuario 
+gestionar las finanzas y activos fijos de un 
+centro médico. 
+● Herramientas: 
+○ Visual Studio Code (VS 
+Code) 
+○ Lenguaje HTML (Hyper 
+Text Markup Language) 
+○ Lenguaje CSS (Cascading 
+Style Sheets) 
+○ Framework Angular 8 
+● Metodología: 
+○  Extreme Programming 
+(XP) 
+Módulo 
+de 
+seguridad 
+acoplado 
+al 
+aplicativo web del sistema de información 
+hospitalario. 
+● Herramientas: 
+○ Cryptographic hash 
+function 
+○ PostgreSQL Database 
+○ ISO 27001 (aseguramiento 
+y confidencialidad de los 
+datos) 
+● Metodología: 
+○  Extreme Programming 
+(XP) 
+Reporte de resultados de usabilidad 
+● Herramientas: 
+○ 10 Heurísticas de Nielsen 
+● Metodología: 
+○ Evaluación heurística 
+1.3.1 Herramientas 
+• StarUML 
+21 
+ 
+ 
+ 
+Es una herramienta que permite realizar todo tipo de diagramas del estándar UML 2, tales 
+como de clases, casos de uso, de componentes, de despliegue, de secuencia, de actividades, 
+entre otros (StarUML, 2019). Se elige esta herramienta por su facilidad de uso y porque su 
+versión de prueba es gratuita. 
+• Visual Studio Code (VS Code) 
+VS Code es un editor ligero de código fuente creado por Microsoft. Este editor cuenta 
+con una amplia gama de extensiones los cuales facilitan la labor del programador (Microsoft, 
+2019). Esta herramienta fue la seleccionada durante todo el proyecto, tanto para crear la interfaz 
+gráfica (front-end) así como los servicios web (back-end) puesto que es gratuito y se cuenta 
+con experiencia en su uso. 
+• pgAdmin 
+Es una plataforma de administración y desarrollo de código abierto de bases de datos 
+PostgreSQL. (pgAdmin, 2020). Se escogió esta herramienta por su facilidad de uso e 
+instalación, y por la experiencia de los tesistas en su uso. 
+• PostgreSQL Database 
+Es un sistema de gestión de base de datos de propósito general y relacionadas a objetos. 
+Se dice que es el sistema de base de datos más avanzado de código abierto (PostgreSQL 
+Tutorial, 2020). Se utilizó este DBMS pues además de ser gratuito, según la experiencia de los 
+tesistas, es bastante robusto y tiene mayor nivel de performance comparado con otras bases de 
+datos gratuitas; lo que será muy útil para los centros de salud con menos recursos. 
+• Lenguaje HTML (Hyper Text Markup Language) 
+Es un lenguaje el cual es un estándar para crear páginas web (W3schools, 2019). Esta 
+herramienta se empleó para la creación de la interfaz gráfica del HIS (Frontend), en conjunción 
+con CSS y ANGULAR.  
+• Lenguaje CSS (Cascading Style Sheets) 
+Es un lenguaje el cual muestra cómo los elementos en un HTML son mostrados 
+(W3schools, 2019). Esta herramienta se usó para la creación de la interfaz gráfica del HIS 
+(Frontend), en conjunción con HTML y ANGULAR. 
+• Framework Angular 9 
+22 
+ 
+ 
+ 
+Es una plataforma y un framework de TypeScript (Angular, 2019). Esta herramienta 
+sirvió para la creación de la interfaz gráfica del HIS (Frontend), en conjunto HTML y CSS. Se 
+eligió este framework ya que es de alto rendimiento, es soportado por Google y es de mayor 
+legibilidad a comparación de otros frameworks. 
+• Framework Django 
+Es un framework de Python el cual sirve para hacer servicios web (Django, 2019). Esta 
+herramienta se usó para hacer los servicios web que requiere el HIS que se consuman a nivel 
+de FrontEnd. Se eligió este framework ya que al basarse en Python es intuitivo de programar, 
+versátil, escalable y más legible a comparación de otros lenguajes/frameworks para hacer 
+servicios web. 
+1.3.2 Metodología 
+1. 
+Metodología Extreme Programming (XP) 
+Es una metodología ágil que propone una serie de buenas prácticas para un proyecto de 
+desarrollo de software (Bahit, 2012). XP tiene 5 valores que se mencionan a continuación:  
+• Comunicación 
+Todo se conversa presencialmente, para dar solución a problemas que pueden surgir. 
+• Simplicidad 
+Desarrollar todo lo necesario, sin emplear tiempo en detalles que no son relevantes en 
+el momento. 
+• Retroalimentación 
+Tener una retroalimentación continua con el cliente a fin de conocer los requerimientos 
+y cambios pertinentes. 
+• Respeto 
+Debe existir un respeto mutuo entre el cliente y los desarrolladores. 
+• Coraje 
+Se debe tener valor para decir la verdad del avance del proyecto.  
+De todas las prácticas que usa XP, se usarán las siguientes (Bahit, 2012): 
+• Entregas Cortas 
+Incrementar funcionalidades pequeñas en cada iteración. Esto ayudará a que el cliente 
+pueda probar pocas cosas nuevas y será más asimilable para él. 
+23 
+ 
+ 
+ 
+• Testing 
+Existen 3 tipos de pruebas: Test unitarios, Test de aceptación y Test de integración. 
+• Código Estándar 
+Se debe contar con un estándar de programación para que el código sea más legible 
+para los programadores. 
+• Propiedad Colectiva (Collective Ownership) 
+Todos los programadores conocen el qué y para qué se está desarrollando el sistema. 
+• Integración continua 
+Todo el código debe estar en un repositorio común. En la presente tesis se usará Git. 
+• Juego de planificación 
+Se realiza al inicio de cada Sprint y tiene 3 fases: 
+o El cliente presenta una lista de funcionalidades 
+o El equipo estima el esfuerzo 
+o El cliente decide qué historias de usuario desarrollar 
+Esta metodología ágil se usó durante todo el proyecto para coordinar entre los tesistas la 
+construcción del sistema de información. 
+2. 
+Cryptographic hash function (Función hash criptográfica)  
+Son funciones que utilizan algoritmos que se ejecutan en entradas para cifrarlas y reducir 
+su tamaño. Se utilizan para brindar seguridad a los sistemas, por ejemplo, para cifrar 
+contraseñas y guardarlas en una base de datos. Dos entradas de datos deberían generar el mismo 
+patrón de salida o “suma de verificación” (checksum).  
+Así, se pueden usar algoritmos como MD5, SHA-1 O SHA-2 (Fisher, 2019) para 
+almacenar las claves de los usuarios y del sistema de manera encriptada en la base de datos. Y 
+para autenticar al usuario, bastaría con encriptar su clave y compararla con el patrón en base 
+de datos. 
+Ya que se usará ciertas prácticas de Extreme Programming (XP), se tienen las siguientes 
+fases del ciclo de vida para el proyecto de fin de carrera (Letelier y Penadés, 2015): 
+Fase I: Exploración 
+En este punto se plantean a gran escala las historias de usuario que se desarrollarán en 
+una primera iteración. A su vez, los desarrolladores se familiarizan con la tecnología que se va 
+a emplear a lo largo del proyecto. Esta etapa puede durar entre una semana y un mes. 
+24 
+ 
+ 
+ 
+De esta etapa se tendrán los siguientes entregables: 
+● 
+Historias de usuario a realizar en el sprint 
+● 
+Diagrama de actividades 
+● 
+Diagrama de casos de uso 
+● 
+Requerimientos no funcionales del sistema 
+● 
+Definición de actores 
+● 
+Reglas del negocio 
+● 
+Documento de arquitectura 
+● 
+Diseño del sistema (Mockups) 
+Fase II: Planificación de la Entrega 
+En esta fase se estima los sprints (Ver 2.2.15) y por ende el cronograma de entregables 
+en base a las historias de usuario. La planificación se irá haciendo en base al tiempo que se 
+posee para el desarrollo del proyecto. Esta fase solo dura unos pocos días. 
+De esta etapa se obtendrán los siguientes entregables: 
+● 
+Cronograma de entregable 
+● 
+Planificación de los sprints 
+● 
+Repartición del trabajo por tesista 
+Fase III: Iteraciones 
+Esta fase contiene todas las iteraciones sobre el sistema antes de pasar a producción. Es 
+la etapa donde se construye el software y es la más duradera del sprint. 
+De esta etapa se obtiene lo siguiente: 
+● 
+Servicios web completados 
+● 
+Plataforma visual web completada 
+● 
+Aplicativo web integrado 
+Fase IV: Producción 
+25 
+ 
+ 
+ 
+En esta fase se hace pruebas exhaustivas y revisiones de rendimiento antes de que el 
+sistema sea pasado a producción. Además, se debe analizar la inclusión de nuevas 
+funcionalidades a lo ya desarrollado debido a los cambios durante esta fase. 
+De esta etapa se realizará: 
+● 
+Plan de pruebas de software 
+● 
+Plan de pruebas de seguridad 
+● 
+Mejoras del aplicativo web (tanto backend como frontend) 
+● 
+Pruebas unitarias 
+● 
+Pruebas de seguridad 
+Fase V: Mantenimiento 
+Mientras una parte del sistema esté en producción, el proyecto debe dar mantenimiento 
+mientras se hace las nuevas iteraciones. De esta forma, la velocidad de desarrollo de las 
+iteraciones puede ser más lenta que la primera. 
+De esta etapa se realizará: 
+● 
+Despliegue del sistema de información 
+● 
+Hotfixes 
+● 
+Pruebas de regresión 
+● 
+Pruebas integrales 
+Fase VI: Muerte del Proyecto 
+Esta fase final sucede cuando el usuario ya no tiene más historias para ser implementadas 
+en el sistema. Se pasa a satisfacer las necesidades del cliente tales como el rendimiento y 
+confiabilidad. Finalmente se genera la documentación final del sistema. 
+De esta etapa se tendrán los siguientes entregables: 
+● 
+Manual de usuario 
+● 
+Resumen del esfuerzo y tiempo empleado en cada sprint 
+1.4 Alcances, Limitaciones y Riesgos 
+1.4.1 Justificación del proyecto 
+26 
+ 
+ 
+ 
+Se planea una solución informática interoperable que permita facilitar el intercambio de 
+información entre sistemas de salud y aumentar la efectividad de los procesos de 
+administración del hospital, a través de un sistema sólido, eficiente, usable, seguro y confiable. 
+Así, si existe un uso correcto y responsable del sistema, se tendrán tiempos de atención más 
+rápidos, flujos de atención más claros y estructurados y se optimizará el uso de recursos del 
+hospital para reducir costos y, por consiguiente, la facturación a los clientes. 
+Cabe resaltar que la solución por sí misma no mejorará la atención de los clientes ni la 
+satisfacción de estos hacia los servicios prestados por el hospital, para lograr esto se necesita 
+de un trabajo conjunto entre los médicos, administrativos, pacientes y sistemas de información 
+implementados. Es decir, la solución propuesta apoyará a los administradores, médicos y 
+clientes del hospital a brindar servicios de mayor calidad y eficiencia y que permitan satisfacer, 
+de mejor manera, las necesidades de los pacientes. 
+1.4.2 Alcance del proyecto 
+El presente proyecto de tesis tiene por objetivo realizar el análisis, diseño e 
+implementación de un Sistema de Información Hospitalario para centros médicos de categoría 
+II-1 o superior con interoperabilidad entre el sistema y otros componentes informáticos del 
+centro de salud. 
+El Sistema de Información Hospitalario cumplirá las funciones de gestión administrativa 
+del centro de salud, en particular, de la información financiera y contable. Es decir, permitirá 
+administrar sus activos y materiales, la planilla de sus trabajadores y la facturación a sus 
+clientes. Además, facilitará el control de la información referente a algunos servicios brindados 
+por el centro médico como referencia, contrarreferencia, separación de citas, obtención de 
+información referente a los procesos seguidos por los clientes como flujos de atención, citas 
+pendientes y doctores. 
+El sistema comprende dos grandes módulos, el Financiero y el Fundacional, cuyas 
+funcionalidades se detallan a continuación: 
+● Módulo Financiero: 
+○ General Ledger (Libro mayor): gestiona la contabilidad y el libro mayor de una 
+empresa, el cual permite organizar, guardar y resumir las transacciones de una 
+compañia. 
+○ Billing (Facturación): gestiona el cobro a clientes y seguros respectivos por los 
+servicios brindados e insumos utilizados. 
+27 
+ 
+ 
+ 
+○ Fixed Assets Accounting (Contabilidad de los activos fijos): involucra la 
+gestión y análisis del valor de todos los activos fijos de la empresa tales como 
+equipos médicos, instalaciones, ambulancias, entre otros. 
+○ Payroll: involucra la gestión de sueldos, salarios, bonificaciones e impuestos 
+que se les paga a los empleados. 
+● Módulo Fundacional: 
+○ Master Patient Index: es una base de datos maestra para mantener datos precisos 
+de los pacientes de los distintos departamentos. A los pacientes se les asigna un 
+identificador único, por lo que se representan solo una vez en todos los sistemas 
+de la organización. Los datos del paciente pueden incluir nombre, género, fecha 
+de nacimiento, raza y etnia, identificaciones, información de contacto, seguros, 
+diagnósticos actuales y la fecha más reciente de ingreso y egreso hospitalario. 
+○ ADT/Registration: incluye el registro de pacientes en el centro médico, así 
+como la gestión de referencias y contrarreferencias entre las instituciones. 
+○ Asset/Workforce Management: administración de los activos y el personal de 
+trabajo (actividades como recursos humanos, reclutamiento, etc.). 
+○ Material Management: consiste en planificar los requisitos totales de materiales. 
+Incluye el abastecimiento, la cantidad distribuida a cada departamento, 
+establecer planes de reposición de materiales, determinar los niveles de 
+inventario que se deben mantener y comunicar información con respecto a las 
+necesidades de materiales. Además, por ser el caso de un centro médico, 
+gestiona los materiales relacionados a un paciente y los activos involucrados 
+con este. 
+Para garantizar que se cumplieron los objetivos del proyecto satisfactoriamente se debe 
+contar con el siguiente alcance: 
+Tabla 7. Alcance del proyecto. 
+Especificación de requerimientos 
+Es la descripción de las características y el 
+comportamiento que tendrá el sistema, producto 
+del pedido explícito del cliente o la propuesta 
+consensuada con este.  
+Arquitectura de software 
+Es el diseño de la arquitectura de software del 
+HIS a implementar, sus componentes y 
+configuración para su despliegue y comunicación 
+con los demás módulos. 
+28 
+ 
+ 
+ 
+Diagrama Entidad Relación 
+Es el diseño de la base de datos a utilizar en el 
+Sistema de Información Hospitalario. 
+Diagrama de Casos de Uso 
+Es la representación los casos de uso del sistema 
+y las acciones que llevarán a cabo los actores que 
+interactúan con el sistema. 
+Diagrama de Secuencia 
+Es el modelamiento de la interacción de los 
+usuarios con el sistema para realizar las acciones 
+descritas en los casos de uso. 
+Diseño de Prototipos 
+Es el modelamiento de las vistas que tendrá el 
+Sistema de Información Hospitalario.  
+Diseño de la Interfaz Web 
+Es el diseño de las páginas web que tendrá el 
+sistema utilizando la tecnología descrita en el 
+acápite 1.3. 
+Especificación y Ejecución de 
+Pruebas 
+Son las descripciones de las ejecuciones que se le 
+harán al sistema para evaluar su calidad. 
+Implementación 
+del 
+módulo 
+Fundacional 
+Es la implementación de los procesos que 
+abarcan la gestión de materiales, pacientes, 
+sueldos y personal del centro médico. 
+Implementación 
+del 
+módulo 
+Financiero 
+Es 
+la 
+implementación 
+de 
+los 
+procesos 
+relacionados a las finanzas del hospital como su 
+contabilidad, activos, facturaciones y soporte a la 
+toma de decisiones financieras y estratégicas. 
+Implementación 
+de 
+Interoperabilidad 
+Es la implementación de la interoperabilidad del 
+sistema hacia los módulos de Historias Clínicas 
+Electrónicas 
+(HCE), 
+Laboratorio 
+(LIS) 
+y 
+Farmacia (PIS). 
+1.4.3 Limitaciones del proyecto 
+A continuación, se describen las limitaciones del proyecto: 
+1. La interoperabilidad descrita en el proyecto de desarrollo de software está orientada 
+desde el presente módulo HIS hacia los módulos de Sistema de Información de 
+Historias Clínicas Electrónicas (HCE), Sistema de Información de Laboratorio (LIS) y 
+Sistema de Información de Farmacia (PIS), y viceversa, de manera que se establezca 
+una comunicación bidireccional entre estos. 
+2. Una forma en la que el Estado Peruano podría fomentar el intercambio de información 
+de salud sobre los ciudadanos entre las IPRESS (Ver 2.2.10), las IAFAS (Ver 2.2.11) y 
+SUSALUD (Ver 2.2.12) (información de las historias clínicas electrónicas, sobre los 
+29 
+ 
+ 
+ 
+consumos de recursos clínicos, como farmacia, y no clínicos, y sobre resultados de 
+laboratorio, de imágenes y otras relevantes para la salud y gestión de los pacientes) es 
+a través de la PIDE (Plataforma de Interoperabilidad Del Estado). Sin embargo, no se 
+ha encontrado ninguna normativa ni documentación acerca de iniciativas de alguna 
+institución pública ni del MINSA al respecto del uso del PIDE para estos efectos. Debe 
+entenderse también que mientras no exista reglamentación clara sobre el uso del PIDE 
+para el sector salud, poco podríamos aportar en este sentido dentro del alcance de esta 
+tesis. 
+3. Dado que el sistema a implementar requirió información sensible sobre los equipos, 
+ingresos, gastos y personal de la empresa se obtuvo cierta información de contactos en 
+ciertos centros médicos (Guillermo Almenara, Daniel Alcides Carrión, Edgardo 
+Rebagliati Martins) y los datos que no sean obtenibles se aproximó y simuló. 
+El proyecto plantea la implementación de un sistema de información que requerirá una 
+serie de servicios web implementados para su funcionamiento completo. 
+1.4.4 Riesgos del proyecto 
+En esta sección se presentan los riesgos que presenta el proyecto que, en caso ocurran, 
+pueden afectar al desarrollo de la investigación y al producto final entregado, así como las 
+medidas de mitigación y contingencia tomadas. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+30 
+ 
+ 
+ 
+Tabla 8. Riesgos del proyecto 
+Riesgo 
+Probabilidad 
+Impacto 
+Descripción 
+Mitigación 
+Contingencia 
+Cambio importante en los 
+procesos o la forma en que se 
+gestionan los activos. 
+Bajo 
+Medio 
+Pueden ser cambios en los 
+métodos de valoración de 
+inventarios, en los procesos 
+de compra y abastecimiento 
+de insumos o en los de 
+distribución y financiamiento 
+de los activos por parte del 
+estado. 
+Dar flexibilidad al sistema y 
+prepararlo 
+para 
+soportar 
+dichos cambios. 
+En 
+caso 
+la 
+flexibilidad 
+implantada no soporte algún 
+cambio, 
+se 
+tendrá 
+que 
+reformular 
+los 
+requerimientos de gestión de 
+activos. 
+Cambios en las políticas 
+gubernamentales 
+relacionadas 
+con 
+el 
+ofrecimiento 
+de 
+servicios 
+médicos, regulados por el 
+MINSA y Susalud. 
+Medio 
+Alto 
+Por ejemplo, han habido 
+intentos de uniformizar la 
+atención 
+médica 
+en 
+los 
+nosocomios del país (El 
+Peruano, 2019). Esto afecta el 
+proceso de cálculo de las 
+finanzas del hospital y añade 
+nuevas variables a tener en 
+cuenta. 
+Es un riesgo externo, el 
+sistema 
+es 
+incapaz 
+de 
+soportar centros de salud con 
+distintos requerimientos y 
+recursos. 
+Replantear la solución para 
+integrar las nuevas políticas 
+de los centros de salud, 
+Adición de servicios o la 
+prestación 
+de 
+nuevas 
+funcionalidades por parte del 
+centro de salud. 
+Bajo 
+Medio 
+En caso se añadiera un 
+requerimiento 
+totalmente 
+nuevo, nunca antes requerido 
+por ningún hospital de la 
+categoría, se tendría que 
+iniciar nuevamente con la 
+implementación del sistema. 
+Contar con todas las opciones 
+y funcionalidades que podría 
+ofrecer un centro médico de 
+categoría II-1 o superior. De 
+este catálogo, el centro de 
+salud debería tomar y usar los 
+servicios que requiera. 
+Replantear el Análisis y 
+Diseño 
+del 
+sistema 
+e 
+incorporar 
+la 
+nueva 
+funcionalidad en el sistema 
+desarrollado. 
+31 
+ 
+ 
+ 
+Extensión del desarrollo del 
+sistema. 
+Medio 
+Alto 
+Se 
+puede 
+prolongar 
+el 
+desarrollo del sistema y 
+entregar un producto de baja 
+calidad. 
+Realizar un cronograma de 
+trabajo 
+o 
+Estructura 
+de 
+descomposición del trabajo 
+(EDT). 
+Modificar 
+el 
+alcance 
+o 
+posponer la implementación 
+de las funcionalidad menos 
+prescindibles. 
+Falta o fin de comunicación 
+con los contactos o expertos. 
+Bajo 
+Alto 
+Se puede perder contacto con 
+los expertos o personas que 
+nos 
+brindan 
+información 
+sobre los requerimientos del 
+sistema y la situación del 
+hospital o los expertos que 
+nos apoyan con el desarrollo 
+del sistema. 
+Solicitar diversos medios de 
+comunicación 
+con 
+los 
+expertos y estar siempre en 
+contacto para revisar los 
+avances del proyecto. Contar 
+con una red de personas 
+sustitutas. 
+Buscar nuevos contactos y 
+comunicarse con las personas 
+sustitutas. 
+Abandono del proyecto por 
+parte de uno de los tesistas 
+Bajo 
+Alto 
+Antes o durante el desarrollo 
+del proyecto, uno de los 
+tesistas decide retirarse del 
+desarrollo del proyecto o 
+cambiar de tema por diversas 
+razones. 
+Es un riesgo bastante fortuito, 
+se tiene que establecer un 
+compromiso entre los tesistas 
+y el tema. 
+Cambiar o reducir el alcance 
+y continuación del proyecto 
+por parte del otro tesista. 
+32 
+ 
+ 
+ 
+1.5 Viabilidad 
+1.5.1 Viabilidad Técnica 
+Las herramientas y metodologías utilizadas son de uso gratuito en sus versiones no 
+comerciales. Además, son reconocidas y cuentan con abundante documentación gratis.  
+Ambos tesistas cuentan con los conocimientos técnicos para el desarrollo de la 
+investigación aprendidos en la universidad y a través de experiencia laboral en distintas 
+empresas. Además, se cuenta con el apoyo de un asesor experto en el área de Tecnologías 
+de Información en hospitales y con diversos contactos tanto para obtener información de 
+centros de salud como para realizar consultas técnicas sobre la implementación del 
+sistema de información. 
+Por último, cada tesista cuenta con ordenadores personales capaces de soportar los 
+requerimientos técnicos de las herramientas usadas. 
+1.5.2 Viabilidad Temporal 
+Se estima que el desarrollo de las tareas del proyecto de fin de carrera y el 
+cumplimiento de los objetivos antes mencionados tomarán 112 días en total. Se incluye 
+en el Anexo A las tareas a realizar y la planificación del proyecto. 
+1.5.3 Viabilidad Económica 
+Las herramientas y metodologías a utilizar son de uso gratuito, por lo que su empleo 
+no supondrá costo alguno. Además, se cuenta con computadoras y el hardware necesario 
+para el desarrollo del proyecto por lo que esto tampoco requerirá un gasto considerable 
+adicional. 
+1.5.4 Conclusiones de Viabilidad 
+En conclusión, el desarrollo del proyecto es viable como proyecto de fin de carrera 
+pues se cuenta con los conocimientos y recursos requeridos, el tiempo total es acorde a 
+las demandas académicas y se tienen los medios para obtener suficiente información para 
+realizar la investigación.
+33 
+ 
+ 
+ 
+ 
+Marco Legal/Regulatorio/Conceptual/otros 
+2.1 Marco Teórico 
+2.1.1 Organización del Sector Salud en el Perú 
+En la presente sección se explica cómo está constituido el sector salud en el Perú. Se 
+puede apreciar mediante un mapa conceptual la distribución por subsectores que se pueden 
+ver en la Figura 1: 
+ 
+Figura 1. Esquema de la situación actual de la salud en el Perú. 
+Nota. Tomado de “El sistema de salud en el Perú: situación y desafíos”, por Gonzales y Alcalde-Rabanal, 2016. 
+El Ministerio de Salud (MINSA) es el ente encargado de diseñar, establecer, ejecutar y 
+supervisar políticas nacionales y sectoriales de salud y ejercer la rectoría respecto a las 
+mencionadas. Constituye el ente rector del Sistema Nacional Coordinado y Descentralizado 
+de Salud. Tal cual se aprecia en la imagen anterior, lo anterior mencionado rige tanto para el 
+sector público como privado. (MINSA, 2007). 
+Por otro lado, la institución que se encarga de proteger los derechos de salud de cada 
+uno de los peruanos es la Superintendencia Nacional de Salud (SUSALUD). Para lo cual 
+orienta sus acciones a empoderar y colocar al ciudadano en el centro del sistema de salud 
+nacional, sin importar donde se atienda o su condición de aseguramiento (SUSALUD). 
+34 
+ 
+ 
+ 
+El sector de la salud se divide según el régimen de financiamiento: 
+● Régimen contributivo Indirecto 
+Este régimen es financiado por el Gobierno, por los mismos hogares y donaciones de 
+entidades internacionales. En este régimen las personas de pobreza, pobreza extrema, madres 
+gestantes, niños y bomberos cuentan con un Sistema Integral de Salud (SIS) Gratuito. El SIS 
+cubre medicamentos, atenciones, operaciones, insumos, entre otros (SIS, 2019). 
+● Régimen contributivo Directo 
+Al ser directo, los que son financiados por el Gobierno y hogares tiene como población 
+usuaria a los policías y militares; ambos cuentan con hospitales y centros médicos para los 
+policías y fuerzas armadas respectivamente (Castro, 2009). En cambio, los que son pagados 
+por los mismos empleadores de un sector formal cuenta con el Seguro Social del Perú 
+(EsSalud) los cuales se pueden atender en hospitales, policlínicos y unidades básicas de 
+atención primaria (Lazo-Gonzales & Alcalde-Rabanal, 2016).   
+● El Régimen Privado  
+En el régimen privado, la atención de la salud es subvencionada por las mismas 
+personas, quienes suelen contar con un alto poder adquisitivo: Estas personas pueden afiliarse 
+mediante su empleador a una entidad prestadora de salud (EPS) o tener un seguro particular. 
+En ambos casos, se atienden en clínicas, consultorios y centros de diagnóstico y tratamiento 
+(Lazo-Gonzales & Alcalde-Rabanal, 2016). 
+● Relación Asegurador - Prestador - Asegurado 
+La atención de los pacientes o asegurados se da en un IPRESS o unidad prestadora de 
+servicios de salud. Estas unidades corresponden a los centros de salud ya mencionados como 
+hospitales, clínicas, postas, etc. Los gastos de atención y medicinas son solventados, parcial o 
+totalmente, por IAFAS o financiadores. Estos últimos corresponden a los seguros públicos y 
+privados. En la siguiente figura se aprecia la relación entre estos tres componentes necesarios 
+para la atención de los pacientes: 
+35 
+ 
+ 
+ 
+ 
+Figura 2. Relación entre Asegurados, IAFAS e IPRESS (www.susalud.gob.pe). 
+Nota. Tomado de SUSALUD (2022). 
+2.1.2 Categorización y niveles de los centros de salud en el Perú  
+Cada centro de salud registrado en el MINSA es categorizado en un nivel y 
+categorización. Esta clasificación es según los servicios que puede ofrecer el centro médico. 
+En la Tabla 9 se aprecia de manera global esta clasificación: 
+ 
+ 
+36 
+ 
+ 
+ 
+Tabla 9. Categorías de los centros médicos en el Perú. (Salaverry & Cárdenas, 2009). 
+ 
+El MINSA clasifica los diferentes centros de salud en niveles de complejidad y 
+categorías “en base a niveles de complejidad y a características funcionales que permitan 
+responder a las necesidades de salud de la población que atiende” (MINSA, 2011); es decir, 
+al grado de especialización del centro, las funcionalidades que ofrezca y el grado de atención 
+a demandas de clientes. Existen tres grandes niveles de atención los cuales incluyen varias 
+categorías pero se podrían generalizar de la siguiente forma (MINSA, 2011): 
+● Nivel 1: Nivel más bajo de atención correspondiente a postas, puestos y centros de 
+atención inmediatos y no especializados. 
+● Nivel 2: Hospitales y clínicas de atención general o especializados. 
+● Nivel 3: Hospitales, clínicas e institutos especializados. 
+Las categorías en las que se subdivide cada nivel son las siguientes (ESAN, 2018): 
+Primer nivel de atención: 
+● Categoría I-1. Puesto de salud, posta de salud o consultorio con profesionales de salud 
+no médicos. 
+● Categoría I-2. Puesto de salud o posta de salud (con médico). Además de los 
+consultorios médicos (con médicos con o sin especialidad). 
+● Categoría I-3. Corresponde a los centros de salud, centros médicos, centros médicos 
+especializados y policlínicos. 
+● Categoría I-4. Agrupan los centros de salud y los centros médicos con camas de 
+internamiento. 
+37 
+ 
+ 
+ 
+Segundo nivel de atención: 
+● Categoría II-1. El conjunto de hospitales y clínicas de atención general. 
+● Categoría II-2. Corresponden a los hospitales y clínicas con mayor especialización. 
+● Categoría II-E. Agrupan a los hospitales y clínicas dedicados a la atención 
+especializada. 
+ Tercer nivel de atención: 
+● Categoría III-1. Agrupan los hospitales y clínicas de atención general con mayores 
+unidades productoras de servicios de salud. 
+● Categoría III-2. Agrupan los hospitales y clínicas de atención general con mayores 
+unidades productoras de servicios de salud y servicios en general. 
+● Categoría III-E. Corresponden a los institutos especializados. 
+ 
+2.1.3 Health Information Management System (HIMS) y sus módulos 
+Un HIMS, del inglés Health Information Management System, en español Sistema de 
+Información para la Gestión del Cuidado de la Salud, es un sistema diseñado para gestionar 
+la información sobre el cuidado de la salud en un centro médico. Esto incluye los sistemas 
+que recopilan, almacenan, administran y transmiten historias clínicas electrónicas (HCE) de 
+un paciente, que permiten la administración operativa de un hospital o que respaldan las 
+decisiones de políticas de atención médica (Brook, 2018). Así, el HIMS es el conjunto de los 
+módulos de HCE (Historias clínicas electrónicas), módulos Departamentales (Laboratorio, 
+Farmacia, entre otros), Financieros y Fundacionales.  
+Un HIS (Sistema de Información Hospitalario), cuya implementación es objetivo de la 
+presente investigación, conforma los módulos financieros y fundacionales del HIMS. 
+En la figura 3 se presenta una visión general de un HIMS: 
+38 
+ 
+ 
+ 
+ 
+Figura 3. Módulos del HIMS. 
+Nota. Tomado de “Health Information Systems. Surgical pathology clinics” por Sirintrapun, 2016. 
+Como se muestra, existen cuatro grandes módulos los cuales son Sistema de Registro 
+Médico Electrónico (incluye la Historia Clínica Electrónica o HCE), Sistemas 
+Departamentales o de Soporte (como Sistema de Información de Farmacia PIS, de Sistema de 
+Información de Laboratorio, de Sistema de Información de Imágenes, etc), Sistemas 
+Financieros y Sistemas Fundacionales, cada uno con distintos submódulos y enfocados a 
+distintas tareas en el hospital. 
+2.2 Marco Conceptual 
+Paso siguiente a describir el problema que nuestra presente tesis pretende ayudar a 
+solucionar en el capítulo 1.1 y definir el marco teórico. La presente sección tiene como 
+objetivo explicar los conceptos que se ahondarán en los siguientes capítulos y familiarizar al 
+lector con ellos. 
+2.2.1 Centro de salud 
+39 
+ 
+ 
+ 
+Los centros de salud son “lugares que brindan cuidados para la salud. Incluyen 
+hospitales, clínicas, centros de cuidados ambulatorios y centros de cuidados especializados, 
+tales como las maternidades y los centros psiquiátricos”. La elección de a cuál centro de salud 
+asistir por parte de los ciudadanos viene dada, comúnmente, a la ubicación del 
+establecimiento, si el ciudadano está asegurado, si el seguro paga los servicios de ese centro, 
+la preferencia de médicos específicos, la calidad de atención, entre otros (MedlinePlus, 2018). 
+2.2.2 Niveles de atención 
+Los niveles de atención y sus categorías, según la norma técnica de salud 
+“CATEGORÍAS DE ESTABLECIMIENTOS DEL SECTOR SALUD” son los siguientes: 
+ 
+ 
+40 
+ 
+ 
+ 
+ 
+Figura 4. Niveles y categorías de establecimientos de salud según la norma técnica de salud 
+“CATEGORÍAS DE ESTABLECIMIENTOS DEL SECTOR SALUD”. 
+Tomado de MINSA (2011). 
+2.2.3 Categorías de centros médicos 
+La vigencia de las categorías de las UPSS es por tres años, luego de los cuales la máxima 
+autoridad del centro de salud debe solicitar la recategorización (MINSA, 2011). Cada 
+categoría tiene ciertas características y requisitos que cumplir para continuar en dicha 
+clasificación. A continuación, en la Tabla 10, se presentan dichas características. 
+Tabla 10. Actividades en cada categoría de centros de salud según la norma técnica de salud 
+“CATEGORÍAS DE ESTABLECIMIENTOS DEL SECTOR SALUD”. 
+Nivel 
+Primer nivel de atención 
+Segundo nivel de 
+atención 
+Tercer nivel de 
+atención 
+Categoría 
+I
+-1 
+-2 
+-3 
+-4 
+I-1 
+I-2 
+I-E 
+II-1 
+II-E 
+II-2 
+UPSS de atención directa obligatorias 
+Consulta 
+Externa 
+X 
+X 
+X 
+X 
+X 
+X 
+X 
+X 
+X 
+X 
+Hospitalización 
+ 
+ 
+ 
+ 
+X 
+X 
+X 
+X 
+X 
+X 
+Emergencia 
+ 
+ 
+ 
+ 
+X 
+X 
+ 
+X 
+ 
+X 
+41 
+ 
+ 
+ 
+Centro 
+obstétrico 
+ 
+ 
+ 
+ 
+X 
+X 
+ 
+X 
+ 
+X 
+Centro 
+quirúrgico 
+ 
+ 
+ 
+ 
+X 
+X 
+ 
+X 
+ 
+X 
+Unidad 
+de 
+cuidados 
+intensivos 
+ 
+ 
+ 
+ 
+ 
+X 
+ 
+X 
+ 
+X 
+UPSS de atención de soporte obligatorias 
+Farmacia 
+ 
+ 
+ 
+X 
+X 
+X 
+X 
+X 
+X 
+X 
+Patología 
+clínica 
+ 
+ 
+X 
+X 
+X 
+X 
+X 
+X 
+X 
+X 
+Diagnóstico por 
+imágenes 
+ 
+ 
+ 
+ 
+X 
+X 
+X 
+X 
+X 
+X 
+Nutrición 
+y 
+dietética 
+ 
+ 
+ 
+ 
+X 
+X 
+X 
+X 
+X 
+X 
+Medicina 
+de 
+rehabilitación 
+ 
+ 
+ 
+ 
+X 
+X 
+ 
+X 
+ 
+X 
+Central 
+de 
+esterilización 
+ 
+ 
+ 
+ 
+X 
+X 
+ 
+X 
+ 
+X 
+Centro 
+de 
+hemoterapia y 
+banco de sangre 
+ 
+ 
+ 
+ 
+X 
+X 
+ 
+X 
+ 
+X 
+Anatomía 
+patológica 
+ 
+ 
+ 
+ 
+ 
+X 
+ 
+X 
+ 
+X 
+Hemodiálisis 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+X 
+ 
+X 
+Radioterapia 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+X 
+ 
+ 
+Nota. Tomado de “CATEGORÍAS DE ESTABLECIMIENTOS DEL SECTOR SALUD”, por MINSA, 
+2011. 
+2.2.4 Sistema de información hospitalario (HIS) 
+Un Sistema de Información Hospitalario u Hospital Information System (HIS) “es un 
+sistema que permite almacenar, procesar y reinterpretar los datos médico-administrativo de 
+42 
+ 
+ 
+ 
+cualquier institución hospitalaria. Este permite la optimización de los recursos humanos y 
+materiales, además de minimizar los inconvenientes burocráticos que enfrentan los pacientes” 
+(Fernández y Florina, 2003). 
+Un HIS trae numerosas ventajas al hospital como un acceso rápido y confiable a 
+cualquier información referente a los pacientes o componente del hospital. Además, trae 
+consigo beneficios en el servicio de calidad en la atención al cliente y una mejor gestión 
+financiera.  
+Un sistema de información hospitalario eficiente y correctamente implementado debe 
+ser centrado en el paciente, centrado en el hospital médico, asequible y escalable. Este último,  
+debido al rápido avance de la tecnología, obliga al sistema a ser flexible para ir de la mano al 
+rápido crecimiento del hospital (EMR Consultant, 2013). 
+2.2.5 Historia Clínica Electrónica (HCE) 
+Una historia clínica electrónica (HCE o EHR, por sus siglas en inglés) es un registro 
+digital el cual, en teoría, es capaz de compartir la información de un paciente por los diferentes 
+módulos de un Healthcare Information Management System (HIMS). Este alberga una gran 
+variedad de información del paciente, tales como: historia médica, medicaciones, alergias, 
+resultados de laboratorio, imágenes de radiología, signos vitales, edad, peso, entre otros 
+(Seymour, Frantsvog y Graeber, 2012). 
+2.2.6 Sistema de Información de Farmacia (PIS) 
+Es un módulo del healthcare information system. Este módulo apoya en la distribución 
+y gestión de las medicinas, muestra el inventario de los medicamentos y facilita la preparación 
+de informes relacionados con farmacia (Kazemi, Rabiei, Moghaddasi y Deimazar, 2016). 
+2.2.7 Sistema de Información de Laboratorio (LIS) 
+Es un módulo el cual almacena y gestiona la información obtenida en el transcurso del 
+trabajo del laboratorio. El módulo controla y gestiona las muestras, los resultados de las 
+pruebas, proporcionar reportes y automatiza el flujo de trabajo. El integrar el LIS con el 
+healthcare information system permitirá transmitir la información del laboratorio a la 
+administración general del centro médico (Skobelev, Zaytseva, Kozlov, Perepelitsa y 
+Makarova, 2011). 
+43 
+ 
+ 
+ 
+2.2.8 Healthcare Information Management System (HIMS) 
+Es un sistema mediante el cual los datos de la salud son registrados, almacenados, 
+recuperados y procesados para mejorar la toma de decisiones en un centro médico (Endriyas 
+et al., 2019). Este incluye sistemas de historias clínicas electrónicas, de laboratorio, farmacia, 
+financieros y administrativos. 
+2.2.9 Seguro Integral de Salud (SIS) 
+Es un seguro de salud el cual tiene como público objetivo las personas que no tiene 
+ningún otro seguro activo; mayormente cubre medicamentos, cirugías, procedimientos e 
+insumos (SIS, 2019). Tiene 4 clasificaciones: 
+● SIS gratuito: Se enfoca en personas de pobreza extrema, pocos recursos y el cuerpo de 
+bomberos. 
+● SIS independiente: Para cualquier persona que pueda y desee adquirirlo. 
+● SIS microempresas: Dueños de microempresas y sus trabajadores. 
+● SIS emprendedor: Para trabajadores que no tiene empleados a cargo 
+2.2.10 Instituciones Prestadoras de Servicios de Salud (IPRESS) 
+Las IPRESS son instituciones las cuales son creadas para brindar servicios de salud. 
+Para poder ejercer sus servicios deben estar inscritas en SUSALUD. Dentro de sus funciones 
+se destacan (SUSALUD, 2019): 
+● Su principal función es la brindar servicios de calidad y oportunidad. Gozan 
+de autonomía administrativa y financiera. 
+● Las IPRESS están facultadas para vender servicios a las IAFAS e intercambiar 
+servicios entre sí. 
+● Las IPRESS son responsables frente a los usuarios por las prestaciones de salud 
+con oportunidad y calidad que brinden. 
+2.2.11 Institución Administradora de Fondos de Aseguramiento en Salud 
+(IAFAS) 
+Son instituciones tanto privadas, públicas o mixtas las cuales recaudan recursos de los 
+afiliados. Esto con el fin de dar cobertura financiera a las IPRESS (OPS, 2011). 
+2.2.12 SUSALUD 
+44 
+ 
+ 
+ 
+La Superintendencia Nacional de Salud (SUSALUD) es la institución encargada de 
+proteger los derechos en salud de cada peruano, supervisando así que las prestaciones y el 
+acceso a los servicios de salud sean otorgadas con calidad, oportunidad, disponibilidad y 
+aceptabilidad, sin importar donde se atienda o su condición de aseguramiento. 
+SUSALUD tiene potestad para actuar sobre todas las Instituciones Prestadoras de Salud 
+(IPRESS) así como las Instituciones Administradoras de Fondos de Aseguramiento en Salud 
+(IAFAS). Para ello, sigue cuatro lineamientos (SUSALUD, 2020): 
+• Promoción protección y restitución de los Derechos en Salud 
+• Prevención permanente de la vulneración de los Derechos en Salud frente al sistema 
+de salud 
+• Coadyuvar la Gestión del Riesgo para alcanzar de manera más efectiva los logros 
+institucionales de todos los integrantes del sistema de salud 
+• Modernizar la gestión institucional promoviendo espacios de articulación 
+intersectorial y de integración de sistemas de información 
+2.2.13 Interoperabilidad 
+Interoperabilidad es la capacidad de los sistemas de poder interactuar entre sí con la 
+finalidad de tener beneficios mutuos. Esto hace que las organizaciones involucradas puedan 
+compartir datos e información mediante sus sistemas de información respectivos. (Criado, 
+Gascó y Jiménez, 2010). 
+A nivel de interoperabilidad en el Perú, se usa la Plataforma de Interoperabilidad del 
+Estado (PIDE), la cual es una infraestructura tecnológica que permite conectar datos 
+electrónicos entre las diferentes entidades del Estado a través de internet, plataforma móviles, 
+entre otros (Secretaría de Gobierno DIgital, 2019). 
+ 
+ 
+45 
+ 
+ 
+ 
+ 
+Figura 5. Aumento de ahorro gracias al PIDE. 
+Tomado de Interoperabilidad por PCM: Secretaría de Gobierno Digital, 2019. 
+2.2.14 Health Level 7 (HL7) 
+Es una organización de Desarrollo de Normas (Standards Developing Organization, 
+SDO) los cuales brindan un conjunto de estándares en el sector médico para la 
+interoperabilidad dentro de diferentes módulos en un SI de un centro médico e inclusive la 
+comunicación entre diferentes SI. 
+Las normas HL7 han adquirido aceptación internacional por parte de un creciente 
+número de organizaciones miembro afiliadas al estándar internacional a HL7, promoviendo 
+las normas y trabajando en estrategias de adaptación nacional (SIEMENS, 2019). 
+Algunas características del HL7 son las siguientes (Aghazadeh, Aliyev y 
+Ebrahimnezhad, 2012): 
+● El software debe poder realizar un registro computarizado separado (EMR / CPR) para 
+cada paciente admitido. 
+● El sistema ha sido aceptado para transferir información entre distintos centros 
+médicos. 
+● El software está diseñado en función de la tecnología orientada a objetos, lo que 
+significa que diferentes capas (diferentes tareas) se pueden ejecutar por separado e 
+46 
+ 
+ 
+ 
+implementarse, por lo que se puede implementar en varios centros de sistemas de 
+salud. 
+● El software debe ser capaz de soportar tecnología multimedia. 
+● El nivel de acceso a la información se clasifica según cada tarea individual en el 
+tratamiento del paciente 
+● El software debe ser fácil de utilizar 
+● Debe tener una numeración estándar de archivos  
+● El sistema funciona en la red y cubre todas las unidades clínicas. 
+● La confidencialidad de la información debe ser asegurada 
+2.2.15 Sprint 
+Es un ciclo o iteración dentro de un proyecto bajo el marco de trabajo Scrum. Su 
+duración habitual es entre 2 o 3 semanas. En cada sprint, se logra un entregable del producto 
+que aporte valor al cliente (ScrumStudy, 2022). 
+2.3  Marco Legal 
+En la presente sección se describirán las leyes y/o normas pertinentes que están 
+relacionadas al tema de Sistemas de Información Hospitalarios y puedan afectar la 
+implementación de estos. 
+● Ley Nª 26842 - Ley General de Salud 
+Esta ley dispone que la salud es una condición indispensable del desarrollo 
+humano y un medio fundamental para alcanzar el bienestar individual y colectivo. 
+Además, que es responsabilidad del Estado regular, vigilar y promover la salud de los 
+ciudadanos. Nuestro HIS debe poder ser capaz de registrar a cualquier ciudadano y 
+velar por que se cumplan sus derechos en cuanto a salud. 
+● Ley N° 27806 - Ley de Transparencia y Acceso a la información Pública 
+Esta establece como derecho fundamental de toda persona solicitar y recibir 
+información de cualquier entidad pública, con ciertas restricciones de acceso. La 
+información consultable que dispone el Estado corresponde a áreas como salud, 
+educación, medio ambiente, inversiones públicas, seguridad ciudadana y justicia. Esto 
+compromete a nuestro sistema a brindar información a los ciudadanos (directamente o 
+47 
+ 
+ 
+ 
+a través del médico) de manera segura, fiable y con alta disponibilidad; de lo contrario, 
+no se estarían respetando sus derechos. 
+● RM 1942-2002 SA/DM, que aprobó la Directiva N°001-2002 OGEI "Normas 
+Generales sobre acciones de Sistemas de Información, Estadística e Informática 
+en el Ministerio de Salud" 
+Establece las normas legales para las actividades desarrolladas en el campo de 
+Sistemas de Información, Estadística e Informática en las dependencias del Ministerio 
+de Salud. Esta ley es la que, tal vez, afecta en mayor medida a nuestro sistema pues 
+propone una serie de requisitos y medidas que los sistemas de información 
+correspondientes a las dependencias del Ministerio de Salud deben cumplir. Estas 
+medidas abarcan opiniones y asistencias técnicas, supervisiones, automatizaciones, 
+cooperación en proyectos, planificación, estándares, calidad, diseño, entre otros. 
+● RM 751-2004-MINSA/DGSP, que aprueba la NT N°  18-MINSA/DGSP-V.01: 
+"Norma Técnica del Sistema de Referencia y Contrarreferencia de los 
+Establecimientos del Ministerio de Salud" 
+Esta norma busca normar y regular los procesos y procedimientos 
+administrativos - asistenciales del sistema de referencia y contrarreferencia de los 
+diferentes niveles de organización del MINSA, para garantizar la continuidad de la 
+atención de salud y contribuir a solucionar los problemas de salud en el Perú. Nuestro 
+sistema, al implementar este servicio, se suscribe a cumplir esta norma técnica. 
+● RM 597-2006-MINSA, que aprueba la NT N° 022-MINSA/DGSP-V.02: "Norma 
+Técnica de Salud para la Gestión de la Historia Clínica". 
+Esta norma técnica establece normas para el manejo, conservación y 
+depuración de Historias Clínicas y estandariza el contenido básico a ser registrado en 
+ellas. Esta norma afecta altamente del módulo de Historias Clínicas Electrónicas, pero 
+también está relacionada con el HIS pues indica la información a ser manejada en estas 
+historias. 
+● R.M. N° 776-2004-MINSA. Norma técnica de la Historia Clínica de los 
+establecimientos de salud del sector Público y Privado 
+Esta norma técnica también establece normas y procedimientos para la 
+administración y gestión de historias clínicas a nivel del sector salud y un estándar con 
+48 
+ 
+ 
+ 
+el contenido básico de la Historia Clínica. También se tomará en cuenta para la 
+interoperabilidad con el módulo de HCE. 
+● Directiva Administrativa que establece los Procesos de Atención y Procedimiento 
+de Pago de las Prestaciones de Salud brindadas a los asegurados del Seguro 
+Integral de Salud en condición de Emergencia por las IPRESS  Privadas 
+Directiva Administrativa N° 001-2016/SIS/GREP-GNF-GA-OGTI-OGAR-V.02 
+Esta ley estandariza el proceso de atención, evaluación y procedimientos de 
+pago de las prestaciones brindadas a los asegurados del Seguro Integral de Salud (SIS), 
+en condiciones de emergencia, por las IPRESS. Como nuestro módulo de finanza 
+implementa el submódulo de biling, es necesario tener en cuenta esta directiva para 
+entender el procedimiento de cobro a las IPRESS por pacientes que cuenten con el 
+SIS. 
+ 
+49 
+ 
+ 
+ 
+ 
+Estado del Arte 
+En este capítulo se presenta una investigación sobre herramientas, estudios e 
+investigaciones relacionados al HIS. Esta investigación nos proporcionará un mejor panorama 
+para saber qué está implementado actualmente en el Perú. Por otro lado, es menester saber la 
+situación actual de los HIS a nivel internacional. Con toda la información recabada se podrá 
+plantear una solución que sea acorde a la coyuntura nacional y que brinde las mejores prácticas 
+de otros HIS. 
+3.1 Revisión y discusión 
+3.1.1 Objetivos de revisión 
+Los objetivos son los siguientes: 
+• Conocer las ventajas traería implementar un HIS que sea interoperable entre los 
+distintos centros médicos y entre los diferentes módulos. 
+• Conocer las mejores prácticas de los HIS existentes en el mercado nacional e 
+internacional. 
+• Conocer el impacto que tuvo los HIS interoperables a nivel internacional. 
+• Investigar las características que tienen actualmente los HIS a nivel global. 
+3.1.2 Metodología usada 
+La metodología usada será la investigación sistemática (Kitchenham, 2007), 
+específicamente la estrategia PICOC, debido a la gran cantidad de investigaciones y 
+documentos que existen y a la necesidad de analizar sólo los más importantes y semejantes a 
+la tesis presentada. Además, serán necesarios de agrupar y consolidar dichos documentos para 
+brindar respuestas a las preguntas que se harán a continuación. 
+Los componentes de la estrategia PICOC a utilizar son: 
+ 
+ 
+50 
+ 
+ 
+ 
+Tabla 11. Aplicación de la estrategia PICOC. 
+Ítem 
+Explicación 
+Descripción 
+Población 
+¿Quién? 
+Sistemas 
+de 
+Información 
+Hospitalarios. 
+Intervención 
+¿Qué o cómo? 
+Interoperabilidad y estándares como 
+HL7. 
+Comparación 
+¿Comparado con qué? 
+Sistemas 
+de 
+información 
+no 
+interoperables. ERPs. MIS. DSS. 
+Salida 
+¿Qué queremos lograr? 
+Resolver 
+las 
+preguntas 
+de 
+investigación 
+planteadas 
+en 
+el 
+siguiente ítem.. 
+Contexto 
+¿En qué circunstancias? 
+Centros médicos de categoría II-1 o 
+superior. 
+3.1.3 Preguntas de investigación 
+Se busca resolver las siguientes interrogantes: 
+● ¿Qué ventajas trae el que un HIS sea interoperable entre distintos módulos y centros 
+médicos? 
+● ¿Qué prácticas de seguridad se siguen al implementar los HIS?, actualmente 
+● ¿Qué mejoras notables a corto y mediano plazo hubo con los HIS implementados a 
+nivel global? 
+● ¿Qué características tienen los HIS existentes a nivel internacional? 
+Estas preguntas se resolverán haciendo uso de una serie de cadenas de búsqueda y 
+palabras clave en las principales bases de datos y luego haciendo uso de ciertos criterios de 
+inclusión y exclusión para reducir la cantidad de resultados obtenidos. 
+3.1.4 Estrategia de búsqueda 
+Para la estrategia de búsqueda, se usaron la siguiente cadena de búsqueda: 
+("health information system" OR "hospital information system" OR "healthcare 
+information system") AND ("benefits" OR "profits" OR "advantages" OR "architecture" OR 
+51 
+ 
+ 
+ 
+"technology" OR "requisites" OR "requirements" OR "security" OR "encryption" OR 
+"protocols” OR “interoperability”) 
+Dicha cadena de búsqueda fue introducida en los siguientes repositorios: Association 
+for Computing Machinery Digital Library, Annual Reviews, Full Text Finder, Scopus, 
+Springer Link, Taylor & Francis Journals, Wiley Online Library, IEEE/IET Electronic Library 
+(IEL), HeinOnline y Oxford Academic Journals. 
+3.1.5 Criterios de Inclusión y Exclusión 
+Tabla 12. Criterios de inclusión y exclusión de la revisión 
+Criterios de Inclusión 
+Criterios de Exclusión 
+● Estudios que sean únicamente 
+relacionados al HL7. 
+● Estudios en inglés o español. 
+● Estudios no actualizados en 
+más de 5 años. 
+● Estudios realizados que no 
+tengan relevancia con el tema 
+de la salud. 
+3.1.6 Población 
+Una vez que se tiene claro los criterios de inclusión y exclusión, el día 17 de mayo de 
+2020 se realizó la búsqueda en las bases de datos y se encontró lo siguiente: 
+Tabla 13. Población obtenida 
+Fuente 
+Cantidad 
+de 
+artículos 
+encontrados 
+Cantidad 
+de 
+artículos repetidos 
+Cantidad 
+de 
+artículos 
+seleccionados 
+ACM 
+97 
+2 
+2 
+IEEXPLORE 
+27 
+1 
+1 
+FTF 
+9 
+1 
+1 
+De los artículos encontrados con la cadena de búsqueda se descartaron aquellos que no 
+aportaban información relevante para la implementación del HIS o que no cumplían los 
+criterios de inclusión y exclusión. Los documentos revisados se muestran a continuación en 
+la siguiente tabla: 
+Tabla 14. Población obtenida de la revisión 
+52 
+ 
+ 
+ 
+Código 
+Estudio 
+Autor 
+Año 
+de 
+publicación 
+A - 01 
+Health IT and Patient Safety: Building Safer 
+Systems for Better Care (Health Information 
+Technology and Patient Safety) 
+Institute of Medicine of 
+National Academies 
+2012 
+A - 02 
+A security approach for health care information 
+systems 
+Iuliana 
+Chiuchisan 
+; 
+Doru-Gabriel 
+Balan 
+; 
+Oana Geman 
+2017 
+A - 03 
+E 
+–Hospital 
+Management 
+& 
+Hospital 
+Information Systems – Changing Trends 
+Prem Kumar 
+2013 
+A - 04 
+Perceived Benefits of Implementing and Using 
+Hospital Information Systems and Electronic 
+Medical Records 
+Mohamed Khalifa 
+2017 
+A - 05 
+Review the Role of Hospital Information 
+Systems in Medical Services Development 
+S. Aghazadeh, A. Aliyev, 
+and M. Ebrahimnezhad 
+2012 
+ 
+3.1.7 Respuestas a las preguntas de investigación 
+➢ Ventajas de que un HIS sea interoperable entre distintos módulos y centros 
+médicos 
+Que un HIS sea interoperable conlleva a tener un sistema centralizado y de uso seguro. 
+Un sistema centralizado permite que la información se comparta de manera pública y el 
+sistema en general sea menos propenso a errores. La falta de interoperabilidad de un sistema 
+de información es una barrera para las mejoras en la toma de decisiones del centro de salud y 
+la seguridad del paciente. Mayor interoperabilidad puede mejorar la seguridad, privacidad y 
+experiencia del paciente. 
+La interoperabilidad debe extenderse a lo largo del flujo de atención, deben desarrollarse 
+e implementarse estándares para respaldar la interacción entre productos de TI de salud que 
+contienen datos distintos entre sí, mejorando la productividad y reduciendo costos.  
+Existen múltiples niveles de interoperabilidad para ofrecer diferentes niveles de 
+interoperabilidad: 
+● Intercambiar flujos de bits 
+53 
+ 
+ 
+ 
+● Intercambiar datos sin pérdida de contenido semántico 
+● Aceptar complementos (plugins) 
+● Mostrar información similar en un mismo formato 
+Para implementar la interoperabilidad en un sistema de información se pueden seguir 
+las siguientes pautas: 
+● Todos los productos de TI de salud deben poder exportar datos en forma estructurada 
+y formatos estándar. 
+● Todos los productos de TI deben proporcionar su documentación sin ninguna tarifa o 
+cargo y de forma fácil de leer. 
+● Todos los productos de TI deben poder mostrar datos importados de una manera 
+compatible con los datos generados internamente. 
+● Es altamente recomendado el uso de estándares para la representación de datos, así 
+como el apoyo al cumplimiento de estos (Institute of Medicine of National Academies, 
+2012). 
+ 
+➢ Prácticas comunes de seguridad al implementar los HIS 
+Actualmente, los Sistemas de Información Hospitalarios son mayormente accedidos vía 
+web, por lo que requieren ciertas medidas para asegurar que el almacenamiento y la gestión 
+de accesos sean seguros y cumplan con medidas de Quality of Service (QoS).  
+● Almacenamiento rápido y seguro para acceder a los registros de historias clínicas. 
+● Protección ante software malicioso como rutinas de software o virus a través de 
+antivirus, firewalls y actualizaciones de software. 
+● Acceso protegido y solo para personal autorizado. 
+● Disponibilidad para dispositivos móviles. 
+● Protección en línea de actividades criminales que hackers o usuarios puedan efectuar 
+contra el sistema a través de internet. 
+● Seguridad de TI, física y humana: disponer de derechos de acceso a la data y al análisis 
+de datos, seguridad de transferencia de datos, manera cómo y cuándo los datos son 
+almacenados y cumplir con políticas de seguridad. 
+● Firmas digitales y verificación sobre una web segura: uso de HTTPS y TLS/SSL. 
+54 
+ 
+ 
+ 
+● Data encriptada en tablas SQL. 
+● Infraestructura de red segura: Virtual Private Networks (Chiuchisan, Balan y Geman, 
+2017) 
+Además, los HIS buscan cumplir con una serie de requisitos no funcionales tales como: 
+● Fácil recuperación de datos precisos, oportunos y confiables. 
+● Implementar un sistema con el que el usuario le gustaría interactuar. 
+● Visualización de datos simple e intuitiva. 
+● Navegación simple. 
+● Facilitar la toma de decisiones. 
+● Mejoras en el flujo de trabajo, automatizando tareas y optimizando el trabajo, sin 
+aumentar la carga de trabajo física o cognitiva. 
+● Fácil transferencia de información desde y hacia otras organizaciones y proveedores. 
+● Copias de seguridad de la información. 
+● No presentar tiempos de inactividad a menos que estos sean programados (Institute of 
+Medicine of National Academies, 2012). 
+ 
+➢ Mejoras notables a corto y mediano plazo con los HIS implementados a nivel 
+global 
+Según reporta Mohamed Khalifa en los resultados obtenidos tras implementar un HIS 
+y EMR, se obtuvieron los siguientes beneficios, mostrando las tasas de mejoría en cada uno: 
+Tabla 15. Resultados de implementar un HIS (Mohamed Khalifa, 2017) 
+Ítem 
+Media 
+Opinión 
+del 
+Participante 
+Mejoró el acceso a la información 
+4.49 
+Totalmente 
+de 
+acuerdo 
+Mejoró la productividad de los profesionales de 
+la salud 
+4.31 
+Totalmente 
+de 
+acuerdo 
+Mejoró la eficiencia y la exactitud de las fianzas 4.30 
+Totalmente 
+de 
+acuerdo 
+Mejoró la calidad de la salud 
+4.27 
+Totalmente 
+de 
+55 
+ 
+ 
+ 
+acuerdo 
+Mejoró la administración clínica (diagnóstico y 
+tratamiento) 
+4.22 
+Totalmente 
+de 
+acuerdo 
+Redujo los gastos respectivos a los registros 
+médicos 
+4.13 
+De Acuerdo 
+Redujo los errores médicos 
+4.05 
+De Acuerdo 
+Mejoró la seguridad del paciente 
+4.05 
+De Acuerdo 
+Mejoró los resultados de los pacientes 
+4.01 
+De Acuerdo 
+Mejoró la satisfacción de los clientes 
+3.95 
+De Acuerdo 
+ 
+En otro estudio (Prem Kumar, 2013) se encontraron los siguientes beneficios: 
+ 
+Tabla 16. Beneficios de implementar un HIS (Prem Kumar, 2013) 
+Almacenamiento 
+y 
+monitoreo 
+de 
+la 
+condición del paciente 
+ 
+Se proporciona información certera del paciente 
+Se generan advertencias en caso de que algunos resultados 
+sean atípicos. 
+Se pueden especificar períodos para las pruebas de los 
+pacientes 
+Proceso y análisis de datos con fines estadísticos o de 
+investigación 
+Gestión y flujo de datos 
+Soporta transferencia de datos de pacientes entre 
+departamentos e instituciones 
+Firmas digitales para crear órdenes electrónicas internas 
+Comunicación con el Laboratory System (LIS) 
+Registro de recursos humanos y sus propiedades 
+Aspectos financieros 
+Efectiva administración de las finanzas 
+Uso y monitoreo de las medicinas y de la efectividad en el 
+56 
+ 
+ 
+ 
+pedido de ellas 
+Los costos esperados y reales son mostrados y reportados 
+Representación automatizada de las necesidades del 
+personal de enfermería 
+Análisis del estado de ocupación de las camas y el 
+rendimiento general del hospital 
+ 
+➢ Características que tienen los HIS existentes a nivel internacional 
+En India (Prem Kumar, 2013), el HIS tuvo las siguientes características: 
+● Certificado por la ISO / IEC 9126 
+● Basado en HL7 
+● Basado en Unicode con soporte con el lenguaje hindi 
+● Informes completos sobre varios parámetros personalizables 
+● Seguridad de la información y privacidad 
+● Logs de auditoría de las transacciones 
+● Potente buscador de información y seguimiento de la historia del paciente 
+● Interfaz con pantalla táctil en diferentes kioscos 
+● Disponible en Windows y Linux 
+Según otro estudio (Aghazadeh, Aliyev y Ebrahimnezhad, 2012), un HIS debe poseer 
+los atributos mencionados a continuación: 
+● Trabaja bajo un estándar 
+● Trabaja bajos “eventos médicos” y es independiente del ciclo de pacientes en 
+movimiento. 
+● Ofrece la mejor solución para la coordinación entre los diferentes módulos del hospital 
+● Coordina todas las salas del centro médico  
+● Aumenta la calidad de la toma de decisiones y la gestión. 
+● Incluye bases de datos de medicina como SNOMED y ICD-10. 
+57 
+ 
+ 
+ 
+● El 2% de los casos el ingreso de datos es manual. En el 98% restante se hace mediante 
+clics con el mouse. 
+● Las operaciones son simples y son user friendly 
+● Se usan tarjetas inteligentes para identificar y controlar el acceso del personal al 
+hospital y así tener un registro de asistencia 
+● Está equipado con un sistema de video conferencia entre profesionales de la salud 
+● Está equipado con un sistema inteligente de diagnóstico y tratamiento basado en el 
+conocimiento. 
+● El acceso y la recuperación de datos es posible y fácil con el HIS 
+● Usa tecnología multimedia, audio y grabación de video 
+3.2 Software y tesis similares 
+Adicionalmente a los artículos encontrados usando la investigación sistemática, se 
+investigaron sistemas de información similares, enfocados en la gestión de información 
+administrativa de centros médicos, y tesis con temas relacionados en el Repositorio de Tesis 
+PUCP.  
+3.2.1 Software comercial similar 
+Se encontraron los siguientes sistemas enfocados en la administración de información 
+administrativa en centros médicos del Perú: 
+Tabla 17. Software comercial similar 
+https://www.sigerp.pe/?gclid=Cj0KCQiAjKqABhDLARIsABbJrGk6hj4GBjIFR208R5zZ
+plSuFRiol1Vtup88wuEhofDDqoTQdv49IEMaAq03EALw_wcB 
+https://www.lolimsa.com.pe/ 
+https://www.smartsystem.pe/software-medico/ 
+https://clinic-cloud.com/ 
+https://www.mediwebperu.com/ 
+Además, se encontraron y examinaron las siguientes tesis de Ingeniería Informática en 
+el Repositorio de tesis PUCP: 
+58 
+ 
+ 
+ 
+Tabla 18. Tesis encontradas en el repositorio de tesis PUCP 
+Nombre 
+Autor 
+Año 
+Servicio Informático Para 
+Dar Soporte Al Manejo De 
+La Documentación En Un 
+Departamento 
+De 
+Tecnología 
+De 
+La 
+Información 
+De 
+Una 
+Universidad 
+José Eduardo Marroquín 
+Rodríguez 
+2018 
+Análisis, 
+Diseño 
+E 
+Implementación 
+De 
+Un 
+Sistema 
+De 
+Información 
+Integral 
+De 
+Gestión 
+Hospitalaria 
+Para 
+Un 
+Establecimiento De Salud 
+Público 
+Javier Francisco Mosquera 
+Tarazona 
+Willy Mestanza Vigo 
+2007 
+Recuperación de Historias 
+Clínicas Electrónicas a partir 
+de un Repositorio Digital 
+usando 
+una 
+Arquitectura 
+Orientada a Servicios 
+Katty Sue Hellen Sánchez 
+Reyna 
+2015 
+ 
+ 
+3.3 Conclusiones 
+Con los documentos encontrados y los resultados expuestos, podemos concluir lo 
+siguiente respecto a los HIS implementados en la actualidad: 
+Tabla 19. Conclusiones de la investigación 
+Subtema 
+Resumen 
+Ventajas de 
+interoperabilidad 
+● Ayuda en la toma de decisiones 
+● Seguridad y privacidad de la información de los pacientes 
+● Sistema centralizado 
+● Estandarización 
+● Menos propenso a errores 
+● Mejor atención de los pacientes 
+● Mayor productividad y reducción de costos 
+Prácticas 
+comunes de 
+● Protección a través de antivirus y firewalls 
+● Control de acceso 
+● Disponibilidad para dispositivos móviles 
+59 
+ 
+ 
+ 
+seguridad  
+● HTTPS y TLS/SSL 
+● Data SQL encriptada 
+● VPN 
+● Navegación y visualización simples 
+● Transferencias y almacenamiento rápidos y seguros 
+● Copias de seguridad 
+● Sin tiempos de inactividad 
+Mejoras logradas 
+a nivel global con 
+HIS 
+● Acceso a la información 
+● Productividad de médicos y eficiencia de finanzas 
+● Calidad de salud 
+● Administración clínica 
+● Reducción de gastos 
+● Reducción de errores 
+● Seguridad, resultados y satisfacción de los pacientes 
+● Transferencia de pacientes entre departamentos e 
+instituciones 
+● Monitoreo de las medicinas 
+● Gestión de costos 
+● Representación de las necesidades del personal 
+● Estado de ocupación de activos y rendimiento del hospital 
+Características de 
+los HIS a nivel 
+internacional 
+● Basados en HL7 
+● Caracteres Unicode 
+● Logs de auditoría 
+● Buscador de información 
+● Disponible en diversos sistemas operativos 
+● Óptima coordinación entre módulos del centro médico 
+● Tarjetas de identificación para el personal 
+● Uso de tecnología multimedia 
+ 
+ 
+60 
+ 
+ 
+ 
+ 
+Especificación de Requerimientos 
+En esta sección se presentan los requerimientos funcionales y no funcionales del 
+sistema. A cada uno se le asignó un nivel de prioridad, siendo los números menores (1) los 
+más importantes y que contribuyen al logro de los objetivos de la presente tesis, y los números 
+mayores (5), los requerimientos que le agregarían un valor agregado al sistema y a los usuarios 
+del mismo. 
+4.1 Objetivo 
+El objetivo de esta sección es especificar los requerimientos funcionales y no 
+funcionales obtenidos, así como su priorización. 
+4.2 Mapeo de Procesos 
+Para iniciar la fase de Análisis de Requerimientos se realizó un mapeo de los principales 
+procesos y procedimientos que contemplaba el alcance del proyecto. 
+Se entrevistó a jefes de áreas, a personal de sistemas y a médicos de hospitales como 
+Edgardo Rebagliati y el Arzobispo Loayza. Se hicieron preguntas puntuales sobre el 
+funcionamiento de algunos procedimientos, las preguntas se encuentran en el Anexo B. 
+Además, se revisó documentación de los Manuales de Procesos y Procedimientos de algunos 
+hospitales de la red EsSalud (EsSalud, 2020). 
+Los procesos mapeados fueron los siguientes y sus flujos se encuentra en el Anexo C. 
+Tabla 20. Mapeo de Procesos 
+Grupo 
+ID 
+Proceso 
+Procesos Logísticos 
+PR-01 
+Requerimiento de compras 
+PR-02 
+Recepcionar, registrar e internar los bienes al 
+almacén central 
+PR-03 
+Distribución de los Bienes desde el almacén 
+central 
+PR-04 
+Gestión y control del stock de inventarios 
+centralizados 
+PR-05 
+Toma de inventarios físicos de existencias en 
+61 
+ 
+ 
+ 
+los almacenes centrales 
+PR-06 
+Altas de bienes patrimoniales muebles 
+PR-07 
+Altas de Bienes Patrimoniales Inmuebles 
+Procesos Financieros 
+PR-08 
+Gestión de Ingresos 
+PR-09 
+Rubro pago de Impuesto del IGV 
+PR-10 
+Elaboración de Estados Financieros 
+Gestión de las personas 
+PR-11 
+Vinculación Personal 
+PR-12 
+Desvinculación 
+PR-13 
+Liquidación De Beneficios Sociales 
+Procesos de Atención de 
+Salud 
+PR-14 
+Atención de Urgencias y Emergencias 
+PR-15 
+Emergencias Obstétricas y Ginecólogas 
+PR-16 
+Ingreso de paciente y atención en triaje en 
+Servicio de Emergencia de 
+Obstetricia y Ginecología 
+PR-17 
+Atención 
+de 
+paciente 
+en 
+Servicio 
+de 
+Emergencia de Obstetricia y Ginecología 
+PR-18 
+Visitas Médicas 
+PR-19 
+Alta médica en Servicio de Emergencia de 
+Obstetricia y Ginecología 
+PR-20 
+Transferencia 
+de 
+paciente 
+a 
+Sala 
+de 
+Operaciones, Hospitalización y/u otro 
+Servicio 
+PR-21 
+Solicitud de interconsulta 
+PR-22 
+Alta Voluntaria (Administrativa) 
+PR-23 
+Emisión de Constancia de Atención 
+Consulta 
+Médica 
+Ambulatoria 
+PR-24 
+Atención Integral de Neonatología 
+PR-25 
+Atención de consulta externa médica de 
+neonato bajo riesgo 
+PR-26 
+Atención de consulta externa médica de 
+neonato mediano riesgo 
+PR-27 
+Atención de consulta externa médica de 
+62 
+ 
+ 
+ 
+neonato alto riesgo 
+PR-28 
+Consulta 
+médica 
+a 
+ambulatoria 
+de 
+neonatología 
+Atención de Urgencias y 
+Emergencias Pediátricas 
+PR-29 
+Ingreso y atención de pacientes pediátricos en 
+Triage 
+PR-30 
+Admisión 
+de 
+pacientes 
+pediátricos 
+en 
+emergencia 
+PR-31 
+Ingreso y Atención del paciente pediátrico en 
+Sala de observación 
+PR-32 
+Alta médica del Servicio de Emergencia 
+Pediátrica 
+PR-33 
+Derivación de paciente pediátrico a otros 
+Servicios de Hospitalización / 
+Tratamiento pediátrico 
+PR-34 
+Referencia / Contrarreferencia a otros Centros 
+de Salud 
+PR-35 
+Monitoreo clínico pediátrico: Visitas médicas 
+PR-36 
+Monitoreo clínico pediátrico: Rondas de 
+enfermería 
+PR-37 
+Alta Voluntaria 
+Admisión y Registros 
+Médicos 
+PR-38 
+Solicitud de las referencias 
+PR-39 
+Referencia administrativa 
+PR-40 
+Contrareferencia 
+PR-41 
+Extensión de la referencia 
+4.3 Requerimientos funcionales 
+Se procedió a analizar los procesos mapeados y la información obtenida a través de las 
+entrevistas, se obtuvieron así los siguientes requerimientos funcionales. Se realizó la 
+priorización de los requerimientos por cuenta propia, pues para seguir con lo planteado en el 
+cronograma primero se desarrollaron las pantallas y procesos más importantes de gestión de 
+tablas principales como usuarios, citas, referencias y finanzas para ser mostradas a los 
+interesados; y luego se continuó con los procesos de soporte y apoyo y la interoperabilidad.  
+63 
+ 
+ 
+ 
+A continuación, se listan y detallan los requerimientos funcionales organizados por 
+categoría. 
+Tabla 21. Especificación de Requerimientos Funcionales 
+ID Categoría Requerimiento 
+Rol 
+Prioridad 
+1 
+Empleados 
+El sistema debe permitir gestionar 
+empleados. 
+RRHH 
+5 
+2 
+El sistema debe permitir administrar 
+roles para los usuarios que permitan el 
+acceso a módulos y funcionalidades 
+específicas. 
+TI 
+3 
+3 
+El sistema debe permitir gestionar los 
+horarios de los empleados. 
+RRHH 
+2 
+4 
+El 
+sistema 
+permitirá 
+programar 
+actividades 
+a 
+los 
+empleados 
+en 
+determinadas horas en los ambientes del 
+hospital. 
+RRHH 
+4 
+5 
+El sistema debe permitir asignar 
+especialidades y áreas a los empleados. RRHH 
+4 
+6 
+Pacientes 
+El sistema debe permitir gestionar los 
+datos no clínicos pacientes. 
+ADMISIÓN 
+5 
+7 
+El sistema permitirá el flujo de pacientes 
+entre especialidades del hospital. 
+ADMISIÓN 
+5 
+8 
+El sistema permitirá el flujo de pacientes 
+desde 
+cualquier 
+área 
+(referencia, 
+consulta 
+externa, 
+ambulatoria 
+y 
+emergencia) 
+a 
+hospitalización/emergencia, indicando 
+el cuarto destino. 
+ADMISIÓN 
+4 
+9 
+El sistema deberá permitir visualizar los 
+movimientos de pacientes. 
+ADMISIÓN 
+ENFERMERA 
+4 
+10 
+El sistema deber permitir el ingreso de 
+pacientes por emergencia. 
+ADMISIÓN 
+4 
+11 
+El sistema deber permitir cambiar de 
+cuarto a un paciente. 
+ADMINISTRACIÓN 4 
+12 
+El sistema debe permitir asignar un 
+seguro de salud a los pacientes. 
+ADMISIÓN 
+5 
+13 
+Citas 
+El sistema debe permitir gestionar las 
+citas de los pacientes. 
+CITAS 
+5 
+14 
+El sistema deber permitir gestionar citas 
+no programadas, donde se atiende a los 
+pacientes en orden de llegada durante un 
+CITAS 
+5 
+64 
+ 
+ 
+ 
+turno. 
+15 
+El sistema debe permitir al doctor 
+visualizar su programación de trabajo 
+por semana o mes. 
+MÉDICO 
+5 
+16 
+El sistema debe permitir llenar los 
+formatos de referencia. 
+MÉDICO 
+5 
+17 
+El sistema debe permitir gestionar los 
+formatos de referencia de un centro 
+médico. 
+ADMISIÓN 
+5 
+18 
+El sistema debe permitir llenar los 
+formatos de contrareferencia. 
+MÉDICO 
+5 
+19 
+El sistema debe permitir gestionar los 
+formatos de contrarreferencia de un 
+centro médico. 
+ADMISIÓN 
+5 
+20 
+Activos 
+El sistema permitirá gestionar los tipos 
+de activos. 
+FINANZAS 
+5 
+21 
+El sistema permitirá gestionar los tipos 
+de insumos. 
+FINANZAS 
+5 
+22 
+El sistema permitirá gestionar los 
+precios de lista del uso de tipos de 
+activos por especialidad y área. 
+FINANZAS 
+4 
+23 
+El sistema debe permitir asignar y retirar 
+activos a pacientes. 
+ADMINISTRACIÓN 4 
+24 
+El sistema debe permitir visualizar los 
+activos e insumos asociados a un 
+paciente. 
+ADMINISTRACIÓN 4 
+25 
+El sistema permitirá definir el tipo de 
+depreciación de los tipos de activos 
+fijos. 
+FINANZAS 
+3 
+26 
+El sistema permitirá visualizar la 
+depreciación de un activo por periodos 
+desde su fecha de adquisición. 
+FINANZAS 
+2 
+27 
+El sistema debe permitir el reporte de un 
+activo como averiado o reparado. 
+ADMINISTRACIÓN 2 
+28 
+El sistema debe poder visualizar un 
+histórico 
+de 
+los 
+reportes 
+de 
+reparaciones. 
+ADMINISTRACIÓN 1 
+29 
+El sistema permitirá la aprobación de los 
+registros de reparación de activos. 
+FINANZAS 
+2 
+30 
+El sistema permitirá asignar activos a un 
+cuarto del hospital. 
+ADMINISTRACIÓN 3 
+31 Logística 
+El sistema debe permitir gestionar los LOGÍSTICA 
+4 
+65 
+ 
+ 
+ 
+almacenes centrales, por edificio y por 
+piso del hospital. 
+32 
+El sistema deberá alertar en caso un 
+activo o insumo este escaso en algún 
+almacén para su respectivo movimiento 
+de otro almacén o compra. 
+LOGÍSTICA 
+5 
+33 
+El sistema deberá permitir registrar las 
+salidas de los almacenes para los 
+usuarios del HIS. 
+LOGÍSTICA 
+5 
+34 
+El sistema deberá permitir registrar el 
+ingreso de activos de los almacenes para 
+los usuarios del HIS. 
+LOGÍSTICA 
+5 
+35 
+El sistema deberá permitir el ingreso y 
+salida a almacenes centrales a través de 
+un web service (para usuarios de otros 
+sistemas). 
+- 
+5 
+36 
+El sistema deberá permitir registrar los 
+movimientos entre almacenes. 
+LOGÍSTICA 
+5 
+37 
+El sistema deberá permitir visualizar los 
+movimientos de almacenes realizados, 
+entradas y salidas. 
+LOGÍSTICA 
+5 
+38 
+Hospital 
+El sistema permitirá gestionar los 
+precios de lista de hora de trabajo de 
+cada especialidad y área. 
+FINANZAS 
+3 
+39 
+El sistema debe permitir gestionar los 
+datos relacionados al hospital (nivel, 
+dirección, impuestos, inventario, tiempo 
+de citas). 
+TI 
+3 
+40 
+El sistema debe permitir gestionar los 
+edificios, pisos y cuartos del hospital. 
+LOGÍSTICA 
+4 
+41 
+El sistema debe permitir asignar a un 
+cuarto una especialidad y un tipo. 
+LOGÍSTICA 
+4 
+42 
+El sistema deber permitir gestionar los 
+tipos de ambientes del hospital. 
+LOGÍSTICA 
+3 
+43 
+El sistema deber permitir asignar 
+precios de lista a los cuartos. 
+FINANZAS 
+4 
+44 
+Finanzas 
+El sistema permitirá gestionar gastos 
+pago de deudas, multas, etc. 
+FINANZAS 
+5 
+45 
+El sistema debe permitir registrar los 
+pagos de los pacientes. 
+FINANZAS 
+5 
+46 
+El sistema debe permitir visualizar los 
+pagos de los pacientes. 
+FINANZAS 
+5 
+66 
+ 
+ 
+ 
+47 
+El sistema deberá permitir el registro de 
+ingresos al hospital a través de un web 
+service 
+- 
+3 
+48 
+Reportes 
+El sistema permitirá emitir un reporte 
+con los gastos incurridos en un paciente 
+en un periodo determinado y otros 
+criterios 
+FINANZAS 
+ 
+49 
+El sistema permitirá emitir un reporte 
+con la cantidad de citas realizadas por un 
+doctor y su liquidación correspondiente 
+RRHH 
+ 
+50 
+El sistema permitirá emitir un reporte 
+con los gastos incurridos en el mes 
+FINANZAS 
+ 
+51 
+El sistema permitirá emitir un reporte de 
+inventarios. 
+LOGÍSTICA 
+ 
+52 
+El sistema permitirá emitir un reporte 
+con la cantidad de insumos y activos en 
+cada almacén. 
+LOGÍSTICA 
+ 
+53 
+El sistema permitirá emitir un reporte 
+con los activos y sus valores monetarios FINANZAS 
+ 
+54 
+El sistema permitirá emitir un reporte 
+con las ganancias y gastos del centro 
+médico. 
+FINANZAS 
+ 
+55 
+El sistema permitirá emitir un reporte de 
+citas del paciente. 
+ADMISIÓN 
+ 
+56 
+El sistema permitirá emitir un reporte 
+gráfico con las ganancias y gastos del 
+centro médico. 
+FINANZAS 
+ 
+57 
+El sistema permitirá emitir un reporte 
+con los empleados y sus remuneraciones 
+correspondientes 
+al 
+mes 
+(sueldos, 
+utilidades, gratificaciones). 
+RRHH 
+ 
+58 
+El sistema permitirá emitir reportes de 
+eficiencia (costo / beneficio) por activo, 
+insumo, especialidad médica y médico. 
+FINANZAS 
+ 
+59 
+El 
+sistema 
+permitirá 
+emitir 
+el 
+cronograma del médico. 
+MÉDICO 
+ 
+60 
+El sistema permitirá emitir la lista de 
+citas médicas de un médico. 
+MÉDICO 
+ 
+ 
+4.4 Requerimientos no funcionales 
+67 
+ 
+ 
+ 
+También se encontraron los siguientes requerimientos no funcionales, los cuales 
+permiten dar soporte a los requerimientos funcionales y a las características y especificaciones 
+que requiere un sistema para un hospital de categoría II-1 o superior. 
+Tabla 22. Especificación de Requerimientos no Funcionales 
+ID 
+Requerimiento 
+1 
+Los reportes serán en formato de PDF y Excel 
+2 
+El sistema funcionará bajo una plataforma web y estará disponible en el 
+navegador Chrome. 
+3 
+Confidencialidad e integridad de la información 
+4 
+El sistema usará servicios API Rest 
+5 
+El sistema será usable, fácil de aprender y con una interfaz sencilla para 
+su uso por administrativos y médicos de hasta 70 años. 
+6 
+El tiempo de aprendizaje del sistema por un usuario deberá ser menor a 
+4 horas. 
+7 
+El sistema debe proporcionar mensajes de error que sean informativos y 
+orientados a usuario final. 
+8 
+El sistema tendrá interoperabilidad hacia el sistema de historias clínicas 
+electrónicas (HCE) mediante HL7 
+9 
+El sistema tendrá interoperabilidad hacia el sistema de laboratorio 
+clínicos (LIS) mediante HL7 
+10 
+El sistema tendrá interoperabilidad hacia el sistema de farmacia (PIS) 
+mediante HL7 
+ 
+4.5 Validación de requerimientos del sistema 
+Para la validación de los requerimientos se establecieron una serie de reuniones virtuales 
+con el Sr. Pedro Vásquez Campos, Gerente de Sistemas e Innovación Tecnológica de EsSalud, 
+en las cuales nos daba directivas sobre el funcionamiento de los centros médicos de EsSalud, 
+como podríamos generalizar los procesos y nos ayudó a mapear y corregir los requerimientos 
+obtenidos hasta entonces. 
+La validación de los requerimientos del sistema se presenta en el Anexo D. 
+4.6 Conclusiones 
+Inicialmente, se intentó realizar el análisis de los requerimientos como paso inicial a 
+través de entrevistas y lo que se obtuvo de la literatura y lluvias de ideas. Sin embargo, este 
+68 
+ 
+ 
+ 
+fue un proceso muy arduo pues al observar el sistema a gran escala no había constancia de 
+que no había funcionalidades no cubiertas, o si las secciones del sistema estaban bien 
+organizadas y se integraban bien con las demás. Fue entonces que se decidió realizar el Mapeo 
+de Procesos como paso previo, lo que permitió visualizar mejor los procedimientos que 
+debería cubrir el sistema y cómo estos están organizados.  
+La especificación de requerimientos fue de gran utilidad para diseñar los casos de uso y 
+realizar el análisis del sistema. Además, permitió ver a un menor nivel las funcionalidades que 
+debe tener el sistema y ordenarlas por prioridad, de manera que se dio mayor énfasis en el 
+desarrollo, entrevistas e investigación de los requerimientos más prioritarios. 
+ 
+69 
+ 
+ 
+ 
+ 
+Análisis del Sistema 
+En esta sección se presenta la Especificación de Casos de Uso. Por cada uno se muestra 
+un flujo principal, flujos alternos y flujos extraordinarios. Además de una precondición, 
+postcondición y un actor. Para la presentación de los diagramas y flujos se utiliza la notación 
+UML (UML, 2020). 
+5.1 Objetivo 
+El objetivo de esta sección es listar los casos de uso definidos para cubrir los 
+requerimientos del sistema, se presentarán divididos por los módulos: Empleados, Pacientes, 
+Citas, Recursos, Logística, Hospital y Finanzas. El detalle de cada caso de uso se puede ver 
+en el Anexo E. 
+5.2 Diagrama de Actores 
+Los actores con los que cuenta el sistema son los siguientes: 
+ 
+Figura 6. Diagrama de Actores. 
+ 
+5.3 Diagramas de Casos de Uso 
+Se presentan a continuación los casos de uso para cada uno de los actores mencionados. 
+1. Médico 
+70 
+ 
+ 
+ 
+ 
+Figura 7. Diagrama de Caso de Uso del Médico. 
+ 
+2. Personal de Admisión 
+ 
+Figura 8. Diagrama de Caso de Uso del Personal de Admisión. 
+ 
+71 
+ 
+ 
+ 
+3. Personal de Logística 
+ 
+Figura 9. Diagrama de Caso de Uso del Personal de Logística. 
+ 
+4. Personal de RRHH 
+ 
+Figura 10. Diagrama de Caso de Uso del Personal de RRHH 
+. 
+72 
+ 
+ 
+ 
+5. Asistente de Citas 
+ 
+Figura 11. Diagrama de Caso de Uso del Asistente de Citas. 
+ 
+6. Personal de Finanzas 
+ 
+Figura 12. Diagrama de Caso de Uso del Personal de Finanzas. 
+ 
+7. Personal de TI 
+ 
+Figura 13. Diagrama de Caso de Uso del Personal de TI. 
+ 
+73 
+ 
+ 
+ 
+8. Personal de Administración 
+ 
+Figura 14. Diagrama de Caso de Uso del Personal de Administración. 
+ 
+5.4 Especificación de los casos de uso 
+Se puede encontrar la Descripción de los Casos de Uso del sistema en el Anexo E. 
+Asimismo, los flujos y especificación completa se pueden encontrar en el Anexo F.  
+5.5 Validación de casos de uso 
+La validación de los casos de uso del sistema se presenta en el Anexo G. 
+5.6 Conclusiones 
+El análisis del sistema y la especificación de casos de uso nos permitió visualizar a 
+mayor nivel las funcionalidades que debe soportar el sistema, según el rol del usuario que 
+ingresa a este. Además, nos permitió encontrar los roles básicos del sistema y proponer otros 
+para optimizar los procesos en los centros médicos, como el Administrador o el Asistente de 
+Citas. 
+Asimismo, a través de los casos de uso se pudo organizar las funcionalidades del sistema 
+y de esta manera mapear las pantallas y menús durante la etapa de diseño del sistema. 
+74 
+ 
+ 
+ 
+ 
+Diseño del Sistema 
+En esta sección se define la forma en que funcionará el sistema, sus componentes, 
+relaciones y consideraciones tecnológicas a utilizar. Para esto, se presenta la Arquitectura de 
+Software siguiendo el Modelo de Vistas de Arquitectura 4+1 propuesto por Philippe Kruchten 
+(Kruchten, 1995). Para la presentación de los diagramas (a excepción de la vista de Proceso) 
+se utiliza la notación UML (UML, 2020). 
+6.1 Objetivo 
+El objetivo de esta sección es presentar las distintas vistas del Modelo de Vistas de 
+Arquitectura 4+1 para el Sistema de Información Hospitalario. 
+6.2 Vista Lógica 
+En esta vista se busca describir la estructura del sistema, sus entidades y relaciones. Así, 
+se presenta el Diagrama de Clases del sistema, organizado por módulos para facilitar su 
+lectura. 
+1. Empleados y Pacientes 
+75 
+ 
+ 
+ 
+ 
+Figura 15. Diagrama de Clases – Vista Empleados y Pacientes. 
+2. Activos e Insumos 
+ 
+Figura 16. Diagrama de Clases – Vista Activos e Insumos. 
+76 
+ 
+ 
+ 
+ 
+3. Finanzas 
+ 
+Figura 17. Diagrama de Clases – Vista Finanzas. 
+ 
+4. Referencias y contrarreferencias 
+77 
+ 
+ 
+ 
+ 
+Figura 18. Diagrama de Clases – Vista Referencias y Contrarreferencias. 
+ 
+6.3 Vista de Desarrollo 
+En esta vista se presenta el sistema desde el punto de vista de la programación o 
+desarrollo del sistema, se describen así, sus paquetes y artefactos, así como las relaciones e 
+interfaces entre ellos. Se utilizó el framework Django en Python para los servicios web y el 
+framework Angular 9 para la interfaz web. 
+A continuación, se presenta el Diagrama de Componentes del sistema. 
+78 
+ 
+ 
+ 
+ 
+Figura 19. Diagrama Componentes del Sistema. 
+ 
+6.4 Vista de Proceso 
+Es esta vista se busca presentar los procesos propuestos que seguirá el sistema. Se 
+utilizan Diagramas de Actividades para representar esta vista. En el punto 4.2 se presentó el 
+Modelado de los Procesos que sigue la red de hospitales de EsSalud en el Perú. A 
+continuación, se presentan los flujos que seguirán los procesos con el Sistema de Información 
+Hospitalario propuesto, se manera que sirvan de apoyo a los procesos descritos en dicho punto.  
+Para la elaboración de los diagramas de actividades se utilizó la notación BPMN (OMG, 
+2020) y la herramienta Bizagi (Bizagi, 2020). Los diagramas de actividades pueden ser 
+revisados en el Anexo H. 
+6.5 Vista Física 
+79 
+ 
+ 
+ 
+En esta vista se presenta la topología de los componentes de software y hardware a 
+utilizar y sus conexiones. Se utilizaron en total tres servidores de la plataforma Amazon Web 
+Services. Se representa a través del Diagrama de Despliegue. 
+ 
+Figura 20. Diagrama de Despliegue. 
+ 
+6.6 Diseño de la Interfaz Gráfica 
+Se utilizó la herramienta web Balsamiq Wireframes para maquetar las pantallas del 
+sistema de manera que se atiendan todos los casos de uso y se plasmen los componentes 
+propuestos durante la fase de diseño. Como se explicó en la problemática, en el Capítulo 1, se 
+hace especial énfasis en la usabilidad del sistema, sobre todo en las pantallas destinadas a los 
+médicos dada su avanzada edad. 
+El flujo de pantallas completo se puede encontrar en el Anexo I. 
+6.7 Justificación de la arquitectura 
+80 
+ 
+ 
+ 
+Para el diseño de la solución se agruparon los requerimientos y funcionalidades en 
+distintos componentes según afinidad, roles de usuario y procesos soportados por el sistema. 
+De esta manera, se originaron las vistas expuestas en el capítulo y fue más sencillo 
+desarrollarlas y establecer interacciones entre ellas. 
+En la elección de las herramientas y componentes físicos (hardware) a utilizar se tomó 
+en cuenta la experiencia de los tesistas, tendencias actuales en sistemas de información y costo 
+de las licencias de software.  
+El framework Django supone un desarrollo más rápido para los tesistas. Además, 
+permite sincronizar la base de datos con el entorno de programación, lo que permitió agilizar 
+los cambios y regresiones en las entidades y sus relaciones. 
+Por otro lado, según investigaciones propias y juicios expertos en el entorno, el motor 
+de base de datos PostgreSQL es una de las bases de datos de licencia gratuita con mejor 
+rendimiento en la ejecución de consultas complejas y más usados en sistemas de gran escala 
+con alta cantidad de lecturas y escrituras.  
+Así, el uso de estas tecnologías permite desarrollar un software fácilmente escalable, 
+replicable, sostenible y mantenible que sirva para futuras investigaciones, proyectos o 
+mejoras. 
+6.8 Validación de la arquitectura del sistema 
+La validación de la arquitectura del sistema por el experto se presenta en el Anexo J. 
+6.9 Conclusiones 
+La etapa de diseño del sistema fue muy importante para la etapa de desarrollo pues 
+permitió identificar las estructuras y bases, tanto de software como de hardware, que 
+soportarían el Sistema de Información Hospitalario. Además, tener estos diagramas y planos 
+del sistema permitió identificar relaciones faltantes, facilitar las consultas a base de datos e 
+implementar los cambios que se daban durante el desarrollo del proyecto de manera más 
+rápida y segura. 
+Esta también fue la etapa, además del desarrollo, que tuvo mayor duración, debido a los 
+cambios que proponía el asesor o que se encontraban a través de las entrevistas con los 
+interesados incluso luego de haber concluido, aparentemente, la etapa de diseño. Las causas 
+81 
+ 
+ 
+ 
+de los cambios fueron diversas como mal planteamiento del proceso, procesos no cubiertos, 
+nuevos o unión de pantallas y procedimientos, información o atributos de entidades faltantes, 
+dificultades en la programación, seguimiento de plantillas de front-end, verificación de 
+heurísticas de usabilidad y resultados obtenidos en las pruebas de usabilidad con usuarios. 
+82 
+ 
+ 
+ 
+ 
+Implementación del Sistema 
+7.1 Implementación de la base de datos 
+En esta sección se presentan las entidades que emplea el sistema y sus relaciones 
+en el Diagrama Entidad Relación.  
+La infraestructura de base de datos tuvo un desarrollo incremental, empezamos 
+primero por las entidades principales y más simples y sus relaciones, luego se fueron 
+añadiendo las demás entidades y relacionándolas con las existentes. 
+Para elaborar el Diagrama Entidad Relación se utilizó la herramienta “PyGraphviz” 
+de Python. 
+ 
+ 
+83 
+ 
+ 
+ 
+ 
+Figura 21. Diagrama Entidad Relación 
+ 
+ 
+84 
+ 
+ 
+ 
+Debido al número de componentes la imagen es muy grande, por lo que puede 
+visualizarse a mayor detalle en el siguiente link: https://i.imgur.com/fGnmVdN.png. 
+7.2 Implementación de los servicios web 
+En esta sección se describe los diferentes servicios web con los cuales funciona el 
+sistema. 
+7.2.1 Objetivo 
+El objetivo de esta sección es listar por los servicios web desarrollados con el 
+framework Django usando Python organizados por categoría, nombre y URL. El detalle 
+de los servicios están documentados usando Postman en el siguiente enlace: 
+Documentación Postman  
+7.2.2 Listado de servicios web  
+En el Anexo K se puede encontrar la especificación de servicios web del proyecto. 
+7.3 Implementación del aplicativo web 
+En esta sección se describe las diferentes vistas del sistema que fueron desarrollados 
+de acuerdo a los maquetados expuestos en la sección de Diseño (Punto 6.6). 
+7.3.1 Objetivo 
+El objetivo de esta sección es mostrar las vistas principales desarrolladas usando el 
+framework Angular 9. 
+7.3.2 Listado de las vistas principales 
+En el Anexo L se pueden observar las pantallas principales del sistema. 
+7.4 Estándar HL7 
+Para la interoperabilidad dentro de los diferentes sistemas de salud se optó por usar 
+el estándar HL7. El cual brinda lineamientos de cómo transmitir información entre los 
+sistemas. Esta información es pública y se puede encontrar en https://www.hl7.org/fhir/. 
+Además, la documentación de estos servicios se encuentra en el siguiente enlace en la 
+carpeta “HL7. A continuación, se lista los servicios que se hicieron siguiendo el estándar 
+mencionado. 
+85 
+ 
+ 
+ 
+• Listar pacientes 
+Se usó siguiendo la siguiente estructura en formato JSON  
+ 
+Figura 22. Formato HL7 para pacientes 
+o Listar todos los pacientes 
+o Listar paciente por código 
+• Listar médicos 
+Se usó la siguiente estructura en formato JSON 
+86 
+ 
+ 
+ 
+ 
+Figura 23. Fomrato HL7 para trabajadores de medicina 
+o Listar todos los médicos: 
+o Listar médico por código 
+o Listar médicos por especialidad 
+• Listar procedimientos 
+Debido a que son un set de valores fijos, HL7 opta por que cuenten con estos 
+campos. 
+Tabla 23. Estándar HL7 para listar procedimientos 
+Lvl 
+Algunas listas de códigos tienen jerarquía. En el caso de que la 
+tenga, cada código debe estar asignado a un nivel en específico. 
+Source 
+El origen de dónde se saca la información (dónde están 
+definidos) 
+Code 
+El código del procedimiento 
+Display 
+El texto/nombre del procedimiento 
+Definition 
+La definición del procedimiento 
+Comments 
+Comentarios de cómo usar el código 
+ 
+ 
+o Listar todos los procedimientos 
+o Listar procedimientos por especialidad 
+87 
+ 
+ 
+ 
+o Listar procedimiento por código 
+• Listar especialidades 
+Debido a que son un set de valores fijos, HL7 opta por que cuenten con estos 
+campos 
+Tabla 24. Estándar HL7 para listar especialidades 
+Lvl 
+Algunas listas de códigos tienen jerarquía. En el caso de que la 
+tenga, cada código debe estar asignado a un nivel en específico. 
+Source 
+El origen de dónde se saca la información (dónde están 
+definidos) 
+Code 
+El código de la especialidad 
+Display 
+El texto/nombre de la especialidad 
+Definition 
+La definición de la especialidad 
+Comments 
+Comentarios de cómo usar el código 
+o Listar todas las especialidades 
+o Listar especialidad por código 
+• Listar citas por paciente 
+Se usó la siguiente estructura en formato JSON 
+88 
+ 
+ 
+ 
+ 
+Figura 24. Formato HL7 para citas 
+o Listar todas las citas del paciente 
+o Listar cita por código 
+ 
+7.5 Pruebas de software 
+Dado a que el sistema consta de servicios web y son consumidos por el sistema 
+web, se optó por dividir las pruebas en Front End y Backend. A su vez, se optó por crear 
+pruebas unitarias manuales debido a la naturaleza ágil del proceso de construcción del 
+software.  
+89 
+ 
+ 
+ 
+En el caso de las pruebas de servicios web, se listó todos los servicios web (Anexo 
+N) indicando su URL, la descripción de esa prueba, datos de prueba a utilizar, el resultado 
+obtenido, el resultado esperado y el estado de la prueba. 
+A su vez, en las pruebas diseñadas para el sistema web (Anexo M) se dividió por 
+módulo, el usuario que utilizaría ese flujo, el nombre del caso de prueba, qué opción del 
+menú representaba, la descripción del caso de prueba, el resultado esperado y el resultado 
+obtenido. 
+En el proceso de ejecución, primero se aseguró que todos los servicios web estaban 
+correctos para luego implementarlos con el sistema web. Una vez esté todo integrado se 
+pasó a hacer las pruebas unitarias a nivel de FrontEnd que en su conjunto también se 
+utilizaron para las pruebas de regresión cada vez que se hacía un cambio en el código ya 
+sea a nivel de BackEnd o FrontEnd. Con este proceso, se aseguró que el sistema 
+presentado en esta tesis tenga un alto grado de calidad. 
+7.6 Conclusiones 
+En contraste con la etapa de diseño, la etapa de desarrollo fue la más sencilla de 
+desarrollar debido a los conocimientos y experiencia de los tesistas. Esto no quiere decir 
+que fue la más rápida, pero el desarrollo del sistema fue estricto y se respetó los tiempos 
+del cronograma. 
+También cabe resaltar que hubo una notable aceleración en la implementación del 
+sistema ya que durante las primeras etapas del desarrollo se estuvo creando las bases del 
+sistema e investigando sobre los lenguajes, frameworks y plataformas a utilizar. Sin 
+embargo, una vez presentes estas bases y los primeros procesos y pantallas, se avanzó 
+muy rápido siguiendo estrictamente el cronograma planteado. Los cambios que se daban 
+durante las reuniones con el asesor o los interesados no supusieron un incremento 
+sustancial para el tiempo de desarrollo. 
+Respecto a HL7 no se encontró un estándar de interoperabilidad para el intercambio 
+de información no médica en centros de salud, por lo que para servicios como control de 
+inventarios y gestión de almacenes con los módulos de Farmacia (PIS) y Laboratorio 
+(LIS) se hicieron a través de servicios REST convencionales propuestos por nosotros. 
+Estas características permiten presentar a nuestro proyecto con atributos de innovación 
+90 
+ 
+ 
+ 
+en cuanto a la interoperabilidad con otros sistemas usando el estándar HL7 y con otros 
+centros médicos del país. 
+ 
+91 
+ 
+ 
+ 
+ 
+Módulo de Seguridad 
+En la presente sección se presentan las medidas y métodos contemplados para 
+agregarle seguridad al sistema y reducir las vulnerabilidades del sistema. Se tomaron 
+medidas tanto en los módulos de Front-End y Back-End, como en la base de datos y la 
+comunicación entre estos. 
+8.1 Objetivo 
+El objetivo de esta sección es presentar los lineamientos seguidos en relación a la 
+seguridad y confiabilidad de los datos gestionados por el sistema. 
+8.2 Front-End 
+Como se mencionó en la sección 1.3 Herramientas y Métodos, se optó por elegir 
+Angular como marco de trabajo para el módulo de Front-End debido a la experiencia de 
+los tesistas, su calidad en estilos y apariencia y su compatibilidad con diversos 
+navegadores y tamaños de pantalla. 
+Sin embargo, también se optó por este Framework debido a la seguridad y 
+confiabilidad que ofrece, por ejemplo (Angular, 2020): 
+• Secuencias de comandos entre sitios (XSS): es uno de los más usuales en internet 
+y ocurre cuando atacantes incluyen código malicioso en las páginas web. Dicho 
+código puede robar datos de usuario como contraseñas o números de tarjeta o 
+realizar acciones a su nombre. Angular por defecto limpia e ignora valores no 
+confiables que pudieron ser insertados en el DOM (Document Object Model) del 
+sitio web.  
+• Enlace de falsificación de solicitud entre sitios (CSRF): ocurre cuando a través de 
+engaños, se incita al usuario a visitar un sitio web inseguro desde donde se 
+encuentra actualmente. Si el sitio web no tiene protección contra CSRF, no puede 
+diferenciar entre una petición legítima entre un sitio web maligno o seguro. 
+• Inclusión de scripts entre sitios (XSSI): ocurre normalmente en navegadores 
+antiguos donde a un sitio web maligno se le permite leer data de APIs JSON. Esto 
+sucede cuando los JSON recibidos de tipo ejecutables mediante Javascript. Se 
+puede evitar desde el servidor haciendo que estos objetos no sean ejecutables 
+92 
+ 
+ 
+ 
+haciendo uso de la cadena ")]}',\n" en el objeto. Sin embargo, Angular por defecto 
+elimina esta cadena de modo que los JSON no sean ejecutables y suprime esta 
+vulnerabilidad. 
+Aparte de la seguridad innata de angular se optó a nivel de Front-End por las 
+siguientes medidas: 
+• Token de servicios: En todos los servicios se requiere enviar un token en la 
+cabecera para que puedan responder. En otras palabras, alguien no autenticado no 
+podrá llamar a los servicios. 
+• Autenticación: El usuario no puede acceder al sistema a menos que se haya 
+autenticado y cuente con un token de autorización, en el caso de que quiera 
+ingresar a un link que no sea el de login. 
+• Opciones filtradas por roles: Los usuarios solo podrán ingresar a las opciones que 
+ellos pueden ingresar según su rol. 
+• Exigir una contraseña segura para los empleados, usando el siguiente lineamiento: 
+Al menos una mayúscula, un carácter no alfanumérico (guion bajo o guion) y que 
+sea mínimo de 8 dígitos 
+• Exigir cambio de contraseña en el primer acceso. 
+• Certificado SSL: Al usar un certificado SSL, la información transmitida es 
+encriptada entre el navegador y el servidor. 
+93 
+ 
+ 
+ 
+ 
+Figura 25. Certificado SSL 
+8.3 Back-End  
+Debido a que se seleccionó Django como el marco de trabajo para Backend, a 
+continuación, se listan lineamientos que ofrece Django por defecto y por ende posee 
+nuestro sistema (Django, 2020): 
+• Protección contra inyección SQL: Es un tipo de ataque que consiste en ejecutar 
+de forma arbitraria un código SQL en la base de datos. Esto puede resultar en 
+registros eliminados o filtración de información. Para esto, Django está protegido 
+contra estos ataques debido a que sus consultas están construidas en base a la 
+parametrización de consultas. En otras palabras, el código SQL está separado de 
+los parámetros de las consultas. 
+• Enlace de falsificación de solicitud entre sitios (CSRF) 
+• Secuencias de comandos entre sitios (XSS) 
+Aparte de la seguridad innata de Django se optó a nivel de Back-End por las 
+siguientes medidas: 
+94 
+ 
+ 
+ 
+• Exigir token de autenticación para todos los servicios: Si los usuarios no están 
+autenticados, no podrán llamar a los servicios de Back-End. 
+En la siguiente imagen, se puede apreciar que se intenta llamar al servicio 
+“Visualizar 1 Insumo” pero sale un error por parte de Back-End que nos pide 
+credenciales. 
+ 
+Figura 26. Servicio sin Token 
+Al activar el token, ya se puede ver la respuesta del servicio de manera correcta: 
+ 
+Figura 27. Servicio con Token 
+95 
+ 
+ 
+ 
+• Códigos para los registros de la base de datos: A nivel de back a cada registro que 
+es creado a nivel de Front-End, se le añade un código.  
+ 
+Figura 28. Tabla con códigos por cada fila 
+Con este código se puede identificar fácilmente al registro a nivel de usuario 
+sin necesidad de que se le proporcione el id de la base de datos. 
+ 
+Figura 29. Front-End que muestra solo los códigos por cada item 
+8.4 Base de datos 
+• Encriptación de contraseñas usando PBKDF2 
+ 
+Figura 30. Usuarios con contraseña encriptada usando pbkdf2 
+96 
+ 
+ 
+ 
+• Todas las tablas tienen campos de auditoría, donde se puede apreciar la fecha de 
+creación y modificación 
+ 
+Figura 31. Campos de auditoría para cada tabla 
+• Entrada a la base de datos protegida por contraseña: Así el usuario conozca el 
+enlace para ingresar a la base de datos, tiene que autenticarse para manipularla. 
+Esta ventana de autenticación no comparte la misma información que la 
+autenticación que se hace por Front-End. 
+ 
+Figura 32. Login para entrar a la Base de Datos 
+8.5 Conclusiones 
+Usando las bondades de los frameworks de Django (Back-End) y Angular (Front-
+End), se tuvo una capa por defecto de seguridad. Sin embargo, se tuvo que añadir 
+funcionalidades extras en Front-End como autenticación, certificación SSL, petición de 
+token, fortaleza de contraseña, mostrar solo códigos por cada registro para reforzar la 
+seguridad a nivel de cliente. 
+97 
+ 
+ 
+ 
+A nivel de servidor se optó por encriptar la contraseña, exigir token para mostrar 
+información, campos de auditoría y protección de la base de datos mediante contraseña. 
+Con estas medidas se obtuvo un sistema más seguro que previene ataques 
+maliciosos e infiltración de información sensible. 
+ 
+ 
+98 
+ 
+ 
+ 
+ 
+Evaluación de Usabilidad 
+En esta sección se presentan los métodos y herramientas utilizados para evaluar y 
+mejorar la usabilidad del sistema. Se muestra la aplicación de las 10 Heurísticas de 
+Nielsen (Nielsen, 1994) y los resultados obtenidos de realizar pruebas con usuarios. 
+9.1 Objetivo 
+En esta sección se presentan los resultados de la aplicación de las Heurísticas de 
+Nielsen a la interfaz gráfica del sistema, así como los resultados y conclusiones obtenidas 
+a través de las pruebas con usuarios. 
+9.2 Evaluación Heurística 
+Una evaluación heurística es un método de inspección de usabilidad utilizado para 
+identificar patrones o defectos de diseño asociados a la interfaz de usuario. Las 
+Heurísticas de Nielsen, propuestas en 1994, son actualmente las heurísticas de usabilidad 
+más utilizadas para el diseño de interfaces de usuario. Estas son reglas generales amplias 
+y no son pautas específicas que se tienen que seguir mandatoriamente (Liyanage, 2016). 
+Ambos tesistas participaron en el proceso de evaluación heurística y realizaron la 
+verificación del diseño y la interfaz gráfica durante el desarrollo del proyecto. 
+A continuación, se describe como fueron aplicadas para evaluar el Sistema de 
+Información Hospitalario: 
+I. 
+Visibilidad del estado del sistema 
+Esta heurística manifiesta que el usuario siempre debe recibir retroalimentación 
+cuando realiza una acción, para saber si el sistema sigue funcionando y su transacción 
+culminó o debe volver a intentar la acción (Nielsen, 1994). Fue aplicada en la interfaz a 
+través de cambios en los íconos, notificaciones de carga y notificaciones de éxito o error 
+al finalizar las cargas. A continuación, algunos ejemplos aplicados al sistema: 
+99 
+ 
+ 
+ 
+Se muestra una notificación al mover exitosamente un paciente a un área y 
+especialidad específicos. 
+ 
+Figura 33. Notificación de éxito 
+ 
+Se muestra una notificación de error en caso el sistema haya sido incapaz de realizar 
+el movimiento del paciente. 
+ 
+Figura 34. Notificación de error 
+Se muestra una notificación de carga mientras el servicio web responde con los 
+datos de los pacientes para ser mostrados en pantalla. 
+ 
+Figura 35. Notificación de carga 
+ 
+II. 
+Utilizar el mismo lenguaje que el usuario 
+100 
+ 
+ 
+ 
+Para cumplir esta heurística se introdujeron íconos y términos que sean familiares 
+al usuario final (médicos, enfermeros y administrativos).  
+Para los botones que permiten gestionar los registros, se introdujeron íconos 
+generales que permiten identificar la acción a realizar, así como textos en las cabeceras y 
+tooltips por si el usuario no tiene claro el funcionamiento del botón. 
+Se muestran íconos para visualizar o editar los registros de los empleados del 
+sistema. Se muestran tooltips explicando los íconos al superponer el mouse sobre estos. 
+ 
+Figura 36. Pantalla de Gestión de Empleados 
+ 
+III. 
+Control y libertad para el usuario 
+Integran este principio la posibilidad de brindarle al usuario la opción de cancelar 
+o deshacer acciones que realizó ya sea por error o si se arrepintió (Nielsen, 1994). 
+Las pantallas del sistema siguen un flujo simple donde el usuario ingresa y 
+selecciona los datos de forma creciente, cambiando de vista haciendo clic en siguiente. 
+En todos estos flujos con más de dos pantallas, se ofrecen las opciones de volver a la 
+pantalla anterior o cancelar la acción y regresar al estado anterior. 
+101 
+ 
+ 
+ 
+El usuario se encuentra en la pantalla Precio Lista por Procedimiento, donde se 
+listan todos los procedimientos del hospital.  
+ 
+Figura 37. Pantalla de Precio Lista por Procedimiento 
+Si desea ver la tarifa que cada aseguradora tiene para un determinado 
+procedimiento, hace clic en Tarifa, lo que lo lleva a la pantalla Tarifario por Aseguradora. 
+ 
+102 
+ 
+ 
+ 
+ 
+Figura 38. Pantalla de Tarifario por Aseguradora 
+Si el usuario desea volver a la pantalla anterior y seleccionar otro Procedimiento, 
+ya sea por error o por deseo a priori, puede hacer clic en el botón Volver. 
+ 
+Figura 39. Pantalla de Edición de Tarifa de una Aseguradora para un Procedimiento 
+Se el usuario desea cancelar la edición de la tarifa de una aseguradora para un 
+determinado procedimiento, puede hacer clic en cancelar y volver a la pantalla anterior. 
+ 
+IV. 
+Consistencia y estándares 
+103 
+ 
+ 
+ 
+Esta indica que la interfaz debe seguir las convenciones generales ya establecidas 
+como estándar como patrones de navegación, posición de las barras y la información, 
+números e íconos, entre otros (Nielsen, 1994). 
+Se incluyeron los siguientes componentes de acuerdo a la heurística mencionada: 
+Todas las pantallas de gestión tienen la misma plantilla o formato de interfaz, con 
+las mismas posiciones e imágenes para los botones, íconos, títulos y filtros, de esta manera 
+el usuario se acostrumbra a un mismo formato de pantalla y puede entender el flujo de 
+varias pantallas tan solo aprendiendo una. 
+ 
+Figura 40. Pantalla de Gestión de Activos. 
+Se incluyó una tarjeta de perfil o Profile Card para un acceso rápido a la 
+configuración de su cuenta o para cerrar sesión. Incluso cuando la barra lateral está 
+oculta. 
+104 
+ 
+ 
+ 
+ 
+Figura 41. Profile Card del Usuario Logueado 
+Se incluyó también una lista desplegable con las opciones de configuración de la 
+cuenta y logout dentro de la barra lateral del sistema. 
+ 
+Figura 42. Opciones de Perfil en el Sidebar. 
+105 
+ 
+ 
+ 
+Se agregó una ventana para mostrar las notificaciones del usuario al hacer clic en 
+el ícono de notificaciones. 
+ 
+Figura 43. Notification Card. 
+ 
+V. 
+Prevención de errores 
+En el sistema se añadieron formularios de confirmación ante cualquier acción de 
+eliminar o disociar un recurso de un paciente o ambiente. Además, se incluyen mensajes 
+en los campos requeridos de los formularios para que el usuario no pueda continuar si 
+están en blanco. Por último, el sistema cuenta con distintos formularios para el ingreso de 
+diversos tipos de datos, como fechas, números, cadenas cortas o extensas de texto o 
+selectores de opción múltiple; lo que evita que el usuario ingrese datos inconsistentes 
+como caracteres alfabéticos en el número de DNI o una fecha con un formato no 
+soportado por el sistema. A continuación, algunos ejemplos usados en el sistema: 
+Ventana emergente para confirmar el movimiento de un paciente aun área y 
+especialidad determinados. 
+106 
+ 
+ 
+ 
+ 
+Figura 44. Ventana Emergente de Confirmación – Movimiento de Pacientes. 
+ 
+Se muestran los campos inválidos al intentar ingresar un paciente al sistema con 
+datos vacíos o inválidos. 
+ 
+Figura 45. Ingreso de datos del paciente. 
+ 
+VI. 
+Minimizar la carga de memoria del usuario 
+Se trata de evitar forzar al usuario a recordar información de pantallas anteriores o 
+en qué parte del sistema se encuentra (Nielsen, 1994).  
+Esta heurística se aplicó en todas las pantallas del sistema a través del uso de títulos, 
+menús y botones. Por ejemplo, en la pantalla de Histórico de Movimiento de Pacientes, 
+el usuario puede ver en que pantalla se encuentra observando el título de la pantalla, la 
+opción resaltada en la barra lateral o incluso en la dirección URL de la página. 
+107 
+ 
+ 
+ 
+ 
+Figura 46. Pantalla de Histórico de Movimientos del Paciente. 
+ 
+Además, se brinda la opción al usuario para regresar y modificar información de 
+formularios pasados en caso quiera cambiarla o verificar lo realizado. 
+ 
+Figura 47. Pantalla Final del flujo de Movimiento de Pacientes. 
+VII. 
+Flexibilidad y eficiencia de uso 
+Para usuarios con más experiencia en el sistema (como se espera sean los 
+administrativos del hospital, que son los usuarios que usarán con mayor frecuencia el 
+108 
+ 
+ 
+ 
+sistema) se debe añadir opciones y formas de acelerar su experiencia de usuario, pues ya 
+conoce el sistema y puede obviar ciertos formularios pensados para usuarios nuevos. 
+Esta fue quizá la heurística más difícil de implementar dado que el diseño de la 
+interfaz tuvo que ser tal que no confunda a los usuarios nuevos o de edad avanzada y que 
+sea fácil de encontrar para usuarios expertos en el sistema o con conocimientos en 
+tecnologías de información.  
+Se implementaron opciones que permiten a los usuarios revisar, por ejemplo, todas 
+las referencias entrantes al hospital (pacientes provenientes de otros centros hospitalarios) 
+en estado de revisión Pendiente, para evitar la búsqueda manual ya sea por código de 
+referencia o visualmente. 
+ 
+Figura 48. Pantalla de Gestión de Referencias Entrantes. 
+También se incluyeron opciones para hacer ediciones en lote, como en la opción de 
+Nómina, donde se podrá editar el sueldo de varios empleados a la vez según su rol o 
+puesto, haciendo clic en Por Rol. 
+109 
+ 
+ 
+ 
+ 
+Figura 49. Pantalla de Nómina de Empleados. 
+VIII. 
+Diálogos estéticos y diseño minimalista 
+La información mostrada en las pantallas es la necesaria y útil para el usuario en 
+ese instante (Nielsen, 1994).  
+Es por esto que en las pantallas del sistema se muestra solo la información 
+relacionada al proceso o menú donde se está ubicado y se evitan indicaciones, botones o 
+figuras irrelevantes que solo confundirían al usuario. Todas las pantallas de tipo CRUD 
+son muy similares, con las mismas posiciones y formas de los botones, filtros, buscadores 
+y demás herramientas siguiendo un diseño minimalista, de forma que los usuarios se 
+puedan dar cuenta por sí mismos como es el funcionamiento del sistema sin tener que 
+complicar la interfaz con indicaciones o íconos innecesarios. 
+ 
+Figura 50. Login del Sistema 
+110 
+ 
+ 
+ 
+En la pantalla de bienvenida del sistema, solo se pide la información básica para el 
+inicio de sesión. 
+ 
+Figura 51. Pantalla de Gestión de Tipos de Activos. 
+Las pantallas de tipo CRUD o de gestión siguen esta misma estructura simple y 
+minimalista. 
+IX. 
+Ayudar a los usuarios a reconocer, diagnosticar y recuperarse de los errores 
+Esta heurística se relaciona con los mensajes de error que se le presentan al usuario. 
+Los mensajes de error no deben asustar al usuario, sino ayudarlo a comprender lo que está 
+pasando y cómo solucionarlo (Nielsen, 1994). 
+Se tienen distintos mensajes de error para cada casuística, de esta forma, se ayuda 
+al usuario a identificar la causa del error y a corregirlo si fue culpa suya o está a su alcance. 
+ 
+Figura 52. Mensaje de error – Ingresar Paciente 1 
+111 
+ 
+ 
+ 
+ 
+ 
+Figura 53. Mensaje de error – Ingresar Paciente 2 
+ 
+Figura 54. Mensaje de error – Ingresar Paciente 3 
+X. 
+Ayuda y documentación 
+Para cumplir con esta heurística se añadieron tooltips e íconos con explicaciones 
+para los campos más complejos de los formularios, de tal manera que el usuario puede 
+obtener una breve descripción del formulario o los pasos a realizar haciendo clic en el 
+ícono Ayuda 
+. 
+ 
+112 
+ 
+ 
+ 
+ 
+Figura 55. Mensaje de Ayuda en la pantalla de Nómina de Empleados 
+9.3 Pruebas con Usuarios 
+Se realizaron pruebas de usabilidad del sistema con diez usuarios finales (médicos) 
+de entre 22 y 69 con un promedio de 56 años de edad de nacionalidad peruana y argentina 
+para evaluar que tan bien entendían el sistema, qué tan rápido se adaptaban a este y cuánto 
+tardaban en realizar una serie de tareas propuestas. 
+Para este fin se utilizó la herramienta web Google Forms y se puede visualizar el 
+cuestionario en el siguiente enlace: 
+https://docs.google.com/forms/d/e/1FAIpQLSfdxAoLHIaJdg-
+NKB8SWRU5_rNe1PqwQyLci-3B-LSkbZF9Qg/viewform?usp=sf_link.  
+No se pudo registrar la interacción de los usuarios o sus reacciones, pero se pudo 
+medir el tiempo de interacción con el sistema para cumplir los objetivos del ejercicio 
+propuestos (se presenta líneas abajo). 
+El formulario contó con las siguientes tres secciones principales: 
+1. Cuestionario Pre-Test: en la que se muestra la siguiente captura de una pantalla 
+del sistema.  
+113 
+ 
+ 
+ 
+ 
+Figura 56. Cuestionario Pre-Test 
+Luego, se pregunta sobre lo que cree trata la pantalla al usuario y sobre la 
+utilidad de sus componentes. En esta prueba los encuestados nunca habían usado 
+el sistema y solo habían leído una breve descripción de este. Se elaboraron las 
+siguientes preguntas: 
+• Con la información que se presenta en la imagen, ¿para qué cree que sirve 
+esta pantalla? 8 de 10 encuestados respondieron correctamente la 
+pregunta. 
+• ¿Hay algún elemento que le haya ayudado a identificar su funcionalidad? 
+ 
+Figura 57. Gráfico de elementos de usabilidad 
+114 
+ 
+ 
+ 
+• ¿Hay algún elemento que no entienda o está fuera de lugar? 
+ 
+Figura 58. Gráfico de elementos fuera de lugar 
+2. Instrucciones y Lista de Tareas: en la que se presentan una serie de actividades 
+que el usuario debe realizar y se mide el tiempo que tarda en desarrollarlas. En la 
+prueba se indicó al usuario que debía mover a un área, especialidad y cuarto del 
+hospital determinados, siendo esta la primera vez que el usuario interactuaba con 
+el sistema. 
+ 
+Figura 59. Instrucciones de la prueba de usabilidad 
+Se midió el tiempo para realizar las instrucciones propuestas y dio un promedio de 
+4.5 minutos. 
+3. Cuestionario Post-Test: en esta etapa se le entregó libertad al usuario para que 
+navegue e interactúe sobre los distintos roles y pantallas del sistema y luego se 
+realizaron las siguientes preguntas: 
+115 
+ 
+ 
+ 
+• ¿Cuál le pareció fue el nivel de dificultad al realizar las actividades 
+mencionadas? 
+ 
+ 
+Figura 60. Gráfico de dificultad de uso 
+• ¿Tuvo alguna dificultad durante el proceso al realizar la lista de 
+actividades? 
+Respuestas diversas desde la demora en la aparición de la data hasta la 
+cantidad de pasos necesarios para mover un paciente. 
+• ¿Hubo algún componente, pantalla o procedimiento que le resultó confuso 
+o no entendió durante el test? La mayoría de respuestas se enfocó en la 
+función de los íconos en las tablas. 
+ 
+ 
+Figura 61. Gráfico de identificación de componentes 
+116 
+ 
+ 
+ 
+¿Ve sencilla la forma de cambiar de pantalla o dirigirse a otra funcionalidad del 
+sistema? 
+ 
+Figura 62 Gráfico de dificultad en el flujo 
+¿Le quedó claro la operación que acaba de hacer y su utilidad para el hospital? 
+ 
+Figura 63 Gráfico de entendimiento de la funcionalidad 
+• ¿Qué es lo que más te llamó la atención positiva o negativamente del sitio 
+web? 
+• Si gusta, deje un comentario sobre algo que cree debería mejorar el sistema 
+en cuanto a usabilidad o facilidad de uso para los usuarios. 
+9.4 Conclusiones 
+Se concluye que a pesar de hacer énfasis y velar por el cumplimiento de las 
+heurísticas de Nielsen, esto no asegura la usabilidad y fácil entendimiento del sistema de 
+los usuarios. Es muy importante también realizar pruebas con usuarios finales para 
+escuchar sus comentarios, quejas e identificar los flujos de información que no entienden. 
+117 
+ 
+ 
+ 
+Además, se deduce que con el uso de pruebas más exhaustivas como Eye Tracking 
+o Think Aloud en un laboratorio, que no se pudieron hacer por motivos externos, hubiesen 
+ayudado a identificar de manera más rápida y exacta los componentes del sistema en los 
+cuales enfocarse en mejorar. 
+Se demostró que la adaptación y sentimiento de mayor facilidad de uso del sistema 
+se dio en usuarios de menor edad y con experiencia en el uso de sistemas web (de 
+cualquier tipo), ya sea en su vida cotidiana o en el campo laboral. Sin embargo, en los 
+centros médicos del país existen doctores de avanzada edad que se deben adaptar al 
+sistema de igual manera. Es por ello que se hace necesario en el sistema incluir en todas 
+las pantallas los Mensajes de Ayuda expuestos en el punto 9.2.X para que los usuarios 
+tengan una noción de en qué parte del sistema se encuentran, qué pueden hacer en ella y 
+cómo hacerlo. 
+En conclusión, el sistema es usable y puede ser implantado en centros médicos de 
+categoría II-1 o superior. No obstante, para los usuarios más longevos requerirá una 
+pequeña capacitación e introducción al sistema para una rápida adopción del sistema. 
+ 
+ 
+118 
+ 
+ 
+ 
+ Conclusiones y trabajos futuros 
+10.1 
+Conclusiones 
+Se logró culminar el Sistema de Información Hospitalario (HIS) interoperable 
+basado en estándares HL7 para centros médicos de categoría II-1 o superior cumpliendo 
+y desarrollando los objetivos y resultados específicos del proyecto; que incluyen las 
+etapas de desarrollo de software, la arquitectura del sistema, el sistema web, el módulo 
+de seguridad y la evaluación de usabilidad. 
+Las etapas de análisis y diseño del proyecto, para elaborar la arquitectura del 
+sistema, fueron las más demandantes de tiempo y en las que hubo más cambios. Esto 
+debido principalmente a las diversas opiniones y perspectivas de los distintos 
+involucrados (tesistas, asesor, profesores, entrevistados, médicos, enfermeros).  Sin 
+embargo, estos cambios no complicaron la implementación del sistema y su adición a los 
+procesos ya programados fue rápida debido a los frameworks y metodología (XP, ágil) 
+utilizados. 
+Además, la evaluación heurística permitió verificar y reforzar la usabilidad del 
+sistema, por lo que las pruebas con usuarios fueron satisfactorias y se encontraron pocos 
+defectos en la usabilidad del software. 
+Por otro lado, las validaciones y la evaluación de usabilidad fueron importantes para 
+recibir la opinión de expertos en cuanto a cómo mejorar el sistema y hacerlo más escalable 
+para que pueda ser mejorado y tomado como referencia en el futuro para otros proyectos 
+de tesis e implementaciones. 
+10.2 
+Trabajos futuros 
+Se desarrolló un Sistema de Información Hospitalario que apoye a las operaciones 
+administrativas de un hospital de categoría II-1 o superior. Para implementar el sistema 
+en uno o varios hospitales del país se necesitará el apoyo de los sistemas de Farmacia 
+(PIS), Laboratorio (LIS) e Historias Clínicas Electrónicas (HCE) para brindar una gestión 
+completa de la información del hospital. Además, se requerirá un servidor que sirva como 
+central de interoperabilidad que permita conectar varios hospitales del país. 
+119 
+ 
+ 
+ 
+Este proyecto, al igual que los otros módulos del Healthcare Information 
+Management System, puede ser mejorado y personalizado en muchos aspectos, es por 
+esto que se presenta como proyecto de tesis para que otros profesionales puedan usarlo 
+como base para plantear nuevos proyectos con tecnologías más modernas en la época en 
+que lo desarrollen y usando plataformas de interoperabilidad con datos de los ciudadanos 
+que esperamos el estado implemente eficazmente en el futuro. 
+ 
+ 
+ 
+120 
+ 
+ 
+ 
+Referencias 
+Abad J. (6 de abril de 2005). Tipos de Pruebas de Software. Ingeniería de Software. 
+Recuperado de: http://ing-sw.blogspot.com/2005/04/tipos-de-pruebas-de-
+software.html 
+Aghazadeh S., Aliyev A., Ebrahimnezhad M. (2012). Review the Role of Hospital 
+Information Systems in Medical Services Development. International Journal of 
+Computer Theory and Engineering. Recuperado de 
+http://www.ijcte.org/papers/596-M024.pdf 
+Aliaga, R. (26 de enero de 2018). ¿Por qué es tan caótico el sistema de salud peruano? 
+Recuperado de 
+https://www.esan.edu.pe/conexion/actualidad/2018/01/26/por-que-es-tan-
+caotico-el-sistema-de-salud-peruano/ 
+Alva, G. (16 de junio de 2015). La gestión de instituciones de salud en el Perú. 
+Recuperado de 
+https://www.esan.edu.pe/conexion/actualidad/2015/06/16/gestion-instituciones-
+salud-siglo-xxi-peru/ 
+Angular (2019). Architecture overview. Recuperado de 
+https://angular.io/guide/architecture 
+Angular (2020). Security. Recuperado de https://angular.io/guide/security 
+Artaza Barrios, O., Méndez, C., Holder Morrison, R, Suárez Jiménez, J. (2011). Redes 
+Integradas De Servicios De Salud: El Desafío De Los Hospitales. Santiago: 
+OPS/OMS 
+121 
+ 
+ 
+ 
+Bahit, E. (2012). Scrum & Extreme Programming: para programadores. Buenos Aires: 
+SafeCreative. 
+Balaraman P., Kosalram K. (2013). E - Hospital Management & Hospital Information 
+Systems - Changing Trends. I.J. Information Engineering and Electronic 
+Business, 1, 50-58. Recuperado de 
+https://www.researchgate.net/publication/256298039_E_-
+Hospital_Management_Hospital_Information_Systems_-_Changing_Trends 
+Bizagi (2020). Bizagi Modeler. Obtenido de 
+https://www.bizagi.com/es/plataforma/modeler 
+Castro J. (2009). Hacia el aseguramiento universal en salud en el Perú. Recuperado de 
+http://www.scielo.org.pe/scielo.php?script=sci_arttext&pid=S1726-
+46342009000200016#:~:text=El%20r%C3%A9gimen%20contributivo%20direc
+to%20es,la%20base%20del%20actual%20EsSALUD. 
+Conexión Esan (20 marzo 2018) ¿Cómo funciona la categorización en establecimientos 
+de salud? Recuperado de: https://www.esan.edu.pe/apuntes-
+empresariales/2018/03/como-funciona-la-categorizacion-en-establecimientos-
+de-salud/ 
+Criado J., Gascó M., Jiménez C. (2010). Bases para una Estrategia Iberoamericana de 
+Interoperabilidad. Buenos Aires: XX Cumbre Iberoamericana. 
+Defensoría del Pueblo (noviembre 2016). Los servicios de emergencia en los 
+establecimientos de salud públicos y el acceso a medicamentos esenciales. 
+Recuperado de: https://www.defensoria.gob.pe/wp-
+content/uploads/2018/05/Informe-de-Adjuntia-015-AAE-DP.pdf 
+122 
+ 
+ 
+ 
+Del Castillo, G. (13 de febrero de 2019). Siguiente Reforma: La Impostergable 
+Reingeniería Del Sistema De Salud Pública En El Perú. Pacífico Business 
+School. Recuperado de https://pbs.edu.pe/noticias/siguiente-reforma-
+impostergable-reingenieria-sistema-salud-publica-peru-gabriel-castillo-mory/ 
+Diario El Correo (23 octubre 2014). Enfermeras no se abastecen para atender a 
+pacientes . Recuperado de: https://diariocorreo.pe/peru/enfermeras-no-se-
+abastecen-para-atender-a-pacientes-256117/ 
+Django (2019). Documentación. Recuperado de 
+https://docs.djangoproject.com/es/2.2/intro/overview/ 
+ESSALUD (2009). Informe técnico previo de evaluación de software - Ley 288612. 
+Lima: ESSALUD.  
+ESSALUD (16 de mayo de 2020). Manuales de Procesos y Procedimientos. Recuperado 
+de http://www.essalud.gob.pe/manuales-de-procesos-y-procedimientos/. 
+El Peruano (1 de enero de 2019). El SIS y la salud de los más pobres. Recuperado de: 
+https://elperuano.pe/noticia-el-sis-y-salud-de-mas-pobres-75297.aspx 
+El Peruano (2 de mayo de 2019). Difunden ley de emergencia. Recuperado de 
+https://elperuano.pe/noticia-difunden-ley-emergencia-58448.aspx 
+El Peruano (4 de junio de 2019). Asegurados se atenderán en el Minsa, Essalud y 
+Sanidad. Recuperado de https://elperuano.pe/noticia-asegurados-se-atenderan-el-
+minsa-essalud-y-sanidad-80172.aspx 
+123 
+ 
+ 
+ 
+EMRConsultant (2 de mayo de 2019). Hospital Information Systems (HIS). Recuperado 
+de http://www.emrconsultant.com/emr-education-center/emr-selection-and-
+implementation/hospital-information-systems-his/ 
+Endriyas, M., Alano, A., Mekonnen, E., Ayele, S., Kelaye, T., Shiferaw, M., Misganaw, 
+T., Samuel, T., Hailemariam, T. y Hailu, S. (18 de marzo de 2019). 
+Understanding performance data: health management information system data 
+accuracy in Southern Nations Nationalities and People’s Region, Ethiopia. BMC 
+Health Services Research. Recuperado de 
+https://bmchealthservres.biomedcentral.com/track/pdf/10.1186/s12913-019-
+3991-7.pdf 
+ESSALUD (2011). Resolución de Gerencia General N°322 - GG-ESSALUD-2011. 
+Lima: ESSALUD. 
+Fernández Puerto F., Gatica Lara F. (2003). Sistema de Información Hospitalaria. Lima: 
+Facultad de Medicina - UNAM 
+gob.pe (2 de mayo de 2019). Seguro Integral de Salud (SIS) Recuperado de 
+https://www.gob.pe/130-seguro-integral-de-salud-sis 
+HL7 (3 de abril de 2022). HL7 Version 2 Product Suite. Recuperado de 
+http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185 
+Instituto Nacional de Salud (2009). Establecimientos Asistenciales Del Sector Salud, 
+Perú 2009. Revista Peruana de Medicina Experimental y Salud Pública, 26(2): 
+264-67. Recuperado de http://www.scielo.org.pe/pdf/rins/v26n2/a23v26n2.pdf 
+124 
+ 
+ 
+ 
+Irribari O. (2014). Proceso de diseño, validación y aprobación del manual de 
+operaciones del Hospital Santa Rosa en el marco de la política de modernización 
+de la gestión pública. Recuperado de 
+http://190.102.131.45/moperaciones/index.php/exposicion-trabajo-
+diseno?download=19:manual-de-operaciones-hsr-12-de-noviembre 
+Kazemi, A., Rabiei R., Moghaddasi H. y Deimazar, G. (2016). Pharmacy Information 
+Systems in Teaching Hospitals: A Multi-dimensional Evaluation Study. 
+Healthcare Informatics Research. 22(3), 231 - 237. 
+Kitchenham, B.A. y Charters, S. (2007). Guidelines for performing systematic literature 
+reviews in software engineering. Technical Report EBSE-2007-01. 
+Khalifa M. (2017). Perceived Benefits of Implementing and Using Hospital Information 
+Systems and Electronic Medical Records. Informatics Empowers Healthcare 
+Transformation, 165-168. Recuperado de 
+https://www.researchgate.net/publication/318339960_Perceived_Benefits_of_I
+mplementing_and_Using_Hospital_Information_Systems_and_Electronic_Medi
+cal_Records 
+Kruchten, P. (1995). Architectural Blueprints - The “4+1” View Model of Software 
+Architecture. iEEE Software 12 (pp. 42-50). 
+L. Bass, P. Clements, R. Kazman, Software Architecture in Practice, 2nd Edition, 
+Addison Wesley, 2003 
+Lazo-Gonzales O., Alcalde-Rabanal J., Espinosa-Henao O. (2016). El sistema de salud 
+en el Perú: situación y desafíos. Lima: REP. 
+125 
+ 
+ 
+ 
+Letelier, P. y Penadés, M. (2019). Métodologías ágiles para el desarrollo de software: 
+eXtreme Programming (XP), 5(26), 1666-1680. 
+Lifewire (27 de mayo de 2019). Cryptographic Hash Function. Recuperado de 
+https://www.lifewire.com/cryptographic-hash-function-2625832 
+Liyanage, E (1 de octubre de 2016). 10 Usability heuristics explained. Recuperado de: 
+https://medium.com/@erangatl/10-usability-heuristics-explained-caa5903faba2 
+MEASURE Evaluation (2 de mayo de 2019).  Health Management Information 
+Systems. Recuperado de 
+https://www.measureevaluation.org/resources/training/capacity-building-
+resources/health-management-information-systems-hmis-1 
+ MedlinePlus (2 de mayo de 2019). Centros de Salud. Recuperado de 
+https://medlineplus.gov/spanish/healthfacilities.html 
+MINSA (1 de enero de 2019). Ministerio de Salud. Recuperado de: 
+https://www.minsa.gob.pe/portalminsa/directorioinstitucional/nododis.asp?nodo
+=01 
+MINSA (2004). Norma Técnica de los Servicios de Emergencia de Hospitales del 
+Sector Salud. Recuperado de 
+http://cidbimena.desastres.hn/docum/crid/HospitalesSeguros/MULTIMEDIA/P
+DF/NORMA_TECNICA_PE.pdf 
+Nielsen, J (1994). Usability Engineering (Interactive Technologies). Morgan Kauffman. 
+OMG (2020). Object Management Group. Business Process Model and Notation. 
+Recuperado de http://www.bpmn.org/ 
+126 
+ 
+ 
+ 
+Oré Cárdenas, A. (2017). Gestión y Desempeño de un Hospital de EsSalud (Tesis 
+magistral). Recuperado de 
+http://repositorio.up.edu.pe/bitstream/handle/11354/1968/Andres_Tesis_maestr
+%C3%ADa_2017.pdf?sequence=1 
+Padilla Huamantinco, P (2018). Sistematización de la reforma de los sistemas de 
+información en salud del Ministerio de Salud del Perú (MINSA) en el periodo 
+2016-2017 (Tesis magistral). Recuperado de 
+http://repositorio.upch.edu.pe/bitstream/handle/upch/4365/Sistematizacion_Padil
+laHuamantinco_Pierre.pdf?sequence=1&isAllowed=y 
+PCM: Secretaría de Gobierno Digital (2 de mayo de 2019). Interoperabilidad. 
+Recuperado de https://www.gobiernodigital.gob.pe/interoperabilidad/ 
+Peru 21  (21 noviembre 2015). Negligencias médicas: Más denuncias por falta de 
+información .Recuperado de: https://peru21.pe/lima/negligencias-medicas-
+denuncias-falta-informacion-204749 
+pgAdmin (2020). pgAdmin. Recuperado de https://www.pgadmin.org/ 
+Ponce-Varillas T. (2 de mayo de 2019). Hacinamiento en los servicios de emergencia. 
+Recuperado de 
+http://www.scielo.org.pe/scielo.php?script=sci_arttext&pid=S1025-
+55832017000200019 
+PostgreSQL Tutorial (2020). What is PostgreSQL? Recuperado de 
+https://www.postgresqltutorial.com/what-is-postgresql/ 
+127 
+ 
+ 
+ 
+R.  Vásquez-Alva, J. Amado-Tineo, F. Ramírez-Calderón, R. Velásquez-Velásquez y R. 
+Huari-Pastrana (6 de julio de 2016). Sobredemanda de atención médica en el 
+servicio de emergencia de adultos de un hospital terciario, Lima, Perú. 
+Recuperado de: http://www.scielo.org.pe/pdf/afm/v77n4/a10v77n4.pdf 
+RESOLUCIÓN MINISTERIAL N° 546-2011/MINSA, NORMA TÉCNICA DE 
+SALUD. “CATEGORÍAS DE ESTABLECIMIENTOS DEL SECTOR 
+SALUD” , Lima 2011. Recuperado de: 
+http://www.digemid.minsa.gob.pe/UpLoad/UpLoaded/PDF/AtencionFarmaceuti
+ca/Categorizacion-UPSS_Farmacia.pdfSeymour, J., Frantsvog, D., & Graeber, T 
+(2014). Electronic Health Records (EHR). 3(3). 
+ScrumStudy. (10 de abril de 2022). Scrum in 6 minutes. Recuperado de 
+https://www.scrumstudy.com/whyscrum/scrum-in-six-minutes 
+SIEMENS Healthineers. (2 de mayo de 2019). Health Level 7. Recuprado de 
+https://www.siemens-healthineers.com/cl/services/it-standards/hl7 
+Sirintrapun, S.J., y Artz, D. (2015). Health Information Systems. Surgical pathology 
+clinics, 8 (2), 255-68. 
+Skobelev, D., Zaytseva, T., Kozlov, A. y Perepelitsa, V. (2011). Laboratory information 
+management systems in the work of the analytic laboratory. Measurement 
+Techniques. 53. 
+StarUML (2019). Official website. Recuperado de http://staruml.io/ 
+SUSALUD (1 de enero de 2019). Visión y Misión. Recuperado de: 
+http://portal.susalud.gob.pe/nosotros-vision-mision/ 
+128 
+ 
+ 
+ 
+SUSALUD (2 de mayo de 2019). Mundo IPRESS. Recuperado de 
+http://portal.susalud.gob.pe/mundo-ipress/ 
+SUSALUD (4 de setiembre de 2021). Plataforma digital única del Estado Peruano. 
+Recuperado de https://www.gob.pe/4104-superintendencia-nacional-de-salud-
+que-hacemos 
+Torres, J. (29 enero 2017). Emergencia sanitaria: hospitales de Lima carecen de 7 de 
+cada 10 medicinas e insumos médicos para el 2017. Recuperado de: https://ojo-
+publico.com/363/emergencia-sanitaria-hospitales-de-lima-carecen-de-
+medicinas-e-insumos-medicos-para-2017 
+UML (2020). Unified Modeling Languaje. Recuperado de https://www.uml.org/ 
+Velásquez, A., Céspedes, S., Malo, M., Pedroza, J., Saco, A., Zamora, V. (2015). La 
+salud Hoy: Problemas y Soluciones. Lima: CENTRUM 
+VisualStudioCode (2019). Getting Started. Recuperado de 
+https://code.visualstudio.com/docs 
+ W. Valdez Huarcaya,  E. Napanga Saldaña, A. Oyola García,  J. Mariños Anticona, A. 
+Vílchez Gutarra, J. Medina Osis y  M. Berto Gonzales (septiembre 2013). 
+ANÁLISIS DE SITUACIÓN  DE SALUD DEL PERÚ. Recuperado de : 
+http://www.dge.gob.pe/portal/docs/intsan/asis2012.pdf 
+w3schools.com (2019). What is CSS? Recuperado de 
+https://www.w3schools.com/whatis/whatis_css.asp 
+w3schools.com (2019). What is HTML? Recuperado de 
+https://www.w3schools.com/whatis/whatis_html.asp 
+129 
+ 
+ 
+ 
+Zafra, J., Veramendi, L. y Villa, L (2015). Problemas en la calidad de atención en salud: 
+oportunidad de mejora. Sociedad Científica San Fernando, 76(1), 87-8. 
+ 
+ 
+ 
