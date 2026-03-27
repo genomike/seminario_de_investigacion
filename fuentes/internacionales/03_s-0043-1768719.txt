@@ -1,0 +1,1814 @@
+184
+IMIA Yearbook of Medical Informatics 2023
+© 2023                               IMIA and  Georg Thieme Verlag KG
+Health Information Exchange: 
+Understanding the Policy Landscape and 
+Future of Data Interoperability
+A Jay Holmgren1, Moritz Esdar2, Jens Hüsers2, João Coutinho-Almeida3
+1	 University of California, San Francisco, USA
+2	 University of Applied Sciences Osnabrueck, Germany
+3	 Porto University, Portugal
+Summary
+Objectives: To review recent literature on health information 
+exchange (HIE), focusing on the policy approach of five case 
+study nations: the United States of America, the United Kingdom, 
+Germany, Israel, and Portugal, as well as synthesize lessons 
+learned across countries and provide recommendations for future 
+research.
+Methods: A narrative review of each nation’s HIE policy frame­
+works, current state, and future HIE strategy.
+Results: Key themes that emerged include the importance of both 
+central decision-making as well as local innovation, the multiple 
+and complex challenges of broad HIE adoption, and the varying 
+role of HIE across different national health system structures.
+Conclusion: HIE is an increasingly important capability and 
+policy priority as electronic health record (EHR) adoption becomes 
+more common and care delivery is increasingly digitized. While 
+all five case study nations have adopted some level of HIE, there 
+are significant differences across their level of data sharing in­
+frastructure and maturity, and each nation took a different policy 
+approach. While identifying generalizable strategies across dispa­
+rate international systems is challenging, there are several com­
+mon themes across successful HIE policy frameworks, such as the 
+importance of central government prioritization of data sharing. 
+Finally, we make several recommendations for future research to 
+expand the breadth and depth of the literature on HIE and guide 
+future decision-making by policymakers and practitioners.
+Keywords
+Health Information Exchange, interoperability, data sharing, 
+health information technology, electronic health records
+Yearb Med Inform 2023:184-94
+http://dx.doi.org/10.1055/s-0043-1768719
+1   Introduction
+As health care has modernized in the 21st 
+century, moving away from paper-based re­
+cord keeping to digital workflows following 
+the broad adoption of electronic health re­
+cords (EHRs), health information exchange 
+(HIE) and data interoperability – the process 
+of electronically sharing data across unaffil­
+iated organizations including care delivery 
+providers, payers, public health agencies, 
+and more - have become increasingly cru­
+cial components of a modern health system 
+[1, 2]. Not only is widespread HIE critical 
+to providing clinicians with a full picture of 
+patient health status at the point of care to 
+ensure quality and safety, robust interoper­
+ability could also slow medical cost growth 
+through a reduction in duplicative utiliza­
+tion [3], and may reduce administrative bur­
+den on patients by letting their data follow 
+them seamlessly across the continuum of 
+care [4]. Further, the COVID-19 pandemic 
+has illustrated the importance of readi­
+ly-available patient and population-level 
+health data aggregated across care delivery 
+organizations – one of several critical HIE 
+use cases [5]. Building a robust interopera­
+ble health system is therefore an important 
+policy goal, and is essential to realizing the 
+value of the significant investment made in 
+digitizing health care delivery over the past 
+several decades.
+HIE appears simple in concept – the 
+idea that all health data should be readily 
+available to the patient and clinicians at the 
+point of care, regardless of where that data 
+was generated. However, the implementation 
+of large-scale, robust HIE infrastructure and 
+capabilities has proven difficult in health 
+systems across the world [6, 7]. Building 
+connectivity between unaffiliated health 
+care organizations presents a wide array of 
+challenges, ranging from technical issues 
+around data standards, governance problems 
+with what data is shared and who owns it, 
+privacy and security concerns for both 
+patients and organizations, costs of tech­
+nology and implementation, competitive 
+disincentives to allow data to flow easily to 
+other organizations, and workflow questions 
+on how to best present busy clinicians with 
+actionable knowledge without burdening 
+them with irrelevant information. These 
+challenges are situated within the broader 
+policy framework of each nation, both their 
+specific approach to HIE as well as how they 
+organize care delivery in general. For ex­
+ample, in some nations HIE faces financial 
+disincentives as health care organizations 
+are reluctant to share patient data that they 
+see as a key strategic asset in a competi­
+tive market [8, 9]. Additionally, while the 
+theoretical benefits of HIE are obvious, 
+demonstrating value to patients, clinicians, 
+and health systems at scale has been more 
+difficult. There remain critical unanswered 
+questions around HIE and interoperable 
+data exchange, including how different 
+public policy approaches have resulted in 
+varying levels of HIE adoption and use, best 
+practices for integrating HIE into clinical, 
+reporting and administrative workflows, 
+and identifying where HIE can generate 
+the most value across a range of clinical, 
+financial, and administrative scenarios. 
+Article published online: 2023-07-06
+IMIA Yearbook of Medical Informatics 2023
+185
+Health Information Exchange: Understanding the Policy Landscape and Future of Data Interoperability
+In this survey paper, we discuss the 
+concept and types of HIE, the benefits and 
+challenges of implementing HIE systems, 
+and use national case studies to highlight the 
+diverse set of approaches to HIE from five 
+different countries. We focus our review spe­
+cifically on examining the policy frameworks 
+employed by our case study nations around 
+data sharing between acute care delivery 
+organizations, and how they have influenced 
+the development of HIE in each country. We 
+then synthesize the current literature on HIE 
+and provide recommendations for future 
+work. Focusing on recent literature, we pro­
+vide readers with a look at the current state of 
+global research relating to HIE and identify 
+opportunities for the informatics community 
+to advance our knowledge and understanding 
+of HIE across a range of domains. 
+2   Methods
+We conducted a narrative review of the HIE 
+and interoperability literature in both the 
+peer reviewed and grey literature, focusing 
+on highlighting the history, current state, and 
+future strategy of five case study nations: 
+the United States of America, the United 
+Kingdom, Germany, Israel, and Portugal. 
+We specifically focused on identifying lit­
+erature from the last three years but did not 
+exclude older or non-peer reviewed articles 
+which provided important context or the 
+most up-to-date information. The search 
+strategy was broken down into three steps. 
+First, we combined relevant search terms 
+for identifying current research articles in 
+the respective countries in MEDLINE via 
+PubMed and Google Scholar: 
+	
+(health OR healthcare OR clinical OR 
+medical) AND (information exchange 
+OR data sharing OR data exchange OR 
+information sharing OR interoperability) 
+AND (United States OR Germany OR 
+United Kingdom OR England OR NHS 
+OR Israel OR Portugal)
+Second, we researched the official websites 
+of the respective health authorities for 
+additional resources (e.g., strategy papers, 
+government reports, policy documents or 
+other information on current legislation). 
+Third, we complemented the search with 
+additional grey literature based on leads 
+from the sources found in the first two steps. 
+Furthermore, to contrast the state of HIE 
+between the selected countries along com­
+parable dimensions, we used the identified 
+literature alongside complementary sources 
+to classify: 1) the level of EHR adoption 
+in acute care organizations (as an essential 
+prerequisite for HIE); 2) the overall HIE 
+maturity; 3) the level of HIE centralization; 
+and 4) level of incentivization for HIE as 
+either “low”, “moderate”, or “high” for each 
+country (Table 1). We then summarized our 
+findings across these international contexts 
+to create a synthesized set of lessons learned, 
+as well as areas for future study and research. 
+3   Results
+3.1   Health Information Exchange 
+– The Concept, The Verb, the Noun
+As discussed in the introduction, the goal of 
+HIE sounds simple – all health information 
+should be available to the appropriate users 
+(patients, clinicians, public health agencies, 
+etc.) whenever necessary, regardless of 
+where that data was generated. However, 
+operationalizing this idea requires consid­
+eration of many socio-technical issues, e.g., 
+What data should be shared with whom? 
+What specific data elements? Who should 
+access the data? How should data be ac­
+cessed? Should the patients opt-in to data 
+sharing, or should they be enrolled by default 
+with the ability to opt-out? What standards 
+and processes should be used to capture 
+and transfer data and to ensure data privacy 
+and security? These difficult questions, 
+and many more, illustrate the complexity 
+in turning HIE from an idea into a reality. 
+HIE can therefore represent a wide array 
+of electronic data sharing – ranging from 
+sending flat PDF files via secure email to se­
+mantic interoperability, where standardized, 
+structured, machine-readable data elements 
+are transferred and integrated directly into 
+the receiving organization’s EHR without 
+manual intervention [10, 11]. HIE can be a 
+“push”, where a health system or provider 
+sends patient data to another provider during 
+a transition of care, or a “pull”, where the 
+receiving system queries for any patient data 
+available from other providers. 
+The term “HIE” is frequently used as both 
+a verb and a noun [12, 13]. HIE the verb 
+refers to the act of data transfer, sharing data 
+between two health care organizations, of 
+which there are many possible technical ap­
+proaches and mechanisms of data exchange. 
+HIE the noun, however, most frequently 
+refers to an organization that is facilitat­
+ing the data transfer, sometimes known as 
+health information exchange organizations 
+(HIOs). They are most often vendor-neutral, 
+compared to the vendor-mediated tools that 
+connect organizations using the same EHR 
+vendor [14], and HIOs provide technical 
+capability and governance frameworks for 
+data exchange [15, 16]. In the United States 
+Table 1   Dimensions of Health Information Exchange Across Five Nations.
+ 
+United States
+Germany
+The United 
+Kingdom
+Israel
+Portugal
+Electronic Health 
+Record Adoption 
+in Acute Care 
+Organizations
+High [21]
+Moderate [52,104] 
+High [58,106] 
+High [72,109,110]
+High [87,114] 
+Overall Health 
+Information Exchange 
+Maturity
+Moderate [27]
+Low [49,52] 
+Moderate to High [7,61,107] 
+High [6,71,111] 
+Moderate to High [79,80,82]
+Level of Health 
+Information Exchange 
+Centralization
+Low [14]
+High [17] 
+High [7,55]
+Moderate [54,71,112]
+Moderate to High [81,82]
+Incentives for Health 
+Information Exchange
+Moderate [27]
+Moderate [105]
+Moderate to High [7,108]
+High [71,112,113]
+Moderate to High [83,84,93]
+186
+IMIA Yearbook of Medical Informatics 2023
+Holmgren et al
+(US), for example, these organizations can 
+be non-profit or for-profit, based in a specific 
+geography (e.g., state or local) or national, 
+and may be based on a specific framework 
+designed to streamline data exchange across 
+different platforms and technology vendors 
+such as Carequality, and some HIEs are a 
+“network-of-networks” that link several 
+other HIEs together, while in Germany the 
+gematik, a national eHealth organization, 
+provides similar services but with a much 
+broader mandate to set policy, standards, 
+and governance relative to regional US 
+HIOs [17, 18].
+Finally, the terms HIE and interoperabil­
+ity are often used interchangeably. However, 
+they are distinct concepts – HIE involves any 
+health data transfer, in any format, whereas 
+interoperability refers specifically to the 
+exchange of structured data elements. In 
+this way, sending scanned paper files in PDF 
+form electronically would represent HIE, 
+but not interoperability, whereas data that 
+was sent in a machine readable format and 
+integrated into the receiving provider’s EHR 
+would be described as interoperability [19]. 
+3.2   The State of International 
+Health Information Exchange:       
+a study of five case nations
+3.2.1   The United States of America 
+Following the passage of the Health Infor­
+mation Technology for Economic and Clin­
+ical Health (HITECH) Act in 2009, acute 
+care hospitals and primary care physician 
+offices in the U.S. rapidly adopted EHRs in 
+response to federal incentives included in 
+the Meaningful Use (MU) program [1, 20, 
+21]. While not as directly incentivized with 
+payments to the same level as EHR adoption, 
+a variety of public policies have focused on 
+encouraging interoperability and HIE within 
+US health care delivery organizations. Most 
+directly, HITECH included several subsidies 
+and grant programs to fund the creation, 
+expansion, and operation of HIOs, often 
+operating at the state or local level, to build 
+HIE infrastructure. Several MU require­
+ments in the later stages of the program 
+directly incentivized at least some level of 
+data sharing, such as requiring a certain pro­
+portion of patient care transitions to outside 
+organizations have summary of care records 
+sent electronically, and the EHR certification 
+program to attest to MU ensured that EHR 
+products were able to send and receive data 
+electronically. These requirements have 
+been expanded by the Centers for Medicare 
+and Medicaid Services (CMS) Promoting 
+Interoperability program [22]. Several policy 
+initiatives have attempted to promote HIE 
+adoption and use through aligning the finan­
+cial incentives of care delivery organizations 
+with data sharing, such as the proliferation 
+of value-based payment models including 
+bundled payments or Accountable Care 
+Organizations (ACOs) that reward providers 
+for reducing population-level utilization and 
+spending [23]. These types of value-based 
+payment reforms were intended to overcome 
+the misaligned financial incentives in the fee-
+for-service payment model for care delivery 
+in the US, and which provides no financial 
+incentive to use HIE to avoid redundant or 
+unnecessary services [19, 24].
+Despite the wide range of policy in­
+centives targeted at encouraging HIE, the 
+state of interoperability (within and across 
+the health care delivery eco-system) in the 
+US varies. The US Office of the National 
+Coordinator for Health Information Technol­
+ogy (ONC) tracks hospital interoperability 
+using four domains of: 1) finding/querying 
+for data; 2) sending data electronically; 3) 
+receiving data electronically; and 4) inte­
+grating outside data into the EHR without 
+manual intervention [25, 26]. Reflecting 
+the structure of the MU certification re­
+quirements, as of 2018, the ability to send 
+data electronically is nearly ubiquitous, with 
+nearly 90% of hospitals reporting they often 
+or routinely send patient summary of care 
+records electronically. In contrast, fewer than 
+two-thirds of US hospitals report being able 
+to integrate outside data into their EHR, and 
+less than half (45.4%) reported engaging in 
+all four ONC’s interoperability domains [27]. 
+Research has also found that hospitals and 
+public health agencies lack bi-directional 
+interoperability, which caused significant 
+issues aggregating population-level data in 
+the early days of the COVID-19 pandemic 
+[5, 28, 29]. While interoperability has made 
+progress over the past several years [30, 31], 
+it has been significantly slower than EHR 
+adoption [1, 21]. Ambulatory physician 
+offices report even lower levels of interopera­
+bility or HIE engagement, as they often lack 
+the organizational resources such as a full-
+time information technology staff to build 
+and maintain HIE connections [32], though 
+national-level data for these organizations is 
+less detailed [33].
+The current state of HIE and interop­
+erability in the US is a patchwork of con­
+nectivity without a centralized national 
+HIE approach, and whether a patient’s data 
+follows them as they transition across care 
+providers is determined more by whether 
+their organizations are on the same EHR 
+vendor or participate in the same method of 
+HIE. Significant heterogeneity in state policy 
+for HIE, including different approaches to 
+governance, financial support, data privacy 
+and patient consent laws (opt-in vs opt-out), 
+also contributes to variation in interoperable 
+data exchange in the US [34, 35]. Many or­
+ganizations report participating in multiple 
+different modalities of sharing patient data, 
+such as vendor (EHR)-based systems [36] as 
+well as regional HIEs and national HIE net­
+works [37]. Interoperability between acute 
+care providers and other health care organi­
+zations, including long-term care facilities 
+or public health agencies, is also limited 
+and uneven across the country [5, 38]. These 
+results are the reflection of the somewhat 
+scattered policy environment, with few 
+prescriptive requirements and many diffuse 
+and weak incentives to share data without a 
+comprehensive path towards national-level 
+interoperability. The value-based payment 
+models to align financial incentives for data 
+sharing were only modestly successful, with 
+ACO hospitals sharing data with more types 
+of partners, but with a lower overall volume 
+of records exchanged relative to non-ACO 
+participants [39, 40], and the lack of HIE in­
+frastructure has presented a significant barrier 
+for ambulatory practices participating in pop­
+ulation health management programs [41]. 
+Future Considerations & Strategy: In 
+2016, Congress passed the 21st Century 
+Cures Act (Cures), which included several 
+provisions to improve patient access to data 
+as well as interoperability between provider 
+organizations. Cures provides a framework 
+for HIE in the US, including provisions 
+IMIA Yearbook of Medical Informatics 2023
+187
+Health Information Exchange: Understanding the Policy Landscape and Future of Data Interoperability
+such as outlawing “information blocking”, 
+the practice of intentionally and knowingly 
+blocking patient data access by health infor­
+mation technology developers or health care 
+provider organizations [8], as well as updates 
+to the ONC EHR certification criteria to 
+mandate the use of standardized application 
+programming interfaces (APIs) that facili­
+tate patient access to their own health data 
+and HIE using a common set of standards 
+known as Fast Healthcare Interoperability 
+Resources (FHIR) [42]. Further, the act 
+outlined the Trusted Exchange Framework 
+and Common Agreement (TEFCA), a volun­
+tary technology and governance model that 
+seeks to streamline the exchange of patient 
+data across the multiple fragmented HIO 
+networks that exist in the US, reducing the 
+need for provider organizations to participate 
+in multiple HIE networks [43]. Rulemaking 
+for the Cures Act was finalized in 2021, 
+with information blocking and FHIR API 
+requirements now in place, and the first 
+several organizations designated as Qualified 
+Health Information Networks (QHINs) in 
+the TEFCA framework were named in early 
+2023 with plans to go live within the next 
+year [44,45]. This more prescriptive frame­
+work represents a departure from previous 
+efforts focused on aligning financial incen­
+tives, and will hopefully deliver significant 
+improvements to interoperability in the US. 
+3.2.2   Germany
+Germany initiated the development of a 
+dedicated infrastructure for HIE, called the 
+telematics infrastructure (TI), for the statu­
+tory health insurance (SHI) system in 2004. 
+The TI uses an opt-in patient consent model 
+that also requires the patients provide their 
+clinician with a physical card that autho­
+rizes access and changes to the data stored 
+in the TI. This was followed, however, by a 
+prolonged timeframe of disagreements and 
+mutual obstruction among the main share­
+holders of the national organization that was 
+made responsible for the development of the 
+TI (the so-called gematik) [46]. The ensuing 
+stalemate was said to be driven by a mix of 
+poor federal governance, lack of a strate­
+gy, lack of consensus-building, excessive 
+data protection concerns on the part of the 
+physician associations, and miss-aligned fi­
+nancial incentives which severely hampered 
+progress towards widespread HIE practices 
+[46–50]. From 2016 on, renewed legislative 
+efforts were made to implement the TI and 
+to subsequently specify how data ought to 
+be exchanged through a central EHR sys­
+tem that utilizes the TI. Also, the federal 
+ministry of health intervened in 2019 and 
+took over the majority shares of the gematik 
+to be able to undercut further deadlocks 
+between the main parties (particularly the 
+National Association of SHI Funds, the 
+National Association of SHI Physicians, and 
+the German Hospital Federation). 
+As part of the latest legislative initiatives, 
+the National Association of SHI Physicians 
+was made exclusively responsible for spec­
+ifying syntactic and semantic standards 
+for exchanging health information via the 
+central EHR system. Although this recently 
+resulted in an increased focus on internation­
+al standards (e.g., FHIR, SNOMED CT, and 
+LOINC), Germany’s HIE capabilities remain 
+at a low level. While all German EHRs are 
+now required to be interoperable with the 
+TI infrastructure [51], a survey from 2017 
+showed that only a fraction of German hospi­
+tals are able to regularly exchange data with 
+other providers or the patients electronically 
+[49]. More recent data corroborate these 
+findings [52] – and note poor HIE between 
+physicians in ambulatory care settings and 
+low adoption rates of the central EHR by 
+patients [17, 53]. However, the central EHR 
+system and related components are still be­
+ing developed and the current government 
+has committed to switching from an opt-in 
+to an opt-out principle for all members of 
+the SHI, thus hoping to significantly increase 
+HIE engagement. Still, Germany is gener­
+ally considered to perform worse in HIE as 
+compared to the US, England, Portugal and 
+Israel [6, 54].
+Future Considerations & Strategy: Ger­
+many’s previous “hands-off” approach to 
+facilitating HIE can hardly be classified as 
+strategic. And with few exceptions, neither 
+the health insurance companies nor the 
+various providers or the state governments 
+developed HIE systems themselves from 
+the ‘bottom-up’. To cope with the resulting 
+inadequacies, the federal ministry of health 
+started intervening through numerous leg­
+islative initiatives, especially after a change 
+in leadership in 2018. These were primarily 
+concerned with further developing the TI 
+as a single, centralized HIE system and the 
+central EHR system as well as a comprehen­
+sive financial incentive program for hospitals 
+that, among others, aims at the widespread 
+adoption of patient portals to exchange data 
+with the patients and other providers. From 
+an organizational viewpoint, clearer lines 
+of responsibilities were instituted within the 
+self-governing bodies (e.g., the physician’s 
+association was made solely responsible for 
+defining standards to be used in the central 
+EHR and the health insurance companies 
+for providing the EHR to their beneficia­
+ries). Additionally, a decree was issued in 
+2021 to create a governance structure for 
+ensuring universal interoperability with the 
+so-called Interop Council at the center and 
+binding directives for providers and vendors 
+to adhere to certain standards. However, 
+some of these initiatives were criticized as 
+being reactive rather than proactive, partly 
+disconnected from one another and at risk of 
+creating parallel HIE structures. Hence, calls 
+for a coherent strategy followed, which the 
+current federal ministry has taken up and is 
+expected to announce in 2023.
+3.2.3   The United Kingdom
+The English National Health Service (NHS) 
+has had a long and checkered history of 
+building its HIE capabilities [55]. Capital­
+izing on its centralized make-up and con­
+trol, the NHS has focused on defining and 
+propagating technical and data standards as 
+early as 1992. Significant investments were 
+made early on which led to the incremental 
+establishment of a connectivity framework, 
+comprising the Health and Social Care 
+Network, the “NHS Spine”, as well as 
+various other central and local services for 
+enabling HIE [7, 55]. Current rules for data 
+sharing in the United Kingdom (UK) use 
+an implied consent (or explicit ‘opt-out’) 
+model for direct patient care purposes [56].
+The NHS’s strategic approach has often 
+been characterized as largely coming from 
+the ‘top-down’ [55, 57]. Particularly the 
+much-discussed National Programme for 
+Information Technology (NPfIT) from 2003 
+exhibited high degrees of central control. It 
+188
+IMIA Yearbook of Medical Informatics 2023
+Holmgren et al
+attracted a lot of criticism and is said to have 
+failed partly because of this high degree of 
+centrality [57]. Still, the NPfIT contributed 
+fundamentally to the connectivity framework 
+in its current form. The NHS subsequently 
+moved on to allow for more local variation 
+in their following strategies, thus shifting 
+towards what has been characterized as a 
+‘middle-out’ approach [55].
+The NHS’s early commitment to HIE, 
+together with a convoluted interplay of 
+policy and technology changes over time 
+has resulted in a rather complex ecosystem 
+of patient health records [58]. Perhaps most 
+importantly, Summary Care Records (SCRs) 
+containing basic patient information such 
+as medications and allergies are available 
+and used by almost all general practitioners 
+via the NHS Spine digitally and this func­
+tionality is required for EHRs [59], and 
+more comprehensive shared records are 
+increasingly being adopted by local NHS 
+organizations and systems. The increase 
+in shared records partly results from more 
+recent initiatives – particularly the Informa­
+tion Governance Framework for Integrated 
+Health [60]. However, despite the NHS’s 
+relatively advanced stage of HIE adoption 
+[7], data sharing and interoperability chal­
+lenges remain – particularly with regard to 
+the EHR vendor specificity of HIE systems 
+in place as well as information exchange 
+with and between hospitals [58, 61]. While a 
+recent study by Watkins et al. shows that the 
+use and user satisfaction with an EHR ven­
+dor-specific solution is quite high, another 
+study by Warren et al. points to substantial 
+misalignments and information exchange 
+barriers that remain between hospital trusts 
+that use different HIE solutions [58, 62]. 
+Future Considerations & Strategy: The 
+NHS continues to actively adjust and adapt 
+its HIE strategy from a rather central angle 
+while explicitly leaving room for variations 
+by local NHS authorities and systems. Most 
+recently, this finds expression in its 2022 
+“data saves lives” strategy and in the substan­
+tial reforms of its governance structure [63]. 
+These activities might best be summarized 
+as the ambition to consolidate, advance, 
+and capitalize on its HIE capabilities. As a 
+principal challenge in delivering universal 
+interoperability still lies in the fragmentation 
+of responsibilities for the HIE infrastructure 
+[61], the NHS plans to consolidate the previ­
+ously separated public bodies NHS Digital, 
+NHSX and NHS Improvement under one 
+roof in 2023 - that of NHS England to form a 
+centralized, single HIE system. This consol­
+idation is also reflected in the data strategy’s 
+premise itself, which views HIE not as an 
+isolated matter, but rather as an integral 
+part of a wider and more far-reaching data 
+strategy. It thereby, among other things, aims 
+at giving patients greater control over their 
+data and creating secure data environments 
+for research. From a technical viewpoint, 
+the strategy commits to enhancing the usage 
+of international standards (particularly in 
+the form of UK-wide HL7 FHIR Profiles), 
+the usage of cloud services, and services to 
+centrally find and retrieve records from the 
+various systems. In terms of advancements, 
+it aims to extend the types of data exchanged 
+such as health information from wearables 
+and, crucially, social care data. Lastly, the 
+strategy also sketches out further steps to 
+better harness health data for research, pro­
+mote the application of AI technologies in 
+reference to the Topol review [64], and steps 
+to continue to work towards establishing a 
+learning health system – thus capitalizing on 
+its current and anticipated HIE capabilities 
+[65], These activities reflect an integrated, 
+holistic policy approach and a structured 
+governance framework to integrate care 
+pathways across siloed responsibilities to 
+encourage health information technolo­
+gy-based innovation [66].
+3.2.4   Israel
+HIE structures and practices in Israel have 
+been closely tied to the structure of the coun­
+try’s healthcare system [67]. Within their 
+universal national health insurance system, 
+each Israeli citizen is a member of one of the 
+four not-for-profit Health Maintenance Or­
+ganizations through which they receive both 
+insurance and care. While the Ministry of 
+Health (MoH) is responsible for overarching 
+policy, regulation, planning, budgeting, etc., 
+the HMOs have been relatively independent 
+in the way they design their healthcare 
+services. The competition among them as 
+well as their integrated accountability for 
+the patients across various care settings is 
+said to have facilitated innovation-seeking 
+strategies from the bottom-up, including the 
+adoption of HIE solutions within the HMOs 
+[54, 67]. The largest of the four HMOs, 
+‘Clalit’ (which covers roughly 52% of the 
+population and exhibits the highest degree 
+of vertical integration from primary to ter­
+tiary care services), was an early adopter of 
+an HIE system called OFEK – a distributed 
+system that enabled the retrieval of basic 
+patient information from any kind of local 
+EHR system through a specific interface, 
+with patients automatically enrolled with an 
+opt-out option [68, 69]. Although the system 
+was found to create local benefits in terms of 
+reduced test ordering and nearly all Israeli 
+EHRs were interoperable within HMOs [70], 
+information exchange outside the HMOs 
+remained insufficient and patient access 
+to their medical data is still rather limited 
+for many citizens [6]. In light of these lim­
+itations, the MoH started taking on a more 
+active role to promote widespread HIE. This 
+was first expressed by adopting OFEK as a 
+single centralized HIE system to be used on a 
+national level across all service providers by 
+2014 [70, 71]. Subsequently, the MoH also 
+published a digital health strategy in 2018 in 
+which HIE was recognized as a foundational 
+strategic element [71, 72]. Correspondingly, 
+OFEK was further developed and eventually 
+upgraded to a new version with more com­
+prehensive and advanced functionalities, 
+called EITAN. The implementation of EIT­
+AN was supported by a financial incentive 
+program for the adopting organizations and 
+designed as an opt-out system to ensure 
+widespread use [71, 73].
+Most Israeli healthcare organizations 
+have now adopted EITAN. Similar to its pre­
+decessor OFEK, EITAN uses a decentralized 
+architecture: clinical data are stored in local 
+databases within the provider organizations 
+based on a nationally consented clinical 
+dataset. These databases operate using a 
+proprietary and detailed mapping of clinical 
+data elements into a semantic interopera­
+bility standard, and receive their data from 
+the organization’s EHR and are connected 
+through a national HIE network which has 
+its hub at the MoH [74]. Thus, patient data 
+can be shared and accessed by authorized 
+personnel in all provider organizations. 
+However, due to the usage of varying HIE 
+IMIA Yearbook of Medical Informatics 2023
+189
+Health Information Exchange: Understanding the Policy Landscape and Future of Data Interoperability
+solutions in conjunction with different local 
+EHR systems over time, challenges remain 
+concerning the consistent use of standards 
+and terminologies [71, 75]. Furthermore, 
+Itzhaki et al. recently found that many ward 
+nurses, contact nurses (who are responsible 
+for care coordination across providers), and 
+patients are still unaware of EITAN which 
+impedes its effective use [76]. Additionally, 
+there is a nascent but growing community 
+emphasizing the use of HL7 FHIR stan­
+dards in Israel, including the MoH, which 
+launched the first FHIR-based projects in 
+2021 [75]. But despite these drawbacks, 
+Israel’s HIE capabilities are viewed as 
+rather advanced as compared to many other 
+developed countries [54, 72].
+Future Considerations & Strategy: The 
+MoH continues to actively support the 
+adoption and further development of its 
+nationwide HIE solution EITAN based on a 
+public-private partnership [72, 77]. Thus, lo­
+cal-level HIE innovations within the HMOs 
+have largely given way to more centralized 
+strategic planning and execution by the MoH 
+to promote coherence across health system 
+silos. For example, this is currently reflected 
+in efforts to improve the interoperability and 
+accessibility of clinical information for ad­
+vanced data analytic services by pursuing the 
+widespread implementation of HL7 FHIR 
+[75]. Despite this tendency for more cen­
+tralized planning in many regards, the MoH 
+still aims to facilitate bottom-up innovation 
+based on their past successes by, for example, 
+providing funding for digital health services 
+such as third-party clinical decision support 
+tools that utilize data from the HIE network 
+[72, 78]. Going forward, it is also expected 
+to aim for enhanced patient access to their 
+medical data through mobile, personal health 
+record solutions [71] – thereby making fur­
+ther progress in realizing the paradigm shift 
+towards more personalized medicine.
+3.2.5   Portugal
+Portugal’s national HIE strategy has gone 
+through several transitions since its founda­
+tion in the 1990s. If in the late 90s and early 
+2000s, the Portugal eHealth ecosystem was 
+recognized as being the most advanced for 
+its time, i.e. being one of the first countries 
+to implement nationwide unique health 
+identification, it has been lacking the same 
+propelling drive since the early 2000s. The 
+prevalent idea until the early 2000s was 
+monolithic solutions that, in theory, would 
+cover most of the institutions’ Health In­
+formatics necessities. However, the 2010s 
+brought a different perspective to the Portu­
+guese landscape. 
+This happened for mainly two reasons, 
+SONHO as a mandatory software and 
+LIGHt (Local Interoperability Gateway for 
+Healthcare). SONHO is a public admis­
+sion-discharge-transfer (ADT) health infor­
+mation system (HIS) and in 2013 all public 
+hospitals were forced by law to migrate their 
+current solutions to it [79]. This software is 
+the base for registering administrative and 
+demographic data and was first built in the 
+early 90s. Even though it has passed through 
+several iterations and improvements, the 
+core is still very similar to its original one 
+(based on Oracle 8). The second reason is an 
+infrastructure called LIGHt which functions 
+like a broker that is used to communicate 
+health information from the state-provided 
+software (i.e., SONHO) to third parties and is 
+highly based on the HL7 version 2 standard 
+[80]. This was a significant paradigm shift as 
+this gateway provided the state-owned HIS 
+the ability to connect with third parties. All 
+this software and infrastructure is provided 
+by SPMS, a state-owned enterprise, which 
+is the governmental branch and the center 
+of public eHealth policies, infrastructure, 
+acting as regulator and HIS developer. This 
+centralized top-down initiative was meant 
+to enable better, faster interoperability 
+progress, though it may come at the cost of 
+innovation as private technology developers 
+are unable to find a market in Portugal [81], 
+and may explain why many large information 
+technology companies do not have a signif­
+icant presence in the country as Portugal’s 
+health information software systems are 
+based on public, state-owned systems. 
+Due to the mandatory migration, virtu­
+ally all public hospitals have the same basis 
+for administrative data input and different 
+health information systems for the clinical 
+data (some public and some private). Private 
+care delivery organizations are free to choose 
+which health information software to use 
+and now are not part of the HIE structure 
+[82]. The data stored in public software is 
+exchanged through the RSE (“Registo Saúde 
+Eletrónico” – Portuguese for Electronic 
+Health Record) [83]. From its inception, the 
+RSE was designed to act as an aggregator 
+of health data, with a similar structure to 
+a hybrid federated approach having three 
+different layers of information, ranging 
+from local to shared/centralized data. In 
+the middle layer, rests interoperability with 
+existing systems. The catalog of data avail­
+able at the moment in the RSE is difficult 
+to collect and aggregate, but the high-level 
+national goal is to provide access to general 
+information about medication, diagnosis, 
+demographic data, procedures, vaccination, 
+and laboratory exams in the shared layer 
+[84]. While the definition of full interoper­
+ability is constantly being updated, a major 
+barrier to completion is physical hardware, 
+where it is estimated that the public sector 
+has between 25% and 50% of the necessary 
+computer equipment across care delivery and 
+public health agencies [85].
+Future Considerations & Strategy: The 
+current focus of the MoH is applying eHealth 
+efforts supporting the patients, namely tele­
+medicine and personal smartphone applica­
+tions. Key points from Portugal’s scene from 
+2021-2022 were the telemedicine support 
+for its HIS. In 2019, the Portuguese MoH 
+introduced PENTS (National Strategic Tele­
+health Plan), with an aim to provide access 
+to telehealth across the country [86], with 
+a focus on chronic illnesses [87]. Further, 
+SNS24 – the personal app provided by SPMS 
+has received several updates over the last 
+two years, and can now be used by patients 
+to access key health information due to con­
+nection with RSE. Vaccines, prescriptions, 
+referrals, teleconsultations, allergies, and 
+sick leaves are some of the possible informa­
+tion to view in the app [88]. These two points 
+are defined by the national strategy for the 
+Health Information Ecosystem 2020 which 
+is focused on three aspects: governance and 
+strategy alignment; improvement of human 
+resources’ competencies and technological 
+upgrades [89, 90]. Finally, Portugal faces 
+several future challenges which have yet to 
+be addressed in a formal way. Data security 
+is a growing issue, with several hospitals 
+having been attacked by ransomware hackers 
+190
+IMIA Yearbook of Medical Informatics 2023
+Holmgren et al
+over the last few years and the strategy to re­
+spond to this matter is still being formalized 
+[91]. Several workgroups were created, but a 
+clear guideline or approach is yet to be de­
+termined. Further, patient consent processes 
+remain an ongoing area of development in 
+Portugal – currently, many patients engage 
+in a two-step consent process where they 
+consent for their inclusion and for each use 
+of medical services for some features (such 
+as e-prescribing), but for other features such 
+as the use of HIE for clinical care by provid­
+ers, implied consent (or an opt-out consent 
+model) is the norm, while the patient-facing 
+portals have stricter consent requirements 
+[92]. Experts rated “Inadequate or incon­
+sistent approaches to patient consent” as a 
+major barrier to interoperability in Portugal 
+in 2020 [93]. Additionally, data quality issues 
+remain problematic – researchers have found 
+large discrepancies in reconciling different 
+electronic referral records in Portuguese hos­
+pitals [94]. Keeping in mind that evidence 
+generated from data is the basis of clinical 
+practice, ensuring quality and accuracy 
+standards is key to going further into digital 
+adoption and fulfillment of national strate­
+gies around the world.
+4   Discussion
+While deriving generalizable insights from 
+the case studies of the health systems pre­
+sented here is difficult, given the unique 
+legislative and regulatory, policy, and health 
+care delivery environments in each, our 
+study contributes to our understanding of 
+how policy shapes HIE adoption and use by 
+identifying several commonalities across our 
+five focal nations. First, successful national 
+HIE requires some level of central strategic 
+planning and involvement, irrespective of 
+health system type. As Payne et al. noted in 
+their paper comparing HIE internationally, 
+“in countries that have successfully achieved 
+HIE, or are on course to do so, the impetus 
+came from government and the change was 
+galvanized with economic incentives to 
+health care providers”[7]. Despite operating 
+within different payment and care delivery 
+environments, both Israel and Portugal have 
+more advanced HIE capabilities than the US, 
+in part due to the emphasis placed on data ex­
+change by a national-level policy. However, 
+centralization is not a guarantee of complete 
+success without adversity – the UK NHS has, 
+and continues to, experienced challenges 
+in their HIE strategy despite the extremely 
+high level of organizational centralization 
+in the UK. However, “bottom-up” innova­
+tion and early adoption can spur important 
+progress, such as the adoption of early HIE 
+systems by Israel’s largest HMO, Clalit, 
+which provided a blueprint for national 
+adoption. The US may soon experience 
+a similar process – despite the relatively 
+“hands-off” nature of their early HIE strat­
+egy, several pockets of successful HIE did 
+develop, which serve as a model for a new 
+strategy following the 21st Century Cures 
+Act focusing on APIs, FHIR standards, and 
+penalties for information blocking.
+The variation in HIE policy and success 
+across varying nations reflects the multi­
+ple challenges of HIE, including aligning 
+financial incentives for adoption and use, 
+technical challenges, governance choices, 
+and integration of outside data into clinical 
+workflows. If the only serious impediment 
+to broad interoperability were financial 
+incentives, the UK NHS would have 
+had a simple time achieving robust HIE. 
+Similarly, while HIE is far from robust 
+in the US, it is likely more advanced than 
+the German system despite featuring an 
+even more decentralized, competitive, 
+and market-oriented care delivery system. 
+Socio-technical challenges around setting 
+standards, generating awareness of the HIE 
+and encouraging adoption without burden­
+ing clinician and patient users, and building 
+governance models with broad acceptance 
+that are flexible enough to adapt to changing 
+technological and social needs are common 
+across our case study nations.
+While there is no clear “best” overarching 
+HIE strategy, multiple approaches may be 
+effective in facilitating robust interoperable 
+data exchange. For example, it may be that 
+a “middle-out” system, defined by Price et 
+al. as centralized leadership with strong pub­
+lic-private collaboration and more local con­
+trol by individual care delivery organizations 
+similar to the current strategy in the UK, may 
+provide a balanced approach to these chal­
+lenges, preserving local innovation around 
+issues like workflow integration by private 
+vendors and health care organizations while 
+setting national-level interoperability incen­
+tives, standards, and governance frameworks 
+[55]. Similarly, heavily centralized approach­
+es may be successful, as Israel’s increasing 
+centralization has shown. However, the early 
+experience of the US during the HITECH 
+era illustrates the difficulty of achieving 
+broad, robust interoperability with a heavily 
+decentralized policy framework – even with 
+significant effort to build EHR infrastructure 
+and align financial incentives. Each system 
+must recognize the importance and centrality 
+of the patients – from giving them the final 
+say in the ability to opt-out of data sharing 
+such as in Israel to enabling them to access 
+all their clinical data in the US, any national 
+HIE strategy must work to ensure patients’ 
+changing needs are being met. Policymakers 
+may wish to focus on creating integrated care 
+structures that maximize incentives to share 
+data while simultaneously ensuring there 
+is a national-level interoperability strategy 
+that makes data exchange a priority, with 
+prescriptive guidance around standards and 
+governance. At the same time, these strate­
+gies need to be adaptable to an ever-chang­
+ing world, and researchers should carefully 
+monitor and evaluate HIE progress to inform 
+policymakers and allow them to be flexible in 
+their approach. Finally, ensuring awareness 
+among users (e.g. clinicians, patients, payers, 
+public health agencies, etc.) and supporting 
+actual use of HIE is critical to move from 
+encouraging building interoperable data 
+exchange to maximizing the potential of HIE 
+to improve health and care delivery. 
+Directions for Future Study, Research and 
+Policy Implications: While there is a signif­
+icant and growing literature, there are still 
+many unknowns with respect to HIE. While 
+we provide speculation above regarding how 
+different policy frameworks have influenced 
+the development of HIE in five nations, in 
+many dimensions of HIE we are unable to 
+make direct cross-country comparisons due 
+to a lack of data or published research. Stan­
+dardized measures of HIE in terms of data 
+exchanged, semantic interoperability, use by 
+frontline clinicians are often not available at 
+the national-level, or only available in aggre­
+gate form or with organization-level survey 
+IMIA Yearbook of Medical Informatics 2023
+191
+Health Information Exchange: Understanding the Policy Landscape and Future of Data Interoperability
+measures that do not provide granular details 
+of use. Our analysis was limited to holistic, 
+qualitative evaluations of HIE maturity, 
+centralization, and incentives due to this lack 
+of broad, comparable empirical measures, 
+and we supplemented what literature exists 
+with small and single-site studies, policy 
+briefs, and grey literature. To remedy this, 
+we provide a non-exhaustive list of areas for 
+additional future research:
+•	 Measurement: Many measures of HIE fo­
+cus on organization-level adoption, rather 
+than evaluating actual real-world use (e.g., 
+how often data from HIE is used in care de­
+livery, or aggregated into population-level 
+data by public health agencies), especially 
+in studies measuring at a national-level [33, 
+95]. More granular measurement, includ­
+ing measuring volume of outside records 
+exchanged, viewed, and their influence on 
+the patient and clinician, is the next frontier 
+of HIE measurement. Finally, measuring 
+whether and how clinicians actually use 
+that data when delivering care is critical to 
+improving HIE policy at a national level 
+and implementation at a local level.
+•	 Impact: While early modeling studies 
+have predicted significant cost reductions 
+from HIE [3], many empirical studies have 
+found it difficult to identify broad gains 
+in either quality or cost [96]. Additional 
+research, especially studies with robust 
+designs for causal inference, is important 
+to identify the impact of HIE on quality, 
+costs, and the patient experience [97].
+•	 Workflow: Given growing concerns over 
+clinician EHR work [98, 99], especially 
+in the US [100], it is critical for HIE to 
+present outside records within existing 
+workflows without exacerbating burden. 
+Early studies show integrating HIE into the 
+standard patient history screen greatly in­
+creased clinician views of outside records 
+[101], future research should evaluate how 
+and when to present information from var­
+ious sources (e.g., other providers; patient 
+reported data; remote monitoring devices) 
+to clinicians across various clinical scenar­
+ios and settings (e.g., inpatient, outpatient, 
+emergency; post-acute care; community 
+health providers).
+•	 Population Health and HIE as “Data 
+Utility”: While HIE has always held great 
+potential as a data aggregation source 
+to fuel population-level analytics, the 
+COVID-19 pandemic demonstrated the 
+importance of this information. Several 
+efforts are underway to conceptualize 
+HIEs more broadly as a “data utility”, in­
+cluding using HIE data for more accurate 
+clinical quality measurement, data ag­
+gregation for research, and public health 
+analytics [102, 103]. While still a nascent 
+field, following the development of these 
+next-generation efforts and evaluating 
+their effectiveness is critical to guide the 
+next phase of HIE. 
+HIE research is at an important inflection 
+point – moving past structural measures of 
+adoption to evaluating volume and impact at 
+scale, best practices for integration of data 
+into clinical workflows across a range of sce­
+narios and broadening the spectrum of HIE 
+use cases. Scientific research plays a critical 
+role in the continuous evaluation of HIE to 
+inform the healthcare eco-system (including 
+patients, policymakers and practitioners) of 
+the value of data sharing and avoid potential 
+pitfalls and unintended consequences. 
+5   Conclusion
+Following the digitization of health care 
+delivery, HIE and data interoperability has 
+become increasingly important for delivering 
+high quality care. HIE can reduce costs and 
+duplicative utilization, improve the patient 
+experience, and empower patients with 
+access to their data, and ensure clinicians 
+have access to all relevant information for 
+their patients at the point of care, no matter 
+where that data was generated. While im­
+plementing robust national HIE has been 
+a challenge, our case studies highlighting 
+different approaches from five nations sug­
+gest some generalizable policy frameworks 
+that balance centralized decision-making 
+around standards and governance but allow 
+for local innovation in technical capability 
+and workflow integration. Future research on 
+HIE should include more detailed measure­
+ment of data exchange and use, the impact of 
+interoperability on patients and care delivery 
+organizations and assessing new frontiers of 
+using HIE for public and population health. 
+References
+1.	
+Adler-Milstein J, Jha AK. HITECH Act 
+drove large gains in hospital electronic 
+health record adoption. Health Aff (Mill­
+wood)2017;36(8):1416–22. doi: 10.1377/
+hlthaff.2016.1651.
+2.	
+Blumenthal D. Stimulating the Adoption of 
+Health Information Technology. N Engl J 
+Med 2009;360(15):14779. doi: 10.1056/NE­
+JMp0901592.
+3.	
+Walker J, Pan E, Johnston D, Adler-Milstein J, 
+Bates DW, Middleton B. The value of Health 
+care information exchange and interoperability. 
+Health Aff (Millwood) 2005;Suppl Web Exclu­
+sives:W5-10-W5-18. doi: 10.1377/hlthaff.w5.10.
+4.	
+Kyle MA, Frakt AB. Patient administrative bur­
+den in the US health care system. Health Serv 
+Res 2012;56(5):755–65. doi: 10.1111/1475-
+6773.13861.
+5.	
+Holmgren AJ, Apathy NC, Adler-Milstein J. Bar­
+riers to Hospital Electronic Public Health Report­
+ing and Implications for the COVID-19 Pandem­
+ic. J Am Med Inform Assoc 2020;27(8):1306-9. 
+doi: 10.1093/jamia/ocaa112.
+6.	
+Ammenwerth E, Duftschmid G, Al-Hamdan Z, 
+Bawadi H, Cheung NT, Cho K-H, et al. Interna­
+tional Comparison of Six Basic eHealth Indica­
+tors Across 14 Countries: An eHealth Bench­
+marking Study. Methods Inf Med 2020;59(S 
+02):e46–e63. doi: 10.1055/s-0040-1715796.
+7.	
+Payne JH, Lovis C, Gutteridge C, Pagliari C, 
+Natarajan S, Yong C, et al. Status of health infor­
+mation exchange: a comparison of six countries. 
+J Glob Health 2019;9(2):0204279. doi: 10.7189/
+jogh.09.020427.
+8.	
+Adler-Milstein J, Pfeifer E. Information Block­
+ing: Is It Occurring and What Policy Strategies 
+Can Address It? Milbank Q 2017;95(1):117–35. 
+doi: 10.1111/1468-0009.12247.
+9.	
+Downing K, Mason J. ONC Targets Information 
+Blocking. J AHIMA 2015;86(7):36–8.
+10.	 Liyanage H, Krause P, de Lusignan S. Using 
+ontologies to improve semantic interoperability 
+in health data. J Innov Health Inform 2015;22(2). 
+doi: 10.14236/jhi.v22i2.159.
+11.	 de Mello BH, Rigo SJ, da Costa CA, da Rosa 
+Righi R, Donida B, Rosecler Bez M, et al. 
+Semantic interoperability in health records 
+standards: a systematic literature review. Health 
+Technol (Berl) 2022;12(2):255–72. doi: 10.1007/
+s12553-022-00639-w.
+12.	 Akhlaq A, Sheikh A, Pagliari C. Defining 
+health information exchange: scoping review 
+of published definitions. J Innov Health Inform 
+2017;23(4) doi: 10.14236/jhi.v23i4.838.
+13.	 Sarkar N. Transforming Health Data to Action­
+able Information: Recent Progress and Future 
+Opportunities in Health Information Exchange. 
+Yearb Med Inform 2022;31:203–14. doi: 
+10.1055/s-0042-1742519.
+14.	 Dixon BE, Holmgren AJ, Adler-Milstein J, 
+Grannis SJ. Health Information Exchange and 
+Interoperability. In: Finnell JT, Dixon BE, 
+editors. Clinical Informatics Study Guide: 
+Text and Review. Cham: Springer International 
+Publishing; 2022. p. 203–19. doi: 10.1007/978-
+3-030-93765-2_14.
+192
+IMIA Yearbook of Medical Informatics 2023
+Holmgren et al
+15.	 Adler-Milstein J, Bates DW, Jha AK. A Survey of 
+Health Information Exchange Organizations in 
+the United States: Implications for Meaningful 
+Use. Ann Intern Med 2011;154(10):666–71. doi: 
+10.1059/0003-4819-154-10-201105170-00006.
+16.	 Adler-Milstein J, Garg A, Zhao W, Patel V. 
+A Survey Of Health Information Exchange 
+Organizations In Advance Of A Nationwide 
+Connectivity Framework. Health Aff (Mill­
+wood) 2012;40(5):736–44. doi: 10.1377/
+hlthaff.2020.01497.
+17.	 Gematik, Pressemitteilung | Fakten zur Dig­
+italisierung: TI-Atlas 2022 veröffentlicht | 
+gematik, Oct. 18, 2022. [available at: https://
+www.gematik.de/presse/pressemitteilung-fak­
+ten-zur-digitalisierung-ti-atlas-2022-veroeffen­
+tlicht; accessed Dec. 15, 2022].
+18.	 Dehling T, Sunyaev A. German Health IT Infra­
+structure: A Large-Scale Network Alleviating 
+Challenges in Health IT Development. Working 
+Paper, University of Cologne, May 2014. doi: 
+10.13140/RG.2.1.3315.8566.
+19. Holmgren A, Adler-Milstein J. Health Informa­
+tion Exchange in US Hospitals: The Current 
+Landscape and a Path to Improved Information 
+Sharing. J Hosp Med 2017;12(3):193. doi: 
+10.12788/jhm.2704.
+20.	 Blumenthal D. Launching HITECH. N Engl 
+J Med 2010;362(5):382–5. doi: 10.1056/NE­
+JMp0912825.
+21.	 Apathy NC, Holmgren AJ, Adler-Milstein J. A 
+decade post-HITECH: Critical access hospitals 
+have electronic health records but struggle to 
+keep up with other advanced functions. J Am 
+Med Inform Assoc 2012;28(9):1947-54. doi: 
+10.1093/jamia/ocab102.
+22.	 2020 Medicare Promoting Interoperability 
+Program Scoring Methodology Fact Sheet, 
+Centers for Medicare & Medicaid Services, 
+2020. [Available at: https://www.cms.gov/files/
+document/scoring-methodology-fact-sheet.pdf; 
+accessed Mar. 15, 2023].
+23.	 Medicare Access and CHIP Reauthorization 
+Act of 2015 (MACRA). [Available at: https://
+www.congress.gov/114/plaws/publ10/PLAW-
+114publ10.pdf; accessed Mar. 29, 2023].
+24.	 Grossman JM, Kushner KL, November EA. 
+Creating sustainable local health information 
+exchanges: can barriers to stakeholder partici­
+pation be overcome? Res Brief 2008;2:1-12.
+25.	 Charles D, Swain M, Patel V. Interoperability 
+among U.S. Non-federal Acute Care Hospitals, 
+2014. ONC Data Brief 2015;25:10.
+26.	 Office of the National Coordinator for Health In­
+formation Technology. 2022 Report to Congress: 
+Update on the Access, Exchange, and Use of 
+Electronic Health Information, 2022. [Available 
+at: https://www.healthit.gov/sites/default/files/
+page/2023-02/2022_ONC_Report_to_Congress.
+pdf; accessed Mar. 29, 2023].
+27.	 Holmgren AJ, Everson J, Adler-Milstein J. 
+Association of Hospital Interoperable Data 
+Sharing With Alternative Payment Mod­
+el Participation. JAMA Health Forum 
+2002;3(2):e215199–e215199. doi: 10.1001/
+jamahealthforum.2021.5199.
+28.	 Madhavan S, Bastarache L, Brown JS, Butte AJ, 
+Dorr DA, Embi PJ, et al. Use of electronic health 
+records to support a public health response to 
+the COVID-19 pandemic in the United States: a 
+perspective from 15 academic medical centers. 
+J Am Med Inform Assoc 2012;28(2):393–401. 
+doi: 10.1093/jamia/ocaa287.
+29.	 Reeves JJ, Pageler NM, Wick EC, Melton GB, 
+Gamaliel Tan Y-H, Clay BJ, et al. The Clinical 
+Information Systems Response to the COVID-19 
+Pandemic. Yearb Med Inform 2012;30:105–25. 
+doi: 10.1055/s-0041-1726513.
+30.	 Holmgren AJ, Patel V, Charles D, Adler-Mil­
+stein J. US Hospital Engagement in Core 
+Domains of Interoperability. Am J Manag Care 
+2016;22(12):e395–e402.
+31.	 Holmgren AJ, Patel V, Adler-Milstein J. Progress 
+In Interoperability: Measuring US Hospitals’ 
+Engagement In Sharing Patient Data. Health Aff 
+(Millwood) 2017;36(10):1820–7. doi: 10.1377/
+hlthaff.2017.0546.
+32.	 Apath, NC, Vest JR, Adler-Milstein J, Blackburn 
+J, Dixon, BE, Harle CA. Practice and market 
+factors associated with provider volume of 
+health information exchange. J Am Med Inform 
+Assoc 2021;28(7):1451–60. doi: 10.1093/jamia/
+ocab024.
+33.	 Patel V, Pylypchuk Y, Parasrampuria S, Kachay L. 
+Interoperability among Office-Based Physicians 
+in 2015 and 2017. ONC Data Brief 2019;47:12.
+34.	 Apathy NC, Holmgren AJ. Opt-in consent 
+policies: potential barriers to hospital health 
+information exchange. Am J Manag Care 
+2020;26(1):e14.
+35.	 Bronsoler A, Doyle J, Schmit C, Van Reenen J. 
+The Role of State Policy in Fostering Health In­
+formation Exchange in the United States. NEJM 
+Catal Innov Care Deliv 2023;4(1). doi: 10.1056/
+CAT.22.0302.
+36.	 Winden T, Boland L, Frey N, Satterlee P, Hokan­
+son J. Care everywhere, a point-to-point HIE 
+tool: Utilization and impact on patient care in 
+the ED. Appl Clin Inform 2014;5(2):388–401. 
+doi: 10.4338/ACI-2013-12-RA-0100.
+37.	 Everson J, Butler E. Hospital adoption of multi­
+ple health information exchange approaches and 
+information accessibility. J Am Med Inform As­
+soc:27(4):577–83. doi: 10.1093/jamia/ocaa003.
+38.	 Cross DA, Adler-Milstein J. Investing in 
+Post-Acute Care Transitions: Electronic In­
+formation Exchange Between Hospitals and 
+Long-Term Care Facilities. J Am Med Dir 
+Assoc 2017;18(1):30–4. doi: 10.1016/j.jam­
+da.2016.07.024.
+39.	 Lin SC, Hollingsworth JM, Adler-Milstein J. 
+Alternative Payment Models and Hospital En­
+gagement in Health Information Exchange. Am 
+J Manag Care 2019;25(1):e1–e6.
+40.	 Apathy NC, Holmgren AJ, Werner RM. Growth 
+in health information exchange with ACO market 
+penetration. Am J Manag Care 2022;28(1):e7–
+e13. doi: 10.37765/ajmc.2022.88815.
+41.	 Porreca D, Yaraghi N. The Impact of Population 
+Health Analytics on Health Care Quality and 
+Efficacy Among CPC+ Participants. Milbank 
+Memorial Fund; 2022. [Available at: https://
+www.milbank.org/wp-content/uploads/2022/10/
+WNY_Report2.pdf; accessed Mar. 29, 2023].
+42.	 About ONC’s Cures Act Final Rule. [Available 
+at: https://www.healthit.gov/curesrule/overview/
+about-oncs-cures-act-final-rule; accessed Mar. 
+15, 2023].
+43.	 Trusted Exchange Framework and Common 
+Agreement | HealthIT.gov, Office of the National 
+Coordinator for Health Information Technology, 
+May 26, 2020. [Avaialable at: https://www.
+healthit.gov/topic/interoperability/trusted-ex­
+change-framework-and-common-agreement; 
+accessed Mar. 15, 2023].
+44.	 ONC debuts first cohort of qualified networks 
+in TEFCA, including Epic, eHealth Exchange, 
+Healthcare Dive. [Available at: https://www.
+healthcaredive.com/news/onc-first-cohort-of-
+qualified-networks-tefca-epic/642654/; accessed 
+Feb. 27, 2023].
+45.	 Office of the National Coordinator for Health 
+Information Technology, Trusted Exchange 
+Framework and Common Agreement (TEFCA) 
+| HealthIT.gov, HealthIT.gov. [Available at: 
+https://www.healthit.gov/topic/interoperability/
+policy/trusted-exchange-framework-and-com­
+mon-agreement-tefca; accessed Dec. 15, 2022].
+46.	 Bogumil-Uçan S, Klenk T. Varieties of health 
+care digitalization: Comparing advocacy coa­
+litions in Austria and Germany. Rev Policy Res 
+2021;38(4):478–503. doi: 10.1111/ropr.12435.
+47.	 Müller J, Ullrich C, Poss-Doering R. Beyond 
+Known Barriers—Assessing Physician Per­
+spectives and Attitudes Toward Introducing 
+Open Health Records in Germany: Qualitative 
+Study. J Particip Med 2020;12(4):e19093. doi: 
+10.2196/19093.
+48.	 Naumann L, Babitsch B, Hübner UH. eHealth 
+policy processes from the stakeholders’ view­
+point: A qualitative comparison between Austria, 
+Switzerland and Germany. Health Policy 
+Technol 2021;10(2):100505. doi: 10.1016/j.
+hlpt.2021.100505.
+49.	 Naumann L, Esdar M, Ammenwerth E, Baum­
+berger D, Hübner U. Same Goals, Yet Different 
+Outcomes: Analysing the Current State of 
+eHealth Adoption and Policies in Austria, Ger­
+many, and Switzerland Using a Mixed Methods 
+Approach. MEDINFO 2019; 2019. p. 1012–6. 
+doi: 10.3233/SHTI190377.
+50.	 Pohlmann S, Kunz A, Ose,D, Winkler EC, Brand­
+ner A, Poss-Doering R, et al. Digitalizing Health 
+Services by Implementing a Personal Electronic 
+Health Record in Germany: Qualitative Analysis 
+of Fundamental Prerequisites From the Perspec­
+tive of Selected Experts, J Med Internet Res 2020 
+Jan 29;22(1):e15102. doi: 10.2196/15102.
+51.	 EHR and PHR: digital records in the German 
+healthcare system, Mar. 18, 2019. [Available 
+at: https://www.gesundheitsindustrie-bw.de/
+en/article/news/ehr-and-phr-digital-records-
+in-the-german-healthcare-system; accessed 
+Feb. 28, 2023].
+52.	 Amelung V, Angelkorte M, Augurzky B, Brauer 
+R, Freigang F, Fritzsche F, et al. Ergebnisse der 
+ersten nationalen Reifegradmessung deutscher 
+Krankenhäuser. DigitalRadar 2022;148. [Avail­
+able at: https://www.bundesgesundheitsmin­
+isterium.de/service/publikationen/details/
+digitalradar-zwischenbericht.html; accessed 
+Mar. 29, 2023].
+53.	 Albrecht M, Otten M, Sander M, Temizdemir E, 
+Wichtrup W. PraxisBarometer Digitalisierung 
+IMIA Yearbook of Medical Informatics 2023
+193
+Health Information Exchange: Understanding the Policy Landscape and Future of Data Interoperability
+2020. Stand und Perspektiven der Digitalisierung 
+in der vertragsärztlichen und -psychotherapeu­
+tischen Versorgung; 2020. [Available at: https://
+www.iges.com/sites/igesgroup/iges.de/myzms/
+content/e6/e1621/e10211/e24893/e26423/
+e26424/e26426/attr_objs26428/IGES_KBV_
+Digitalbaromenter_2020_ger.pdf; accessed Mar. 
+29, 2023]. 
+54.	 Thiel R, Deimel L, Schmidtmann D, Pi­
+esche K, Hüsing T, Rennoch J, et al. Gesund­
+heitssystem-Vergleich Fokus Digitalisierung. # 
+SmartHealthSystems Digitalisierungsstrategien 
+im internationalen Vergleich; 2018. [Avail­
+able at: https://www.bertelsmann-stiftung.de/
+fileadmin/files/Projekte/Der_digitale_Patient/
+VV_SHS-Gesamtstudie_dt.pdf; accessed Mar. 
+29, 2023].
+55.	 Price C, Green W, Suhomlinova O. Twenty-five 
+years of national health IT: exploring strategy, 
+structure, and systems in the English NHS. J 
+Am Med Inform Assoc 2019;26(3):188–97. doi: 
+10.1093/jamia/ocy162.
+56.	 NHS England - Transformation Directorate. 
+Consent and confidential patient information; 
+Feb. 10, 2023. [Available at: https://transform.en­
+gland.nhs.uk/information-governance/guidance/
+consent-and-confidential-patient-information/; 
+accessed Feb. 27, 2023].
+57.	 Justinia T. The UK’s National Programme for IT: 
+Why was it dismantled? Health Serv Manage Res 
+2017;30(1):2–9. doi: 10.1177/0951484816662492.
+58.	 Warren LR, Clarke J, Arora S, Darzi A. Im­
+proving data sharing between acute hospitals in 
+England: an overview of health record system 
+distribution and retrospective observational 
+analysis of inter-hospital transitions of care. 
+BMJ Open 2019;9(12):e031637. doi: 10.1136/
+bmjopen-2019-031637.
+59.	 NHS England  Interoperability. [Available at: 
+https://www.england.nhs.uk/digitaltechnology/
+connecteddigitalsystems/interoperability/; ac­
+cessed Feb. 28, 2023].
+60.	 NHS England - Transformation Directorate. In­
+formation Governance Framework: Shared Care 
+Records; Feb. 02, 2022. [Available at: https://
+transform.england.nhs.uk/information-gover­
+nance/guidance/summary-of-information-gover­
+nance-framework-shared-care-records/; accessed 
+Dec. 30, 2022].
+61.	 Zhang J, Sood H, Harrison OT, Horner B, 
+Sharma N, Budhdeo S. Interoperability in NHS 
+hospitals must be improved: the Care Quality 
+Commission should be a key actor in this 
+process. J R Soc Med 2020;113(3):101–4. doi: 
+10.1177/0141076819894664.
+62.	 Watkinson F, Dharmayat KI, Mastellos N. A 
+mixed-method service evaluation of health 
+information exchange in England: technology 
+acceptance and barriers and facilitators to adop­
+tion. BMC Health Serv Res 2012;21(1):737. doi: 
+10.1186/s12913-021-06771-z.
+63.	 Wise J. New data strategy for England aims to 
+rebuild public trust. BMJ 2022;377:o1455. doi: 
+10.1136/bmj.o1455.
+64.	 Topol E. The topol review. Preparing the health­
+care workforce to deliver the digital future; Feb 
+2019. p. 1–48.
+65.	 Scobie S, Castle-Clarke S. Implementing learn­
+ing health systems in the UK NHS: Policy actions 
+to improve collaboration and transparency and 
+support innovation and better use of analytics. 
+Learn Health Syst 2020;4(1):e10209. doi: 
+10.1002/lrh2.10209.
+66.	 Marjanovic S, Altenhofer M, Hocking L, Chat­
+away J, Ling T. Innovating for improved health­
+care: Sociotechnical and innovation systems 
+perspectives and lessons from the NHS. Sci 
+Public Policy 2020;47(2):283–97. doi: 10.1093/
+scipol/scaa005.
+67.	 Frankel M, Chinitz D, Salzberg CA, Reichman 
+K. Sustainable health information exchanges: the 
+role of institutional factors. Isr J Health Policy 
+Res 2013;2(1):21. doi: 10.1186/2045-4015-2-21.
+68.	 Flaks-Manov N, Shadmi E, Hoshen M, Balicer 
+RD. Health information exchange systems and 
+length of stay in readmissions to a different 
+hospital. J Hosp Med 2016;11(6):401–6. doi: 
+10.1002/jhm.2535.
+69.	 Politi L, Codish S, Sagy I, Fink L. Balancing 
+volume and duration of information consumption 
+by physicians: The case of health information 
+exchange in critical care. J Biomed Inform 2017 
+Jul;71:1–15. doi: 10.1016/j.jbi.2017.05.007.
+70.	 Nirel N, Rosen B, Sharon A, Blondheim O, Sherf 
+M, Cohen AD. OFEK virtual medical records: an 
+evaluation of an integrated hospital-community 
+system. Harefuah 2011 Feb;150(2):72–8, 209.
+71.	 Gilboa A. The Implementation of a National 
+Health Information Exchange Platform in Israel. 
+Inter-American Development Bank; May 2022. 
+doi: 10.18235/0004272.
+72.	 Colombo F, Oderkirk J, Slawomirski L. Health 
+Information Systems, Electronic Medical 
+Records, and Big Data in Global Healthcare: 
+Progress and Challenges in OECD Countries. 
+In: Haring R, Kickbusch I, Ganten D, Moeti 
+M, editors. Handbook of Global Health. Cham: 
+Springer International Publishing; 2020. p. 1–31. 
+doi: 10.1007/978-3-030-05325-3_71-1.
+73.	 State of Israel Ministry of Health. Health Infor­
+mation Exchange. [Available at: https://www.
+health.gov.il/English/About/projects/shared_
+medical_info/Pages/default.asp; accessed Dec. 
+15, 2022].
+74.	 Zimlichman E. Israel: A Nationwide Health 
+Information Exchange Program in Israel: A 
+Unique Case Study. In: Health Systems Im­
+provement Across the Globe. CRC Press; 2018.
+75.	 World Health Organization, Israel. Advancing In­
+teroperability and Data Sharing in the Health Sys­
+tem; Jan. 2022. [Available at: https://www.euro.
+who.int/__data/assets/pdf_file/0008/509597/
+vignette-interoperability-data-sharing-Israel.pdf; 
+accessed Feb. 27, 2023].
+76.	 Itzhaki M, Koren E, Abu Hussein K, Levy L, 
+Gantz I, Barnoy S. Use of Health Informa­
+tion Exchange in the Continuity of Care as 
+Viewed by Patients and Nurses: A Cross-Sec­
+tional Study. CIN Comput Inform Nurs 2020 
+Mar;:10.1097/CIN.0000000000000861. doi: 
+10.1097/CIN.0000000000000861.
+77.	 Balicer R, Shadmi E, Manor O, Leventer-Roberts 
+M. Israel: Structural and Functional Integration 
+at the Israeli Healthcare System. In: Amelung V, 
+Stein V, Suter E, Goodwin N, Nolte E, Balicer 
+R, editors. Handbook Integrated Care. Cham: 
+Springer International Publishing; 2021. p. 
+1055–63. doi: 10.1007/978-3-030-69262-9_62.
+78.	 Ben-David R. Israel approves 19 programs for 
+$30 million digital health initiative. The Times 
+of Israel; May 30, 2022. [Available at: https://
+www.timesofisrael.com/israel-approves-19-pro­
+grams-for-30-million-digital-health-initiative/; 
+accessed Dec. 15, 2022].
+79.	 Dispatch n.o 182/2013 of Ministry of Health, 
+182; Sep. 2013. [Available at: https://dre.pt/
+dre/detalhe/despacho/12071-2013-2529406; 
+accessed Dec. 15, 2022].
+80.	 Interoperabilidade Técnica: LIGHt; PNB; NCP, 
+SPMS, 2017. [Available at: https://www.spms.
+min-saude.pt/2017/06/interoperabilidade-tecni­
+ca-light-pnb-ncp/; accessed Dec. 15, 2022].
+81.	 Catan G, Espanha R, Mendes RV, Toren O, 
+Chinitz D. Health information technology imple­
+mentation - impacts and policy considerations: 
+a comparison between Israel and Portugal. Isr 
+J Health Policy Res 2015 Aug;4(1):41. doi: 
+10.1186/s13584-015-0040-9.
+82.	 Mendonça SR. The roadmap to healthcare 
+digitalization: factors that affect the Portuguese 
+approach to ehealth; 2022. [Available at: https://
+run.unl.pt/handle/10362/144871; accessed Dec. 
+14, 2022].
+83.	 ACSS, RSE – Registo de Saúde Electrónico – 
+R2A: Orientações para Especificação Funcional 
+e Técnica do Sistema de RSE, 2009. [Avaialable 
+at: https://www.essnortecvp.pt/upload/files/
+R2A_Orientacoes_FuncTec_v3.pdf; accessed 
+Dec. 15, 2022].
+84.	 Registo de Saúde Eletrónico, SPMS. [Available 
+at: https://www.spms.min-saude.pt/2020/07/
+registo-de-saude-eletronico/; accessed Dec. 
+15, 2022].
+85.	 Simões JA, Augusto GF, Fronteira I, Hernán­
+dez-Quevedo C. Portugal: health system review. 
+Health Syst Transit 2011;19(2):1-184.
+86.	 Martins H, Monteiro M, Loureiro P, Cortes M. 
+SPMS - Serviços Partilhados do Ministério da 
+Saúde. E.P.E. Centro Nacional de TeleSaúde 
+Plano Estratégico Nacional para a Telessaúde 
+2019-2022, 201. [Available at: https://www.
+spms.min-saude.pt/; accessed Mar. 29, 2023].
+87.	 Canhão H. Portugal in the e-health path. EIT 
+Health 2020 Feb 28. [Available at: https://
+eithealth.eu/news-article/portugal-launches-its-
+national-telehealth-as-the-first-country-in-the-
+world/; accessed Dec. 15, 2022].
+88.	 SPMS. Aplicação móvel SNS 24, 2022. 
+[Available at: https://www.sns24.gov.pt/guia/
+utilizar-a-aplicacao-movel-sns-24/; accessed 
+Dec. 15, 2022].
+89.	 Resolução do Conselho de Ministros n.o 
+62/2016 | DRE,” 67, Oct. 2016. [Available at: 
+https://dre.pt/dre/detalhe/resolucao-consel­
+ho-ministros/62-2016-75542124; accessed Dec. 
+15, 2022].
+90.	 SPMS. ENESIS 2020 – 2022; 2019. [Available 
+at: https://www.spms.min-saude.pt/wp-content/
+uploads/2019/10/ENESIS2022_VersaoPara­
+ConsultaPublicaOut2019.pdf; accessed Dec. 
+15, 2022].
+91.	 Portugal: Cyberattack on Hospital do Divi­
+no Espírito Santo Impacting Notification of 
+COVID-19 Test Results; 2021 Jun 28. [Available 
+194
+IMIA Yearbook of Medical Informatics 2023
+Holmgren et al
+at: https://www.databreaches.net/portugal-cyber­
+attack-on-hospital-do-divino-espirito-santo-im­
+pacting-notification-of-covid-19-test-results/; 
+accessed Jan. 02, 2023].
+92.	 Gonçalves ME, Raimundo J. Over Troubled 
+Water: E-Health Platforms and the Protec­
+tion of Personal Data: The Case of Portugal. 
+Port J Public Health 2017;35(1):52–66. doi: 
+10.1159/000477650.
+93.	 Rucker D, Hasan A, Lewis L, Tao D. GDHP-Ad­
+vancing Interoperability Together Globally. 
+Global Digital Health Partnership, Sydney, 
+Australia. GDHP White Paper on Interoperability 
+2020 Jul. [Available at: https://www.healthit.
+gov/sites/default/files/page/2021-01/GDHP-Ad­
+vancing%20Interoperability%20Together%20
+Globally.pdf; accessed Feb. 28, 2023].
+94.	 Vasco Santos J, Martins FS, Lopes F, Souza 
+J, Freitas A. Discharge status of the patient: 
+evaluating hospital data quality with a focus on 
+long-term and palliative care patient data. Health 
+Inf Manag J 2021 Nov30;18333583211054160. 
+doi: 10.1177/18333583211054161.
+95.	 Savage M, Neinstein A, Adler-Milstein J. 
+Measure The Impact Of The ONC’s New In­
+teroperability Rules Now. Health Affairs Blog; 
+2020 Jul 7.
+96.	 Rahurkar S, Vest JR, Menachemi N. Despite 
+The Spread Of Health Information Exchange. 
+There Is Little Evidence Of Its Impact On Cost, 
+Use, And Quality Of Care. Health Aff (Mill­
+wood) 2015 Mar;34(3):477–83. doi: 10.1377/
+hlthaff.2014.0729.
+97.	 Menachemi N, Rahurkar S, Harle CA, Vest JR. 
+The benefits of health information exchange: an 
+updated systematic review. J Am Med Inform 
+Assoc 2018 Sep;25(9):1259–65. doi: 10.1093/
+jamia/ocy035.
+98.	 Adler-Milstein J, Zhao W, Willard-Grace R, Knox 
+M, Grumbac, K. Electronic health records and 
+burnout: Time spent on the electronic health re­
+cord after hours and message volume associated 
+with exhaustion but not with cynicism among 
+primary care clinicians. J Am Med Inform Assoc 
+2020;27(4):531–8. doi: 10.1093/jamia/ocz220.
+99.	 Overhage JM, McCallie D. Physician Time Spent 
+Using the Electronic Health Record During 
+Outpatient Encounters: A Descriptive Study. 
+Ann Intern Med 2020 Feb 4;172(3):169-74. doi: 
+10.7326/M18-3684.
+100.	 Holmgren AJ, Downing NL, Bates DW, Shanafelt 
+TD, Milstein A, Sharp CD, et al. Assessment of 
+Electronic Health Record Use Between US and 
+Non-US Health Systems. JAMA Intern Med 
+2021 Feb 1;181(2):251-9. doi: 10.1001/jamain­
+ternmed.2020.7071.
+101.	 Adler-Milstein J, Wang MD. The impact of 
+transitioning from availability of outside records 
+within electronic health records to integration 
+of local and outside records within electronic 
+health records. J Am Med Inform Assoc 2020 
+Apr;27(4):606–12. doi: 10.1093/jamia/ocaa006.
+102.	 D’Amore JD, McCrary LK, Denson J, Li C, Vi­
+tale CJ, Tokachichu P, et al. Clinical data sharing 
+improves quality measurement and patient safety. 
+J Am Med Inform Assoc 2021 Jul14;28(7):1534–
+42. doi: 10.1093/jamia/ocab039.
+103.	 Indiana Network for Population Health focuses 
+on social determinants of health, EurekAlert! 
+[Available at: https://www.eurekalert.org/
+news-releases/653368; accessed Dec. 15, 2022].
+104.	 Esdar M, J. Hüsers J, Weiß JP, Rauch J, Hübner U. 
+Diffusion dynamics of electronic health records: 
+A longitudinal observational study comparing 
+data from hospitals in Germany and the United 
+States. Int J Med Inform 2019 Nov;131:103952. 
+doi: 10.1016/j.ijmedinf.2019.103952.
+105.	 Nohl-Deryk P, Brinkmann JK, Gerlach FM, 
+Schreyögg J, Achelrod D. [Barriers to Digital­
+isation of Healthcare in Germany: A Survey 
+of Experts], Gesundheitswesen Bundesverb. 
+Arzte Offentlichen Gesundheitsdienstes Ger 
+2018 Nov;80(11):939–45. doi: 10.1055/s-0043-
+121010.
+106.	 Payne TH, Detmer DE, Wyatt JC, Buchan IE. Na­
+tional-scale clinical information exchange in the 
+United Kingdom: lessons for the United States. 
+J Am Med Inform Assoc 2011;18(1):91–8. doi: 
+10.1136/jamia.2010.005611.
+107.	 Warren L, Clarke J, Darzi A. Measuring the Scale 
+of Hospital Health Record System Fragmentation 
+in England. Health Serv Res 2020;55(S1):43–4. 
+doi: 10.1111/1475-6773.13386.
+108.	 NHS. A plan for digital health and social care. 
+National Health Service; Jun. 2022. [Available 
+at: https://www.gov.uk/government/publica­
+tions/a-plan-for-digital-health-and-social-care/a-
+plan-for-digital-health-and-social-care; accessed 
+Feb. 28, 2023].
+109.	 Lejbkowicz I, Denekamp Y, Reis S, Goldenberg 
+D. Electronic medical record systems in Israel’s 
+public hospitals. Isr Med Assoc J IMAJ 2004 
+Oct;6(10):583–7.
+110.	 Heart T, O’Reilly P, Sammon D, O’Donoghue J. 
+Bottom‐up or top‐down? A comparative analysis 
+of electronic health record diffusion in Ireland and 
+Israel. J Syst Inf Technol 2009 Jan;11(3):244–68. 
+doi: 10.1108/13287260910983623.
+111.	 Prey JE, Polubriaginof F, Kuperman JG, Tiase V, 
+Collins SA, Vawdrey DK. International perspec­
+tives on sharing clinical data with patients. Int J 
+Med Inform 2016 Feb;86:135–41. doi: 10.1016/j.
+ijmedinf.2015.11.007.
+112.	 Hübner UH, Wilson GM, Morawski TS, Ball MJ. 
+Nursing Informatics: A Health Informatics, In­
+terprofessional and Global Perspective. Springer 
+Nature; 2022. doi: 10.1007/978-3-030-91237-6.
+113.	 Vest JR. Health information exchange: national 
+and international approaches. Adv Health Care 
+Manag 2012;12:3–24. doi: 10.1108/s1474-
+8231(2012)0000012005.
+114 	 Grenha Teixeira J, de Pinho NF, Patrício L. Bring­
+ing service design to the development of health 
+information systems: The case of the Portuguese 
+national electronic health record. Int J Med Inf 
+Inform 2019 Dec;132:103942. doi: 10.1016/j.
+ijmedinf.2019.08.002.
+Correspondence to:
+A Jay Holmgren, PhD MHI
+10 Koret Way, Office 327A
+San Francisco, CA 94131
+USA
+Tel: +1 517 896 0614
+E-mail: a.holmgren@ucsf.edu

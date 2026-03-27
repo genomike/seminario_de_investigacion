@@ -1,0 +1,3583 @@
+ 
+ 
+ 
+Escuela de Posgrado 
+ 
+ 
+ 
+ 
+ 
+ 
+GUÍA METODOLÓGICA 
+PARA LA ELABORACIÓN 
+DEL PROYECTO DE 
+TESIS (segundas 
+especialidades, maestrías y 
+doctorados) 
+ 
+ 
+UNIDAD DE INVESTIGACIÓN Y GRADOS 
+(UIG) 
+ 
+ 
+LIMA 
+2024 
+ 
+ 
+2 
+TABLA DE CONTENIDO DE LA GUÍA 
+ 
+PORTADA ......................................................................................................................................... 3 
+ÍNDICE .............................................................................................................................................. 4 
+CAPÍTULO I. PLANTEAMIENTO DEL ESTUDIO ............................................................................... 8 
+PLANTEAMIENTO Y FORMULACIÓN DEL PROBLEMA ....................................................................................... 8 
+DETERMINACIÓN DE LOS OBJETIVOS ......................................................................................................... 14 
+JUSTIFICACIÓN E IMPORTANCIA DEL ESTUDIO ............................................................................................. 17 
+LIMITACIONES DE LA PRESENTE INVESTIGACIÓN ......................................................................................... 18 
+CAPÍTULO II. MARCO TEÓRICO .................................................................................................... 20 
+ANTECEDENTES DEL PROBLEMA ............................................................................................................... 20 
+BASES TEÓRICAS ..................................................................................................................................... 22 
+DEFINICIÓN DE TÉRMINOS BÁSICOS ........................................................................................................... 26 
+CAPÍTULO III. HIPÓTESIS Y VARIABLES / SUPUESTOS DE INVESTIGACIÓN Y CATEGORÍAS .. 28 
+HIPÓTESIS .............................................................................................................................................. 28 
+OPERACIONALIZACIÓN DE VARIABLES ........................................................................................................ 30 
+SUPUESTO DE INVESTIGACIÓN .................................................................................................................. 31 
+CATEGORIZACIÓN CONCEPTUAL APRIORÍSTICA .......................................................................................... 32 
+CAPÍTULO IV. METODOLOGÍA DEL ESTUDIO ............................................................................... 36 
+ENFOQUE, TIPO Y ALCANCE DE INVESTIGACIÓN .......................................................................................... 36 
+DISEÑO DE LA INVESTIGACIÓN .................................................................................................................. 40 
+POBLACIÓN Y MUESTRA ........................................................................................................................... 43 
+TÉCNICAS E INSTRUMENTOS DE RECOLECCIÓN DE DATOS ........................................................................... 47 
+TÉCNICAS DE ANÁLISIS DE DATOS ............................................................................................................. 56 
+CAPÍTULO V. ASPECTOS ADMINISTRATIVOS .............................................................................. 60 
+REFERENCIAS ............................................................................................................................... 62 
+ANEXOS ......................................................................................................................................... 63 
+ 
+ 
+ 
+ 
+ 
+3 
+“EL IMPACTO DE LAS REFORMAS AL CÓDIGO PENAL 
+EN LOS PROCEDIMIENTOS DE JUSTICIA RESTAURATIVA 
+EN EL SISTEMA PENAL PERUANO: UN ESTUDIO EN LIMA 
+METROPOLITANA (2024)” 
+PORTADA 
+ 
+Ejemplo 
+ 
+ 
+SEGUNDA ESPECIALIDAD / MAESTRÍA / 
+DOCTORADO EN XYZ 
+ 
+PROYECTO DE TESIS 
+ 
+ 
+ 
+ 
+ 
+ 
+PRESENTADO POR: 
+ 
+Bach. / Mgtr. LUCIANO CUELLAR GERÍ 
+PARA OPTAR EL TÍTULO DE SEGUNDA ESPECIALIDAD / GRADO 
+ACADÉMICO DE: 
+ 
+LICENCIADO / MAESTRO / DOCTOR EN XYZ 
+ 
+ 
+LIMA  
+2024 
+Calibri 18 
+Calibri 18 
+Sede o filial: 
+Arequipa, Cusco, 
+Huancayo, Lima 
+Calibri 22, 
+negrita 
+Arial 16, negrita, 
+Interlineado sencillo 
+Calibri 20, 
+negrita 
+Calibri 16 
+Calibri 22, 
+negrita 
+ 
+ 
+4 
+ÍNDICE 
+ 
+En este apartado, indica, de manera organizada, el número de página de cada apartado 
+que conforma el informe de investigación, incluyendo las páginas preliminares, las 
+referencias y los anexos. 
+ 
+Ejemplo de índice de proyecto de tesis cuantitativo 
+ 
+Índice…………..…………………………………………………….…………………………. 2 
+Capítulo I: Planteamiento del estudio…………..………………………………………….3 
+1.1. 
+Planteamiento y formulación del problema…………………………………………..3 
+1.1.1. Planteamiento del problema……………………………………….…………………..3 
+1.1.2. Formulación del problema………………………………….……………………….… 5 
+1.2. 
+Determinación de los objetivos..............................................................................6 
+1.2.1. Objetivo general.................................................................................................... 6 
+1.2.2. Objetivos específicos………………………………………………............................6 
+1.3. 
+Justificación e importancia del estudio……………………………………................6 
+1.3.1. Justificación teórica……………………………………………….............................. 6 
+1.3.2. Justificación metodológica..……………………………………….............................7 
+1.3.3. Justificación social…………………………………………………............................ 7 
+1.4. 
+Limitaciones de la presente investigación…………………………………...............7 
+Capítulo II: Marco teórico..............…………………………………………………………. 8 
+2.1. 
+Antecedentes del problema…….…………………………………………................  8 
+2.1.1. Internacionales....................................................................................................   8 
+2.1.2. Nacionales.......................................................................................................... 10 
+2.2. 
+Bases teóricas ……………………………………………………………................  12 
+2.2.1. Desarrollo histórico………………………………...……………............................. 12 
+2.2.2. Fundamentación teórica………………………………...……………..................... 14 
+2.2.3. Marco conceptual……...………………………………...……………..................... 15 
+2.3. 
+Definición de términos básicos ……………………………………………………... 16 
+Capítulo III: Hipótesis y variables ………………….……………………………………. 17 
+3.1. 
+Hipótesis............................................................................................................. 17 
+3.1.1. Hipótesis general …………………………………………………............................17 
+3.1.2. Hipótesis específicas ……………………………………………….........................17 
+3.2. 
+Operacionalización de variables……………………………………………………..18 
+3.2.1. Variable 1……………………………………………………………………………… 18 
+3.2.2. Variable 2……………………………………………………………………………… 18 
+ 
+ 
+5 
+3.3. 
+Matriz de operacionalización de variables………………………………………….19 
+Capítulo IV: Metodología del estudio …………………..……….....…………………… 20 
+4.1. 
+Enfoque, tipo y alcance de investigación........…………………………………….  20 
+4.1.1. Enfoque ………..………………..…………………………………...........................20 
+4.1.2. Tipo y alcance………………………………………………………………………….20 
+4.2. 
+Diseño de la investigación ………………………………………………................. 21 
+4.3. 
+Población y muestra…………………………………………………….....………….21 
+4.3.1. Población………………………………………………………...............…………... 21 
+4.3.2. Muestra ……………………………………………………………............................22 
+4.4. 
+Técnicas e instrumentos de recolección de datos …………………….................22 
+4.4.1. Técnicas e instrumentos..……………………………………...............…………... 23 
+4.4.2. Validez y confiabilidad……………………………………………............................23 
+4.4.3. Procedimiento de recolección de datos……...…………………............................23 
+4.5. 
+Técnicas de análisis de datos …………………………………………...................24 
+Capítulo V: Aspectos administrativos....................................................................... 25 
+5.1. 
+Presupuesto ………............................................................................................ 25 
+5.2. 
+Cronograma de actividades...............................................................................  25 
+Referencias………………............................................................................................  26 
+Anexos……………………………………………………………………………..................28 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+6 
+Ejemplo de índice de proyecto de tesis cualitativo 
+ 
+Índice…………..…………………………………………………….…………………………. 2 
+Capítulo I: Planteamiento del estudio…………..………………………………………….3 
+1.1. 
+Planteamiento y formulación del problema…………………………………………..3 
+1.1.1. Planteamiento del problema……………………………………….…………………..3 
+1.1.2. Formulación del problema………………………………….……………………….… 5 
+1.2. 
+Determinación de los objetivos..............................................................................6 
+1.2.1. Objetivo general.................................................................................................... 6 
+1.2.2. Objetivos específicos………………………………………………............................6 
+1.3. 
+Justificación e importancia del estudio……………………………………................6 
+1.3.1. Justificación teórica……………………………………………….............................. 6 
+1.3.2. Justificación metodológica..……………………………………….............................7 
+1.3.3. Justificación social…………………………………………………............................ 7 
+1.4. 
+Limitaciones de la presente investigación…………………………………...............7 
+Capítulo II: Marco teórico..............…………………………………………………………. 8 
+2.1. 
+Antecedentes del problema…….…………………………………………................  8 
+2.1.1. Internacionales....................................................................................................   8 
+2.1.2. Nacionales.......................................................................................................... 10 
+2.2. 
+Bases teóricas ……………………………………………………………................  12 
+2.2.1. Desarrollo histórico………………………………...……………............................. 12 
+2.2.2. Fundamentación teórica………………………………...……………..................... 14 
+2.2.3. Marco conceptual……...………………………………...……………..................... 15 
+2.3. 
+Definición de términos básicos ……………………………………………………... 16 
+Capítulo III  
+Supuestos de investigación y categorías ………………….………………................  17 
+3.1. 
+Supuestos de investigación...............................................................................  17 
+3.1.1. Supuesto general …………………………………………………..........................  17 
+3.1.2. Supuestos específicos ………………………………………………...................... 17 
+3.2. 
+Definición conceptual de categorías.....………………………………...…………. 18 
+3.2.1. Categoría 1.....................................................................................…………….. 18 
+3.2.2. Categoría 2..............................……………………………...........………………... 18 
+3.3. 
+Matriz de categorización ...........................…………..............…………………… 19 
+Capítulo IV: Metodología del estudio …………………..……….....……………………  20 
+4.1. 
+Enfoque, tipo y alcance de investigación........…………………………………….  20 
+ 
+ 
+7 
+4.1.1. Enfoque ………..………………..…………………………………...........................20 
+4.1.2. Tipo y alcance………………………………………………………………………….20 
+4.2. 
+Diseño de la investigación ………………………………………………................. 21 
+4.3. 
+Población y muestra…………………………………………………….....………….21 
+4.3.1. Población………………………………………………………...............…………... 21 
+4.3.2. Muestra ……………………………………………………………............................22 
+4.4. 
+Técnicas e instrumentos de recolección de datos …………………….................22 
+4.4.1. Técnicas e instrumentos..……………………………………...............…………... 23 
+4.4.2. Validez y confiabilidad……………………………………………............................23 
+4.4.3. Procedimiento de recolección de datos……...…………………............................23 
+4.5. 
+Técnicas de análisis de datos …………………………………………...................24 
+Capítulo V: Aspectos administrativos....................................................................... 25 
+5.1. 
+Presupuesto ………............................................................................................ 25 
+5.2. 
+Cronograma de actividades...............................................................................  25 
+Referencias………………............................................................................................  26 
+Anexos……………………………………………………………………………..................28 
+ 
+ 
+ 
+ 
+8 
+CAPÍTULO I. PLANTEAMIENTO DEL ESTUDIO 
+ 
+En el primer capítulo, es fundamental incluir un planteamiento claro y detallado del 
+problema de investigación, que no solo permita al lector comprender la naturaleza y 
+relevancia del estudio, sino que también exponga de manera explícita los intereses y 
+objetivos del investigador. Este apartado debe contextualizar el problema dentro del 
+campo de estudio, identificando las brechas existentes en el conocimiento y justificando 
+la importancia de abordar la cuestión planteada. Asimismo, debe ofrecer una visión 
+general de la investigación, destacando su pertinencia y el impacto potencial que podría 
+tener en la práctica o teoría relacionada. 
+ 
+Planteamiento y formulación del problema  
+ 
+Planteamiento del problema 
+ 
+Para elaborar un planteamiento del problema utilizando la técnica del embudo, se debe 
+comenzar describiendo el problema en un contexto global, destacando su relevancia a 
+nivel mundial y cómo afecta a diferentes regiones o países. Luego, se debe dirigir el 
+enfoque hacia un contexto más específico, abordando cómo el problema se manifiesta 
+en la región (por ejemplo, América Latina) y cómo se ha tratado en este contexto. A 
+continuación, es necesario centrar el análisis en el ámbito nacional, explicando cómo el 
+problema impacta en Perú, citando estudios o ejemplos relevantes. Asimismo, se debe 
+enfocar el problema en el contexto local, como un distrito o ciudad específica, y justificar 
+la importancia de la investigación en ese lugar particular, destacando la necesidad de 
+evaluar soluciones o estrategias locales para abordar el problema identificado. Por 
+último, es fundamental que se declaren las brechas de conocimiento y de qué manera la 
+investigación cubrirá esos vacíos. 
+ 
+Ejemplo abreviado 
+ 
+La inteligencia artificial (IA) ha sido reconocida como una de las tecnologías más 
+transformadoras del siglo XXI, con aplicaciones que abarcan múltiples sectores y que 
+tienen un profundo impacto en la educación a nivel global. La capacidad de la IA para 
+personalizar el aprendizaje, automatizar procesos administrativos y apoyar la toma de 
+decisiones en el ámbito educativo ha sido ampliamente documentada en contextos 
+internacionales, especialmente en países desarrollados como Estados Unidos, China y 
+el Reino Unido (Zawacki-Richter et al., 2019). No obstante, el rápido crecimiento de esta 
+tecnología también ha planteado desafíos significativos, entre los cuales destacan las 
+preocupaciones éticas sobre el uso de datos, la equidad en el acceso a la tecnología, y 
+la preparación de los docentes para adaptarse a estos nuevos entornos de enseñanza 
+(Brynjolfsson y McAfee, 2017). 
+ 
+En América Latina, el avance de la IA en la educación superior ha sido más lento y 
+enfrenta obstáculos importantes. A pesar de que países como Brasil y México han 
+iniciado esfuerzos para integrar la IA en sus sistemas educativos, la región en su 
+conjunto enfrenta limitaciones en infraestructura tecnológica, falta de políticas públicas 
+efectivas y una escasez de formación especializada para los docentes (Cobo et al., 
+2020). Estas condiciones han generado una brecha considerable entre las capacidades 
+tecnológicas de las universidades de América Latina y las de los países desarrollados, 
+lo que ha impactado negativamente en la calidad educativa y en la competitividad de la 
+región en el contexto global (OECD, 2022). Además, existen pocos estudios empíricos 
+ 
+ 
+9 
+que examinen de manera exhaustiva cómo se está implementando la IA en las 
+instituciones educativas de la región y qué resultados se han obtenido hasta la fecha. 
+ 
+En Perú, la situación es aún más incipiente. Aunque algunas universidades han 
+comenzado a experimentar con la IA en la gestión académica y en el proceso de 
+enseñanza-aprendizaje, la adopción de estas tecnologías se ha limitado a proyectos 
+piloto de pequeña escala, con poca articulación a nivel nacional. El Ministerio de 
+Educación del Perú ha señalado la falta de infraestructura tecnológica y la escasez de 
+personal capacitado en IA como los principales desafíos para la implementación de esta 
+tecnología en el sistema educativo del país (MINEDU, 2023). A pesar de la existencia de 
+investigaciones que exploran el potencial de la IA en el ámbito educativo, la mayoría se 
+enfoca en aspectos teóricos o en estudios de caso aislados, sin una evaluación 
+sistemática del impacto de la IA en los procesos de formación académica en el nivel 
+superior. 
+ 
+Un vacío significativo en la literatura es la falta de estudios empíricos que analicen cómo 
+la IA está siendo utilizada en el contexto específico de las universidades peruanas, y 
+cómo estas tecnologías están afectando los procesos de enseñanza-aprendizaje y la 
+gestión académica. Este vacío de conocimiento se amplía al considerar que no se han 
+evaluado de manera exhaustiva las experiencias de los docentes y estudiantes en la 
+implementación de IA, ni se ha explorado cómo esta tecnología está impactando en la 
+calidad de la investigación académica, particularmente en los programas de doctorado. 
+Si bien en otros contextos se ha documentado cómo la IA puede transformar la 
+investigación académica a través del análisis de grandes volúmenes de datos y la 
+automatización de procesos complejos, en Perú no se ha investigado cómo estas 
+herramientas están siendo aprovechadas por los investigadores locales y qué barreras 
+enfrentan para su adopción. 
+ 
+Esta investigación se propone abordar estos vacíos de conocimiento a través de un 
+análisis empírico exhaustivo de la implementación de la inteligencia artificial en la 
+educación superior en Perú. En primer lugar, evaluará cómo la IA está siendo utilizada 
+en las universidades peruanas y qué impacto está teniendo en los procesos de 
+enseñanza-aprendizaje y en la gestión académica. Esto incluirá un análisis de las 
+percepciones y experiencias de los docentes y estudiantes en la adopción de estas 
+tecnologías, identificando las principales barreras y oportunidades. En segundo lugar, la 
+investigación explorará cómo la IA está siendo utilizada en los programas de doctorado 
+en Perú y cómo está impactando en la producción científica y en la formación de nuevos 
+investigadores. Este análisis permitirá identificar las brechas de habilidades y 
+competencias que deben ser cubiertas para una integración efectiva de la IA en la 
+investigación académica. Finalmente, esta investigación contribuirá a la formulación de 
+políticas educativas que promuevan la adopción de la IA de manera equitativa y 
+sostenible en el sistema educativo peruano, proporcionando recomendaciones basadas 
+en evidencia empírica que orienten tanto a las instituciones educativas como a los 
+responsables de la formulación de políticas en la adopción de estas tecnologías. 
+ 
+Formulación del problema 
+ 
+La pregunta de investigación es una declaración interrogativa que orienta el proceso 
+investigativo. Ayuda a establecer los objetivos y a determinar el alcance del estudio.  
+ 
+Las preguntas de investigación pueden ser completamente novedosas o pueden surgir 
+a partir de investigaciones anteriores, pero deben ser planteadas en un nuevo contexto.  
+ 
+ 
+10 
+Estas interrogantes poseen las siguientes características distintivas: 
+ 
+● No tienen una respuesta clara antes de que se realice la investigación. 
+● Su resolución se logra a través del proceso investigativo. 
+● Reflejan la información que se busca explorar. 
+● Son formuladas de manera precisa y sin ambigüedades. 
+● Guardan una estrecha relación con el tema de estudio. 
+● Se expresan en tiempo presente. 
+● Carecen de juicios de valor o sesgos. 
+ 
+Cada investigación debe incluir una pregunta general y al menos dos preguntas 
+específicas. Las preguntas específicas se encuentran subordinadas a la pregunta 
+general y pueden organizarse según dos criterios: 
+ 
+● Jerárquicamente: Las preguntas específicas se organizan en una estructura de 
+subordinación bajo la pregunta general. Esto significa que cada pregunta 
+específica se relaciona directamente con la pregunta general y contribuye con su 
+comprensión o respuesta. 
+● Por dimensiones o subcategorías: Las preguntas específicas se organizan 
+según 
+diferentes 
+aspectos 
+o 
+características 
+relacionadas 
+con 
+las 
+variables/categorías abordadas en la pregunta general. Para efectos de la tesis, 
+se recomienda esta forma de subdivisión, dado que permite una mejor 
+evaluación de resultados. 
+ 
+Pregunta general 
+ 
+La pregunta general de investigación debe centrarse en un aspecto específico del 
+problema que se desea investigar para evitar la ambigüedad.  
+ 
+Al redactarla, debe guardar consistencia con el título de la investigación. Comienza con 
+un adverbio interrogativo que se encuentra en línea con el alcance de la investigación y 
+la delimitación del problema planteado con anterioridad: espacial y temporal.  
+ 
+Ejemplo 
+ 
+¿Cuáles son las percepciones y experiencias de los responsables de la gestión de áreas 
+verdes en el distrito de Miraflores respecto al uso del control biológico de plagas como 
+una estrategia eco-amigable (2022)? 
+ 
+PROBLEMAS EN TESIS CUANTITATIVAS 
+ 
+Para plantear un problema en una investigación cuantitativa, es esencial formular 
+interrogantes precisas que aborden relaciones entre variables de manera específica. 
+Estas interrogantes deben centrarse en medir, comparar o evaluar fenómenos, con el 
+objetivo de identificar patrones, diferencias o impactos en una población determinada. 
+Es clave definir claramente las variables, así como la relación entre ellas. Además, se 
+debe especificar la población, el lugar y el período de tiempo en que se realizará el 
+estudio, garantizando que las interrogantes sean claras, directas y medibles. Esto 
+permitirá un análisis estadístico riguroso que respalde la validez y confiabilidad de los 
+resultados obtenidos. 
+ 
+ 
+ 
+11 
+Por un lado, existen preguntas descriptivas, las cuales buscan obtener información sobre 
+variables específicas que son asociadas con una cantidad a la variable:  
+ 
+¿Cuántos ciudadanos peruanos deciden dejar el país para buscar mejores 
+oportunidades? 
+ 
+Existen también preguntas comparativas, que, sobre la base de variables confiables, 
+comparar dos o más grupos, como, por ejemplo, la siguiente:  
+ 
+¿Cuál es la diferencia entre los factores que motivan a los estudiantes de Institutos 
+Superiores Tecnológicos del distrito de San Juan de Lurigancho y Cercado de Lima 
+para cambiarse a una universidad privada (2022)? 
+ 
+Finalmente, tenemos las preguntas relacionales, que explican una relación causal o 
+asociación correlacional entre dos o más variables, como, por ejemplo, la siguiente: 
+ 
+¿Cuál es nivel de correlación entre el aumento del número de ingresantes a las 
+universidades de Lima Metropolitana y el incremento del nivel de ingreso familiar? 
+ 
+Ejemplos de preguntas de investigación cuantitativas  
+ 
+• ¿Cuál es la relación entre uso de tecnologías educativas y rendimiento académico 
+de los estudiantes de secundaria en Lima Metropolitana durante el año 2024? 
+• ¿Qué impacto tiene una intervención dietética específica en la reducción del índice 
+de masa corporal (IMC) en adultos con obesidad en Lima en el año 2023? 
+• ¿Cómo afecta la frecuencia de publicaciones en redes sociales al nivel de 
+engagement de los seguidores en pequeñas empresas en Perú durante el 2024? 
+• ¿Qué diferencia existe entre los niveles de ansiedad entre hombres y mujeres 
+universitarios durante periodos de exámenes en universidades de Lima en el año 
+2023? 
+• ¿Cómo influye el acceso al microcrédito en el crecimiento económico de 
+pequeñas y medianas empresas en Huánuco en el año 2024? 
+• ¿Cuál es la relación entre el nivel de educación y la participación política en 
+jóvenes adultos en Lima en el año 2023? 
+ 
+PROBLEMAS EN TESIS CUALITATIVAS 
+ 
+Para plantear un problema en una investigación cualitativa, es fundamental formular 
+interrogantes que aborden amplias áreas de estudio, con la flexibilidad necesaria para 
+adaptarse a diferentes contextos. Estas interrogantes deben enfocarse en explorar, 
+descubrir o explicar fenómenos, con el objetivo de generar ideas que permitan 
+comprender cómo un problema es percibido por una población objetivo dentro de su 
+contexto y ambiente natural. Es esencial que las interrogantes estén diseñadas para 
+profundizar en las perspectivas, opiniones y experiencias de los participantes, lo que 
+facilitará un análisis detallado de sus vivencias y percepciones en relación con el tema 
+de estudio. 
+ 
+Ejemplo de problemas de investigación cualitativas 
+ 
+• ¿Cómo perciben los docentes universitarios los desafíos y oportunidades de la 
+enseñanza en línea durante la pandemia de COVID-19 en Lima en 2020? 
+ 
+ 
+12 
+• ¿Cuáles son las experiencias y percepciones de los pacientes con enfermedades 
+crónicas sobre la telemedicina en clínicas privadas de Arequipa en 2024? 
+• ¿Cómo construyen su identidad cultural los jóvenes migrantes en Lima, Perú, 
+durante su proceso de adaptación social en 2024? 
+• ¿Qué significados atribuyen los adolescentes en situación de calle a sus 
+experiencias de vida en el centro de Lima en el año 2023? 
+• ¿Cómo se transmiten y transforman las prácticas culturales ancestrales en la 
+comunidad indígena de los Shipibo-Konibo en Ucayali en 2024? 
+• ¿De qué manera participan las redes sociales en la construcción de la opinión 
+pública sobre temas políticos en jóvenes universitarios de Lima en 2023? 
+ 
+Preguntas específicas 
+ 
+Como se indicó previamente, las preguntas de investigación específicas se pueden 
+plantear según las variables/categorías y sus dimensiones/subcategorías. Se redactan 
+considerando un adverbio interrogativo, la dimensión/subcategoría, y la delimitación 
+poblacional, espacial y temporal.  
+ 
+Ejemplo 
+ 
+Si la pregunta general de una investigación cuantitativa es “¿Cuál es la relación entre 
+uso de tecnologías educativas y rendimiento académico de los estudiantes de 
+secundaria en Lima Metropolitana durante el año 2024?”, las preguntas específicas 
+podrían ser así: 
+ 
+• ¿Cuál es el nivel de uso de tecnologías educativas de los estudiantes de 
+secundaria en Lima Metropolitana durante el año 2024? 
+• ¿Cuál es el nivel de rendimiento académico de los estudiantes de secundaria en 
+Lima Metropolitana durante el año 2024? 
+• ¿Qué relación existe entre el nivel de frecuencia de uso de tecnologías educativas 
+y el nivel de rendimiento académico de los estudiantes de secundaria en Lima 
+Metropolitana durante el año 2024? 
+• ¿Qué relación existe entre el nivel de accesibilidad a tecnologías educativas y el 
+nivel de rendimiento académico de los estudiantes de secundaria en Lima 
+Metropolitana durante el año 2024? 
+• ¿Qué relación existe entre el nivel de competencia docente en tecnologías 
+educativas y el nivel de rendimiento académico de los estudiantes de secundaria 
+en Lima Metropolitana durante el año 2024? 
+• ¿Qué relación existe entre el nivel de interactividad y participación fomentadas 
+por las tecnologías educativas y el nivel de rendimiento académico de los 
+estudiantes de secundaria en Lima Metropolitana en el año 2024? 
+ 
+Ahora bien, si la pregunta general de una investigación cualitativa es “¿Cuáles son las 
+experiencias y percepciones de los pacientes con enfermedades crónicas sobre la 
+telemedicina en clínicas privadas de Arequipa en 2024?”, las preguntas específicas 
+podrían ser así: 
+ 
+• ¿Cómo describen los pacientes con enfermedades crónicas su experiencia de 
+atención médica a través de telemedicina en clínicas privadas de Arequipa en 
+2024? 
+ 
+ 
+13 
+• ¿Qué percepciones tienen los pacientes con enfermedades crónicas sobre la 
+efectividad de la telemedicina en comparación con la atención presencial en 
+clínicas privadas de Arequipa? 
+• ¿Cuáles son las principales ventajas y desventajas que identifican los pacientes 
+con enfermedades crónicas respecto al uso de telemedicina en su tratamiento en 
+Arequipa durante el año 2024? 
+• ¿Cómo funciona la telemedicina en la relación paciente-médico según las 
+percepciones de los pacientes con enfermedades crónicas en clínicas privadas 
+de Arequipa en 2024? 
+ 
+NOTA: La cantidad de preguntas específicas dependerá de la forma en que se 
+subdividan teóricamente las variables en dimensiones para el caso de investigaciones 
+cuantitativas, y las categorías en subcategorías para el caso de investigaciones 
+cualitativas. 
+ 
+PROBLEMAS EN TESIS MIXTAS (SOLO PARA DOCTORADOS) 
+ 
+En una investigación mixta, la formulación de preguntas de investigación debe reflejar 
+tanto los objetivos cuantitativos como los cualitativos del estudio. Las preguntas de 
+investigación deben estar alineadas con las dos metodologías, y es fundamental que se 
+integren de manera coherente para responder al problema general de la investigación. 
+Por lo tanto, la formulación de preguntas debe incluir tanto preguntas específicas que 
+guíen la parte cuantitativa como preguntas que orienten la parte cualitativa. 
+ 
+Pregunta general integrada 
+ 
+La pregunta general debe enmarcar el problema de investigación desde una perspectiva 
+integral, abordando tanto el aspecto cuantitativo como el cualitativo. 
+ 
+Ejemplo 
+ 
+¿Cómo influye el uso de tecnologías educativas en el rendimiento académico y en las 
+percepciones de los estudiantes y docentes sobre el proceso de enseñanza-aprendizaje 
+en las escuelas secundarias? 
+ 
+Preguntas específicas cuantitativas 
+ 
+Estas preguntas guían la parte del estudio que busca medir variables, identificar 
+relaciones o hacer generalizaciones basadas en datos numéricos. Suelen centrarse en 
+aspectos concretos y medibles del fenómeno. 
+ 
+Ejemplos 
+ 
+• ¿Cuál es la relación entre la frecuencia de uso de tecnologías educativas y el 
+rendimiento académico de los estudiantes de secundaria? 
+• ¿En qué medida influye el acceso a plataformas educativas digitales en las 
+calificaciones de los estudiantes en matemáticas y ciencias? 
+• ¿Existe una diferencia significativa en el rendimiento académico entre los 
+estudiantes que utilizan aplicaciones educativas y los que no las utilizan? 
+ 
+ 
+ 
+ 
+ 
+14 
+Preguntas específicas cualitativas 
+ 
+Estas preguntas guían la parte cualitativa del estudio, explorando las experiencias, 
+percepciones y significados que los participantes atribuyen al fenómeno en estudio. Se 
+centran en la profundidad y el contexto. 
+ 
+Ejemplos 
+ 
+• ¿Cómo perciben los estudiantes el uso de tecnologías educativas en su 
+aprendizaje diario? 
+• ¿Qué desafíos y oportunidades experimentan los docentes al integrar tecnologías 
+educativas en sus clases? 
+• ¿De qué manera las experiencias de los estudiantes con el uso de plataformas 
+digitales se vinculan con su motivación y participación en el aula? 
+ 
+Ejemplo completo de formulación del problema de un estudio mixto 
+ 
+Pregunta general integrada 
+ 
+¿Cómo influye el uso de tecnologías educativas en el rendimiento académico y en las 
+percepciones de estudiantes y docentes en el contexto de la educación secundaria? 
+ 
+Preguntas específicas cuantitativas 
+ 
+• ¿Existe una relación significativa entre el uso de tecnologías educativas y el 
+rendimiento académico en estudiantes de secundaria? 
+• ¿En qué medida la frecuencia de uso de tecnologías educativas influye en el 
+rendimiento académico en asignaturas como matemáticas y ciencias? 
+• ¿Existe una diferencia significativa en el rendimiento académico entre estudiantes 
+que utilizan tecnologías educativas y aquellos que no las utilizan? 
+ 
+Preguntas específicas cualitativas 
+ 
+• ¿Cómo describen los estudiantes su experiencia con el uso de tecnologías 
+educativas en el aula? 
+• ¿Qué percepciones tienen los docentes sobre el impacto de las tecnologías 
+educativas en el proceso de enseñanza-aprendizaje? 
+• ¿Qué factores consideran los estudiantes como beneficiosos o desafiantes al usar 
+tecnologías educativas en su aprendizaje? 
+ 
+Determinación de los objetivos  
+ 
+Los objetivos de investigación se redactan como enunciados claros y precisos donde 
+describimos la finalidad de nuestra investigación, lo que queremos lograr o conseguir 
+con nuestro estudio. Los objetivos ayudarán a dar respuesta al problema planteado, 
+tanto a la pregunta general como a las específicas. Para su redacción se utilizan los 
+verbos alineados según el alcance del estudio elegido, evitando utilizar adjetivos 
+calificativos que direccionen los resultados.  
+ 
+ 
+ 
+ 
+ 
+ 
+15 
+Objetivo general 
+ 
+El objetivo general es el que resume la idea central y finalidad del trabajo de 
+investigación. Presenta un enfoque más amplio de la problemática y debe incluir el 
+problema general que se desarrollará en el estudio.  
+ 
+La estructura del objetivo general incluye un verbo en infinitivo, la(s) variable(s) de 
+interés, junto con la delimitación poblacional, espacial y temporal, y debe derivar 
+gramaticalmente de la pregunta general. 
+ 
+Ejemplo 
+ 
+Si la pregunta general de una investigación cuantitativa es “¿Cuál es la relación entre 
+uso de tecnologías educativas y rendimiento académico de los estudiantes de 
+secundaria en Lima Metropolitana durante el año 2024?”, el objetivo general podría ser 
+así: 
+ 
+Þ Determinar la relación entre uso de tecnologías educativas y rendimiento 
+académico de los estudiantes de secundaria en Lima Metropolitana durante el 
+año 2024 
+ 
+Ahora bien, si la pregunta general de una investigación cualitativa es “¿Cuáles son las 
+experiencias y percepciones de los pacientes con enfermedades crónicas sobre la 
+telemedicina en clínicas privadas de Arequipa en 2024?”, el objetivo general podría ser 
+así: 
+ 
+Þ Analizar las experiencias y percepciones de los pacientes con enfermedades 
+crónicas sobre la telemedicina en clínicas privadas de Arequipa en 2024 
+ 
+Objetivos específicos 
+ 
+Los objetivos específicos describen los procesos necesarios para lograr la investigación. 
+Limitan lo que se desea investigar y precisa el alcance de la investigación a partir de los 
+logros parciales que contribuirán con el objetivo general. Asimismo, debe derivar 
+gramaticalmente de las preguntas específicas.  
+ 
+Ejemplo 
+ 
+Si el objetivo general de una investigación cuantitativa es “Determinar la relación entre 
+el uso de tecnologías educativas y rendimiento académico de los estudiantes de 
+secundaria en Lima Metropolitana durante el año 2024”, los objetivos específicos podrían 
+ser así: 
+ 
+• Identificar el nivel de uso de tecnologías educativas de los estudiantes de 
+secundaria en Lima Metropolitana durante el año 2024 
+• Identificar el nivel de rendimiento académico de los estudiantes de secundaria en 
+Lima Metropolitana durante el año 2024 
+• Determinar la relación que existe entre el nivel de frecuencia de uso de 
+tecnologías educativas y el nivel de rendimiento académico de los estudiantes de 
+secundaria en Lima Metropolitana durante el año 2024 
+ 
+ 
+16 
+• Determinar la relación que existe entre el nivel de accesibilidad a tecnologías 
+educativas y el nivel de rendimiento académico de los estudiantes de secundaria 
+en Lima Metropolitana durante el año 2024 
+• Determinar la relación que existe entre el nivel de competencia docente en 
+tecnologías educativas y el nivel de rendimiento académico de los estudiantes de 
+secundaria en Lima Metropolitana durante el año 2024 
+• Determinar la relación que existe entre el nivel de interactividad y participación 
+fomentadas por las tecnologías educativas y el nivel de rendimiento académico 
+de los estudiantes de secundaria en Lima Metropolitana en el año 2024 
+ 
+Ahora bien, si el objetivo general de una investigación cualitativa es “Analizar las 
+experiencias y percepciones de los pacientes con enfermedades crónicas sobre la 
+telemedicina en clínicas privadas de Arequipa en 2024”, los objetivos específicos podrían 
+ser así: 
+ 
+• Describir las experiencias de los pacientes con enfermedades crónicas en su 
+atención médica a través de telemedicina en clínicas privadas de Arequipa en 
+2024 
+ 
+• Explorar las percepciones de los pacientes con enfermedades crónicas sobre la 
+efectividad de la telemedicina en comparación con la atención presencial en 
+clínicas privadas de Arequipa 
+ 
+• Identificar las principales ventajas y desventajas del uso de telemedicina en el 
+tratamiento de pacientes con enfermedades crónicas en Arequipa durante el año 
+2024 
+ 
+• Analizar el funcionamiento de la telemedicina en la relación paciente-médico 
+desde la perspectiva de los pacientes con enfermedades crónicas en clínicas 
+privadas de Arequipa en 2024 
+ 
+OBJETIVOS EN INVESTIGACIONES MIXTAS (SOLO PARA DOCTORADOS)   
+ 
+Así como en el caso de la formulación del problema, los objetivos de una investigación 
+mixta deben ser desdoblados en un objetivo general integrado, así como en objetivos 
+específicos cuantitativos y cualitativos.  
+ 
+Ejemplo 
+ 
+Objetivo general integrado 
+ 
+• Determinar cómo influye el uso de tecnologías educativas en el rendimiento 
+académico y en las percepciones de los estudiantes y docentes sobre el proceso 
+de enseñanza-aprendizaje en el contexto de la educación secundaria 
+ 
+Objetivos específicos cuantitativos 
+ 
+• Analizar la relación entre la frecuencia de uso de tecnologías educativas y el 
+rendimiento académico de los estudiantes de secundaria 
+• Evaluar en qué medida el acceso a plataformas educativas digitales influye en las 
+calificaciones de los estudiantes en asignaturas como matemáticas y ciencias 
+ 
+ 
+17 
+• Comparar el rendimiento académico entre estudiantes que utilizan aplicaciones 
+educativas y aquellos que no las utilizan, para determinar si existe una diferencia 
+significativa 
+ 
+Objetivos específicos cualitativos 
+ 
+• Describir las percepciones de los estudiantes sobre el uso de tecnologías 
+educativas en su aprendizaje diario 
+• Explorar los desafíos y oportunidades que experimentan los docentes al integrar 
+tecnologías educativas en sus clases 
+• Comprender de qué manera las experiencias de los estudiantes con el uso de 
+plataformas digitales afectan su motivación y participación en el aula 
+ 
+Justificación e importancia del estudio 
+ 
+Para justificar una investigación de manera efectiva, es fundamental abordar tres tipos 
+de justificación: teórica, metodológica y social. 
+ 
+En primer lugar, la justificación teórica debe subrayar la contribución del estudio al 
+avance del conocimiento en el área de estudio. Es importante argumentar cómo la 
+investigación enriquecerá el marco teórico existente, aportará nuevas perspectivas o 
+teorías, y llenará vacíos en el conocimiento actual. Se debe destacar la relevancia del 
+estudio en términos de fortalecer el corpus teórico y proporcionar una base sólida para 
+futuras investigaciones. La capacidad del estudio para generar nuevas ideas y teorías 
+debe ser enfatizada, y asegurar su importancia académica. 
+ 
+En segundo lugar, la justificación metodológica debe enfocarse en cómo la elección del 
+método de investigación contribuirá a la innovación y rigor en el campo de estudio. Es 
+necesario justificar por qué la metodología seleccionada es la más adecuada para 
+abordar el problema de investigación y cómo puede aportar enfoques innovadores o 
+mejorar métodos ya existentes. Además, se debe destacar cómo esta metodología 
+podría ser replicada o adaptada en futuras investigaciones, aportando así al desarrollo 
+metodológico en la disciplina. 
+ 
+Finalmente, la justificación social debe enfocarse en explicar la relevancia del estudio 
+para la sociedad. Es necesario argumentar por qué el estudio impacta de manera crítica 
+en la calidad de vida de la población seleccionada. Esto implica demostrar cómo la 
+investigación aborda problemas sociales significativos y de qué manera los resultados 
+pueden beneficiar directamente a la comunidad. El impacto en el bienestar, la equidad y 
+otros aspectos sociales debe ser claramente delineado para subrayar la importancia 
+social del estudio. 
+ 
+Ejemplo 
+ 
+La presente investigación se enfocará en el uso de control biológico en áreas verdes 
+públicas, teniendo como importancia contribuir con generar información científica que 
+aborde de manera específica el tema en estudio. Al respecto, el Servicio Nacional de 
+Sanidad Agraria del Perú - SENASA señala que la aplicación del método de control 
+biológico permite que no se genere resistencia por parte de las plagas. También, refiere 
+que cuando el agente controlador se logra instalar en campo se puede lograr que el 
+control perdure mayor tiempo, lo cual contribuye con disminuir el presupuesto de 
+ 
+ 
+18 
+inversión, sin dejar de lado que con este método se evita contaminar el ambiente, lo cual 
+si se produce cuando se hace uso de plaguicidas sintéticos. 
+ 
+Justificación teórica  
+ 
+La justificación teórica de esta investigación radica en la necesidad de ampliar el cuerpo 
+de conocimiento existente sobre el uso del control biológico en la gestión de áreas verdes 
+públicas. Aunque el control biológico ha sido ampliamente estudiado en el contexto 
+agrícola, su aplicación en entornos urbanos, especialmente en áreas verdes públicas, es 
+un tema que requiere mayor exploración. Esta investigación buscará contribuir con el 
+avance del conocimiento en esta área específica al proporcionar una comprensión más 
+profunda de los mecanismos y efectos del control biológico en el control de plagas 
+urbanas. Además, la investigación enriquecerá el marco teórico existente al integrar los 
+hallazgos con estudios previos, ofreciendo nuevas perspectivas sobre la sostenibilidad 
+y eficiencia del control biológico en comparación con el uso de plaguicidas sintéticos. 
+ 
+Justificación metodológica 
+ 
+Desde un punto de vista metodológico, esta investigación se justifica por su enfoque en 
+la aplicación y evaluación de métodos de control biológico en áreas verdes urbanas, un 
+ámbito en el cual la metodología aplicada puede aportar enfoques innovadores. Se 
+utilizará un enfoque cualitativo, complementado con datos cuantitativos, para evaluar la 
+efectividad y sostenibilidad del control biológico en comparación con métodos 
+tradicionales. Este enfoque metodológico no solo permitirá un análisis riguroso de la 
+implementación del control biológico, sino que también podrá ser replicado o adaptado 
+en futuras investigaciones en diferentes contextos urbanos. La elección de esta 
+metodología responde a la necesidad de desarrollar métodos de investigación que 
+puedan captar la complejidad y dinamismo de los ecosistemas urbanos. 
+ 
+Justificación social 
+ 
+La justificación social de esta investigación está vinculada con su potencial impacto en 
+la calidad de vida de la población. Al centrarse en el control biológico, un método que 
+evita la contaminación ambiental y reduce la exposición de la comunidad a plaguicidas 
+sintéticos, esta investigación tiene el potencial de contribuir significativamente a la salud 
+pública y al bienestar ambiental. Además, al demostrar que el control biológico puede 
+ser una alternativa efectiva y sostenible en la gestión de áreas verdes, se pueden 
+promover políticas públicas y prácticas que prioricen el bienestar de la comunidad y la 
+preservación del medio ambiente, alineándose con las demandas de una gestión urbana 
+más responsable y ecológica. 
+ 
+Limitaciones de la presente investigación 
+ 
+Las limitaciones de la investigación se refieren a las restricciones, deficiencias o 
+condiciones que pueden afectar la validez, la aplicabilidad y la interpretación de los 
+resultados de un estudio o investigación. Estas limitaciones pueden ser inherentes a la 
+metodología, los recursos, el alcance, el diseño y otros aspectos de la investigación. 
+Algunos ejemplos comunes de limitaciones de la investigación incluyen: 
+ 
+● Limitaciones de muestra: Pueden surgir cuando la muestra utilizada en la 
+investigación no es representativa de la población en estudio o es demasiado 
+pequeña para generalizar los resultados. 
+ 
+ 
+19 
+ 
+● Limitaciones temporales: Están relacionadas con la duración del estudio y 
+pueden afectar la generalización de los hallazgos a diferentes períodos de tiempo. 
+ 
+● Limitaciones de recursos: Incluyen restricciones financieras, de tiempo o de 
+acceso a datos y pueden limitar la capacidad para llevar a cabo una investigación 
+exhaustiva. 
+ 
+● Limitaciones de datos: Se refieren a problemas de calidad, integridad o 
+disponibilidad de los datos utilizados en el estudio. 
+ 
+● Limitaciones de diseño: Pueden surgir cuando la metodología de investigación 
+no es la más adecuada para responder a las preguntas de investigación, lo que 
+puede conducir a sesgos o resultados limitados. 
+ 
+● Limitaciones de sesgo: Incluyen factores que pueden influir en la objetividad de 
+los resultados, como sesgos de selección, sesgos de respuesta o sesgos de 
+medición. 
+ 
+● Limitaciones de generalización: Pueden deberse a la especificidad de la 
+población estudiada, lo que limita la aplicabilidad de los resultados a otros 
+contextos o poblaciones. 
+ 
+● Limitaciones éticas: Incluyen restricciones relacionadas con el cumplimiento de 
+estándares éticos en la investigación, como el consentimiento informado y la 
+privacidad de los participantes. 
+ 
+Ejemplo 
+ 
+Una de las principales limitaciones es que existe muy limitada información bibliográfica 
+nacional donde se desarrolle de manera específica el tema de control biológico de plagas 
+en áreas verdes urbanas. Asimismo, no se ha conseguido normativa peruana que 
+enfoque de manera clara este tipo de actividad en espacios urbanos.  
+ 
+Otra limitante reportada es la dificultad para conseguir proveedores que comercialicen 
+algunos especímenes usados como controladores biológicos. Si bien esta actividad es 
+conocida y aplicada desde hace varios años en la actividad agrícola, no es muy difundida 
+para el tratamiento de áreas verdes urbanas. Por ello, muchas de las empresas que 
+producen y comercializan este tipo de controladores se encuentran al interior del país, lo 
+cual en ocasiones produce ciertas barreras logísticas para obtener los productos. Esta 
+situación se vio acentuada durante la pandemia de COVID19. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+20 
+CAPÍTULO II. MARCO TEÓRICO 
+ 
+En el segundo capítulo, se presenta el marco teórico que sustenta la investigación. Este 
+apartado abarca los antecedentes del problema, tanto a nivel nacional como 
+internacional, proporcionando una visión comparativa que contextualiza la investigación 
+dentro de su campo. Además, se exponen los fundamentos teóricos que servirán de 
+base para el análisis, así como la definición de los términos clave que orientarán el 
+desarrollo del estudio. Este capítulo ofrecerá una revisión exhaustiva de la literatura 
+relevante, sino también establecer las conexiones teóricas necesarias para fundamentar 
+los objetivos y la metodología de la investigación. 
+ 
+Antecedentes del problema 
+ 
+Los antecedentes del problema recopilan las investigaciones previas relacionadas con 
+el tema en cuestión. Esta documentación de estudios previos debe cumplir con ciertos 
+criterios para ser consideradas relevantes y útiles para el trabajo en desarrollo.  
+ 
+En primer lugar, estas investigaciones deben ser recientes, con un margen de los 
+últimos cinco años desde el año en el que se realiza la investigación, y pueden ser 
+rastreadas en fuentes confiables como BIREME (Literatura latinoamericana y del 
+Caribe), MEDLINE, Scopus, Web of Science, Cochrane library, SCIELO, Repositorio 
+Alicia, y repositorios universitarios, entre otros. Los antecedentes pueden ser tesis y/o 
+artículos científicos. 
+ 
+Luego de haber elegido las investigaciones que son más relevantes como antecedentes 
+de su investigación, se debe presentar cada una con un resumen crítico de hasta dos 
+párrafos para cada uno.  
+ 
+El primer párrafo debe incluir información sobre el autor, año, país (en caso de 
+antecedentes internacionales), objetivo general de investigación, metodología (enfoque, 
+alcance y diseño, población, técnicas e instrumentos de recolección de datos), 
+resultados y conclusiones. 
+ 
+El segundo párrafo de cada antecedente debe enfocarse en establecer la relación entre 
+el antecedente y el tema de estudio en curso, destacando las similitudes o diferencias 
+clave que contribuyen con la investigación actual. 
+ 
+Los antecedentes se deben clasificar según lo siguiente:  
+ 
+Antecedentes internacionales 
+ 
+Se deben identificar cinco (05) antecedentes internacionales relevantes para el trabajo 
+de investigación. Estos deben presentarse desde el más reciente hasta el más antiguo. 
+ 
+Para ser considerados como internacionales, se deben examinar estudios previos 
+publicados a nivel mundial, excluyendo aquellos realizados en Perú. 
+ 
+Ejemplo 
+ 
+García-Pérez y López-Martínez (2019) realizaron, en España, un estudio cuyo objetivo 
+fue evaluar la efectividad del control biológico en la reducción de plagas en áreas verdes 
+ 
+ 
+21 
+urbanas de Madrid. La metodología empleada fue de enfoque mixto con un alcance 
+exploratorio-descriptivo. Se utilizó un diseño no experimental, aplicando encuestas a 100 
+gestores de áreas verdes y observaciones directas en 10 parques urbanos. Las técnicas 
+de recolección de datos incluyeron encuestas estructuradas y fichas de observación para 
+documentar la presencia de plagas antes y después de la implementación del control 
+biológico. Los resultados indicaron una reducción significativa en las poblaciones de 
+plagas, y los gestores reportaron una alta satisfacción con la implementación del método. 
+Las conclusiones destacaron que el control biológico no solo es efectivo, sino que 
+también es una alternativa sostenible frente al uso de plaguicidas sintéticos. 
+ 
+Este antecedente se relaciona directamente con la investigación en curso sobre el uso 
+de control biológico en áreas verdes públicas en Perú, ya que ambos estudios comparten 
+el enfoque en la evaluación de la efectividad del control biológico en entornos urbanos. 
+Mientras que el estudio de García-Pérez y López-Martínez se centró en el contexto de 
+Madrid, la investigación actual buscará analizar un escenario similar en Lima, Perú. Las 
+diferencias contextuales y las particularidades ambientales entre España y Perú ofrecen 
+una oportunidad para comparar y contrastar los resultados, lo que podría enriquecer la 
+comprensión del control biológico en distintos ambientes urbanos. Además, este 
+antecedente refuerza la relevancia de investigar alternativas sostenibles en la gestión de 
+áreas verdes, una de las premisas clave de la investigación actual. 
+ 
+Antecedentes nacionales 
+ 
+Se deben identificar cinco (05) antecedentes nacionales relevantes para el trabajo de 
+investigación. Para ello, se deben examinar estudios previos realizados con poblaciones 
+exclusivamente de Perú. 
+ 
+Ejemplo 
+ 
+Ramírez y Pérez (2020) realizaron un estudio cuyo objetivo fue evaluar la 
+implementación del control biológico en la reducción de plagas en áreas verdes de la 
+ciudad de Arequipa. La metodología empleada fue de enfoque cuantitativo con un 
+alcance descriptivo. Se utilizó un diseño no experimental, aplicando encuestas a 50 
+responsables de áreas verdes y realizando observaciones directas en 5 parques 
+principales de la ciudad. Las técnicas de recolección de datos incluyeron cuestionarios 
+estructurados y registros fotográficos para documentar las condiciones de las áreas 
+verdes antes y después de la implementación del control biológico. Los resultados 
+mostraron una disminución notable en las poblaciones de plagas y una mejora en la 
+percepción de los ciudadanos sobre la calidad de los parques. Las conclusiones del 
+estudio subrayaron que el control biológico es una estrategia efectiva y económicamente 
+viable para la gestión de plagas en áreas urbanas, y que su uso debería ser promovido 
+en otras ciudades del país. 
+ 
+Este antecedente se relaciona estrechamente con la investigación en curso sobre el uso 
+de control biológico en áreas verdes públicas en Lima, Perú, ya que ambos estudios 
+comparten el enfoque en la evaluación de la efectividad del control biológico en entornos 
+urbanos dentro del contexto peruano. Mientras que el estudio de Ramírez y Pérez se 
+concentró en la ciudad de Arequipa, la investigación actual buscará extender este 
+análisis al contexto de Lima, una ciudad con diferentes características ambientales y 
+sociales. La comparación entre estos estudios permitirá obtener una visión más amplia 
+de la efectividad y sostenibilidad del control biológico en distintas regiones del país, lo 
+que podría influir en el desarrollo de políticas públicas a nivel nacional. Además, este 
+ 
+ 
+22 
+antecedente refuerza la necesidad de investigar y promover alternativas sostenibles en 
+la gestión de áreas verdes, un tema central en la investigación actual. 
+ 
+Bases teóricas 
+ 
+Las bases teóricas de una investigación pueden estar estructuradas en las siguientes 
+tres partes: 
+ 
+DESARROLLO HISTÓRICO 
+ 
+En esta sección, se explora la evolución del tema de investigación a lo largo del tiempo. 
+Se presenta un recorrido por los antecedentes históricos más relevantes, mostrando 
+cómo el tema ha sido tratado y cómo ha evolucionado hasta llegar a su estado actual. 
+Esto incluye la identificación de hitos clave, cambios en las perspectivas teóricas y 
+metodológicas, y el impacto de estos cambios en la comprensión del tema. El desarrollo 
+histórico ayuda a contextualizar el problema de investigación dentro de una línea 
+temporal, mostrando su relevancia y cómo se ha transformado a lo largo de los años. 
+ 
+Ejemplo abreviado de desarrollo histórico 
+ 
+El uso de tecnologías en la educación ha experimentado una profunda transformación 
+desde mediados del siglo XX, marcada por la evolución de perspectivas teóricas y 
+metodológicas sobre cómo integrar eficazmente estas herramientas en el proceso de 
+enseñanza-aprendizaje. 
+ 
+En los años 1960 y 1970, los pioneros en la educación, como B.F. Skinner, comenzaron 
+a explorar el potencial de las máquinas de enseñanza, basadas en principios 
+conductistas. Skinner (1954) introdujo el concepto de "enseñanza programada", donde 
+las máquinas ofrecían estímulos y recompensas inmediatas, reforzando el aprendizaje 
+en un formato lineal y controlado. Este enfoque, sin embargo, limitaba la interacción y la 
+creatividad del estudiante, lo que llevó a una adopción cautelosa en los sistemas 
+educativos de la época (Skinner, 1968). 
+ 
+Durante las décadas de 1980 y 1990, la perspectiva sobre el uso de tecnologías en la 
+educación comenzó a cambiar con la introducción de las computadoras personales. 
+Seymour Papert, un discípulo de Piaget, fue un actor clave en esta transformación. 
+Papert (1980) criticó los enfoques conductistas por ser demasiado rígidos y propuso el 
+"constructionismo", una teoría que enfatiza el aprendizaje a través de la construcción 
+activa del conocimiento. Con su trabajo en el lenguaje de programación LOGO, Papert 
+promovió la idea de que las computadoras podían ser herramientas poderosas para que 
+los niños desarrollaran habilidades de pensamiento crítico y resolución de problemas, en 
+lugar de ser simples receptores de información. 
+ 
+La llegada de Internet en la década de 1990 revolucionó aún más el panorama educativo. 
+David Jonassen (1995) introdujo el concepto de "tecnologías como herramientas 
+cognitivas", argumentando que las tecnologías debían ser vistas como instrumentos que 
+amplifican las capacidades cognitivas de los estudiantes, permitiéndoles explorar, 
+analizar y construir conocimiento de manera más efectiva. Este enfoque fue un 
+alejamiento significativo de los primeros usos tecnológicos, enfocándose más en la 
+facilitación del aprendizaje activo y colaborativo, en lugar de simplemente automatizar 
+tareas educativas. 
+ 
+ 
+ 
+23 
+En la última década, los avances en dispositivos móviles y aplicaciones educativas han 
+continuado expandiendo las posibilidades del aprendizaje digital. Lev Vygotsky, aunque 
+sus ideas se desarrollaron mucho antes de la era digital, ha sido revitalizado en este 
+contexto por su enfoque en el aprendizaje social y colaborativo. Las plataformas 
+interactivas que permiten la colaboración en tiempo real, como las utilizadas durante la 
+pandemia de COVID-19, están profundamente alineadas con la idea de Vygotsky sobre 
+la Zona de Desarrollo Próximo (ZDP), donde el aprendizaje se maximiza a través de la 
+interacción con otros más capacitados (Vygotsky, 1978). Esto ha llevado a una 
+revalorización de las tecnologías no solo como herramientas individuales, sino como 
+medios para facilitar el aprendizaje social y colaborativo. 
+ 
+FUNDAMENTACIÓN TEÓRICA 
+ 
+La fundamentación teórica es la parte central de las bases teóricas, donde se detallan y 
+explican las teorías y modelos conceptuales que sustentan la investigación. Aquí se 
+identifican las principales teorías que serán utilizadas para analizar e interpretar los datos 
+del estudio. Se exploran los conceptos clave y se establece cómo estos conceptos se 
+relacionan con el problema de investigación. La fundamentación teórica proporciona el 
+marco de referencia necesario para comprender el fenómeno estudiado y orienta el 
+enfoque metodológico de la investigación. 
+ 
+Ejemplo abreviado de fundamentación teórica  
+ 
+A lo largo de las últimas décadas, las teorías educativas han evolucionado 
+significativamente, reflejando cambios en la comprensión de cómo los estudiantes 
+adquieren y construyen conocimiento. Este apartado de fundamentación teórica se 
+organiza en torno a cuatro teorías clave que proporcionan una base para analizar el uso 
+de tecnologías en el aula: la Teoría del Constructivismo de Vygotsky, la Teoría del 
+Aprendizaje Social de Bandura, el Constructionismo de Papert, y la Teoría de la 
+Cognición Distribuida de Hutchins. 
+ 
+Cada una de estas teorías ofrece una perspectiva única sobre el papel de las tecnologías 
+en la educación. Desde el constructivismo social de Vygotsky, que enfatiza la 
+importancia del entorno social y la interacción en el aprendizaje, hasta el enfoque de 
+Papert en la construcción activa de conocimientos a través de la tecnología, estas teorías 
+no solo ayudan a explicar cómo y por qué las tecnologías educativas pueden mejorar el 
+aprendizaje, sino que también guían el diseño de entornos educativos efectivos. 
+ 
+Al integrar estas diversas perspectivas, esta investigación busca no solo evaluar la 
+efectividad de las tecnologías educativas, sino también comprender los procesos 
+subyacentes que facilitan o inhiben su impacto en el rendimiento académico. La 
+combinación de estas teorías permite abordar el problema de investigación desde 
+múltiples ángulos, proporcionando un marco comprensivo para el análisis y la 
+interpretación de los resultados. 
+ 
+2.2.2.1. Teoría del Constructivismo de Vygotsky 
+ 
+La Teoría del Constructivismo de Lev Vygotsky (1978) sostiene que el aprendizaje es un 
+proceso social y activo, donde los estudiantes construyen nuevos conocimientos sobre 
+la base de su interacción con el entorno y sus experiencias previas. Según Vygotsky, el 
+aprendizaje ocurre de manera más efectiva dentro de la Zona de Desarrollo Próximo 
+(ZDP), un concepto central en su teoría que se refiere a la distancia entre lo que un 
+ 
+ 
+24 
+estudiante puede hacer por sí solo y lo que puede lograr con la ayuda de otros más 
+capacitados, como profesores o compañeros (Vygotsky, 1978). 
+ 
+En el contexto de las tecnologías educativas, la ZDP adquiere una nueva dimensión. Las 
+herramientas tecnológicas, como plataformas de aprendizaje colaborativo, aplicaciones 
+interactivas y simuladores, pueden actuar como mediadores en el aprendizaje, 
+facilitando la interacción y el intercambio de conocimientos entre los estudiantes. Estas 
+tecnologías permiten crear un entorno donde los estudiantes pueden experimentar, 
+explorar y aprender en colaboración, alineándose con el enfoque constructivista de 
+Vygotsky. El uso de estas herramientas no solo amplía las oportunidades de aprendizaje 
+dentro del aula, sino que también trasciende las barreras geográficas y temporales, 
+posibilitando el aprendizaje en cualquier momento y lugar. 
+ 
+2.2.2.2. Teoría del Aprendizaje Social de Bandura 
+ 
+La Teoría del Aprendizaje Social de Albert Bandura (1986) enfatiza la importancia del 
+aprendizaje a través de la observación e imitación de modelos. Según Bandura, los 
+individuos aprenden comportamientos, habilidades y actitudes observando a otros, un 
+proceso que él denomina "modelado". Este aprendizaje es especialmente efectivo 
+cuando el modelo observado es percibido como similar al observador o cuando el 
+comportamiento del modelo es reforzado positivamente (Bandura, 1986). 
+ 
+En el ámbito de las tecnologías educativas, las plataformas de aprendizaje que 
+incorporan videos, simulaciones y ejercicios interactivos permiten a los estudiantes 
+observar y practicar habilidades en un entorno controlado y seguro. Por ejemplo, videos 
+tutoriales o demostraciones en línea pueden servir como modelos que los estudiantes 
+pueden observar repetidamente, lo que facilita la internalización de conceptos 
+complejos. Además, las tecnologías que permiten la retroalimentación inmediata y el 
+refuerzo positivo, como los juegos educativos o las pruebas en línea, están directamente 
+alineadas con los principios de la Teoría del Aprendizaje Social, promoviendo un 
+aprendizaje más efectivo y duradero. 
+ 
+2.2.2.3. Teoría del Constructivismo de Seymour Papert 
+ 
+Seymour Papert, influenciado por las ideas de Piaget, desarrolló el concepto de 
+"constructionismo" en su obra "Mindstorms" (1980). Esta teoría amplía el constructivismo 
+al proponer que el aprendizaje ocurre de manera más efectiva cuando los estudiantes 
+están activamente involucrados en la construcción de algo tangible, ya sea un objeto 
+físico, un programa de computadora o cualquier otro producto significativo. Según 
+Papert, las computadoras no deben ser vistas simplemente como máquinas para realizar 
+cálculos o escribir textos, sino como herramientas que permiten a los estudiantes 
+explorar, experimentar y construir conocimientos de manera creativa (Papert, 1980). 
+ 
+En el contexto de la educación moderna, las tecnologías educativas, como los entornos 
+de programación, los laboratorios virtuales y las plataformas de creación de contenido, 
+encarnan perfectamente el espíritu del constructionismo. Estas herramientas permiten a 
+los estudiantes no solo consumir información, sino también crear, experimentar y 
+reflexionar sobre sus propias ideas y proyectos. Este enfoque activa un aprendizaje más 
+profundo y personalizado, donde los estudiantes son protagonistas de su propio proceso 
+educativo. 
+ 
+ 
+ 
+ 
+25 
+2.2.2.4. Teoría de la Cognición Distribuida 
+ 
+La Teoría de la Cognición Distribuida, propuesta por Edwin Hutchins (1995), postula que 
+el conocimiento y los procesos cognitivos no residen únicamente en la mente individual, 
+sino que están distribuidos a través de personas, herramientas y entornos. Esta teoría 
+es especialmente relevante en el contexto de las tecnologías educativas, donde las 
+herramientas digitales actúan como extensiones de las capacidades cognitivas de los 
+estudiantes (Hutchins, 1995). 
+ 
+Las plataformas educativas modernas, que permiten la colaboración y el acceso a 
+información en tiempo real, ejemplifican la cognición distribuida. En estos entornos, los 
+estudiantes no solo interactúan con el contenido, sino que también colaboran con otros 
+estudiantes y utilizan herramientas digitales que amplifican su capacidad de resolver 
+problemas y adquirir conocimientos. Este enfoque destaca cómo las tecnologías pueden 
+transformar el aprendizaje en un proceso colectivo e integrado, donde la información y 
+las habilidades se comparten y desarrollan en conjunto. 
+ 
+MARCO CONCEPTUAL 
+ 
+El marco conceptual es una representación estructurada de los conceptos y variables 
+que se investigarán. Se construye a partir de la fundamentación teórica y organiza de 
+manera lógica los elementos que guiarán el estudio. Esta sección muestra cómo los 
+conceptos teóricos seleccionados se interrelacionan y cómo estos conceptos se 
+aplicarán al problema de investigación. El marco conceptual sirve como una guía visual 
+o esquema que dirige la recolección de datos y el análisis, asegurando que la 
+investigación mantenga su enfoque en las preguntas planteadas y en los objetivos del 
+estudio. 
+ 
+Ejemplo abreviado de marco conceptual (variables y dimensiones si es investigación 
+cuantitativa, y categorías y subcategorías si es investigación cualitativa) 
+ 
+En el presente estudio, se han identificado dos variables principales: uso de tecnologías 
+educativas y rendimiento académico. Estas variables se desglosan en dimensiones, 
+todas ellas fundamentadas en la literatura académica relevante. A continuación, se 
+presenta el marco conceptual que guía esta investigación. 
+ 
+2.2.3.1. Definición conceptual de la variable 1: uso de tecnologías educativas 
+ 
+El uso de tecnologías educativas se refiere a la integración de herramientas tecnológicas 
+por parte de estudiantes y docentes en el proceso de enseñanza y aprendizaje, tanto 
+dentro como fuera del aula. Este concepto se fundamenta en la idea de que las 
+tecnologías pueden servir como medios para potenciar las capacidades cognitivas de los 
+estudiantes, facilitar el acceso a información y recursos, y promover un aprendizaje más 
+interactivo y personalizado (Jonassen, 1995; Roblyer y Edwards, 2000). 
+ 
+Dimensiones de la variable 1 
+ 
+• Definición conceptual de frecuencia de uso 
+ 
+Esta dimensión se refiere a la frecuencia con la que se utilizan tecnologías como 
+computadoras, tabletas y software educativo durante las clases y para actividades 
+académicas fuera del horario escolar. Un uso frecuente de estas tecnologías puede estar 
+ 
+ 
+26 
+asociado con un mayor compromiso y participación de los estudiantes, lo que influye 
+positivamente en su proceso de aprendizaje (Warschauer, 2007; Kennedy et al., 2008). 
+ 
+• Definición conceptual de accesibilidad a tecnologías 
+ 
+Se refiere al acceso que tienen los estudiantes a dispositivos tecnológicos y a la calidad 
+de la conexión a Internet disponible para acceder a recursos educativos. La accesibilidad 
+es un factor crucial que determinará la equidad en el acceso a oportunidades educativas 
+digitales, ya que la falta de dispositivos o una conexión deficiente puede limitar la 
+participación plena de los estudiantes en el aprendizaje en línea (Selwyn, 2011; 
+Warschauer, 2007). 
+ 
+• Definición conceptual de capacitación docente 
+ 
+Esta dimensión evaluará el nivel de preparación de los docentes en el uso de 
+herramientas tecnológicas y sus actitudes hacia la integración de estas tecnologías en 
+la enseñanza. Una formación adecuada y actitudes positivas hacia la tecnología son 
+esenciales para que los docentes puedan innovar en sus métodos pedagógicos y utilizar 
+efectivamente las herramientas digitales en su práctica diaria (Ertmer y Ottenbreit-
+Leftwich, 2010; Tondeur et al., 2008). 
+ 
+• Definición conceptual de interactividad 
+ 
+La interactividad se refiere al uso de plataformas y recursos educativos que fomentan la 
+interacción y colaboración entre estudiantes, como foros, wikis, simulaciones y juegos 
+educativos. Estos recursos permiten un aprendizaje más dinámico y participativo, donde 
+los estudiantes pueden involucrarse activamente en su proceso educativo, desarrollando 
+habilidades de pensamiento crítico y resolución de problemas (Dillenbourg, 1999; Gee, 
+2003). 
+ 
+2.2.3.2. Definición conceptual de la variable 2: rendimiento académico 
+ 
+El rendimiento académico se define como el grado en que los estudiantes logran los 
+objetivos educativos establecidos, medido a través de calificaciones en evaluaciones 
+formales y su desempeño en actividades académicas. A diferencia del uso de 
+tecnologías educativas, el rendimiento académico se concibe como una variable 
+unidimensional que se centra exclusivamente en las calificaciones obtenidas por los 
+estudiantes en pruebas, exámenes y otros tipos de evaluaciones formales (Biggs, 2003). 
+Las calificaciones reflejan el nivel de dominio que los estudiantes han alcanzado en los 
+contenidos curriculares, y son comúnmente utilizadas como el principal indicador de 
+éxito académico (Brookhart, 2010). Aunque otros factores, como la motivación o el 
+desarrollo de habilidades, pueden influir en el rendimiento, en este estudio se 
+considerarán únicamente las calificaciones obtenidas como medida del rendimiento 
+académico. 
+ 
+Definición de términos básicos 
+ 
+Los términos básicos son los significados específicos según los conceptos principales 
+que se asocien con el problema formulado. También se definen conceptos asociados a 
+las variables o dimensiones de estudio que presenten alguna ambigüedad o presenten 
+significados distintos para la investigación. Estos términos básicos permitirán definir el 
+marco referencial general de la investigación.  
+ 
+ 
+27 
+Estos términos son presentados en orden alfabético y con sus respectivas referencias.  
+ 
+Ejemplo 
+ 
+Control mecánico: La aplicación de este método de control hace uso de la remoción o 
+eliminación manual de los organismos plaga (insectos perjudiciales) y aquellas partes 
+de la planta infectadas o dañadas. En esta técnica también se puede hacer uso de 
+algunas barreras y otros dispositivos que impiden el ingreso de la plaga al cultivo 
+(Falconi, 2013). 
+ 
+Control químico: Por control químico se entiende el uso de cualquier sustancia química 
+que actúa manteniendo la población de insectos o plagas a un nivel 21 muy reducido, de 
+manera que no ejerza algún tipo de daño importante. Dentro de esta técnica de control 
+se emplean diversos productos, siendo los más reconocidos los plaguicidas. Cuando se 
+desarrolla un plan de manejo integrado de plagas se busca que el plaguicida usado sea 
+lo más específico posible y con el menor riesgo de contaminación (Martínez, 2010) 
+ 
+Plaguicida: De acuerdo con la Organización Mundial de Salud (OMS, 2014) se entiende 
+por plaguicida todo aquel producto que tiene en su composición algún insumo químico o 
+biológico, y que tiene por función controlar o eliminar los diversos tipos de plaga o actuar 
+como regulador para el crecimiento de las especies vegetales.  
+ 
+Plaguicida agrícola: Según el Ministerio de Agricultura y Riego, mediante Decreto 
+Supremo N.º 001-2015-MINAGRI, define plaguicida agrícola a toda aquella sustancia o 
+mezcla de sustancias que tiene por finalidad evitar, eliminar o controlar una determinada 
+plaga que genera daño o algún efecto negativo durante cualquier etapa de la producción 
+de alimentos, insumos agrícolas o productos maderables 
+ 
+ 
+ 
+ 
+ 
+ 
+28 
+CAPÍTULO III. HIPÓTESIS Y VARIABLES / SUPUESTOS DE 
+INVESTIGACIÓN Y CATEGORÍAS 
+ 
+En el tercer capítulo, se presentan las hipótesis y variables, en el caso de investigaciones 
+cuantitativas, o de los supuestos de investigación y categorías, en investigaciones 
+cualitativas. Para tesis que siguen un enfoque mixto (solo doctorados), este capítulo 
+debe integrar ambos elementos, permitiendo que los diferentes métodos se 
+complementen. Las hipótesis cuantitativas deben estar alineadas con las variables que 
+se medirán y analizarán estadísticamente, mientras que los supuestos cualitativos deben 
+guiar la exploración de las percepciones, significados y experiencias.  
+ 
+Hipótesis 
+ 
+Las hipótesis de investigación son afirmaciones que se plantean en un estudio con el 
+propósito de ser probadas o refutadas. Estas proposiciones deben ser verificadas 
+empíricamente a través de la recolección y análisis de datos. Por ello, la formulación de 
+una hipótesis es un paso clave en el proceso de investigación, ya que guía el diseño del 
+estudio y orienta la interpretación de los resultados. 
+ 
+Las hipótesis de investigación deben cumplir con ciertas características: 
+ 
+1. Claridad y precisión: Deben formularse de manera que se entienda exactamente 
+cuáles son las variables implicadas y cómo se espera que se relacionen. 
+2. Comprobabilidad: 
+Deben 
+ser 
+verificables 
+mediante 
+observación 
+o 
+experimentación, es decir, deben ser empíricamente comprobables. 
+3. Fundamentación teórica: Deben basarse en el conocimiento existente y en 
+investigaciones previas (antecedentes) que apoyen la afirmación que se plantea. 
+ 
+Por otro lado, existen diferentes tipos de hipótesis en la investigación: 
+ 
+1. Hipótesis descriptivas: Predicen el comportamiento de una sola variable en un 
+grupo específico. 
+ 
+Por ejemplo, una hipótesis descriptiva podría ser la siguiente:  
+ 
+Þ Existe un nivel elevado de estrés laboral en el personal administrativo del Área 
+Comercial de una universidad privada de Lima en 2023. 
+ 
+2. Hipótesis correlacionales: Plantean la relación entre dos o más variables sin 
+establecer causalidad. 
+ 
+Por ejemplo, una hipótesis correlacional podría ser la siguiente:  
+ 
+Þ Existe una relación significativa entre la frecuencia de uso de tecnologías 
+educativas y el rendimiento académico de los estudiantes de secundaria en un 
+colegio privado de Arequipa en 2024.  
+ 
+3. Hipótesis causales: Proponen una relación causa-efecto entre dos variables. 
+ 
+ 
+ 
+ 
+ 
+ 
+29 
+Por otro lado, una hipótesis causal podría ser la siguiente:  
+ 
+Þ El aumento en la capacitación docente en el uso de tecnologías educativas causa 
+una mejora en el rendimiento académico de los estudiantes de secundaria en un 
+colegio privado de Arequipa en 2024. 
+ 
+Para formular una hipótesis de manera efectiva, es necesario identificar claramente las 
+variables involucradas en el estudio y establecer la relación que se espera encontrar 
+entre ellas, si fuera el caso. Es fundamental que esta formulación esté respaldada por 
+un marco teórico sólido, basado en investigaciones previas y teorías relevantes.  
+ 
+La evaluación de las hipótesis se realiza mediante pruebas estadísticas adecuadas, que 
+permiten determinar si se acepta o rechaza la hipótesis de investigación en función de 
+los datos recolectados. Asimismo, la interpretación de estos resultados es esencial para 
+concluir si la hipótesis de investigación es apoyada o no por los datos, lo que a su vez 
+contribuye con la validez del estudio y a la generación de nuevo conocimiento en el área 
+investigada. 
+ 
+Hipótesis general  
+ 
+La hipótesis general guía el diseño de investigación, la identificación de variables, el 
+proceso de recopilación de la información y el análisis de los resultados. Debe ser 
+comprobable, confirmada o refutada. La decisión de utilizar una hipótesis depende del 
+planteamiento del problema, el diseño de la investigación y el alcance de esta.  
+ 
+La redacción de la hipótesis debe guardar relación coherente con la estructura 
+gramatical de la pregunta y el objetivo general. 
+ 
+Ejemplo 
+ 
+Si el objetivo general de una investigación cuantitativa es “Determinar la relación entre 
+el uso de tecnologías educativas y rendimiento académico de los estudiantes de 
+secundaria en Lima Metropolitana durante el año 2024”, los objetivos específicos podrían 
+ser así: 
+ 
+Þ Existe relación significativa entre el uso de tecnologías educativas y rendimiento 
+académico de los estudiantes de secundaria en Lima Metropolitana durante el 
+año 2024. 
+ 
+Hipótesis específicas 
+ 
+Las hipótesis específicas son las que se derivan de la hipótesis general. Sirven como 
+guía para concretar la hipótesis general. Se centran en aspectos particulares del 
+fenómeno estudiado y son precisas con respecto al diseño de la investigación.  
+ 
+Ejemplo 
+  
+Si la hipótesis general de una investigación es “Existe relación significativa entre el uso 
+de tecnologías educativas y rendimiento académico de los estudiantes de secundaria en 
+Lima Metropolitana durante el año 2024”, las hipótesis específicas podrían ser así: 
+ 
+ 
+ 
+30 
+• H1. Existe una relación significativa entre el nivel de frecuencia de uso de 
+tecnologías educativas y el nivel de rendimiento académico de los estudiantes de 
+secundaria en Lima Metropolitana durante el año 2024. 
+• H2. Existe una relación significativa entre el nivel de accesibilidad a tecnologías 
+educativas y el nivel de rendimiento académico de los estudiantes de secundaria 
+en Lima Metropolitana durante el año 2024. 
+• H3. Existe una relación significativa entre el nivel de competencia docente en 
+tecnologías educativas y el nivel de rendimiento académico de los estudiantes de 
+secundaria en Lima Metropolitana durante el año 2024. 
+• H4. Existe una relación significativa entre el nivel de interactividad y participación 
+fomentadas por las tecnologías educativas y el nivel de rendimiento académico 
+de los estudiantes de secundaria en Lima Metropolitana en el año 2024. 
+ 
+Operacionalización de variables 
+ 
+El proceso de operacionalización de variables es un procedimiento lógico y sistemático 
+que permite transformar conceptos abstractos en elementos concretos y observables. 
+Este proceso es esencial en la investigación, ya que facilita la medición y análisis de las 
+variables involucradas en el estudio. 
+ 
+En el caso de hipótesis correlaciones, la operacionalización de variables se realiza en 
+función de variables a las que se denomina variable 1 (v1) y variable 2 (v2), o la cantidad 
+de variables que se quiera relacionar.  
+ 
+Solo en el caso de hipótesis causales, la operacionalización de variables se realiza en 
+función de variables independientes y dependientes. Estas se definen de la siguiente 
+manera: 
+ 
+Variable independiente (v1)  
+ 
+La variable independiente es el factor o condición que el investigador manipula o controla 
+para observar su efecto sobre otra variable. Es la causa o el estímulo en un experimento, 
+y se presume que influye directamente en la variable dependiente. En otras palabras, es 
+la variable que se cambia para ver qué efecto tiene sobre la variable dependiente. 
+ 
+Variable dependiente (v2)  
+ 
+La variable dependiente es el resultado o la respuesta que se mide en un estudio para 
+determinar el efecto de la variable independiente. Es la consecuencia o el efecto en un 
+experimento y su valor depende de las modificaciones hechas a la variable 
+independiente. La variable dependiente es lo que se está tratando de medir o predecir 
+en la investigación. 
+ 
+Por ejemplo, si la hipótesis general es “Durante el segundo semestre del año 2024, la 
+reducción de la jornada laboral a 35 horas semanales en las empresas tecnológicas de 
+Lima causará un aumento en la satisfacción laboral de los empleados”, las variables 
+serían las siguientes: 
+ 
+Variable independiente (v1): Reducción de la jornada laboral a 35 horas semanales 
+ 
+Variable dependiente (v2): Satisfacción laboral de los empleados 
+ 
+ 
+ 
+31 
+Matriz de operacionalización de variables  
+ 
+La matriz de operacionalización de variables es un instrumento para realizar el proceso 
+metodológico de operacionalización. Es la guía para el diseño y la elaboración de los 
+instrumentos de medición con los que el investigador tratará las variables en la realidad. 
+Se elabora siguiendo el proceso lógico explicado anteriormente, además de determinar 
+a partir de los indicadores, los ítems e instrumentos que serán utilizados como fuente de 
+información para la recolección de información.  
+ 
+Ejemplo abreviado 
+ 
+Variable 
+Definición 
+conceptual 
+Definición 
+operacional 
+Dimensiones 
+Indicadores 
+Escala de 
+valoración 
+Instrumentos 
+V1. Horas 
+de Estudio 
+Cantidad de 
+tiempo que 
+los 
+estudiantes 
+dedican al 
+estudio fuera 
+del horario 
+escolar 
+Número total 
+de horas 
+dedicadas al 
+estudio 
+durante una 
+semana 
+Duración 
+diaria 
+Horas por 
+día 
+Horas (de 0 
+a 24 por día) 
+Registro de 
+horas de 
+estudio 
+(diario o 
+semanal) 
+Distribución 
+del tiempo de 
+estudio 
+Horas por 
+semana 
+V2. 
+Rendimiento 
+Académico 
+Nivel de 
+desempeño 
+académico 
+de los 
+estudiantes 
+medido a 
+través de 
+calificaciones 
+obtenidas en 
+evaluaciones 
+Promedio de 
+calificaciones 
+obtenidas en 
+las diferentes 
+asignaturas 
+Calificaciones 
+en 
+exámenes, 
+trabajos, 
+proyectos 
+Promedio de 
+calificaciones 
+por 
+asignatura 
+Escala de 0 
+a 20 
+Registros de 
+calificaciones 
+ 
+Supuesto de investigación 
+Para el caso de investigaciones cualitativas, no se plantean hipótesis, sino supuestos de 
+investigación. Estos son afirmaciones que el investigador considera verdaderas o 
+válidas, basadas en observaciones preliminares o conocimientos teóricos. A diferencia 
+de una hipótesis, que se somete a prueba directa, un supuesto generalmente se asume 
+como base para la investigación y no se prueba de manera explícita, sino que es 
+tomado como un punto de partida que podría ser modificado producto de la lógica 
+holística de la investigación cualitativa. 
+ 
+Supuesto general  
+ 
+Un supuesto general es una afirmación amplia y fundamental que el investigador asume 
+como verdadera al comenzar su estudio. Este supuesto subyace a toda la investigación, 
+proporcionando una base conceptual o teórica sobre la cual se construye el resto del 
+estudio. 
+ 
+Ejemplo 
+ 
+Si el objetivo general de una investigación cualitativa es “Analizar las experiencias y 
+percepciones de los pacientes con enfermedades crónicas sobre la telemedicina en 
+clínicas privadas de Arequipa en 2024”, el supuesto general podría ser así: 
+ 
+ 
+32 
+ 
+Þ Se supone que los pacientes con enfermedades crónicas que utilizan servicios de 
+telemedicina en clínicas privadas de Arequipa durante el año 2024 experimentan 
+percepciones mixtas que varían dependiendo de factores como la accesibilidad, 
+la calidad de la atención percibida, la relación médico-paciente, y la facilidad de 
+uso de las tecnologías, lo cual influencia en su satisfacción general con el servicio. 
+ 
+Supuestos específicos 
+ 
+Son aquellos supuestos que se derivan del supuesto general. Estos supuestos son más 
+detallados y focalizados, y están directamente relacionados con aspectos específicos del 
+problema de investigación o con las subcategorías que se están explorando. 
+ 
+Los supuestos específicos sirven para guiar el análisis y la interpretación de los datos en 
+relación con aspectos concretos del estudio. En otras palabras, se utilizan para anticipar 
+los resultados posibles de su investigación en áreas específicas, ayudándoles a 
+estructurar su enfoque y a delimitar su análisis. 
+ 
+Ejemplo 
+ 
+Þ Para una investigación cualitativa cuyo supuesto general es "Se supone que los 
+pacientes con enfermedades crónicas que utilizan servicios de telemedicina en 
+clínicas privadas de Arequipa durante el año 2024 experimentan percepciones 
+mixtas que varían dependiendo de factores como la accesibilidad, la calidad de la 
+atención percibida, la relación médico-paciente, y la facilidad de uso de las 
+tecnologías, lo cual influencia en su satisfacción general con el servicio", los 
+supuestos específicos podrían ser los siguientes: 
+ 
+• Supuesto 1. Se supone que los pacientes con enfermedades crónicas que tienen 
+acceso a dispositivos tecnológicos modernos y a internet de alta velocidad en 
+Arequipa experimentan una percepción más positiva sobre la telemedicina, 
+considerándola una opción conveniente y eficiente para sus consultas médicas. 
+• Supuesto 2. Se supone que los pacientes con enfermedades crónicas que reciben 
+atención a través de telemedicina sienten que la calidad de la comunicación y la 
+relación médico-paciente es inferior en comparación con las consultas 
+presenciales, afectando negativamente su percepción del servicio. 
+• Supuesto 3. Se supone que los pacientes mayores o con poca familiaridad con la 
+tecnología encuentran más desafíos al utilizar la telemedicina, lo que genera una 
+percepción negativa respecto a la facilidad de uso y la efectividad del servicio. 
+• Supuesto 4. Se supone que los pacientes con enfermedades crónicas que tienen 
+experiencias previas negativas con la telemedicina en clínicas privadas de 
+Arequipa tienden a percibir con escepticismo cualquier nueva interacción bajo 
+este mismo modelo de atención. 
+• Supuesto 5. Se supone que los pacientes que han recibido atención continua y 
+personalizada mediante telemedicina durante el año 2024 desarrollan una 
+percepción más positiva sobre la capacidad de este servicio para gestionar su 
+enfermedad crónica de manera efectiva. 
+ 
+Categorización conceptual apriorística 
+ 
+La categorización en investigación cualitativa se refiere al proceso de identificar, definir 
+y organizar los conceptos o temas centrales que emergen de los datos recolectados, 
+ 
+ 
+33 
+tales como entrevistas, observaciones o textos. A diferencia de la operacionalización en 
+estudios cuantitativos, donde las variables se definen y miden numéricamente, en la 
+investigación cualitativa, los conceptos o fenómenos se exploran en profundidad y se 
+organizan en categorías temáticas. 
+ 
+Para este caso, las categorías pueden clasificarse en dos tipos: 
+ 
+Categorías apriorísticas 
+Las categorías y subcategorías apriorísticas son aquellas categorías que el investigador 
+establece antes de comenzar la recolección y análisis de datos en una investigación 
+cualitativa. Estas categorías se derivan de la revisión de la literatura existente, el marco 
+teórico, los objetivos de la investigación, o la experiencia previa del investigador en el 
+tema de estudio. En otras palabras, son categorías predefinidas que guían el análisis 
+inicial de los datos. 
+Categorías emergentes 
+ 
+Las categorías emergentes son aquellas categorías que surgen directamente de los 
+datos durante el proceso de análisis en una investigación cualitativa. A diferencia de las 
+categorías apriorísticas, que se establecen antes del análisis basado en la teoría o la 
+literatura, las categorías emergentes se descubren a medida que se examinan los datos 
+recolectados, sin estar preconcebidas por el investigador. 
+ 
+Para realizar la categorización conceptual inicial, solo se toman en cuenta las 
+categorías apriorísticas.  
+  
+Matriz de categorización apriorística 
+ 
+Una matriz de categorización es una herramienta utilizada en la investigación cualitativa 
+para organizar y estructurar los datos recopilados de manera que facilite su análisis e 
+interpretación. Esta matriz permite al investigador agrupar, comparar y visualizar las 
+categorías y subcategorías apriorísticas en relación con el marco teórico construido 
+previamente. 
+ 
+Ejemplo abreviado 
+ 
+Pregunta 
+general 
+Objetivo 
+general 
+Categorías 
+(con definición 
+conceptual) 
+Subcategorías 
+(con definición 
+conceptual) 
+Indicadores 
+Instrumentos 
+¿Cómo 
+perciben los 
+pacientes 
+crónicos la 
+calidad de 
+atención 
+recibida según 
+su disposición 
+para la 
+telemedicina 
+en clínicas 
+privadas de 
+Arequipa? 
+Analizar las 
+percepciones 
+de los 
+pacientes 
+crónicos sobre 
+la calidad de 
+atención 
+recibida según 
+su disposición 
+para la 
+telemedicina 
+en clínicas 
+privadas de 
+Arequipa 
+Categoría 
+apriorística 1: 
+Calidad de la 
+atención 
+recibida 
+ 
+Percepción del 
+paciente sobre 
+la efectividad y 
+la calidad del 
+servicio 
+recibido 
+durante la 
+consulta por 
+telemedicina. 
+Claridad en la 
+comunicación:  
+ 
+La claridad con 
+la que el 
+médico 
+comunica 
+información al 
+paciente, 
+asegurando 
+que se 
+entiendan las 
+indicaciones y 
+diagnósticos. 
+Nivel de 
+comprensión 
+de las 
+indicaciones 
+médicas 
+Guía de 
+entrevista 
+semiestructurada 
+Interacción 
+verbal eficaz 
+ 
+ 
+34 
+Empatía y 
+relación 
+médico-
+paciente:  
+ 
+Grado en que 
+el paciente 
+siente que el 
+médico es 
+comprensivo y 
+establece una 
+relación de 
+confianza 
+durante la 
+consulta 
+virtual. 
+Percepción de 
+la empatía del 
+médico 
+Guía de 
+entrevista 
+semiestructurada 
+Categoría 
+apriorística 2: 
+Disposición 
+para la 
+telemedicina 
+ 
+Facilidad con 
+la que los 
+pacientes 
+pueden 
+acceder y 
+utilizar los 
+recursos 
+tecnológicos 
+necesarios 
+para participar 
+en 
+telemedicina. 
+Disponibilidad 
+de recursos 
+tecnológicos:  
+ 
+La medida en 
+que los 
+pacientes 
+disponen de 
+dispositivos 
+tecnológicos 
+(computadoras, 
+smartphones, 
+etc.) y 
+conexión a 
+internet para 
+acceder a 
+telemedicina. 
+Acceso a 
+dispositivos 
+Guía de 
+entrevista 
+semiestructurada 
+Calidad de la 
+conexión a 
+Internet 
+Habilidades 
+tecnológicas 
+del paciente:  
+ 
+Conocimientos 
+y destrezas 
+que los 
+pacientes 
+tienen para 
+utilizar la 
+tecnología 
+requerida. 
+Confianza en 
+el uso de la 
+tecnología 
+Guía de 
+entrevista 
+semiestructurada 
+ 
+HIPÓTESIS Y SUPUESTOS EN INVESTIGACIONES MIXTAS (SOLO PARA 
+DOCTORADOS) 
+ 
+Una investigación mixta debe presentar tanto hipótesis como supuestos de investigación 
+respecto de sus preguntas específicas cuantitativas y cualitativas. En el caso de la 
+general integrada, se mencionará “hipótesis general integrada” si la investigación tiene 
+mayor peso cuantitativo y se denominará “Supuesto general integrado” si la investigación 
+tiene mayor relevancia cualitativa. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+35 
+Ejemplo 
+ 
+Hipótesis específicas 
+ 
+• H1. Existe una relación significativa entre la frecuencia de uso de tecnologías 
+educativas y el rendimiento académico de los estudiantes de secundaria. 
+• H2. El acceso a plataformas educativas digitales influye de manera significativa 
+en las calificaciones de los estudiantes en asignaturas como matemáticas y 
+ciencias. 
+• H3. Existe una diferencia significativa en el rendimiento académico entre 
+estudiantes que utilizan aplicaciones educativas y aquellos que no las utilizan. 
+ 
+Supuestos específicos 
+ 
+• Supuesto 1. Se supone que los estudiantes perciben el uso de tecnologías 
+educativas como una herramienta que mejora su aprendizaje diario. 
+• Supuesto 2. Se espera que los docentes enfrenten tanto desafíos como 
+oportunidades al integrar tecnologías educativas en sus clases. 
+• Supuesto 3. Se asume que las experiencias de los estudiantes con el uso de 
+plataformas digitales afectan su motivación y participación en el aula, ya sea de 
+manera positiva o negativa. 
+ 
+NOTA: En el caso de las investigaciones mixtas, se debe realizar tanto 
+operacionalización como categorización apriorística. Esto incluye la elaboración de 
+una matriz de operacionalización de variables y una matriz de categorización 
+apriorística. 
+ 
+ 
+ 
+ 
+36 
+CAPÍTULO IV. METODOLOGÍA DEL ESTUDIO 
+ 
+En el cuarto capítulo, se debe proporcionar una explicación detallada y estructurada de 
+la metodología de investigación empleada. Cada sección debe estar claramente 
+organizada y justificada con autores metodológicos de respaldo a fin de asegurar que el 
+lector comprenda la lógica detrás de las decisiones metodológicas tomadas. Dado que 
+este capítulo es fundamental para la interpretación de los resultados, es fundamental 
+que se expliquen con precisión los procedimientos de recolección y análisis de datos, así 
+como la adecuación de los métodos seleccionados al problema de investigación. De la 
+claridad y rigor en esta sección depende, en gran medida, la validez y fiabilidad de los 
+hallazgos. 
+ 
+Enfoque, tipo y alcance de investigación 
+ 
+Enfoque 
+ 
+Un enfoque de investigación es el marco metodológico general que guía la manera en 
+que un estudio o investigación es diseñado y llevado a cabo. Este determina cómo se 
+formularán las preguntas de investigación, cómo se recolectarán y analizarán los datos, 
+y cómo se interpretarán los resultados. 
+ 
+Existen dos principales enfoques básicos: cuantitativos y cualitativos. Adicionalmente, 
+podría realizarse una fusión de ambos y generar un enfoque mixto (solo doctorados). 
+ 
+El enfoque cuantitativo es el que utiliza datos cuantificables o numéricos (magnitudes, 
+cantidades) para lograr los objetivos de investigación. Generalmente, trabaja con 
+poblaciones grandes y con muestras representativas derivadas de la misma. Con este 
+enfoque, las técnicas e instrumentos deberán recolectar datos numéricos medidos a 
+través de análisis estadísticos para lograr identificar patrones, relaciones y/o llegar a 
+generalizaciones.  
+ 
+Por otro lado, el enfoque cualitativo utiliza las perspectivas e interpretaciones de los 
+sujetos de la investigación para describir, explorar o explicar características o causas de 
+fenómenos a profundidad. La población elegida suele ser menor que la cuantitativa. Este 
+método permite comprender procesos y fenómenos complejos sociales y culturales a 
+partir de la recolección de datos de la realidad desde la perspectiva de la experiencia de 
+los sujetos. El investigador interpreta esta información y le da un significado desde la luz 
+de sus bases teóricas.  
+ 
+El enfoque mixto integra elementos del enfoque cuantitativo y cualitativo en una misma 
+investigación para aprovechar las fortalezas de ambos. Este enfoque permite combinar 
+la precisión numérica y la capacidad de generalización del análisis cuantitativo con la 
+profundidad y el contexto proporcionado por el análisis cualitativo. Los investigadores 
+que emplean un enfoque mixto recolectan y analizan tanto datos numéricos como 
+narrativos, a menudo en diferentes fases del estudio, o combinando ambos tipos de 
+datos en un mismo análisis. Esto es útil cuando un solo método no es suficiente para 
+abordar la complejidad del problema de investigación. Por ejemplo, se puede comenzar 
+con un estudio cuantitativo para identificar patrones y tendencias, y luego complementar 
+con un estudio cualitativo que explique las razones detrás de esos patrones. También, 
+se puede utilizar el enfoque cualitativo para explorar un tema, y luego el cuantitativo para 
+medir las tendencias observadas en una población más amplia, todo dentro de una 
+misma tesis. 
+ 
+ 
+37 
+En el documento se debe justificar con autores confiables la coherencia de la elección 
+del método y por qué es el mejor para resolver el problema de investigación y lograr los 
+objetivos planteados de esta investigación.  
+ 
+Ejemplo de enfoque cuantitativo 
+ 
+El enfoque de la presente investigación es cuantitativo, dado que el objetivo principal es 
+medir y analizar de manera objetiva el impacto del uso de las redes sociales en el 
+rendimiento académico de los estudiantes universitarios. Este enfoque permite 
+cuantificar las variables involucradas, como el tiempo de uso de redes sociales y las 
+calificaciones académicas, y establecer relaciones estadísticas entre ellas. 
+ 
+La elección del enfoque cuantitativo se justifica por la necesidad de obtener resultados 
+que sean generalizables a una población más amplia y que permitan establecer patrones 
+claros sobre cómo el uso de las redes sociales podría estar afectando el rendimiento 
+académico de los estudiantes universitarios. Según autores como Creswell (2014) y 
+Hernández et al. (2014), este enfoque es el más adecuado cuando se busca medir 
+variables de forma precisa y establecer relaciones causales entre ellas. 
+ 
+Ejemplo de enfoque cualitativo 
+ 
+El presente estudio adopta un enfoque cualitativo con el objetivo de explorar y 
+comprender en profundidad las percepciones y experiencias de los estudiantes 
+universitarios sobre cómo el uso de las redes sociales influye en su rendimiento 
+académico. Este enfoque es adecuado para captar la complejidad de las percepciones 
+y significados que los estudiantes atribuyen a su interacción con las redes sociales y su 
+impacto en su vida académica. 
+ 
+Este enfoque cualitativo es el más adecuado para esta investigación, ya que permite 
+explorar no solo la influencia directa de las redes sociales en el rendimiento académico, 
+sino también cómo los estudiantes interpretan y dan sentido a esta influencia en su vida 
+cotidiana. Autores como Denzin y Lincoln (2011), y Strauss y Corbin (2002) destacan la 
+importancia del enfoque cualitativo en estudios que buscan entender fenómenos 
+complejos desde la perspectiva de los sujetos involucrados, lo que es fundamental en el 
+presente estudio. 
+ 
+Ejemplo de enfoque mixto (solo doctorados) 
+ 
+El presente estudio adopta un enfoque mixto de investigación, combinando los métodos 
+cuantitativos y cualitativos para abordar de manera integral el fenómeno estudiado. 
+Según Creswell y Clark (2017), el enfoque mixto permite aprovechar las fortalezas de 
+ambos métodos, integrando el análisis numérico con la profundidad interpretativa de los 
+datos cualitativos. En este estudio, el enfoque cuantitativo se empleará para medir la 
+relación entre el uso de tecnologías educativas y el rendimiento académico, utilizando 
+análisis estadísticos para identificar patrones significativos en una muestra 
+representativa. Por otro lado, el enfoque cualitativo se centrará en explorar las 
+percepciones y experiencias de los estudiantes y docentes, permitiendo una 
+comprensión más rica y contextualizada del impacto de estas tecnologías en el aula 
+(Maxwell, 2013). La combinación de ambos enfoques, como señalan Tashakkori y 
+Teddlie (2010), permite una triangulación de los datos que mejora la validez del estudio, 
+ofreciendo una visión más holística del fenómeno investigado y proporcionando 
+respuestas más robustas a las preguntas de investigación. 
+ 
+ 
+38 
+Tipo 
+ 
+El tipo de investigación se refiere a la naturaleza o enfoque metodológico que guía el 
+estudio. 
+ 
+• Básica 
+ 
+Es un tipo de investigación que tiene como objetivo principal aumentar el conocimiento 
+teórico en un campo particular, sin necesariamente buscar una aplicación práctica 
+inmediata. Es fundamental para la generación de teorías y principios científicos. Esto se 
+centra en descubrir leyes universales o generar conocimientos nuevos que expliquen 
+fenómenos naturales o sociales. 
+ 
+• Aplicada 
+ 
+Es un tipo de investigación que busca resolver problemas específicos o satisfacer 
+necesidades prácticas inmediatas mediante la aplicación de teorías y principios ya 
+establecidos. Se orienta hacia la solución de problemas concretos, desarrollando nuevas 
+tecnologías, procesos o productos basados en el conocimiento adquirido. Un estudio que 
+investiga la efectividad de un nuevo medicamento para tratar una enfermedad. 
+ 
+Alcance 
+ 
+El alcance hace referencia hasta qué punto la investigación pretende profundizar en el 
+estudio del fenómeno. 
+ 
+ 
+ 
+• Exploratorio 
+ 
+Este alcance se aplica a investigaciones que buscan tener un primer acercamiento al 
+fenómeno.  
+ 
+Este alcance se puede utilizar tanto con el enfoque cuantitativo como cualitativo. En el 
+primero, se analizarán datos básicos de las características del fenómeno y su frecuencia 
+de ocurrencia. En el caso de investigaciones cualitativas, se puede aplicar para procesos 
+que busquen recoger primeras impresiones e interpretaciones sobre un fenómeno que 
+tiene poco tiempo de estudio.  
+ 
+En este nivel no se recomienda plantear una hipótesis, pues no se cuenta con la 
+información necesaria para ello.  
+ 
+• Descriptivo 
+ 
+En este alcance, ya se conocen las características del fenómeno a estudiar, por lo que 
+se busca identificar si se encuentra presenta en algún grupo determinado. Se puede 
+utilizar tanto para investigaciones con enfoque cuantitativo y cualitativo.  
+ 
+ 
+• Correlacional  
+ 
+ 
+ 
+39 
+En este alcance, se parte del planteamiento de una hipótesis que busque identificar la 
+relación entre dos o más variables. Solo puede aplicarse para investigaciones de 
+enfoque cuantitativo. 
+ 
+• Explicativo 
+ 
+Con este alcance se busca la explicación de un fenómeno. Pueden explicar relaciones 
+causales entre variables o en estudios experimentales. En este alcance es obligatorio el 
+planteamiento de una hipótesis que busque predecir el comportamiento del fenómeno. 
+Solo puede aplicarse al enfoque cuantitativo.  
+ 
+En el caso de las investigaciones cualitativas, podrían establecerse estudios con una 
+intención de “explicar”, por ejemplo, “impactos” o “factores” relacionados con un 
+problema, pero este tipo y alcance carece de una rigurosidad estadística que lo respalde, 
+por lo que, aunque parezcan indagaciones explicativas, son ejercicios descriptivos que 
+no se pueden generalizar. 
+ 
+Ejemplo para investigación cuantitativa 
+ 
+El presente estudio es de tipo básico y alcance correlacional. Su objetivo es analizar la 
+relación entre el tiempo de estudio diario de los estudiantes de secundaria y sus 
+calificaciones académicas. Este tipo de investigación es adecuado para cuantificar la 
+asociación entre variables sin necesidad de intervención experimental, tal como sugieren 
+Hernández et al. (2014), quienes destacan la importancia de las investigaciones 
+correlacionales para detectar patrones que puedan guiar estudios posteriores. El alcance 
+correlacional permite medir la fuerza y la dirección de la relación entre las variables 
+mencionadas, lo que, según Creswell (2014), es fundamental para identificar 
+asociaciones significativas en contextos educativos. El enfoque cuantitativo asegura la 
+objetividad en la recolección y análisis de los datos, lo cual facilita la generalización de 
+los resultados a poblaciones más amplias. 
+ 
+Ejemplo para investigación cualitativa 
+ 
+El presente estudio es de tipo básico y de alcance exploratorio. Se pretende comprender 
+en profundidad las experiencias y percepciones de los estudiantes de secundaria sobre 
+el uso de recursos digitales en su proceso de aprendizaje durante la pandemia de 
+COVID-19. El alcance exploratorio es elegido debido a la novedad del fenómeno y la 
+falta de estudios previos que analicen este contexto específico. Según Hernández et al. 
+(2014), este tipo de alcance es esencial cuando se busca generar nuevas preguntas de 
+investigación y abrir camino para estudios futuros. 
+ 
+Ejemplo para investigación mixta (solo doctorados) 
+ 
+En el presente estudio, al ser mixto, se recolectan y analizan los datos cuantitativos y 
+luego se complementan con datos cualitativos. En cuanto al tipo y alcance, el 
+componente cuantitativo es correlacional, ya que busca identificar la relación entre el uso 
+de tecnologías educativas y el rendimiento académico de los estudiantes de secundaria. 
+Este análisis permitirá establecer si existen asociaciones significativas entre las 
+variables estudiadas, utilizando técnicas estadísticas como la correlación y la regresión. 
+ 
+Por otro lado, el componente cualitativo es fenomenológico, dado que se enfoca en 
+explorar y comprender las percepciones y experiencias de los estudiantes y docentes 
+ 
+ 
+40 
+respecto al uso de tecnologías educativas en el proceso de enseñanza-aprendizaje. Este 
+alcance busca captar las vivencias subjetivas y los significados que los participantes 
+atribuyen a su experiencia con estas tecnologías, a través de entrevistas 
+semiestructuradas y grupos focales. 
+ 
+Diseño de la investigación 
+ 
+Un diseño de investigación es el plan o estrategia general que guía cómo se llevará a 
+cabo un estudio, determinando las metodologías, técnicas y procedimientos que se 
+utilizarán para recolectar, analizar y interpretar los datos. Actúa como una hoja de ruta 
+que organiza y estructura el proceso de investigación, lo cual asegura que los métodos 
+empleados sean coherentes con los objetivos del estudio y las preguntas de 
+investigación planteadas. 
+ 
+Los diseños pueden clasificarse según el tipo de enfoque de investigación: 
+ 
+Diseños de investigación cuantitativa 
+ 
+Los diseños de investigación cuantitativa son estrategias que permiten la recolección y 
+análisis de datos numéricos de manera estructurada, buscando medir y cuantificar 
+variables.  
+ 
+• Diseño experimental 
+ 
+El diseño experimental es uno de los más rigurosos, ya que implica la manipulación de 
+una o más variables independientes para observar sus efectos en variables 
+dependientes, todo bajo condiciones controladas. Este diseño es el más efectivo para 
+establecer relaciones causales. Para poder ejecutar este diseño, es importante el control 
+y la aleatorización de las muestras para asegurar la validez de los resultados. 
+ 
+• Diseño cuasiexperimental 
+ 
+El diseño cuasiexperimental es similar al experimental, pero carece de asignación 
+aleatoria de los participantes a las condiciones del experimento. Aunque tiene menos 
+control sobre las variables externas, sigue siendo útil para observar los efectos de la 
+manipulación en contextos donde la aleatorización no es posible. El valor de este diseño 
+emerge cuando las condiciones de experimentación pura no son factibles. 
+ 
+• Diseño transversal  
+ 
+El diseño transversal recolecta datos en un solo momento en el tiempo, por lo que 
+proporciona una "fotografía" del fenómeno estudiado. Es especialmente útil para 
+describir la situación actual de una población o fenómeno en un punto específico en el 
+tiempo.  
+ 
+• Diseño longitudinal 
+ 
+El diseño longitudinal implica la recolección de datos a lo largo del tiempo para observar 
+cambios y desarrollos en las variables estudiadas. Este diseño es ideal para estudios 
+que buscan observar cómo cambian las variables a lo largo del tiempo, como en 
+investigaciones sobre el desarrollo infantil o el impacto de intervenciones a largo plazo. 
+ 
+ 
+ 
+41 
+Ejemplo de diseño para investigación cuantitativa 
+ 
+El presente estudio adopta un diseño transversal, el cual se seleccionó por su capacidad 
+para recolectar datos en un solo punto temporal, permitiendo obtener una "instantánea" 
+de las variables de interés. Este diseño es particularmente adecuado cuando el objetivo 
+es describir y analizar la situación actual de una población, ya que permite capturar las 
+características y relaciones entre variables en un momento específico sin requerir un 
+seguimiento longitudinal. De acuerdo con Hernán et al. (2004), los estudios transversales 
+son eficaces para estimar la prevalencia de un fenómeno en un momento dado y son 
+especialmente útiles en investigaciones que buscan correlaciones entre variables en un 
+contexto determinado. Además, Bryman (2016) señala que el diseño transversal es 
+ventajoso por su eficiencia y rapidez en la recolección de datos, lo que lo convierte en 
+una opción ideal cuando se busca una comprensión rápida y precisa de la realidad 
+estudiada. 
+ 
+Diseños de investigación cualitativa 
+ 
+Los diseños de investigación cualitativa se refieren a las estrategias y métodos 
+específicos utilizados para explorar y comprender fenómenos sociales, culturales o 
+individuales en profundidad.  
+ 
+• Estudio de caso 
+ 
+Explora en detalle un fenómeno específico dentro de un contexto real y delimitado, como 
+un individuo, grupo, organización, evento o situación. Este tipo de diseño es ideal para 
+comprender las particularidades y complejidades del caso en su contexto natural. 
+ 
+• Fenomenológico  
+ 
+Se enfoca en comprender las experiencias vividas de los individuos desde su propia 
+perspectiva, capturando la esencia de un fenómeno tal como es experimentado 
+subjetivamente. Este enfoque es particularmente útil para explorar cómo las personas 
+perciben y dan sentido a sus experiencias, como en estudios sobre pacientes con 
+enfermedades crónicas.  
+ 
+• Etnográfico  
+ 
+Implica la observación participante y la inmersión prolongada en el entorno de estudio 
+para entender culturas, comportamientos y prácticas sociales desde adentro. Es 
+especialmente útil cuando se estudian comunidades o grupos específicos, buscando 
+comprender sus normas, valores y estructuras sociales. 
+ 
+• Teoría fundamentada 
+ 
+Busca generar teoría a partir de los datos recolectados en lugar de probar una teoría 
+preexistente. Este enfoque, desarrollado por Glaser y Strauss en 1967, se basa en la 
+recopilación y análisis simultáneo de datos, permitiendo que las categorías y conceptos 
+emerjan del análisis. Es adecuado para situaciones donde no existe una teoría adecuada 
+para explicar un fenómeno y se necesita construir una nueva teoría desde el análisis de 
+los datos. 
+ 
+ 
+ 
+ 
+42 
+• Investigación-acción 
+ 
+Se enfoca en resolver problemas prácticos mediante la acción directa y la participación 
+activa de los involucrados en el proceso de investigación. Se trata de un ciclo iterativo 
+de acción y reflexión, ideal para estudios donde se busca mejorar prácticas sociales o 
+educativas, como en la implementación de programas de mejora en escuelas. 
+ 
+Ejemplo de diseño para investigación cualitativa  
+ 
+El presente estudio adopta un diseño cualitativo de estudio de caso, seleccionado por su 
+capacidad para explorar en profundidad las experiencias y percepciones de un grupo 
+específico de estudiantes de secundaria en relación con el uso de tecnologías digitales 
+en su aprendizaje, dentro del contexto de una institución educativa pública en Lima, 
+Perú. Este diseño es ideal para comprender las particularidades del caso seleccionado, 
+permitiendo al investigador captar las complejidades y matices de las interacciones entre 
+los estudiantes y las tecnologías en un entorno real. Según Yin (2009), el estudio de caso 
+es adecuado cuando se busca responder a preguntas del tipo "cómo" y "por qué", y 
+cuando se necesita una comprensión profunda y contextualizada del fenómeno bajo 
+estudio. 
+ 
+Diseños de investigación mixta 
+ 
+El diseño de investigación mixto se refiere a la combinación de métodos cuantitativos y 
+cualitativos en un solo estudio o en una serie de estudios relacionados. Los diseños 
+mixtos permiten integrar los datos numéricos y estadísticos (cuantitativos) con los datos 
+narrativos y descriptivos (cualitativos), ofreciendo una visión más completa del fenómeno 
+investigado. 
+ 
+• Diseño secuencial explicativo 
+ 
+En este diseño, se realiza primero la fase cuantitativa y luego la cualitativa. Los 
+resultados del análisis cuantitativo se utilizan para guiar la fase cualitativa. Este diseño 
+es útil cuando el investigador desea explicar los hallazgos cuantitativos en mayor 
+profundidad. 
+ 
+Por ejemplo, un estudio con este diseño podría comenzar midiendo la relación entre el 
+uso de una aplicación educativa y el rendimiento académico (fase cuantitativa). Luego, 
+con base en los resultados, se realizan entrevistas a estudiantes para explorar sus 
+percepciones sobre el uso de la aplicación (fase cualitativa). 
+ 
+• Diseño secuencial exploratorio 
+ 
+Este diseño comienza con la recolección y análisis de datos cualitativos, seguido de una 
+fase cuantitativa. El propósito es utilizar la exploración inicial cualitativa para desarrollar 
+medidas o instrumentos para la fase cuantitativa. Este diseño es útil cuando el área de 
+estudio es nueva o poco conocida. 
+ 
+Por ejemplo, en un estudio con este diseño, el investigador podría realizar entrevistas 
+con docentes para identificar los principales desafíos en la implementación de 
+tecnologías en el aula (fase cualitativa). A partir de estos hallazgos, se desarrolla un 
+cuestionario que se aplica a una muestra más amplia de docentes para medir la 
+prevalencia de estos desafíos (fase cuantitativa). 
+ 
+ 
+43 
+ 
+• Diseño concurrente 
+ 
+En el diseño concurrente, las fases cuantitativa y cualitativa se llevan a cabo al mismo 
+tiempo. Los datos de ambas fuentes se recogen simultáneamente y luego se integran 
+durante el análisis. Este diseño es útil cuando se quiere obtener una comprensión 
+integral del fenómeno en un mismo momento temporal. 
+ 
+Por ejemplo, un estudio con este diseño podría administrar cuestionarios para medir el 
+impacto de un programa de salud mental en los estudiantes (cuantitativo) mientras se 
+realizan entrevistas individuales para explorar cómo perciben los estudiantes dicho 
+programa (cualitativo). Luego, se comparan e integran ambos tipos de resultados. 
+ 
+• Diseño anidado o incrustado 
+ 
+En este diseño, uno de los enfoques (cuantitativo o cualitativo) juega un papel secundario 
+y está "anidado" dentro del otro. Es útil cuando se quiere profundizar en un aspecto 
+particular de la investigación utilizando un método diferente. 
+ 
+Por ejemplo, un estudio con este diseño, si es principalmente cuantitativo, podría realizar 
+una evaluación sobre la efectividad de un nuevo método de enseñanza, y, de manera 
+complementaria, podría incluir algunas entrevistas cualitativas con los estudiantes para 
+profundizar en sus experiencias personales con el método. 
+ 
+Población y muestra 
+ 
+Población 
+ 
+La población se refiere al conjunto total de individuos, elementos, eventos o casos que 
+comparten características comunes y sobre los cuales se desea obtener información o 
+realizar un estudio. La población constituye el grupo completo que es objeto de interés 
+para el investigador, y del cual se espera extraer conclusiones mediante la recolección 
+de datos. 
+ 
+La población debe determinarse considerando los siguientes puntos: 
+ 
+• Delimitación: La población debe estar claramente definida en términos de tiempo, 
+lugar, y características específicas. Esto incluye especificar los criterios de 
+inclusión (quiénes forman parte de la población) y de exclusión (quiénes no 
+forman parte de la población). 
+• Características 
+comunes: Los miembros de la población comparten 
+características definidas, como edad, género, nivel educativo, profesión, 
+ubicación geográfica, entre otras, dependiendo del enfoque del estudio. 
+• Contexto: La definición de la población debe tener en cuenta el contexto en el 
+cual se sitúa el estudio, asegurando que la población seleccionada sea relevante 
+para responder a las preguntas de investigación. 
+• Accesibilidad: Es importante considerar si la población es accesible para la 
+recolección de datos, lo que implica que el investigador pueda contactar y obtener 
+información de los individuos o elementos que la componen. 
+ 
+ 
+ 
+ 
+ 
+44 
+Ejemplo 
+ 
+La población de este estudio estará conformada por todos los estudiantes matriculados 
+en programas de pregrado en universidades públicas de la ciudad de Lima durante el 
+año académico 2023. Asimismo, se han considerado los siguientes criterios de inclusión 
+y exclusión. 
+ 
+Criterios de inclusión: 
+ 
+• 
+Estudiantes que tienen entre 18 y 25 años de edad:  
+• 
+Estudiantes que están cursando al menos el segundo semestre de su programa 
+académico. 
+• 
+Estudiantes que han estado matriculados continuamente en la universidad 
+durante los últimos dos semestres. 
+• 
+Estudiantes que tienen acceso regular a recursos bibliográficos digitales y físicos 
+de la universidad. 
+ 
+Criterios de exclusión: 
+ 
+• 
+Estudiantes que están cursando su primer semestre de estudios. 
+• 
+Estudiantes mayores de 25 años o menores de 18 años. 
+• 
+Estudiantes que han estado inactivos o en pausa académica durante uno o más 
+semestres en el último año. 
+• 
+Estudiantes que no tienen acceso regular a recursos bibliográficos, ya sea por 
+falta de acceso a internet o por residir en zonas rurales sin infraestructura 
+adecuada. 
+ 
+La aplicación de criterios de inclusión y exclusión en esta investigación se justifica por la 
+necesidad de delimitar una población homogénea que permita obtener datos relevantes 
+y comparables para el objetivo del estudio. Los criterios de inclusión se han establecido 
+para seleccionar a estudiantes que comparten características clave, como la experiencia 
+en el entorno universitario, la continuidad en su formación académica, y el acceso regular 
+a recursos bibliográficos, lo que asegura que todos los participantes tienen un contexto 
+académico similar. Esta homogeneidad es fundamental para minimizar la variabilidad 
+que no está relacionada con las variables de interés, lo que mejora la precisión y validez 
+de los hallazgos. 
+ 
+Por otro lado, los criterios de exclusión se han diseñado para eliminar posibles fuentes 
+de sesgo que podrían afectar la interpretación de los resultados. Al excluir a estudiantes 
+de primer semestre, aquellos fuera del rango de edad típico o con interrupciones en su 
+formación académica, se busca evitar la inclusión de participantes cuyas experiencias o 
+circunstancias podrían diferir significativamente de las del grupo objetivo principal. 
+Asimismo, al excluir a estudiantes sin acceso regular a recursos académicos, se asegura 
+que las diferencias en los hábitos de lectura y rendimiento académico no estén 
+influenciadas por barreras tecnológicas o geográficas. 
+ 
+Muestra 
+ 
+La muestra en un estudio de investigación es un subconjunto de la población total que 
+se selecciona para participar en el estudio. La muestra, en una investigación cuantitativa, 
+debe ser representativa de la población para que los resultados obtenidos puedan 
+ 
+ 
+45 
+generalizarse a todo el grupo de interés. En el caso de investigaciones cualitativas, no 
+es necesario el criterio de representatividad.  
+ 
+La muestra se puede obtener mediante dos tipos de muestreo: 
+ 
+Muestreo probabilístico: Cada miembro de la población tiene una probabilidad conocida 
+y no cero de ser seleccionado. Ejemplos incluyen muestreo aleatorio simple, muestreo 
+estratificado, muestreo por conglomerados y muestreo sistemático. Suelen emplearse 
+en investigaciones cuantitativas. 
+ 
+Muestreo no probabilístico: La selección de la muestra no se basa en probabilidades, 
+sino en criterios específicos. Ejemplos incluyen muestreo intencional, muestreo por 
+conveniencia y muestreo bola de nieve. Suelen emplearse en investigaciones 
+cualitativas. 
+ 
+También es importante determinar el tamaño de la muestra: 
+ 
+El tamaño de la muestra se refiere al número de participantes o unidades que se 
+seleccionan para el estudio. Este tamaño debe ser suficiente para permitir un análisis 
+estadístico adecuado y garantizar que los resultados sean significativos y 
+representativos de la población en investigaciones cuantitativas. El tamaño de la muestra 
+puede determinarse utilizando fórmulas estadísticas, considerando factores como el 
+nivel de confianza, el margen de error, y la variabilidad esperada de la población. 
+ 
+En el caso de investigaciones cualitativas, el tamaño no es determinado por la 
+representatividad, por lo que no se obtiene de fórmulas estadísticas, sino de criterios no 
+probabilísticos.  
+ 
+Ahora bien, el tamaño mínimo de muestra en investigación cuantitativa y cualitativa varía 
+según el enfoque metodológico y los objetivos del estudio. Sin embargo, se plante a 
+continuación una pauta para cada enfoque de investigación. 
+ 
+Tamaño muestra mínimo para investigaciones cuantitativas 
+ 
+En investigación cuantitativa, el tamaño de la muestra depende de varios factores, 
+incluyendo el nivel de confianza, el margen de error, la variabilidad de la población, y el 
+tamaño de la población. En general, no existe un número fijo, pero algunos puntos de 
+referencia comunes incluyen: 
+ 
+• 
+Estudios descriptivos 
+ 
+Un tamaño de muestra mínimo comúnmente aceptado es de 100 a 200 participantes 
+para obtener resultados representativos. 
+ 
+• 
+Estudios correlacionales 
+ 
+Se recomienda un tamaño de muestra de al menos 50 casos por variable para realizar 
+análisis de correlación, pero generalmente se aconseja tener un tamaño mayor para 
+asegurar la robustez del análisis. 
+ 
+ 
+ 
+ 
+ 
+46 
+• 
+Estudios experimentales 
+ 
+En experimentos, un tamaño mínimo de 30 participantes por grupo es una regla 
+empírica frecuentemente citada. Sin embargo, este número puede variar dependiendo 
+de la potencia estadística requerida y la magnitud del efecto esperado. 
+ 
+El tamaño de muestra cuantitativo ideal se calcula generalmente utilizando fórmulas 
+estadísticas que consideran el nivel de confianza (habitualmente 95%), el margen de 
+error (generalmente 5%), y la variabilidad estimada en la población. 
+Tamaño muestra mínimo para investigaciones cualitativas 
+ 
+En la investigación cualitativa, el tamaño de la muestra es más flexible y se determina 
+en función del principio de saturación de datos. Esto ocurre cuando la recopilación de 
+nueva información ya no aporta nuevas ideas o temas a la investigación. Sin embargo, 
+algunas pautas generales para el tamaño mínimo de muestra en estudios cualitativos 
+son las siguientes: 
+ 
+• 
+Estudios de caso 
+ 
+Normalmente, 1 a 5 casos es suficiente para un estudio detallado. El enfoque aquí es la 
+profundidad de la información más que la cantidad. 
+ 
+• 
+Entrevistas en profundidad 
+ 
+Un tamaño de muestra de 15 a 30 entrevistas suele ser común para alcanzar la 
+saturación de datos. 
+ 
+• 
+Grupos focales 
+ 
+Para los grupos focales, 3 a 6 grupos con 6 a 10 participantes por grupo son 
+recomendados para captar una gama diversa de perspectivas. 
+ 
+• 
+Investigación fenomenológica 
+ 
+En estudios fenomenológicos, un rango de 5 a 25 participantes suele ser suficiente para 
+capturar la esencia de la experiencia vivida. 
+ 
+Estas pautas son flexibles y debe considerarse principalmente el tamaño de la población 
+como punto de referencia. 
+ 
+Ejemplo de para investigaciones cuantitativas 
+ 
+Para este estudio, se ha determinado un tamaño de muestra de 400 estudiantes de 
+pregrado, seleccionados de una población total de 10 000 estudiantes matriculados en 
+universidades públicas de Lima. La selección de la muestra se llevará a cabo utilizando 
+un muestreo probabilístico estratificado aleatorio, que se ha elegido por su capacidad 
+para garantizar que todos los subgrupos relevantes dentro de la población, como 
+facultades y años de estudio, estén adecuadamente representados en la muestra final. 
+Este tipo de muestreo permite que la muestra sea más precisa y representativa al dividir 
+la población en estratos homogéneos, y luego seleccionar aleatoriamente a los 
+participantes dentro de cada estrato. Según Cochran (1977), el muestreo estratificado 
+aleatorio reduce la variabilidad dentro de los estratos y mejora la precisión de las 
+ 
+ 
+47 
+estimaciones, lo cual es crucial cuando se busca una alta fiabilidad en los resultados. 
+Además, Bryman (2016) destaca que este enfoque asegura que cada subgrupo de la 
+población esté proporcionalmente representado, lo que facilita la generalización de los 
+resultados a la población total. Este diseño muestral, combinado con el cálculo de un 
+nivel de confianza del 95% y un margen de error del 5%, proporciona una base sólida 
+para que los hallazgos del estudio sean estadísticamente significativos y aplicables a la 
+población objetivo. 
+ 
+Ejemplo para investigaciones cualitativas 
+ 
+Para este estudio, que busca explorar las percepciones y actitudes de los jóvenes hacia 
+el uso de redes sociales para la educación, se ha determinado un tamaño de muestra de 
+20 estudiantes de una universidad privada en Lima. La selección de la muestra se realizó 
+utilizando un muestreo no probabilístico por bola de nieve, que ha sido elegido debido a 
+la naturaleza específica del grupo objetivo, que puede ser difícil de identificar y acceder 
+de manera directa. Este método implica que los participantes iniciales del estudio 
+referencien a otros estudiantes que cumplan con los criterios de inclusión, creando así 
+una cadena de referencias que permite llegar a un grupo más amplio de individuos con 
+características similares. Según Goodman (1961), el muestreo por bola de nieve es 
+especialmente útil en estudios donde el grupo objetivo es difícil de acceder o cuando se 
+estudian temas sensibles o de interés particular. Aunque este tipo de muestreo no 
+permite la generalización de los resultados a toda la población, es apropiado para 
+estudios exploratorios donde el objetivo es profundizar en un fenómeno específico y 
+obtener una comprensión detallada de las experiencias y actitudes de los participantes. 
+Además, este enfoque facilita la construcción de redes de participantes que comparten 
+características comunes, lo que puede enriquecer la calidad y profundidad de los datos 
+recolectados. 
+ 
+NOTA: En el caso de investigaciones mixtas (solo doctorados), la muestra debe ser 
+diferenciada entre la cuantitativa y la cualitativa, y también adecuadamente precisada 
+y justificada. 
+ 
+Técnicas e instrumentos de recolección de datos 
+ 
+Este apartado se compone por tres aspectos: las técnicas e instrumentos, la validez y 
+confiabilidad de los instrumentos y el procedimiento de recolección de datos. 
+ 
+TÉCNICAS E INSTRUMENTOS 
+ 
+Por una parte, las técnicas son los procedimientos o métodos específicos que se utilizan 
+para recolectar y analizar los datos en un estudio. Estas son las estrategias que el 
+investigador selecciona para obtener la información necesaria sobre el fenómeno de 
+interés. En términos simples, las técnicas son "el cómo" se recogen los datos. Por otro 
+lado, los instrumentos son las herramientas o dispositivos específicos que se emplean 
+para aplicar las técnicas de recolección de datos. Mientras que las técnicas definen el 
+método general, los instrumentos son los medios concretos a través de los cuales se 
+implementan esas técnicas. Los instrumentos son "el qué" se usa para recoger los datos. 
+Asimismo, es necesario considerar que los instrumentos se corresponden con 
+determinadas técnicas, por lo cual es fundamental conocer el tipo de relaciones que se 
+establecen entre ellas. De igual modo, se debe justificar debidamente la elección de las 
+técnicas e instrumentos según el marco metodológico delimitado para el estudio. 
+ 
+ 
+ 
+48 
+Las técnicas e instrumentos pueden clasificarse según el enfoque de investigación de la 
+siguiente manera: 
+ 
+Técnicas e instrumentos en investigación cuantitativa 
+ 
+En un enfoque cuantitativo, las técnicas e instrumentos están diseñados para recolectar 
+datos numéricos que pueden ser analizados estadísticamente. A continuación, se 
+presenta una clasificación de las principales técnicas e instrumentos utilizados en 
+investigaciones cuantitativas: 
+ 
+• 
+Técnica encuesta 
+ 
+o Instrumento: Cuestionarios estructurados y escala de actitudes 
+o Descripción: Permiten recolectar datos de un gran número de 
+participantes de manera estandarizada. Los cuestionarios pueden incluir 
+preguntas cerradas, escalas de Likert, y otros tipos de ítems diseñados 
+para medir actitudes, percepciones o comportamientos. 
+ 
+• 
+Técnica pruebas estandarizadas 
+ 
+o Instrumento: Test psicológicos, exámenes estandarizados 
+o Descripción: Se emplean para medir habilidades, conocimientos o 
+competencias específicas en un formato que permite la comparación de 
+resultados entre individuos o grupos. 
+ 
+• 
+Técnica observación sistemática 
+ 
+o Instrumento: Listas de verificación o escalas de observación. 
+o Descripción: Se utilizan para registrar de manera cuantitativa la 
+frecuencia, duración o presencia de comportamientos o eventos 
+específicos en un entorno controlado o natural. 
+ 
+Técnicas e instrumentos en investigación cualitativa 
+ 
+En un enfoque cualitativo, las técnicas e instrumentos están orientados a recolectar 
+datos que capturan la profundidad, complejidad y contexto de las experiencias humanas. 
+La clasificación de las principales técnicas e instrumentos cualitativos es la siguiente: 
+ 
+• 
+Técnica entrevistas 
+ 
+o Instrumento: Guías de entrevista semiestructurada o en profundidad 
+o Descripción: Permiten explorar en profundidad las percepciones, 
+experiencias y significados que los participantes atribuyen a los fenómenos 
+estudiados. Las guías incluyen preguntas abiertas que fomentan la 
+discusión y el relato detallado. 
+ 
+• 
+Técnica grupos focales 
+ 
+o Instrumento: Guías de discusión 
+o Descripción: Reúnen a un pequeño grupo de personas para discutir un 
+tema específico bajo la moderación de un facilitador. Las guías de 
+ 
+ 
+49 
+discusión están diseñadas para estimular la interacción y la generación de 
+ideas en grupo. 
+ 
+• 
+Técnica observación participante 
+ 
+o Instrumento: Guías de observación semiestructurada y notas de campo 
+o Descripción: Implica la inmersión del investigador en el entorno natural de 
+los participantes para observar y registrar comportamientos, interacciones 
+y contextos. Las guías y notas de campo son utilizadas para documentar 
+las observaciones y reflexiones del investigador. 
+ 
+• 
+Técnica análisis documental 
+ 
+o Instrumento: Guía de análisis documental 
+o Descripción: Consiste en el análisis de textos, registros, videos, o 
+cualquier otro tipo de documento relevante al fenómeno de estudio. Las 
+guías de análisis ayudan a identificar temas, patrones o narrativas clave 
+dentro de los documentos revisados. 
+ 
+VALIDEZ Y CONFIABILIDAD  
+ 
+La validación se refiere al proceso mediante el cual se asegura que un instrumento de 
+recolección de datos mide realmente lo que pretende medir. Un instrumento es válido si 
+las interpretaciones que se hacen a partir de sus resultados son precisas y reflejan 
+adecuadamente la realidad o constructo que se estudia. Existen varios tipos de validez 
+que pueden ser evaluados. 
+ 
+• 
+Validez de contenido: Evalúa si los ítems del instrumento representan de manera 
+exhaustiva el constructo que se desea medir. 
+• 
+Validez de constructo: Determina si el instrumento realmente mide el concepto 
+teórico que pretende evaluar. 
+• 
+Validez de criterio: Verifica la relación entre los resultados del instrumento y 
+algún criterio externo relevante. 
+ 
+Por su parte, la confiabilidad se refiere a la consistencia o estabilidad de los resultados 
+obtenidos por un instrumento. Un instrumento es confiable si produce resultados 
+similares en situaciones consistentes, es decir, si al repetir la medición bajo las mismas 
+condiciones, los resultados son iguales o muy similares. Existen varios métodos para 
+evaluar la confiabilidad: 
+ 
+• 
+Consistencia interna: Evalúa si los ítems del instrumento son coherentes entre sí 
+y miden el mismo constructo. Se suele medir con el coeficiente alfa de Cronbach. 
+• 
+Confiabilidad test-retest: Evalúa la estabilidad de los resultados a lo largo del 
+tiempo, aplicando el instrumento en dos momentos diferentes y comparando los 
+resultados. 
+• 
+Confiabilidad interobservador: Verifica si diferentes observadores o evaluadores 
+obtienen resultados similares al utilizar el mismo instrumento. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+50 
+Validación y confiabilidad en instrumentos cuantitativos 
+ 
+En la investigación cuantitativa, los instrumentos como cuestionarios y pruebas 
+estandarizadas deben ser sometidos a un riguroso proceso de validación y confiabilidad 
+para asegurar que los datos recolectados sean precisos y generalizables. 
+ 
+La validación de un instrumento cuantitativo se realiza a través de varias etapas. 
+Primero, se lleva a cabo una validación de contenido, donde expertos en la materia 
+revisan los ítems del cuestionario para asegurarse de que cubren todos los aspectos del 
+constructo que se quiere medir. Luego, se realiza una validación de constructo utilizando 
+análisis estadísticos como el análisis factorial, que permite identificar si los ítems se 
+agrupan de manera coherente según las dimensiones teóricas definidas. Finalmente, la 
+validez de criterio puede ser evaluada correlacionando los resultados del instrumento 
+con un criterio externo reconocido, aunque esto último es opcional. 
+ 
+Para evaluar la confiabilidad de un instrumento cuantitativo, uno de los métodos más 
+comunes es calcular el alfa de Cronbach, que mide la consistencia interna de los ítems. 
+Un valor de alfa superior a 0.70 generalmente se considera aceptable. Otra forma de 
+evaluar la confiabilidad es mediante el test-retest, donde el cuestionario se administra a 
+la misma muestra en dos momentos distintos, y se comparan los resultados para verificar 
+la estabilidad de las respuestas, es decir, a partir de una prueba piloto. 
+ 
+ 
+Validación y confiabilidad en instrumentos cualitativos 
+ 
+En la investigación cualitativa, la validación y confiabilidad se enfocan en asegurar que 
+los datos recolectados las interpretaciones realizadas sean precisas y reflejen fielmente 
+las experiencias de los participantes. 
+ 
+La validación en la investigación cualitativa a menudo se refiere como credibilidad y 
+puede ser asegurada a través de varias técnicas. Una de ellas es la validación de 
+contenido, también denominada por juicio de expertos. Otra técnica es la validación por 
+los participantes, donde los resultados o interpretaciones se devuelven a los 
+participantes para verificar si reflejan adecuadamente sus experiencias. Además, es 
+común realizar una prueba piloto de la guía de entrevista o de los instrumentos 
+cualitativos para ajustar y mejorar las preguntas antes de la recolección de datos 
+definitiva. 
+ 
+La confiabilidad en la investigación cualitativa, también conocida como dependabilidad, 
+se puede evaluar mediante la auditoría externa, donde un investigador externo revisa el 
+proceso de recolección y análisis de datos para verificar la consistencia en los 
+procedimientos. Otra forma es mediante la consistencia del codificador, asegurando que 
+la misma persona codifique los datos de manera consistente o que varios codificadores 
+lleguen a conclusiones similares cuando revisan los mismos datos. 
+ 
+PROCEDIMIENTO DE RECOLECCIÓN DE DATOS 
+ 
+El procedimiento de recolección de datos se refiere al conjunto de pasos y métodos 
+específicos que se siguen para obtener la información necesaria para un estudio. Este 
+procedimiento abarca desde la selección de los participantes, la preparación de los 
+instrumentos, hasta la aplicación y el manejo de los datos recolectados. Un 
+procedimiento bien definido es fundamental para asegurar que los datos obtenidos sean 
+ 
+ 
+51 
+válidos, confiables y relevantes para los objetivos del estudio. Además, un buen 
+procedimiento de recolección de datos garantiza que el proceso sea sistemático y 
+replicable, lo que es esencial para la credibilidad y la rigurosidad científica del estudio. 
+ 
+El apartado debe comenzar con una breve introducción que explique la importancia del 
+procedimiento de recolección de datos dentro del contexto del estudio. Es importante 
+destacar que este procedimiento es fundamental para garantizar que los datos 
+recolectados sean válidos, confiables y relevantes para los objetivos de la investigación. 
+La recolección de datos en este estudio ha sido diseñada para asegurar que la 
+información obtenida sea precisa y relevante, siguiendo un enfoque riguroso y ético en 
+todas sus etapas. 
+ 
+A continuación, se deben detallar los pasos específicos del procedimiento de recolección 
+de datos. En primer lugar, es importante describir cómo se seleccionarán los 
+participantes del estudio y cómo se les preparará para participar. Esto incluye la 
+explicación del muestreo utilizado, el contacto inicial, y la obtención del consentimiento 
+informado. Por ejemplo, los participantes podrían ser seleccionados mediante un 
+muestreo aleatorio estratificado para asegurar una representación adecuada de 
+diferentes grupos. Se contactará a los posibles participantes explicándoles el propósito 
+del estudio y solicitando su participación voluntaria. Previamente a la recolección de 
+datos, se obtendrá el consentimiento informado de todos los participantes. 
+ 
+Otro aspecto esencial es la preparación de los instrumentos de recolección. Aquí se 
+explica cómo se prepararán estos instrumentos antes de su aplicación, lo cual puede 
+incluir la realización de pruebas piloto, la estandarización de los instrumentos, y cualquier 
+ajuste necesario. Por ejemplo, un cuestionario podría ser sometido a una prueba piloto 
+con un grupo pequeño de participantes para evaluar su claridad y relevancia. Basado en 
+los resultados del piloto, se realizarían ajustes en la redacción de algunas preguntas para 
+mejorar la comprensión, asegurando que los cuestionarios finales se estandaricen para 
+garantizar la consistencia en su aplicación. 
+ 
+El procedimiento también debe detallar cómo y dónde se aplicarán los instrumentos de 
+recolección de datos, como cuestionarios, entrevistas u observaciones. Es esencial 
+incluir detalles sobre el contexto en el que se llevará a cabo la recolección de datos, la 
+duración estimada y quién será responsable de la aplicación. Por ejemplo, los 
+cuestionarios podrían administrarse durante sesiones programadas en las instalaciones 
+de la institución, asegurando que los participantes completen los cuestionarios de 
+manera individual y sin interrupciones, con un investigador presente para resolver 
+cualquier duda y garantizar el cumplimiento del procedimiento estandarizado. En el caso 
+de recolección de datos cualitativos, como entrevistas, estas se realizarían en un entorno 
+privado y cómodo, permitiendo a los participantes expresarse libremente. Cada 
+entrevista sería grabada con el consentimiento del participante y posteriormente 
+transcrita para su análisis. 
+ 
+Para garantizar la calidad y la validez de los datos recolectados, es fundamental describir 
+las medidas de control de calidad que se implementarán. Esto puede incluir la formación 
+de los investigadores, la supervisión del proceso de recolección de datos, y la 
+estandarización de los procedimientos. Por ejemplo, todos los investigadores 
+encargados de la aplicación de los cuestionarios podrían recibir formación específica en 
+la administración de instrumentos de recolección de datos y en la resolución de dudas, 
+además de realizarse revisiones aleatorias de las respuestas recolectadas para 
+identificar y corregir cualquier inconsistencia. 
+ 
+ 
+52 
+ 
+Las consideraciones éticas son otro aspecto clave en el procedimiento de recolección 
+de datos. Es necesario cubrir la protección de la privacidad de los participantes, el 
+manejo de la confidencialidad de los datos, y cualquier otro aspecto ético relevante. Por 
+ejemplo, se garantizará que todos los datos recolectados sean tratados con estricta 
+confidencialidad, almacenándose las respuestas en una base de datos segura, accesible 
+solo para los investigadores responsables. Además, se informará a los participantes de 
+su derecho a retirarse del estudio en cualquier momento sin consecuencias. 
+ 
+Ejemplo para investigaciones cuantitativas 
+ 
+4.4.1. Técnicas e instrumentos 
+ 
+En este estudio, se empleará la técnica de encuesta para la recolección de datos. El 
+instrumento principal será un cuestionario estructurado diseñado específicamente para 
+medir las actitudes y el uso de tecnologías digitales por parte de los estudiantes, así 
+como para evaluar su rendimiento académico. Según Creswell (2014), los cuestionarios 
+estructurados son herramientas eficaces para obtener datos de una gran cantidad de 
+participantes de manera estandarizada, lo que permite realizar análisis cuantitativos 
+detallados y precisos. 
+ 
+El cuestionario incluirá ítems organizados en una escala Likert de cinco puntos, lo cual 
+permitirá cuantificar el grado de acuerdo o desacuerdo de los estudiantes con diversas 
+afirmaciones relacionadas con el uso de tecnologías digitales y su percepción sobre 
+cómo estas influían en su rendimiento académico. Las escalas de Likert son 
+ampliamente utilizadas en la investigación educativa debido a su facilidad para medir 
+actitudes y opiniones de manera estructurada (Robson, 2011). 
+ 
+Esta técnica fue elegida por su capacidad para recopilar datos estandarizados de una 
+gran muestra de participantes, lo que facilitará el análisis estadístico posterior y permitió 
+la generalización de los resultados a la población estudiada (Fowler, 2009). La estructura 
+estandarizada del cuestionario garantizará la coherencia en las respuestas, permitiendo 
+a los investigadores realizar comparaciones válidas y fiables entre los diferentes grupos 
+de estudiantes. 
+ 
+4.4.2. Validez y confiabilidad 
+ 
+Para asegurar la validez del cuestionario, se realizará una validación de contenido en la 
+que un panel de expertos en educación revisará los ítems para garantizar que cubran 
+todos los aspectos relevantes del uso de tecnologías digitales y su relación con el 
+rendimiento académico. Esta validación será fundamental para asegurar que el 
+instrumento mida lo que se proponía medir, y su importancia ha sido destacada por 
+autores como Haynes et al. (1995), quienes subrayarán la necesidad de contar con 
+expertos que evalúen la relevancia y representatividad de los ítems incluidos. 
+Posteriormente, se llevará a cabo un análisis factorial para evaluar la validez de 
+constructo, confirmando que los ítems se agruparon de manera coherente en las 
+dimensiones teóricas previstas. El análisis factorial es una técnica estadística 
+recomendada por Kline (2015) para evaluar si los ítems de un cuestionario reflejan 
+adecuadamente los constructos teóricos que se están midiendo. 
+ 
+Además, se evaluará la validez de criterio mediante la correlación de los resultados del 
+cuestionario con las calificaciones obtenidas por los estudiantes en sus materias 
+ 
+ 
+53 
+principales, lo cual demostrará una relación significativa entre el uso de tecnologías y el 
+rendimiento académico. La validez de criterio será primordial para verificar la capacidad 
+predictiva del instrumento, como lo señala DeVellis (2016), quien destaca su papel en la 
+comprobación de la efectividad de un instrumento al compararlo con un criterio externo 
+relevante. 
+ 
+La confiabilidad del instrumento será evaluada mediante el cálculo del alfa de Cronbach, 
+lo que indicará el índice de consistencia interna. Según Nunnally y Bernstein (1994), un 
+alfa de Cronbach superior a 0.70 es generalmente aceptado como un indicador de buena 
+confiabilidad, reflejando que los ítems del cuestionario estaban midiendo de manera 
+consistente el mismo constructo. Además, se realizará un test-retest aplicando el 
+cuestionario a la misma muestra en dos momentos distintos, lo que permitirá verificar la 
+estabilidad de las respuestas. Este procedimiento es recomendado por autores como 
+Streiner y Norman (2008), quienes destacan la importancia del test-retest para evaluar 
+la confiabilidad temporal de un instrumento de medición. 
+ 
+4.4.3. Procedimiento de recolección de datos 
+ 
+La recolección de datos se llevará a cabo en diversas instituciones educativas de Lima, 
+cuidadosamente seleccionadas mediante un proceso de muestreo aleatorio 
+estratificado. Este enfoque fue escogido para asegurar que la muestra representara 
+adecuadamente a los diferentes niveles socioeconómicos y tipos de instituciones 
+educativas presentes en la ciudad, incluyendo tanto escuelas públicas como privadas. 
+La estratificación del muestreo permitirá dividir a la población estudiantil en subgrupos 
+homogéneos (estratos) basados en criterios socioeconómicos y tipo de gestión 
+educativa, garantizando que cada uno de estos grupos esté representado 
+proporcionalmente en la muestra final. Esto es esencial para reducir el sesgo muestral y 
+asegurar que los resultados obtenidos fueran generalizables a toda la población 
+estudiada, como lo recomienda Bryman (2016). 
+ 
+Una vez seleccionadas las escuelas, se procederá a identificar y seleccionar a los 
+estudiantes que formarán parte de la muestra. Los estudiantes fueron contactados a 
+través de sus docentes, quienes actuaron como intermediarios para facilitar la 
+comunicación y el acceso a los estudiantes dentro del entorno escolar. Se proporcionará 
+a los docentes una explicación detallada sobre el propósito del estudio, así como sobre 
+la importancia de la participación de los estudiantes para el éxito de este. Los docentes, 
+a su vez, explicaron a los estudiantes los objetivos de la investigación y el procedimiento 
+de recolección de datos, para asegurar que todos comprendieran completamente lo que 
+implicaría su participación. 
+ 
+La participación de los estudiantes será completamente voluntaria y estará respaldada 
+por la firma de un consentimiento informado. Este documento detallará los objetivos del 
+estudio, la naturaleza de los datos que se recolectarán, los posibles riesgos y beneficios 
+de la participación, y los derechos de los participantes, incluyendo su derecho a retirarse 
+del estudio en cualquier momento sin sufrir ninguna consecuencia. Además, se 
+informará a los estudiantes que sus respuestas serán tratadas de manera anónima y 
+confidencial, lo que contribuirá a proteger su privacidad y a promover respuestas 
+sinceras y precisas. Según Cohen et al. (2018), la obtención del consentimiento 
+informado es un principio ético fundamental en la investigación, especialmente cuando 
+involucra a menores de edad, quienes deberán estar plenamente conscientes de su 
+participación en el estudio. 
+ 
+ 
+ 
+54 
+Antes de la administración general del cuestionario, se realizará una prueba piloto con 
+una pequeña submuestra de estudiantes de características similares a las de la muestra 
+principal. Esta prueba piloto tendrá como objetivo evaluar la claridad, comprensión y 
+relevancia de los ítems del cuestionario, permitiendo identificar y corregir cualquier 
+problema potencial antes de su aplicación a la muestra completa. Por ejemplo, se 
+revisará si alguna pregunta era ambigua, confusa o difícil de entender para los 
+estudiantes, y se hicieron los ajustes necesarios para mejorar la precisión y validez del 
+instrumento. La retroalimentación obtenida de los participantes en la prueba piloto será 
+esencial para afinar el cuestionario y asegurar que midiera de manera efectiva las 
+variables de interés, como lo sugieren autores como van Teijlingen y Hundley (2002) en 
+relación con la importancia de las pruebas piloto en la investigación. 
+ 
+La administración del cuestionario se realizará durante las horas de clase, en un entorno 
+controlado para minimizar distracciones y garantizar que los estudiantes puedan 
+concentrarse en responder de manera reflexiva y precisa. Se coordinará con los 
+directores y docentes de las escuelas para programar las sesiones de recolección de 
+datos en momentos en los que no interfirieran con el proceso normal de enseñanza. Los 
+cuestionarios serán administrados por investigadores capacitados, quienes estarán 
+presentes en el aula durante toda la sesión para proporcionar instrucciones claras y 
+responder a cualquier pregunta que los estudiantes pudieran tener. La presencia de 
+estos investigadores será importante para garantizar la consistencia en la aplicación del 
+cuestionario y para asegurar que todos los estudiantes reciban el mismo nivel de apoyo 
+durante el proceso, tal como recomiendan Creswell y Creswell (2017). 
+ 
+Un protocolo estricto será establecido para proteger la confidencialidad de las 
+respuestas de los estudiantes. Al finalizar la recolección de datos, los cuestionarios 
+serán recogidos y almacenados en un lugar seguro, asegurando que solo los 
+investigadores responsables del estudio tengan acceso a los datos. Además, los datos 
+serán ingresados en una base de datos protegida con contraseñas, y se emplearon 
+códigos numéricos en lugar de nombres para identificar las respuestas individuales, 
+garantizando el anonimato de los participantes. Este protocolo también incluirá la 
+eliminación segura de cualquier dato personal una vez que la investigación haya 
+concluido, en cumplimiento con las normativas éticas y legales sobre la protección de 
+datos personales. Como sugieren autores como Flick (2018), la protección de la 
+confidencialidad y el manejo ético de los datos son componentes esenciales para 
+mantener la integridad del proceso de investigación y para salvaguardar la confianza de 
+los participantes en el estudio. 
+ 
+Ejemplo para investigaciones cualitativas 
+ 
+4.4.1. Técnicas e instrumentos 
+ 
+En este estudio cualitativo, se utilizará la técnica de entrevistas semiestructuradas para 
+recolectar datos. Esta técnica es altamente valorada en la investigación cualitativa por 
+su flexibilidad y capacidad para profundizar en las percepciones y experiencias de los 
+participantes, permitiendo captar matices y detalles que podrían no haber emergido a 
+través de otros métodos (Kvale y Brinkmann, 2015). El principal instrumento será una 
+guía de entrevista cuidadosamente diseñada para explorar en profundidad las 
+percepciones y experiencias de los docentes sobre la integración de tecnologías digitales 
+en sus prácticas pedagógicas. La elaboración de esta guía se basó en una revisión 
+exhaustiva de la literatura y en la consulta con expertos en educación y tecnología, 
+ 
+ 
+55 
+asegurando que las preguntas fueran pertinentes y estuvieran alineadas con los 
+objetivos del estudio. 
+ 
+La guía de entrevista incluyó preguntas abiertas que permitirán a los participantes 
+expresar sus opiniones y experiencias con libertad, abordando temas clave como los 
+desafíos y beneficios de la tecnología en el aula, la formación docente y las expectativas 
+en relación con la integración tecnológica. Esta estructura de preguntas abiertas será 
+fundamental para evitar limitar las respuestas de los participantes, fomentando un 
+diálogo más natural y una exploración más profunda de los temas (Patton, 2015). 
+Además, el diseño de la guía debe ser adaptable, permitiendo al investigador seguir 
+temas emergentes que surjan durante la conversación, lo que será esencial para 
+capturar la complejidad y profundidad de las experiencias docentes. 
+ 
+La elección de las entrevistas semiestructuradas como técnica principal en este estudio 
+se justifica por su capacidad para proporcionar una comprensión rica y contextualizada 
+del fenómeno estudiado. Según Merriam y Tisdell (2016), las entrevistas 
+semiestructuradas son especialmente adecuadas para investigaciones que buscan 
+comprender los significados y las experiencias desde la perspectiva de los participantes, 
+lo que representa el objetivo de este estudio. Al utilizar este enfoque, se lograrán que los 
+datos recolectados ofrezcan una visión detallada y matizada de cómo los docentes 
+perciben y experimentan la integración de tecnologías digitales en su práctica educativa, 
+permitiendo al investigador interpretar los resultados de manera que reflejen fielmente 
+las realidades y perspectivas de los participantes. 
+ 
+ 
+4.4.2. Validez y confiabilidad 
+ 
+La validez en este estudio se asegurará mediante una validación por juicio de expertos 
+de la guía de entrevista. En esta etapa, un panel de expertos en metodología cualitativa 
+y en el área educativa revisará y ajustará las preguntas de la guía para asegurar que 
+fueran claras, relevantes y adecuadas para captar las experiencias de los docentes en 
+relación con la integración de tecnologías digitales. La revisión por expertos es una 
+práctica recomendada en la investigación cualitativa para mejorar la validez de contenido 
+de los instrumentos, como lo señalan autores como Creswell y Poth (2018), quienes 
+destacan la importancia de asegurar que los ítems del instrumento estén alineados con 
+los objetivos de la investigación. 
+ 
+La credibilidad de los hallazgos se reforzará a través de un proceso de validación por los 
+participantes. Esto implicará presentar los resultados preliminares a los docentes 
+entrevistados para confirmar que las interpretaciones del investigador reflejen con 
+precisión sus percepciones y experiencias. Este método, también conocido como 
+"member checking", es determinante para garantizar que las interpretaciones no 
+distorsionen las voces de los participantes y que los resultados sean una representación 
+fiel de la realidad que se estudia (Lincoln y Guba, 1985). 
+ 
+En cuanto a la confiabilidad o dependabilidad del estudio, se empleará la técnica de 
+auditoría externa. Un investigador externo, ajeno al estudio, revisará de manera 
+independiente todo el proceso de recolección y análisis de datos. Esta auditoría tendrá 
+como objetivo asegurar que los procedimientos se lleven a cabo de manera consistente 
+y que las interpretaciones estén bien fundamentadas en los datos recolectados. La 
+auditoría externa es una estrategia clave para fortalecer la confiabilidad en la 
+ 
+ 
+56 
+investigación cualitativa, tal como lo recomiendan Lincoln y Guba (1985), al proporcionar 
+una evaluación objetiva de la metodología y los resultados del estudio. 
+ 
+4.4.3. Procedimiento de recolección de datos 
+ 
+La recolección de datos se llevará a cabo en diversas instituciones educativas de la 
+región Cusco, seleccionadas estratégicamente para representar una amplia variedad de 
+contextos tanto urbanos como rurales. Esta selección buscará capturar la diversidad de 
+experiencias y desafíos que enfrentan los docentes al integrar tecnologías digitales en 
+sus prácticas pedagógicas en distintos entornos educativos. 
+ 
+Los docentes seleccionados serán contactados a través de las direcciones de sus 
+respectivas escuelas, un enfoque que facilita la comunicación y asegurará un acceso 
+adecuado a los participantes. Se les proporcionará una explicación detallada sobre los 
+objetivos y procedimientos del estudio, asegurando que comprendieran completamente 
+lo que implicaría su participación. Antes de proceder con las entrevistas, se obtuvo el 
+consentimiento informado de cada docente. Este documento cubrió aspectos éticos 
+fundamentales como la voluntariedad de la participación y el derecho a retirarse del 
+estudio en cualquier momento, y también detalla cómo se manejará la confidencialidad 
+de la información y el uso que se dará a los datos recolectados. La obtención del 
+consentimiento informado es un proceso determinante en la investigación cualitativa, ya 
+que establece una base de confianza y transparencia entre el investigador y los 
+participantes (Creswell y Poth, 2018). 
+ 
+Cada entrevista se llevará a cabo en un entorno privado y cómodo dentro de la escuela, 
+seleccionado para garantizar que los participantes se sientan seguros y libres de 
+expresar sus pensamientos y experiencias sin interrupciones ni distracciones. Las 
+entrevistas serán grabadas con el consentimiento explícito de los participantes, lo que 
+permitirá una captura completa y precisa de sus respuestas. Posteriormente, las 
+grabaciones serán transcritas íntegramente, asegurando que todos los matices y detalles 
+de las narrativas de los docentes se conserven para el análisis. Este proceso de 
+transcripción será vital para un análisis cualitativo riguroso, ya que proporcionará un 
+registro textual completo que podrá ser revisado y codificado de manera sistemática 
+(Gibbs, 2007). 
+ 
+NOTA: En el caso de investigaciones mixtas (solo doctorados), las técnicas de 
+recolección de datos deben ser diferenciadas entre las cuantitativas y las cualitativas, 
+y también adecuadamente precisadas y justificadas. 
+ 
+Técnicas de análisis de datos 
+ 
+Las técnicas de análisis de datos son los métodos y procedimientos utilizados para 
+examinar, interpretar y dar sentido a los datos recolectados en un estudio. Estas técnicas 
+permiten transformar los datos brutos en información significativa que puede ser utilizada 
+para responder a las preguntas de investigación y verificar hipótesis (investigaciones 
+cuantitativas), o reformular los supuestos de investigación (investigaciones cualitativas).  
+ 
+La elección de las técnicas de análisis depende del tipo de datos recolectados 
+(cuantitativos o cualitativos), los objetivos de la investigación, y el enfoque metodológico 
+adoptado. Mientras que en la investigación cuantitativa las técnicas de análisis se 
+centran en la medición y el cálculo estadístico, en la investigación cualitativa el análisis 
+se enfoca en la interpretación de significados y patrones emergentes. 
+ 
+ 
+57 
+ 
+Las técnicas de análisis de datos pueden clasificarse según el enfoque de investigación 
+de la siguiente manera: 
+ 
+Técnicas de análisis de datos en investigación cuantitativa 
+ 
+En la investigación cuantitativa, las técnicas de análisis de datos están diseñadas para 
+manejar, procesar y analizar datos numéricos, permitiendo la identificación de patrones, 
+relaciones y tendencias de manera objetiva y generalizable. 
+ 
+• 
+Análisis descriptivo 
+ 
+Consiste en resumir y organizar los datos para proporcionar una visión general de las 
+características de la muestra. Incluye el cálculo de medidas de tendencia central (media, 
+mediana, moda) y dispersión (desviación estándar, rango). Se utiliza para describir las 
+características básicas de los datos y entender la distribución de las variables antes de 
+realizar análisis más complejos. 
+ 
+• Análisis inferencial 
+ 
+Implica el uso de pruebas estadísticas para hacer inferencias sobre la población a partir 
+de los datos de la muestra. Técnicas comunes incluyen pruebas t, análisis de varianza 
+(ANOVA) y pruebas de hipótesis. Se utilizan para determinar si los resultados 
+observados en la muestra son estadísticamente significativos y pueden ser 
+generalizados a la población total. 
+ 
+• 
+Correlación y regresión 
+ 
+Estas técnicas evalúan la relación entre dos o más variables. La correlación mide la 
+fuerza y dirección de la relación, mientras que la regresión permite predecir una variable 
+en función de otra. Se emplean para analizar la relación entre variables, por ejemplo, 
+para determinar cómo una variable independiente afecta a una variable dependiente. 
+ 
+• 
+Análisis multivariante 
+ 
+Incluye técnicas como análisis factorial, análisis de conglomerados, y análisis 
+discriminante, que permiten analizar simultáneamente múltiples variables para identificar 
+patrones y relaciones complejas. Son útiles en estudios que requieren una comprensión 
+profunda de la relación entre múltiples variables y su impacto conjunto en los resultados. 
+ 
+Técnicas de análisis de datos en investigación cualitativa 
+ 
+En la investigación cualitativa, las técnicas de análisis de datos están orientadas a 
+interpretar y comprender datos textuales, visuales o auditivos, con el fin de captar la 
+profundidad, complejidad y contexto de las experiencias humanas. 
+ 
+• 
+Análisis temático 
+ 
+Consiste en identificar, analizar y reportar patrones o temas dentro de los datos 
+cualitativos. Los temas se derivan directamente de los datos y se categorizan para 
+facilitar su interpretación. Este es ampliamente utilizado en estudios que incluyen 
+ 
+ 
+58 
+entrevistas, grupos focales, y análisis de textos, permitiendo una comprensión detallada 
+de los fenómenos estudiados. 
+ 
+• 
+Análisis de contenido 
+ 
+Involucra la codificación de los datos cualitativos en categorías que pueden ser 
+cuantificadas. Se enfoca en la frecuencia de aparición de palabras, frases o temas 
+específicos en los textos analizados. Este es útil para analizar documentos, 
+transcripciones de entrevistas, o cualquier otro tipo de texto, permitiendo una 
+comparación sistemática y objetiva de los datos. 
+ 
+• 
+Teoría fundamentada 
+ 
+Es una técnica que busca desarrollar una teoría basada en los datos recolectados. El 
+análisis es iterativo y se centra en la codificación abierta, axial y selectiva de los datos 
+para construir conceptos y relaciones entre ellos. Este se utiliza en investigaciones 
+donde no existe una teoría previa sólida y el objetivo es construir una nueva teoría a partir 
+de los datos. 
+ 
+• 
+Análisis fenomenológico 
+ 
+Se enfoca en comprender y describir las experiencias vividas por los individuos. Implica 
+un análisis profundo de las descripciones subjetivas proporcionadas por los 
+participantes. Este es utilizado en estudios que buscan explorar cómo las personas 
+experimentan un fenómeno particular desde su propia perspectiva. 
+ 
+Ejemplo para investigaciones cuantitativas 
+ 
+Para el presente estudio, que busca examinar la relación entre el uso de tecnologías 
+digitales y el rendimiento académico de estudiantes de secundaria, se ha seleccionado 
+la técnica de análisis de regresión. Esta es adecuada porque permite evaluar el impacto 
+de una o más variables independientes (en este caso, el uso de tecnologías digitales) 
+sobre una variable dependiente (el rendimiento académico). El análisis de regresión es 
+particularmente útil cuando se intenta predecir o explicar el comportamiento de una 
+variable a partir de otras, lo cual es fundamental para este estudio. Según Field (2013), 
+el análisis de regresión es una técnica robusta que facilita la comprensión de cómo varias 
+variables contribuyen al resultado observado, permitiendo no solo identificar la relación 
+entre ellas, sino también cuantificar su impacto. Para llevar a cabo este análisis, se 
+utilizará el software estadístico SPSS 27, reconocido por su capacidad para manejar 
+grandes conjuntos de datos y realizar análisis complejos de manera eficiente. La 
+elección de esta técnica y del software se justifica por su capacidad para producir 
+resultados que pueden generalizarse a la población estudiada, lo que es esencial para 
+un estudio que busca proporcionar recomendaciones basadas en datos empíricos. 
+ 
+Ejemplo para investigaciones cualitativas 
+ 
+Para el presente estudio, diseñado para explorar las percepciones de los docentes sobre 
+la integración de tecnologías digitales en el aula, se ha seleccionado la técnica de 
+análisis temático. Esta técnica permite identificar y analizar patrones o temas recurrentes 
+en los datos cualitativos, ofreciendo una comprensión profunda de las experiencias y 
+perspectivas de los participantes. El análisis temático es ampliamente reconocido por su 
+flexibilidad y capacidad para adaptarse a diferentes tipos de datos cualitativos, como 
+ 
+ 
+59 
+entrevistas y grupos focales. Según Braun y Clarke (2006), esta técnica es 
+particularmente efectiva para revelar temas clave en las narrativas de los participantes, 
+permitiendo al investigador construir una interpretación rica y contextualizada del 
+fenómeno estudiado. Para facilitar el proceso de codificación y análisis de los datos, se 
+empleará el software NVivo, que está especialmente diseñado para manejar grandes 
+volúmenes de datos cualitativos y permite organizar y visualizar los temas emergentes 
+de manera efectiva. La elección del análisis temático y del software NVivo se justifica 
+porque proporcionan una estructura clara para organizar los datos cualitativos y facilitan 
+la identificación de temas relevantes que emergen directamente de las experiencias de 
+los docentes. 
+ 
+NOTA: En el caso de investigaciones mixtas (solo doctorados), las técnicas de 
+análisis de datos deben ser diferenciadas entre las cuantitativas y las cualitativas, y 
+también adecuadamente precisadas y justificadas. 
+ 
+ 
+ 
+ 
+60 
+CAPÍTULO V. ASPECTOS ADMINISTRATIVOS 
+ 
+En este quinto y último capítulo, se debe incluir un análisis detallado del presupuesto 
+requerido para la realización de la tesis, abarcando aspectos como los recursos 
+humanos, tecnológicos, logísticos y otros insumos necesarios. Es esencial que el 
+estudiante desarrolle un cronograma de acciones, que le permita planificar y organizar 
+eficientemente las actividades, desde la elaboración del proyecto hasta la entrega final. 
+Este cronograma debe contemplar plazos específicos para cada capítulo o fase del 
+trabajo, lo cual asegure una distribución adecuada del tiempo y la optimización de los 
+recursos para cumplir con los objetivos en los plazos establecidos. 
+  
+Ejemplo de presupuesto 
+ 
+Categoría 
+Descripción 
+Costo 
+(PEN/USD) 
+Recursos Humanos 
+ 
+ 
+- Investigador Principal 
+Responsable del diseño, desarrollo y redacción 
+del estudio 
+- 
+- Asistente de Investigación 
+Apoyo en la recolección de datos, transcripción 
+de entrevistas 
+- 
+- Transcriptor 
+Transcripción de entrevistas y grupos focales 
+- 
+- Codificador (Análisis de datos 
+cualitativos) 
+Codificación y análisis de datos utilizando 
+ATLAS.ti 
+- 
+Recursos Logísticos 
+ 
+ 
+- Materiales de Oficina 
+Papelería, impresiones, fotocopias, carpetas 
+S/ 760 
+- Transporte 
+Desplazamientos para entrevistas y grupos 
+focales 
+S/ 1,140 
+- Alquiler de Espacio 
+Espacio para realizar entrevistas y grupos 
+focales 
+S/ 1,520 
+Recursos Tecnológicos 
+ 
+ 
+- Software de Análisis Cualitativo 
+Licencia de ATLAS.ti 
+$ 900 
+- Equipos de Grabación 
+Grabadoras digitales y accesorios para 
+entrevistas 
+S/ 1,140 
+Otros 
+ 
+ 
+- Gastos de Alimentación 
+Refrescos y refrigerios para participantes en 
+grupos focales 
+S/ 570 
+- Imprevistos 
+Cualquier gasto no previsto 
+S/ 950 
+Total 
+ 
+S/ 6080 / $900 
+Categoría 
+Descripción 
+Costo 
+(PEN/USD) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+61 
+ 
+Ejemplo de cronograma 
+ 
+Capítulo 
+Actividad 
+Mes 
+1 
+Mes 
+2 
+Mes 
+3 
+Mes 
+4 
+Mes 
+5 
+Mes 
+6 
+Capítulo I: Planteamiento del 
+problema 
+Redacción del 
+planteamiento del 
+problema 
+x 
+ 
+ 
+ 
+ 
+ 
+Capítulo II: Marco teórico 
+Revisión de literatura 
+ 
+x 
+x 
+ 
+ 
+ 
+ 
+Redacción del marco 
+teórico 
+ 
+ 
+x 
+ 
+ 
+ 
+Capítulo III: Hipótesis y 
+variables/Supuestos y categorías 
+Definición de variables y 
+categorías 
+ 
+ 
+ 
+x 
+ 
+ 
+ 
+Redacción de la hipótesis 
+y categorías 
+ 
+ 
+ 
+x 
+ 
+ 
+Capítulo IV: Metodología 
+Diseño del método de 
+investigación 
+ 
+ 
+ 
+x 
+ 
+ 
+ 
+Redacción de la 
+metodología 
+ 
+ 
+ 
+ 
+x 
+ 
+Capítulo V: Resultados de 
+investigación 
+Recolección y análisis de 
+datos 
+x 
+ 
+ 
+ 
+ 
+ 
+ 
+Presentación y discusión 
+de resultados 
+ 
+x 
+ 
+ 
+ 
+ 
+Revisión y ajustes finales 
+Revisión de todos los 
+capítulos 
+ 
+ 
+ 
+ 
+ 
+x 
+Entrega final 
+Entrega de la tesis 
+ 
+ 
+ 
+ 
+ 
+x 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+62 
+ 
+REFERENCIAS 
+ 
+Las referencias son una lista de las fuentes consultadas y citadas en el documento. Este 
+apartado se debe organizar en orden alfabético por apellido e inicial de nombre del 
+primer autor y con sangría francesa, es decir, siguiendo las normas APA7. Es importante 
+que no haya ninguna cita o referencia en el documento que no esté debidamente incluida 
+en esta sección. Para más detalles sobre tipos de referencia, consulte la GUÍA PARA 
+LA REDACCIÓN DE TRABAJOS DE INVESTIGACIÓN Y TESIS DE LA ESCUELA DE 
+POSGRADO. 
+ 
+Ejemplo 
+ 
+Alarcón, J., Yanqui, F., Moreno, S., Núñez, A., Aróstegui, E., Buendía, M., y Garay, E. 
+(2019). ¿La mariquita de siete puntos (Coccinella septempunctata) es efectiva en 
+el control biológico de la mosca blanca (Trialeurodes vaporariorum)? Scientia 
+Agropecuaria, 
+10(4), 
+489-495. 
+http://dx.doi.org/10.17268/sci.agropecu.2019.04.05  
+Alvarado-Aguayo, A., Torres-Sánchez, K., Torres-Sánchez, S., y Pilaloa-David, W. 
+(2019). 
+Efecto 
+de 
+Trichoderma 
+harzianum 
+en 
+el 
+control 
+de 
+mildiu 
+(Pseudoperonospora cubensis) en pepino. Agronomía Costarricense, 43(1),101-
+111. https://www.redalyc.org/articulo.oa?id=43659698007 
+Álvarez-Sánchez, D., Chaves-Morillo, D., Gómez-López, E., y Hurtado-Benavides, A. 
+(2020). Estimación del riesgo ambiental causado por plaguicidas en cultivos de 
+arveja 
+de 
+Ipiales, 
+Nariño-Colombia. 
+TecnoLógicas, 
+23(47), 
+77-91. 
+https://doi.org/10.22430/22565337.1404 
+Arcila-Moreno, A. (2020). Efecto de los agroquímicos en el control natural. En M. 
+Benavides, y E. Góngora. (Eds.), Efecto de los agroquímicos en el control natural 
+(pp. 158–185). Cenicafé. https://doi.org/10.38141/10791/0001_7  
+Arias, F. (2012). El proyecto de Investigación. Introducción a la metodología científica 
+(6° 
+ed.). 
+Editorial 
+Episteme. 
+https://www.researchgate.net/publication/301894369_EL_PROYECTO_DE_INV
+ESTIGACION_6a_EDICION  
+Badii, M., y Abreu, J. (2006). Control biológico una forma sustentable de control de 
+plagas. Daena: International Journal of Good Conscience. 1(1), 82-89. 
+http://www.spentamexico.org/v1-n1/1(1)%2082-89.pdf 
+Bascopé, R., Bickel, U., y Jacobi, J. (2019). Plaguicidas químicos usados en el cultivo 
+de soya en el Departamento de Santa Cruz, Bolivia: riesgos para la salud humana 
+y 
+toxicidad 
+ambiental. 
+Acta 
+Nova, 
+9(3), 
+386-416. 
+http://www.scielo.org.bo/scielo.php?script=sci_arttext&pid=S1683-
+07892019000300005&lng=es&tlng=es  
+ 
+ 
+Y así sucesivamente con el resto de las referencias. 
+ 
+ 
+ 
+ 
+63 
+ANEXOS 
+ 
+El apéndice está compuesto por materiales adicionales que enriquecen y amplían la 
+información de la investigación, que no se incluyen en el cuerpo principal del documento, 
+pero que han podido ser mencionados o referenciados. 
+ 
+Cada anexo recibe un título específico y se presenta con un número de referencia, 
+siguiendo el orden en que aparecen en el documento. Estos anexos pueden abarcar 
+diversos tipos de contenido, como la Matriz de Consistencia, instrumentos de 
+investigación, planos, material didáctico, diseños de clase, fotografías de campo u otros 
+elementos pertinentes para la investigación. 
+ 
+Ejemplo 
+ 
+Anexo 1. Matriz de consistencia (formato adjunto en la plantilla del proyecto) 
+Anexo 2. Instrumentos de investigación (si fuera el caso) 
+ 

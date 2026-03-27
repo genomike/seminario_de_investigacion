@@ -1,0 +1,1717 @@
+Review
+Electronic Health Record and Semantic Issues Using Fast
+Healthcare Interoperability Resources: Systematic Mapping
+Review
+Fouzia Amar, MEng; Alain April, BSc, MSc, PhD; Alain Abran, BSc, BA, MASc, MSc MGT, PhD
+École de technologie supérieure - ETS, Montreal, QC, Canada
+Corresponding Author:
+Fouzia Amar, MEng
+École de technologie supérieure - ETS
+1100 Notre Dame Ouest
+Montreal, QC, H3C 1K3
+Canada
+Phone: 1 514 396 8800
+Email: famar2022@gmail.com
+Abstract
+Background: The increasing use of electronic health records and the Internet of Things has led to interoperability issues at
+different levels (structural and semantic). Standards are important not only for successfully exchanging data but also for appropriately
+interpreting them (semantic interoperability). Thus, to facilitate the semantic interoperability of data exchanged in health care,
+considerable resources have been deployed to improve the quality of shared clinical data by structuring and mapping them to the
+Fast Healthcare Interoperability Resources (FHIR) standard.
+Objective: 
+The aims of this study are 2-fold: to inventory the studies on FHIR semantic interoperability resources and
+terminologies and to identify and classify the approaches and contributions proposed in these studies.
+Methods: A systematic mapping review (SMR) was conducted using 10 electronic databases as sources of information for
+inventory and review studies published during 2012 to 2022 on the development and improvement of semantic interoperability
+using the FHIR standard.
+Results: A total of 70 FHIR studies were selected and analyzed to identify FHIR resource types and terminologies from a
+semantic perspective. The proposed semantic approaches were classified into 6 categories, namely mapping (31/126, 24.6%),
+terminology services (18/126, 14.3%), resource description framework or web ontology language–based proposals (24/126, 19%),
+annotation proposals (18/126, 14.3%), machine learning (ML) and natural language processing (NLP) proposals (20/126, 15.9%),
+and ontology-based proposals (15/126, 11.9%). From 2012 to 2022, there has been continued research in 6 categories of approaches
+as well as in new and emerging annotations and ML and NLP proposals. This SMR also classifies the contributions of the selected
+studies into 5 categories: framework or architecture proposals, model proposals, technique proposals, comparison services, and
+tool proposals. The most frequent type of contribution is the proposal of a framework or architecture to enable semantic
+interoperability.
+Conclusions: This SMR provides a classification of the different solutions proposed to address semantic interoperability using
+FHIR at different levels: collecting, extracting and annotating data, modeling electronic health record data from legacy systems,
+and applying transformation and mapping to FHIR models and terminologies. The use of ML and NLP for unstructured data is
+promising and has been applied to specific use case scenarios. In addition, terminology services are needed to accelerate their
+use and adoption; furthermore, techniques and tools to automate annotation and ontology comparison should help reduce human
+interaction.
+(J Med Internet Res 2024;26:e45209) doi: 10.2196/45209
+KEYWORDS
+electronic health record; EHR; Health Level Seven International Fast Healthcare Interoperability Resources; HL7 FHIR;
+interoperability, web ontology language; OWL; ontology; semantic; terminology; resource description framework; RDF; machine
+learning; ML; natural language processing; NLP
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 1
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+Introduction
+Background
+The development and deployment of electronic health records
+(EHRs) worldwide has led to several interoperability challenges,
+including extracting valuable information from free-text clinical
+notes, integrating unstructured EHR patient data, and reusing
+them without ambiguity for clinical research purposes [1,2].
+Interoperability is defined by the Institute of Electrical and
+Electronics Engineers (IEEE) as the “ability of two or more
+components to exchange information and to use the information
+that has been exchanged” [3]. A total of 4 interoperability levels
+were proposed by the Healthcare Information and Management
+Systems Society organization: (1) foundational, (2) structural,
+(3) semantic, and (4) organizational (Figure 1) [4].
+Figure 1. Interoperability levels (Healthcare Information and Management Systems Society).
+Important research efforts are underway to develop health care
+standards, including Fast Healthcare Interoperability Resources
+(FHIR) standards for the electronic exchange of health care
+information. This standard was developed by the Health Level
+Seven International (HL7) organization aiming at the evolution
+of messaging standards to achieve semantic interoperability [5].
+FHIR combines the best features of HL7 version 2, version 3,
+and clinical document architecture, while leveraging the latest
+web standards.
+FHIR interoperability solutions are designed from a set of
+modular components called “resources” that have been designed
+as small reusable components defining a set of properties for
+the capture of the structure of the domain data acquisition for
+a particular use. The version 4.3.0 release of FHIR R4B proposes
+143 different “resources” classified into five categories to handle
+health data: (1) foundation resources, (2) base resources, (3)
+clinical resources, (4) financial resources, and (5) specialized
+resources (Multimedia Appendix 1).
+Many elements in FHIR use coded values and allow the use of
+external terminologies, such as (1) Systematized Nomenclature
+of Medicine–clinical terms (SNOMED CT)—comprehensive
+multilingual clinical terminology used in EHR. Its components
+include 
+concepts 
+(codes), 
+descriptions 
+(terms), 
+and
+relationships—and (2) Logical Observation Identifiers Names
+and Codes (LOINC), a set of universal names and ID codes
+used to identify laboratory and clinical test results.
+Common terminology aims to address the problem of ambiguity
+in exchanged data [6]. However, most legacy systems do not
+take advantage of a terminology-based approach to data
+exchange and still use incompatible terminologies or
+unstructured data in their exchanges with EHR. Thus, to ensure
+semantic interoperability with these legacy applications, it is
+mandatory to perform manual data transformations, mapping,
+or other alternate solutions to ensure that the exchanged data
+are interpreted correctly by the information systems involved.
+The FHIR standard is of great interest to researchers and EHR
+ecosystem developers [7], and several technology giants, such
+as Amazon, Google, IBM, Microsoft, Oracle, and Salesforce,
+offer ready-to-use cloud services to promote the adoption of
+FHIR [8].
+In this study, we report on a systematic mapping Review (SMR)
+and propose a classification of the FHIR literature based on
+FHIR resources, terminologies, research approaches, and
+innovative contributions. The goal of this SMR was to provide
+state of the art, trends, and analysis of research related to
+semantic interoperability using FHIR. This activity specifically
+aimed to identify the FHIR and terminology used, as well as
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 2
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+the different proposed approaches, contribution types, and
+trends.
+Related Work
+Of the number of literature reviews on the challenges of health
+information systems interoperability, only 4 specifically address
+FHIR standard issues [2,9-11]. This section summarizes the
+findings of this study.
+The study by Ayaz et al [10] reviewed 80 studies published
+between 2012 and 2019 that identified the opportunities and
+challenges associated with using FHIR. Another FHIR
+systematic review by Lehne et al [9] identified the main issues
+to be considered when exchanging data based on only 2 data
+sources and presented an overview of 131 selected studies up
+to February 4, 2019. A third systematic literature review by
+Setyawan et al [2] on data interoperability issues and possible
+solutions selected 39 studies published between 2018 and 2021
+from 3 data sources (ie, IEEE Xplore, ScienceDirect, and
+Scopus). 
+Finally, 
+a 
+systematic 
+review 
+of 
+semantic
+interoperability in the study by de Mello et al [11] selected 28
+studies from 2012 to 2020 from 8 different sources.
+An overview of these 4 studies is presented in Table 1 in terms
+of their study goal or objective, period covered, number of
+studies selected and analyzed, source databases, and their
+respective mapping and research questions (RQs).
+Table 1. Overview of the 4 literature reviews on semantic issues when using Fast Healthcare Interoperability Resources (FHIR).
+Mapping and research questions
+Source databases
+Studies, n
+Period cov-
+ered
+Goal or objective
+Study, year
+ID
+80
+January
+2012-Decem-
+ber 2019
+A systematic review of the
+literature related to FHIR,
+including the challenges,
+implementation, opportuni-
+ties, and future FHIR appli-
+cations
+Ayaz et al
+[10], 2021
+R1
+•
+•
+Q1: Types or models of FHIR im-
+plementation?
+ACM
+•
+IEEE
+•
+Q2: Common resources used in
+FHIR implementation?
+•
+Springer
+•
+Google Scholar
+•
+Q3: Applications that benefit from
+the use of FHIR?
+•
+PubMed
+•
+ScienceDirect
+•
+Q4: Approaches applied to map or
+migrate data from previous stan-
+dards to FHIR?
+•
+Q5: Goals of FHIR?
+•
+Q6: Challenges and open questions
+related to the FHIR domain?
+131
+February 4,
+2019
+Screen all FHIR publica-
+tions and identify the main
+topics
+Lehne et al
+[9], 2019
+R2
+•
+•
+N/Aa
+Web of science
+•
+PubMed
+39
+2018-2021
+Identify integration prob-
+lems of HL7b FHIR imple-
+mentation and provide tech-
+nical solutions and nontech-
+nical solutions to these
+problems
+Setyawan et al
+[2], 2021
+R3
+•
+•
+Q1: State of the art of data integra-
+tion and interoperability in HL7
+FHIR implementation?
+ScienceDirect
+•
+IEEE
+•
+SCOPUS
+•
+Q2: Problems the researcher has
+regarding Data Integration and In-
+teroperability in HL7 FHIR Imple-
+mentation?
+•
+Q3: Potential solutions and future
+research regarding Data Integration
+and Interoperability in HL7 FHIR
+Implementation?
+28
+2010-2020
+Present a comprehensive
+systematic literature review
+of semantic interoperability
+in electronic health record
+de Mello et al
+[11], 2022
+R4
+•
+•
+Q1: State of the art in health stan-
+dards applied in health records?
+ACM
+•
+IEEE Xplore
+•
+Q2: Challenge and open questions
+to semantic interoperability in
+health records.
+•
+Google scholar
+•
+MEDLINE
+•
+PubMed
+•
+Q3: Health standards adopted in the
+studies?
+•
+ScienceDirect
+•
+SpringerLink
+•
+Q4: Terminologies or health repos-
+itories used?
+•
+Web of Science
+•
+Q5: Approaches used?
+•
+Q6: Main security concerns used?
+•
+Q7: Evaluation approaches used?
+aN/A: not applicable.
+bHL7: Health Level Seven International.
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 3
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+To the best of our knowledge, no systematic mapping review
+has been published that specifically addresses the semantic
+issues raised when using FHIR.
+Some of the lessons learned in these studies and their limitations
+are presented in Table 2. The key findings are summarized as
+follows:
+•
+Most used FHIR resources from general FHIR
+implementation up to 2019: Observation, Patient,
+Practionner, Condition, Medication, AllergyIntolerance,
+Medication, Device [10].
+•
+The study by Ayaz at al [10] provides a distribution of the
+different techniques used for the mapping approach (eg,
+mapping HL7 v2 to FHIR and mapping FHIR to others).
+•
+The formula string using FHIR as the keyword is general
+and allows maximum results [9]. This study showed that
+ontology or terminology approaches were subject to a higher
+number of studies up to 2018.
+•
+One study [2] used a limited number of databases (only 3),
+and the formula string may limit the obtained results.
+•
+We learned from the study by de Mello et al [11] that the
+main approaches used are based on ontology and
+terminology, particularly SNOMED CT, International
+Classification of Diseases (ICD)-9 or ICD-10.
+Table 2. Lessons learned and limitations of related work.
+Limitations
+Lessons learned
+ID
+R1
+•
+•
+More databases are needed
+Interesting mapping framework OR data model into the
+category of the most selected studies
+•
+Formula for search may limit the result to semantic FHIRa studies
+•
+Common resources used
+•
+Are the identified resources still of interest for semantic interoperability?
+•
+Mapping to terminologies is not covered
+R2
+•
+•
+Limited list of databases
+Formula used help to select the maximum number of
+studies
+•
+The number of studies continues to increase as of 2018
+•
+Topics of interest: ontology, terminology, data models
+ontology, terminology, data, and information model,
+mapping
+•
+The ontology, terminology, and data models is the subject
+of a high number of the selected studies
+R3
+•
+•
+Limited database sources
+N/Ab
+•
+The search formula may limit the result as it must have the following:
+(challenge* OR problem* OR issue* OR trend*)
+R4
+•
+•
+HL7g FHIR is not in the list of identified standards based on the selected
+studies
+Period: 2010-2020
+•
+Different approaches based on ontology and the use of
+terminology, especially SNOMED CTc, ICDd-9 or ICD-
+10
+•
+The search based on semantic interoperability may limit the result as it
+used: “semantic interoperability” AND (“health record” OR “medical
+record” OR “patient record” OR “hospital record”) AND standard
+•
+The use of OWLe and RDFf to solve semantic issues
+•
+A small number of articles selected
+aFHIR: Fast Healthcare Interoperability Resources.
+bN/A: not applicable.
+cSNOMED CT: Systematized Nomenclature of Medicine–clinical terms.
+dICD: International Classification of Diseases.
+eOWL: web ontology language.
+fRDF: resource description framework.
+gHL7: Health Level Seven International.
+These previous studies do not provide an overview of post-2019
+developments related to semantic interoperability approaches
+and trends using FHIR. An extensive and more recent study is
+needed using many databases and a search string that includes
+the most possible semantic keywords.
+In contrast to related works, this SMR focuses on the semantic
+level of interoperability using FHIR and reports on research
+directions over the last decade.
+Methods
+Overview
+SMRs and systematic literature reviews typically use the same
+methodology, but their goals differ. The systematic literature
+review is driven by specific questions and the review aims to
+respond to these specific questions. In contrast, an SMR targets
+more high-level questions aimed at a specific topic, with the
+goal of providing a classification of the research results. An
+SMR can be helpful to researchers because it provides an
+overview of the literature at a given time for a specific topic of
+interest [12].
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 4
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+According to the study by Petersen et al [13], the mapping
+review process follows three steps: (1) planning the mapping,
+(2) conducting the mapping, and (3) reporting the results of the
+mapping. Furthermore, specific guidelines for a systematic
+mapping review in the software engineering domain as
+mentioned in the study by Brereton et al [14] suggest more
+detailed activities at each step (Figure 2):
+•
+Planning: identification of the different items used for the
+research process, including RQs, resources and databases,
+search terms and formulas, inclusion and exclusion criteria,
+and questions for quality assessment (QA).
+•
+Conducting: initial extraction of the studies was performed
+in this step. An initial preselection was performed, and both
+the inclusion and exclusion criteria were applied. The
+selected studies were then evaluated and filtered using QA
+questions.
+•
+Reporting: during this step, mapping was conducted using
+the final selection of the studies, and a discussion of the
+results was presented.
+Figure 2. Mapping and review process for this Fast Healthcare Interoperability Resources study.
+Research Questions
+A set of 5 questions was defined (Table 3).
+Table 3. Research questions.
+RQ
+RQa ID
+What are the main resources types studied or used in FHIRb semantic interoperability studies?
+RQ1
+Which terminologies are used in FHIR semantic interoperability studies?
+RQ2
+What are the semantic research approaches most frequently applied to achieve semantic interoperability?
+RQ3
+What are the main types of contributions within the selected studies?
+RQ4
+What are the publication sources and types?
+RQ5
+aRQ: research question.
+bFHIR: Fast Healthcare Interoperability Resources.
+Mapping Search Strategy
+Search String
+The search string was established iteratively: first, by using
+“FHIR” as a search term in 3 databases and screening the results
+to look for more keywords dealing with the subject of interest,
+and second, by identifying additional terms and their synonyms
+based on the RQs.
+The following is the search string composed using Boolean
+operators based on the identified terms: FHIR AND (Semantic
+OR terminology OR vocabulary OR Ontology OR mapping OR
+classification).
+The Zotero reference management tool [15] was used to collect,
+organize, annotate, and review the abstract and full text to
+include or exclude studies that met the eligibility criteria. Zotero
+helps manage the large number of studies extracted for research.
+Search Databases
+The following 10 databases were used to identify and extract
+studies that satisfied the predefined search string: IEEE Xplore,
+ScienceDirect, Springer, Scopus, ACM, Web of Science,
+MEDLINE or PubMed, Compendex, Inspec, and Semantic
+Scholar.
+Eligibility Criteria
+Textbox 1 shows the inclusion and exclusion criteria for
+identified and extracted studies. Articles were excluded based
+on titles and abstracts as well as full-text reading in some cases.
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 5
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+Textbox 1. Inclusion and exclusion criteria for identified or extracted studies.
+Inclusion criteria
+•
+Published between 2012 and 2022 (start date of 2012 was chosen because it was the date of publication of the first draft of the Fast Healthcare
+Interoperability Resources [FHIR]).
+•
+Published in English or French
+Exclusion criteria
+•
+Studies not accessible in full text
+•
+Books
+•
+Studies reported on 2-3 pages
+•
+Duplicate studies: We retained the most recent data
+•
+Technical reports or summaries of conferences and editorials
+•
+Studies that do not address semantics using FHIR
+•
+Studies addressing enhancements to FHIR terminology and comparisons
+Quality Assessment
+QA of a research publication is a crucial selection step to ensure
+that the selected studies have the appropriate impact for mapping
+reviews and further analysis [12]. For this purpose, we defined
+quality criteria scores based on the following questions.
+•
+QA1: Are the objectives of the research clearly defined?
+•
+QA2: Does the author present results that meet the stated
+research objectives?
+•
+QA3: Is the method or technique used to achieve semantic
+interoperability clearly described?
+•
+QA4: Is a literature review provided?
+•
+QA5: Is the author’s contribution clearly stated?
+•
+QA6: Is a result validation strategy presented?
+Quality evaluation of the identified and extracted studies was
+performed by answering each QA question. The selected studies
+satisfied at least 4 of the 6 QA criteria. Others were rejected.
+Data Extraction and Data Synthesis
+This SMR was conducted in 2022, with publications published
+from 2012 to 2022. A summary of the data extraction showing
+the selection filter effect is presented in Figure 3.
+•
+2601 results were obtained in the first step
+•
+2372 remained after applying the exclusion criteria for
+studies published out of the range of 2012-2022
+•
+1701 remained after the applying the exclusion criteria on
+venue type is possible, when available
+•
+1692 for studies remained after applying the English or
+French language restriction
+•
+70 studies remained after removing duplicates, applying
+the additional inclusion, exclusion criteria and QA.
+The 70 studies retained are listed in Multimedia Appendix 2
+[16-85]. The extracted data are presented in Multimedia
+Appendix 3.
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 6
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+Figure 3. Search steps and results from databases. QA: quality assessment.
+Results
+This section presents findings related to the 5 RQs listed in
+Table 3.
+RQ1: Main FHIR Resources Types Studied or Used
+We reviewed 70 selected studies and identified the types of
+FHIR resources that were used. Table 4 lists the 62 types of
+resources identified in the corresponding studies that have used
+them. In Figure 4, the resource types are presented, from most
+frequently used to least used.
+The 10 most referred or used resource types in these studies
+were Observation (31/297, 10.4%), Patient (29/297, 9.8%),
+Medication (19/297, 6.4%), Condition (16/297, 5.4%),
+CodeSystem (15/297, 5.1%), Encounter (11/297, 3.7%),
+Procedure (11/297, 3.7%), Medication Request (10/297, 3.4%),
+Practitionner (10/297, 3.4%), and ValueSet (9/297, 3%).
+The HL7 organization classifies the list of resources into five
+categories: (1) foundation, (2) base, (3) clinical, (4) financial,
+and (5) specialized resources. Each of these categories was
+further divided into 5 subcategories, except for the financial
+resources category, which was subdivided into 4 subcategories.
+The resources inventoried in the 70 selected studies were mostly
+in 3 clinical subcategories: summary, medications, and diagnosis
+(Figure 5 and Multimedia Appendix 1). There is one exception
+to Patient and Encounter resources, which are in the base
+category and mainly used for identification purposes. We also
+noted the terminology subcategory (foundation category) among
+the top 10 most used resources. Terminology resources were
+used to map concepts to FHIR terminology (eg, SNOMED CT
+and LOINC).
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 7
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+Table 4. Fast Health Care Interoperability Resources types used and related studies.
+Studies, n
+Study ID
+Resource type
+30
+S2, S42, S43, S68, S47, S60, S48, S6, S7, S8, S9, S11, S12, S40, S28, S13, S14, S15, S54,
+S55, S56, S38, S22, S61, S23, S62, S5, S34, S69, S70
+Observation
+29
+S1, S42, S43, S68, S65, S46, S47, S60, S48, S50, S39, S9, S11, S13, S14, S15, S16, S54,
+S55, S30, S56, S38, S22, S23, S5, S34, S52, S69, S70
+Patient
+19
+S1, S68, S36, S47, S63, S4, S60, S48, S6, S39, S9, S14, S54, S55, S31, S22, S61, S5, S69
+Medication
+16
+S25, S68, S60, S6, S39, S8, S9, S11, S12, S40, S14, S15, S54, S22, S61, S62
+Condition
+15
+S37, S9, S29, S10, S40, S41, S17, S18, S20, S61, S33, S14, S15, S21, S28
+CodeSystem
+11
+S1, S68, S60, S39, S9, S11, S16, S38, S23, S62, S5
+Encounter
+11
+S68, S60, S39, S8, S9, S40, S61, S5, S62, S12, S69
+Procedure
+10
+S68, S47, S60, S50, S9, S15, S16, S34, S23, S70
+Practitionner
+10
+S1, S68, S63, S4, S39, S53, S62, S22, S61, S69
+MedicationRequest
+9
+S37, S9, S29, S40, S41, S17, S18, S61, S14
+ValueSet
+7
+S68, S6, S8, S9, S40, S14, S61
+MedicationStatement
+7
+S68, S60, S39, S8, S15, S54, S61
+FamilyMemberHistory
+7
+S68, S60, S9, S67, S28, S15, S62
+AllergyIntolerance
+7
+S1, S40, S14, S5, S62, S34, S70
+DiagnosisReport
+6
+S68, S60, S50, S9, S23, S62
+CarePlan
+6
+S2, S43, S68, S60, S7, S39
+Device
+6
+S60, S39, S9, S38, S34, S69
+ServiceRequest
+6
+S37, S13, S41, S17, S19, S69
+ConceptMap
+5
+S44, S38, S53, S40, S69
+StructureDefinition
+4
+S60, S9, S40, S34
+Specimen
+4
+S28, S15, S30, S23
+Questionnaire
+4
+S60, S16, S38, S23
+Organization
+4
+S47, S48, S39, S9
+MedicationAdministration
+4
+S60, S9, S28, S69
+Appointment
+3
+S60, S40, S62
+Immunization
+3
+S8, S61, S69
+Composition
+3
+S39, S9, S69
+Communication
+3
+S60, S28, S69
+RiskAssessment
+2
+S60, S9
+HealthcareService
+2
+S68, S62
+Goal
+2
+S68, S23
+EpisodeOfCare
+2
+S2, S7
+DeviceDefinition
+2
+S68, S60
+CareTeam
+2
+S68, S60
+AdverseEvent
+2
+S23, S43
+ActivityDefinition
+2
+S68, S60
+RelatedPerson
+2
+S9, S16
+Coverage
+2
+S12, S23
+ClinicalImpression
+2
+S68, S69
+Location
+2
+S68, S69
+NutritionOrder
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 8
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+Studies, n
+Study ID
+Resource type
+2
+S23, S69
+PlanDefinition
+1
+S60
+DocumentReference
+1
+S39
+MedicationDispense
+1
+S9
+DeviceUseStatement
+1
+S9
+Consent
+1
+S28
+Person
+1
+S15
+Schedule
+1
+S16
+PractionnerRole
+1
+S23
+QuestionnaireResponse
+1
+S23
+ImagingStudy
+1
+S39
+Substance
+1
+S69
+Account, Library, Claim, Document-
+Manifest, EnrollmentResponse, Cover-
+ageEligibilityRequest, SupplyDelivery,
+PaymentNotice, OperationDefinition,
+GuidanceResponse, Implementa-
+tionGuide, CapabilityStatement,
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 9
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+Figure 4. Distribution of the resources used.
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 10
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+Figure 5. Distribution of the Fast Healthcare Interoperability Resources types used by category.
+RQ2: Which FHIR Terminologies Were Used
+A total of 9 distinct FHIR terminologies were used in the 70
+selected studies (Table 5).
+Their distribution and percentage are as follows:
+•
+SNOMED CT (31/98, 32%) and LOINC (25/98, 26%) were
+the most commonly used.
+•
+ICD-9 and ICD-10 (15/98, 15%) and Unified Medical
+Language System (13/98, 13%)
+•
+RxNORM (9/98, 9%)
+•
+The remaining terminologies (anatomical therapeutic
+chemical, quality data model, national drug file–reference
+terminology, and classification of instructional programs
+code) accounted for <10%.
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 11
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+Table 5. List of terminologies being used.
+Study ID
+Terminology
+S2, S34, S3, S35, S4, S48, S5, S49, S7, S8, S9, S29, S10, S11, S12, S40, S28, S53, S14, S16, S41, S31, S38, S18, S66,
+S22, S61, S23, S13, S25, S64
+SNOMED CTa
+S2, S34, S3, S35, S5, S6, S7, S8, S27, S9, S11, S13, S16, S54, S30, S56, S41, S38, S20, S66, S21, S22, S23, S24, S36
+LOINCb
+S34, S1, S35, S49, S6, S9, S54, S30, S41, S17, S18, S66, S22, S33, S26
+ICDc-9 or ICD-10
+S34, S43, S37, S5, S27, S14, S19, S66, S21, S61, S64, S25, S8
+UMLSd
+S36, S6, S8, S9, S14, S54, S31, S22, S61
+RxNorme
+S1, S8
+ATCf
+S39
+QDMg
+S48
+NDF-RTh
+S1
+CIPi Code
+aSNOMED CT: Systematized Nomenclature of Medicine–clinical terms.
+bLOINC: Logical Observation Identifiers Names and Codes.
+cICD: International Classification of Diseases.
+dUMLS: Unified Medical Language System.
+eRxNORM: medical prescription normalized Medical prescription.
+fATC: anatomical therapeutic chemical.
+gQDM: quality data model.
+hNDF-RT: national drug file–reference terminology.
+iCIP: classification of instructional programs.
+RQ3: Semantic Research Approaches Most Frequently
+Applied
+A total of six main semantic research approaches were identified
+from the solutions proposed in the 70 selected studies:
+1.
+Mapping to FHIR terminology (mapping)
+2.
+Terminology services (terminology)
+3.
+Transformation, development, and validation resource
+description framework (RDF) or web ontology language
+(OWL)
+4.
+Machine learning (ML) and natural language processing
+(NLP)
+5.
+Semantic annotation (annotation)
+6.
+Ontology-based approach (ontology)
+Table 6 presents the semantic research approaches used to
+decrease the frequency of use in the selected studies.
+Table 6. Semantic research approaches and related studies.
+Distribution (N=126), n (%)
+Studies IDs
+Semantic approach
+31 (24.6)
+S1, S2, S4, S5, S6, S7, S8, S9, S10, S11, S13, S14, S15, S16, S17,
+S18, S20, S21, S22, S23, S24, S25, S27, S28, S29, S30, S31, S32,
+S33, S38, S41
+Mapping to Fast Healthcare Interoperability Re-
+sources terminologies (mapping)
+18 (14.3)
+S5, S13, S17, S18, S19, S20, S21, S28, S30, S33, S34, S35, S36,
+S37, S38, S39, S40, S41
+Terminology services (terminology)
+24 (19)
+S3, S10, S12, S14, S35, S42, S43, S44, S45, S46, S47, S48, S49,
+S50, S51, S52, S53, S54, S55, S56, S57, S58, S59, S69
+Transformation or development or validation re-
+source description framework or web ontology
+language
+18 (14.3)
+S2, S3, S6, S7, S14, S25, S27, S30, S31, S32, S43, S45, S48, S60,
+S61, S62, S63, S64
+Semantic annotation (annotation)
+20 (15.9)
+S5, S6, S8, S14, S25, S26, S31, S32, S43, S46, S49, S54, S60,
+S61, S62, S63, S64, S65, S66, S67
+Machine learning or natural language processing
+15 (11.9)
+S3, S11, S12, S13, S26, S40, S44, S46, S47, S49, S50, S55, S66,
+S68, S70
+Ontology-based approach (ontology)
+The distribution of the 6 semantic approaches is as follow:
+mapping (31/126, 24.6%), RDF or OWL (24/126, 19%), ML
+and NLP (20/126, 15.9%), annotation (18/126, 14.3%),
+terminology (18/126, 14.3%), and ontology (15/126, 11.9%).
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 12
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+The selected studies used at least one of the 6 identified semantic
+research approaches, and most studies used more than one
+research approach. For example, 22 of the 31 studies listed in
+Table 6 used mapping and other approaches (70%), whereas
+only 29% (9/31) used mapping alone.
+To better understand the frequency of combinations of more
+than one semantic research approach, we identified a number
+of studies using more than one approach. We performed the
+same exercise for RDF or OWL followed by annotation. Table
+7 shows that most combined semantic approaches are annotation
+and ML and NLP, mapping and terminology services, mapping
+and annotation, RDF or OWL, and ontology.
+Table 7. Distribution of the combined approaches
+Ontology
+MLc and NLPd
+Annotation
+RDFa or OWLb
+Terminology
+Mapping
+Category
+2
+7
+9
+2
+11
+—e
+Mapping
+2
+1
+1
+0
+—
+—
+Terminology
+8
+5
+5
+—
+—
+—
+RDF and OWL
+1
+11
+—
+—
+—
+—
+Annotation
+4
+—
+—
+—
+—
+—
+ML and NLP
+—
+—
+—
+—
+—
+—
+Ontology
+aRDF: resource description framework.
+bOWL: web ontology language.
+cML: machine learning.
+dNLP: natural language processing.
+eNot applicable.
+The next analysis related to the proposed approach examined
+how these approaches evolved over time. Figure 6 shows how
+these approaches were used over time. The main finding are (1)
+ML and NLP-based proposals emerged in 2018 in FHIR
+semantic interoperability studies, (2) the other approaches span
+the full period, and (3) no specific research approach dominates
+the FHIR semantic interoperability research field.
+Figure 6. Timeline of semantic research approaches used in the selected studies. ML: machine learning; NLP: natural language processing; RDF:
+resource description framework.
+RQ4: Main Types of Contributions
+The objective of RQ4 was to identify the contribution types
+within each of the 70 selected studies. For this purpose, five
+main contributions were identified: (1) new framework or
+architecture intended to enable semantic interoperability
+(framework or architecture proposal), (2) evaluation or
+comparison of different techniques (eg, comparison of
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 13
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+ontologies), (3) new ontology, model or enhancement of an
+existing one (model proposal), (4) a new technique or
+improvement of an existing technique (new technique proposal),
+and (5) a tool proposal through the development of a new tool
+or an enhancement to existing ones to facilitate achieving
+semantic interoperability (tool proposal).
+Table 8 presents the distribution of the 70 studies selected
+according to contribution type.
+Figure 7 shows the distribution of studies by contribution type.
+The most frequent contribution type was the proposal of a
+framework or architecture (26/70, 37%), followed by model
+proposals (13/70, 19%), new or improved techniques (13/70,
+19%), comparison services (10/70, 14%), and tool proposals
+(8/70, 11%).
+Table 8. Studies by contribution type.
+Studies
+Contribution type
+S2, S5, S7, S8, S14, S16, S20, S22, S23, S25, S26, S29, S31, S34, S35, S38, S41, S43, S51, S53, S54, S61,
+S62, S65, S66, S68
+Framework or architecture
+S4, S15, S17, S32, S33, S46, S56, S58, S59, S67
+Comparison
+S1, S3, S6, S30, S39, S40, S45, S48, S49, S50, S55, S60, S63
+Model
+S9, S10, S12, S18, S19, S21, S24, S27, S42, S47, S64, S69, S70
+Technique
+S11, S13, S28, S36, S37, S44, S52, S57
+Tool
+Figure 7. Distribution of the studies by contribution type.
+RQ5: Publications Sources and Types
+Publication Sources
+The distribution of publication sources and the number of studies
+is summarized as follows (Figure 8):
+•
+The top publication sources were Studies in Health
+Technology and Informatics (8/70, 11%), followed by
+CEUR Workshop and the Journal of Biomedical Informatics
+(6/70, 9%).
+•
+JMIR Medical Informatics and BMC Medical Informatics
+and Decision Making follow with (4/70, 6%).
+•
+Approximately (3/70, 4%) of the publications are from 3
+sources: Journal of Biomedical Semantic, American Medical
+Informatics Association (AMIA) Joint Summits on
+Translational Science proceedings, and AMIA Annual
+Symposium.
+•
+Approximately (2/70, 3%) of the publications are from 4
+sources: the Journal of Medical Systems , IEEE International
+Conference 
+on 
+Bioinformatics 
+and 
+Biomedicine,
+International Conference of the IEEE Engineering in
+Medicine and Biology Society, and the Journal of the AMIA.
+•
+Each of the remaining 25 publications represented 1%, with
+1 study per source.
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 14
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+Figure 8. Publication sources and corresponding number of studies.
+Publication Types
+The distribution of the selected studies by venue type (Table 9)
+showed that most of selected studies were published in a journal
+(46/70, 66%), followed by conferences (15/70, 21%), workshops
+(6/70, 9%), and symposiums (3/70, 4%).
+Table 9. Number of studies per venue type (N=70).
+Studies, n (%)
+Venue type
+46 (66)
+Journal
+15 (21)
+Conference
+6 (9)
+Workshop
+3 (4)
+Symposium
+Discussion
+Overview
+This section presents a discussion of each of the key findings
+of the RQs.
+1.
+Most studies have concentrated on clinical data resources;
+therefore, the focus has been on patient summaries.
+2.
+Terminology mapping to SNOMED CT and LOINC was
+performed in more than half of the selected studies. None
+of the 5 approaches was dominant in the proposed solutions
+to semantic interoperability challenges.
+3.
+Most of the selected studies proposed a framework or
+architecture as a solution to enable semantic interoperability.
+4.
+In recent years, research on semantic interoperability has
+increased since 2018.
+RQ Results
+RQ1: What Are the Main Resource Types Studied or
+Used?
+As most studies concentrated on clinical data resources (eg,
+Observation, 
+Medication, 
+Condition, 
+Procedure, 
+and
+MedicationRequesL), the focus has been on patient summary
+including the medical condition, medication, and diagnosis.
+The attributes of these resource-use codes (CodeableConcept)
+and terminology standards, such as SNOMED CT and LOINC,
+are already included in the FHIR body. For example, the
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 15
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+Observation resource has an attribute code in which the
+practitioner or user can document the observation type using
+LOINC code. Similarly, the Medication resource prescribed
+can be entered either as a code using SNOMED CT or as a
+textual description.
+In contrast, other types of resources (eg, BodyOfStructure) were
+not addressed in the selected studies.
+RQ2: Which Terminologies Were Used?
+Terminology mapping to SNOMED CT and LOINC was present
+in more than half of the selected studies, where SNOMED CT
+is used mainly for medication, procedure, and condition
+(problem); SNOMED CT or ICD-10 for diseases and diagnosis;
+and LOINC for observation and diagnostic report.
+Some countries have attempted to develop a consensus on the
+terminology to be used at the regional or national level. For
+example, SNOMED CT was adopted as a single terminology
+in the United Kingdom by the National Health Service (S12).
+In Switzerland, the federal initiative of the Swiss Personalized
+Health Network created a semantic framework available for
+health communities aiming to use the existing standards instead
+of building a new one, and the semantics were mapped by
+domain experts on the existing standards, such as SNOMED
+CT, LOINC, and ICD. RDF is used to store and transport data.
+In another regional initiative in Italy, the LOINC vocabulary
+was used to represent concepts already defined in local and
+standardized terminologies (S20).
+RQ3: What Are the Most Frequently Applied Research
+Approaches to Achieve Semantic Interoperability?
+None of the 5 approaches were dominant in the proposed
+solutions to semantic interoperability challenges. The emerging
+ML and NLP approach is mostly applied to annotation.
+ML and NLP techniques, which have achieved significant
+penetration in many other information system or information
+technology domains, have also been used in FHIR semantic
+interoperability research. On the one hand, the capability of the
+ML and NLP techniques for automation and prediction is often
+required for complex use cases. On the other hand, RDF
+representation has the specific advantage of containing
+information about semantic links and dependencies between
+multiple resources. This could explain why transformation to
+or from RDF is useful for semantic interoperability.
+RQ4: What Are the Main Types of Contributions Within
+the Selected Studies?
+Most of the selected studies proposed a framework or
+architecture as a solution to enable semantic interoperability.
+Research on achieving semantic interoperability using FHIR
+has tackled different steps and activities: collecting, extracting,
+and annotating data; modeling data from legacy systems; and
+applying transformation and mapping to FHIR models and
+terminologies. The following research topics were identified.
+•
+One of the main topics in the selected studies was related
+to unstructured data because valuable information can be
+extracted from free text for research and health analytics.
+The standardization of unstructured clinical notes was the
+focus of the research for specific use cases in the selected
+studies. The process of concept extraction and mapping
+text to standardized terminologies or ontologies requires
+more automation.
+•
+Research on unstructured data using annotation and NLP
+is a relatively new field for the FHIR community, and
+challenges related to protecting privacy and security
+(deidentification and pseudonymization) remain open
+questions.
+•
+The manual mapping of clinical terminology requires
+significant effort. The use of a tool can reduce the effort
+required for mapping and increase the adoption of
+terminology.
+•
+Another challenge is related to languages other than English.
+In S24, a tool was developed to map Russian local
+terminology to LOINC.
+•
+Even though the FHIR standard allows the use of clinical
+terminologies such as SNOMED CT and LOINC, users
+still enter information as text or use local terminologies.
+For example, selecting an appropriate concept from
+SNOMED CT is not a trivial task. To this end, a proposed
+solution called Ontoserver (eg, a clinical terminology
+service) offers a prefix-based search algorithm to help users
+easily find content and enter coded data. Ontoserver was
+used in several studies (S5, S10, S11, S17, S18, S40, and
+S41), and limitations related to its performance were
+reported.
+•
+Comparison and mapping ontologies: detecting similarities
+and differences is still of interest and may attract more
+researchers.
+RQ5: What Are the Publication Sources and Types?
+Research on FHIR semantic interoperability emerged in 2015
+and has increased since 2018. This probably is linked to the
+first release HL7 FHIR with a “Normative” status in 2018
+indicating that its content has been recognized at the
+international level as stable for use and has been “locked” for
+several years. The publication trend in Figure 9 that shows the
+distribution of the selected studies over time confirms that
+research on this topic is still active.
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 16
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+Figure 9. Number of studies over time.
+Assumptions and Limitations
+This study was limited to semantic studies using only the FHIR
+standard, and it did not search for other studies related to
+semantic interoperability in general; therefore, this SMR focused
+exclusively on studies addressing FHIR implementation.
+Furthermore, only studies from the 10 database sources specified
+were considered, and commercial solutions were excluded.
+During the classification of the contribution based on 5
+categories, 2 studies (S40 and S49) were considered in 2
+different categories (model and technique). Both situations were
+evaluated and the results were only slightly different.
+Conclusions
+This SMR inventoried and analyzed the findings on semantic
+interoperability using FHIR over the last decade (2012-2022)
+in 70 selected studies from 10 databases. It presents a
+classification of the selected studies according to the semantic
+approaches used and their contributions. It also provides the
+frequency of use of FHIR resources and terminologies.
+These findings provide researchers with an inventory of the
+approaches used to achieve semantic interoperability using the
+FHIR. The SMR also documented the frequency with which
+the proposed approaches were used. This may help identify
+avenues for research on semantic interoperability. It can also
+be used as a guideline by the FHIR community for the future
+development of approaches and types of resources that are not
+well covered in research published to date.
+Indeed, understanding and interpreting the exchanged data in
+the EHR ecosystem needs to be supported by further research
+using, for instance, FHIR in mapping, RDF or OWL, and
+comparing ontologies and terminology services.
+Semantic interoperability is still an active research field, and
+there is no broad consensus in the health care community on
+how to achieve full semantic interoperability between
+information systems. The main issues reported are related to
+the difficulty associated with the use of different terminologies
+and the efforts required to successfully map to FHIR
+terminology. Even worse, when no terminology is used,
+unstructured data would still need to be extracted and mapped
+to the appropriate concept code for FHIR terminology.
+This SMR provides a classification of the different solutions
+proposed to address semantic interoperability using FHIR at
+different steps: collecting, extracting and annotating data,
+modeling EHR data from legacy systems, and applying
+transformation and mapping to FHIR models and terminologies.
+The use of ML and NLP for unstructured data is promising and
+has been applied to specific use case scenarios. In addition,
+terminology services are needed to accelerate their use and
+adoption; furthermore, techniques and tools to automate
+annotation and ontology comparison should help reduce human
+interaction.
+Future work will be devoted to the FHIR-based framework for
+the semantic interoperability of EHR data.
+Conflicts of Interest
+None declared.
+Multimedia Appendix 1
+Targeted resources from a semantic point of view.
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 17
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+[PNG File , 526 KB-Multimedia Appendix 1]
+Multimedia Appendix 2
+List of the selected studies (N=70).
+[PDF File (Adobe PDF File), 152 KB-Multimedia Appendix 2]
+Multimedia Appendix 3
+Extracted data and searching strategy results.
+[XLSX File (Microsoft Excel File), 134 KB-Multimedia Appendix 3]
+References
+1.
+Nordo AH, Levaux HP, Becnel LB, Galvez J, Rao P, Stem K, et al. Use of EHRs data for clinical research: historical
+progress and current applications. Learn Health Syst. Jan 16, 2019;3(1):e10076. [FREE Full text] [doi: 10.1002/lrh2.10076]
+[Medline: 31245598]
+2.
+Setyawan R, Hidayanto AN, Sensuse DI, Kautsarina; Suryono RR, Abilowo K. Data integration and interoperability
+problems of HL7 FHIR implementation and potential solutions: a systematic literature review. In: Proceedings of the 5th
+International Conference on Informatics and Computational Sciences. Presented at: ICICoS '21; November 24-25, 2021,
+2021;293-298; Semarang, Indonesia. URL: https://ieeexplore.ieee.org/document/9651762/ [doi:
+10.1109/icicos53627.2021.9651762]
+3.
+IEEE standard glossary of software engineering terminology. IEEE Std 610.12-1990. Dec 31, 1990. URL: https://ieeexplore.
+ieee.org/document/159342 [accessed 2024-01-04]
+4.
+Interoperability in healthcare. Healthcare Information and Management Systems Society. URL: https://www.himss.org/
+resources/interoperability-healthcare [accessed 2024-01-04]
+5.
+Bender D, Sartipi K. HL7 FHIR: an agileRESTful approach to healthcare information exchange. In: Proceedings of the
+26th IEEE International Symposium on Computer-Based Medical Systems. Presented at: CBMS '13; June 20-22, 2013,
+2013;326-331; Porto, Portugal. URL: https://ieeexplore.ieee.org/document/6627810 [doi: 10.1109/cbms.2013.6627810]
+6.
+Benson T, Grieve G. Principles of Health Interoperability: FHIR, HL7 and SNOMED CT. Cham, Switzerland. Springer;
+2021.
+7.
+Dullabh P, Hovey L, Heaney-Huls K, Rajendran N, Wright A, Sittig DF. Application programming interfaces in health
+care: findings from a current-state sociotechnical assessment. Appl Clin Inform. Jan 09, 2020;11(1):59-69. [FREE Full
+text] [doi: 10.1055/s-0039-1701001] [Medline: 31968383]
+8.
+Cloud providers unite for healthcare interoperability. HL7 International. URL: https://blog.hl7.org/
+cloud-providers-unite-for-healthcare-interoperability-fhir [accessed 2022-12-11]
+9.
+Lehne M, Luijten S, Vom Felde Genannt Imbusch P, Thun S. The use of FHIR in digital health - a review of the scientific
+literature. Stud Health Technol Inform. Sep 03, 2019;267:52-58. [doi: 10.3233/SHTI190805] [Medline: 31483254]
+10.
+Ayaz M, Pasha MF, Alzahrani MY, Budiarto R, Stiawan D. The Fast Health Interoperability Resources (FHIR) standard:
+systematic literature review of implementations, applications, challenges and opportunities. JMIR Med Inform. Jul 30,
+2021;9(7):e21929. [FREE Full text] [doi: 10.2196/21929] [Medline: 34328424]
+11.
+de Mello BH, Rigo SJ, da Costa CA, da Rosa Righi R, Donida B, Bez MR, et al. Semantic interoperability in health records
+standards: a systematic literature review. Health Technol (Berl). 2022;12(2):255-272. [FREE Full text] [doi:
+10.1007/s12553-022-00639-w] [Medline: 35103230]
+12.
+Kitchenham BA, Budgen D, Pearl Brereton O. Using mapping studies as the basis for further research – a participant-observer
+case study. Inf Softw Technol. Jun 2011;53(6):638-651. [FREE Full text] [doi: 10.1016/j.infsof.2010.12.011]
+13.
+Petersen K, Vakkalanka S, Kuzniarz L. Guidelines for conducting systematic mapping studies in software engineering: an
+update. Inf Softw Technol. Aug 2015;64:1-18. [FREE Full text] [doi: 10.1016/j.infsof.2015.03.007]
+14.
+Brereton P, Kitchenham BA, Budgen D, Turner M, Khalil M. Lessons from applying the systematic literature review process
+within the software engineering domain. J Syst Softw. Apr 2007;80(4):571-583. [FREE Full text] [doi:
+10.1016/j.jss.2006.07.009]
+15.
+Reference management tool. Zotero. URL: https://www.zotero.org/ [accessed 2022-12-12]
+16.
+Boussadi A, Zapletal E. A fast healthcare interoperability resources (FHIR) layer implemented over i2b2. BMC Med Inform
+Decis Mak. Aug 14, 2017;17(1):120. [FREE Full text] [doi: 10.1186/s12911-017-0513-6] [Medline: 28806953]
+17.
+Zampognaro P, Paragliola G, Falanga V. A FHIR based architecture of a multiprotocol IoT home gateway supporting
+dynamic plug of new devices within instrumented environments. In: Proceedings of the 2021 IEEE Symposium on Computers
+and Communications. Presented at: ISCC '21; September 5-8, 2021, 2021;1-7; Athens, Greece. URL: https://ieeexplore.
+ieee.org/document/9631446 [doi: 10.1109/iscc53001.2021.9631446]
+18.
+Kilintzis V, Kosvyra A, Beredimas N, Natsiavas P, Maglaveras N, Chouvarda I. A sustainable HL7 FHIR based ontology
+for PHR data*. In: Proceedings of the 41st Annual International Conference of the IEEE Engineering in Medicine and
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 18
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+Biology Society. Presented at: EMBC '19; July 23-27, 2019, 2019;5700-5703; Berlin, Germany. URL: https://ieeexplore.
+ieee.org/document/8856415/similar [doi: 10.1109/embc.2019.8856415]
+19.
+Goeg KR, Hummeluhr M. An empirical approach to enhancing terminology binding - an HL7 FHIR SNOMED CT example.
+In: Ugon A, Karlsson D, Klein GO, Moen A, editors. Building Continents of Knowledge in Oceans of Data: The Future of
+Co-Created Ehealth. Amsterdam, The Netherlands. IOS Press; 2018.
+20.
+Banach A, Ulrich H, Kroll B, Kiel A, Ingenerf J, Kock-Schoppenhauer AK. APERITIF - automatic patient recruiting for
+clinical trials based on HL7 FHIR. Stud Health Technol Inform. May 27, 2021;281:58-62. [doi: 10.3233/SHTI210120]
+[Medline: 34042705]
+21.
+Daumke P, Heitmann KU, Heckmann S, Martínez-Costa C, Schulz S. Clinical text mining on FHIR. Stud Health Technol
+Inform. Aug 21, 2019;264:83-87. [doi: 10.3233/SHTI190188] [Medline: 31437890]
+22.
+Zampognaro P, Paragliola G, Falanga V. Definition of an FHIR-based multiprotocol IoT home gateway to support the
+dynamic plug of new devices within instrumented environments. J Reliable Intell Environ. Dec 07, 2021;8(4):319-331.
+[FREE Full text] [doi: 10.1007/s40860-021-00161-2]
+23.
+Hong N, Wen A, Stone DJ, Tsuji S, Kingsbury PR, Rasmussen LV, et al. Developing a FHIR-based EHR phenotyping
+framework: a case study for identification of patients with obesity and multiple comorbidities from discharge summaries.
+J Biomed Inform. Nov 2019;99:103310. [FREE Full text] [doi: 10.1016/j.jbi.2019.103310] [Medline: 31622801]
+24.
+Shivers J, Amlung J, Ratanaprayul N, Rhodes B, Biondich P. Enhancing narrative clinical guidance with computer-readable
+artifacts: authoring FHIR implementation guides based on WHO recommendations. J Biomed Inform. Oct 2021;122:103891.
+[FREE Full text] [doi: 10.1016/j.jbi.2021.103891] [Medline: 34450285]
+25.
+Metke-Jimenez A, Lawley M, Hansen D. FHIR OWL: transforming OWL ontologies into FHIR terminology resources.
+AMIA Annu Symp Proc. 2019;2019:664-672. [FREE Full text] [Medline: 32308861]
+26.
+Metke-Jimenez A, Hansen D. FHIRCap: transforming REDCap forms into FHIR resources. AMIA Jt Summits Transl Sci
+Proc. 2019;2019:54-63. [FREE Full text] [Medline: 31258956]
+27.
+Arguello-Casteleiro M, Martinez-Costa C, Des-Diz J, Maroto N, Fernandez-Prieto MJ, Stevens R. From SNOMED CT
+expressions to an FHIR RDF representation: exploring the benefits of an ontology-based approach. In: Proceedings of the
+Joint Ontology Workshops 2019 Episode V: The Styrian Autumn of Ontology. Presented at: CEUR '19; September 23-25,
+2019, 2019;1-13; Graz, Austria. URL: https://ceur-ws.org/Vol-2518/paper-ODLS1.pdf
+28.
+Paris N, Mendis M, Daniel C, Murphy S, Tannier X, Zweigenbaum P. i2b2 implemented over SMART-on-FHIR. AMIA
+Jt Summits Transl Sci Proc. 2018;2017:369-378. [FREE Full text] [Medline: 29888095]
+29.
+Hong N, Wen A, Shen F, Sohn S, Liu S, Liu H, et al. Integrating structured and unstructured EHR data using an FHIR-based
+type system: a case study with medication data. AMIA Jt Summits Transl Sci Proc. 2018;2017:74-83. [Medline: 29888045]
+30.
+Lenivtseva Y, Kopanitsa G. Investigation of Content Overlap in Proprietary Medical Mappings. Stud Health Technol
+Inform. 2019;258:41-45. [Medline: 30942710]
+31.
+Matney SA, Heale B, Hasley S, Decker E, Frederiksen B, Davis N, et al. Lessons learned in creating interoperable fast
+healthcare interoperability resources profiles for large-scale public health programs. Appl Clin Inform. Jan 2019;10(1):87-95.
+[FREE Full text] [doi: 10.1055/s-0038-1677527] [Medline: 30727002]
+32.
+Rajput AM, Drenkhahn C. Perspectives and obstacles for transforming terminologies into FHIR CodeSystems exemplified
+by Alpha-ID. Stud Health Technol Inform. May 27, 2021;281:213-217. [doi: 10.3233/SHTI210151] [Medline: 34042736]
+33.
+Wiedekopf J, Drenkhahn C, Ulrich H, Kock-Schoppenhauer AK, Ingenerf J. Providing ART-DECOR valuesets via FHIR
+terminology servers - a technical report. Stud Health Technol Inform. Sep 21, 2021;283:127-135. [doi: 10.3233/SHTI210550]
+[Medline: 34545828]
+34.
+Saripalle R. Representing UMLS knowledge using FHIR terminological resources. In: Proceedings of the 2019 IEEE
+International Conference on Bioinformatics and Biomedicine. Presented at: BIBM '19; November 18-21, 2019,
+2019;1109-1112; San Diego, CA. URL: https://ieeexplore.ieee.org/document/8983305 [doi:
+10.1109/bibm47256.2019.8983305]
+35.
+Gazzarata R, Maggi N, Magnoni LD, Monteverde ME, Ruggiero C, Giacomini M. Semantics management for a regional
+health information system in Italy by CTS2 and FHIR. In: Gazzarata R, Maggi N, Magnoni LD, Monteverde ME, Ruggiero
+C, Giacomini M, editors. Studies in Health Technology and Informatics. Amsterdam, The Netherlands. IOS Press; 2021.
+36.
+Rajput AM, Gronke A, Johannis W. Semi-automated approach to validate and enrich LOINC codes by FHIR server. In:
+Proceedings of the 5th International Conference on Medical and Health Informatics. Presented at: ICMHI '21; May 14-16,
+2021, 2021; Kyoto, Japan. URL: https://dl.acm.org/doi/10.1145/3472813.3473207 [doi: 10.1145/3472813.3473207]
+37.
+Wagholikar KB, Mandel JC, Klann JG, Wattanasin N, Mendis M, Chute CG, et al. SMART-on-FHIR implemented over
+i2b2. J Am Med Inform Assoc. Mar 01, 2017;24(2):398-402. [FREE Full text] [doi: 10.1093/jamia/ocw079] [Medline:
+27274012]
+38.
+Leroux H, Metke-Jimenez A, Lawley MJ. Towards achieving semantic interoperability of clinical study data with FHIR.
+J Biomed Semantics. Sep 19, 2017;8(1):41. [FREE Full text] [doi: 10.1186/s13326-017-0148-7] [Medline: 28927443]
+39.
+Kopanitsa G, Taranik M. Using semi-automated approach for mapping local Russian laboratory terms to LOINC. In:
+Proceedings of the 21st International Conference on Information and Software Technologies. Presented at: ICIST '15;
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 19
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+October 15-16, 2015, 2015;37-44; Druskininkai, Lithuania. URL: https://link.springer.com/chapter/10.1007/
+978-3-319-24770-0_4 [doi: 10.1007/978-3-319-24770-0_4]
+40.
+Peterson KJ, Jiang G, Liu H. A corpus-driven standardization framework for encoding clinical problems with HL7 FHIR.
+J Biomed Inform. Oct 2020;110:103541. [FREE Full text] [doi: 10.1016/j.jbi.2020.103541] [Medline: 32814201]
+41.
+Maga-Nteve C, Kontopoulos E, Tsolakis N, Katakis I, Mathioudis E, Mitzias P, et al. A semantic technologies toolkit for
+bridging early diagnosis and treatment in brain diseases: report from the ongoing EU-funded research project ALAMEDA.
+In: Proceedings of the 15th International Conference on Metadata and Semantic Research. Presented at: MTSR '21; November
+29-December 3, 2021, 2021;349-354; Virtual Event. URL: https://link.springer.com/chapter/10.1007/978-3-030-98876-0_30
+[doi: 10.1007/978-3-030-98876-0_30]
+42.
+Rafee A, Riepenhausen S, Neuhaus P, Meidt A, Dugas M, Varghese J. ELaPro, a LOINC-mapped core dataset for top
+laboratory procedures of eligibility screening for clinical trials. BMC Med Res Methodol. May 14, 2022;22(1):141. [FREE
+Full text] [doi: 10.1186/s12874-022-01611-y] [Medline: 35568796]
+43.
+Chatterjee A, Pahari N, Prinz A. HL7 FHIR with SNOMED-CT to achieve semantic and structural interoperability in
+personal health data: a proof-of-concept study. Sensors (Basel). May 15, 2022;22(10):3756. [FREE Full text] [doi:
+10.3390/s22103756] [Medline: 35632165]
+44.
+Odigie E, Lacson R, Raja A, Osterbur D, Ip I, Schneider L, et al. Fast healthcare interoperability resources, clinical quality
+language, and systematized nomenclature of medicine-clinical terms in representing clinical evidence logic statements for
+the use of imaging procedures: descriptive study. JMIR Med Inform. May 13, 2019;7(2):e13590. [FREE Full text] [doi:
+10.2196/13590] [Medline: 31094359]
+45.
+Ulrich H, Kock AK, Duhm-Harbeck P, Habermann JK, Ingenerf J. Metadata repository for improved data sharing and reuse
+based on HL7 FHIR. Stud Health Technol Inform. 2016;228:162-166. [Medline: 27577363]
+46.
+Wang J, Mathews WC, Pham HA, Xu H, Zhang Y. Opioid2FHIR: a system for extracting FHIR-compatible opioid
+prescriptions from clinical text. In: Proceedings of the 2020 IEEE International Conference on Bioinformatics and
+Biomedicine. Presented at: BIBM '20; December 16-19, 2020, 2020;1748-1751; Seoul, Korea. URL: https://ieeexplore.
+ieee.org/document/9313258 [doi: 10.1109/bibm49941.2020.9313258]
+47.
+Seveso A, Campagner A, Ciucci D, Cabitza F. Ordinal labels in machine learning: a user-centered approach to improve
+data validity in medical settings. BMC Med Inform Decis Mak. Aug 20, 2020;20(Suppl 5):142. [FREE Full text] [doi:
+10.1186/s12911-020-01152-8] [Medline: 32819345]
+48.
+Wiedekopf J, Drenkhahn C, Rosenau L, Ulrich H, Kock-Schoppenhauer A, Ingenerf J. TerminoDiff - detecting semantic
+differences in HL7 FHIR CodeSystems. Stud Health Technol Inform. May 25, 2022;294:362-366. [doi: 10.3233/SHTI220475]
+[Medline: 35612097]
+49.
+Diomaiuta C, Sicuranza M, Ciampi M, De Pietro G. A FHIR-based system for the generation and retrieval of clinical
+documents. In: Proceedings of the 3rd International Conference on Information and Communication Technologies for
+Ageing Well and e-Health. Presented at: ICT4AWE '17; April 28-29, 2017, 2017;135-142; Porto, Portugal. URL: https:/
+/www.scitepress.org/Link.aspx?doi=10.5220/0006311301350142 [doi: 10.5220/0006311301350142]
+50.
+Gaudet-Blavignac C, Raisaro JL, Touré V, Österle S, Crameri K, Lovis C. A national, semantic-driven, three-pillar strategy
+to enable health data secondary usage interoperability for research within the Swiss personalized health network:
+methodological study. JMIR Med Inform. Jun 24, 2021;9(6):e27591. [FREE Full text] [doi: 10.2196/27591] [Medline:
+34185008]
+51.
+Dolin RH, Boxwala A, Shalaby J. A pharmacogenomics clinical decision support service based on FHIR and CDS hooks.
+Methods Inf Med. Dec 2018;57(S 02):e115-e123. [FREE Full text] [doi: 10.1055/s-0038-1676466] [Medline: 30605914]
+52.
+Saripalle R, Sookhak M, Haghparast M. An interoperable UMLS terminology service using FHIR. Future Internet. Nov
+16, 2020;12(11):199. [FREE Full text] [doi: 10.3390/fi12110199]
+53.
+Semenov I, Kopanitsa G, Denisov D, Alexandr Y, Osenev R, Andreychuk Y. Patients decision aid system based on FHIR
+profiles. J Med Syst. Jul 31, 2018;42(9):166. [doi: 10.1007/s10916-018-1016-4] [Medline: 30066031]
+54.
+Jiang G, Kiefer RC, Rasmussen LV, Solbrig HR, Mo H, Pacheco JA, et al. Developing a data element repository to support
+EHR-driven phenotype algorithm authoring and execution. J Biomed Inform. Aug 2016;62:232-242. [FREE Full text] [doi:
+10.1016/j.jbi.2016.07.008] [Medline: 27392645]
+55.
+Rosenau L, Majeed RW, Ingenerf J, Kiel A, Kroll B, Köhler T, et al. Generation of a fast healthcare interoperability resources
+(FHIR)-based ontology for federated feasibility queries in the context of COVID-19: feasibility study. JMIR Med Inform.
+Apr 27, 2022;10(4):e35789. [FREE Full text] [doi: 10.2196/35789] [Medline: 35380548]
+56.
+Metke-Jimenez A, Steel J, Hansen D, Lawley M. Ontoserver: a syndicated terminology server. J Biomed Semantics. Sep
+17, 2018;9(1):24. [FREE Full text] [doi: 10.1186/s13326-018-0191-z] [Medline: 30223897]
+57.
+Kober G, Paschke A. A FHIR-to-RDF converter. In: Proceeding of the 12th International Conference on Semantic Web
+Applications and Tools for Health Care and Life Sciences. Presented at: SWAT4HCLS '19; December 11-12, 2019, 2019;1-6;
+Edinburgh, UK. URL: https://ceur-ws.org/Vol-2849/paper-03.pdf
+58.
+Dridi A, Sassi S, Chbeir R, Faiz S. A flexible semantic integration framework for fully-integrated EHR based on FHIR
+standard. In: Proceedings of the 12th International Conference on Agents and Artificial Intelligence. Presented at: ICAART
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 20
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+'20; February 22-24, 2020, 2020;684-691; Valletta, Malta. URL: https://www.scitepress.org/Papers/2020/89815/89815.pdf
+[doi: 10.5220/0008981506840691]
+59.
+Kilintzis V, Alexandropoulos VC, Beredimas N. A methodology for an auto-generated and auto-maintained HL7 FHIR
+OWL ontology for health data management. In: Delgado J, Benis A, de Toledo P, Gallos P, Giacomini M, Martínez-García
+A, et al, editors. Studies in Health Technology and Informatics. Amsterdam, The Netherlands. IOS Press; 2021;99-103.
+60.
+Beredimas N, Kilintzis V, Chouvarda I, Maglaveras N. A reusable ontology for primitive and complex HL7 FHIR data
+types. Annu Int Conf IEEE Eng Med Biol Soc. 2015;2015:2547-2550. [doi: 10.1109/EMBC.2015.7318911] [Medline:
+26736811]
+61.
+Kiourtis A, Mavrogiorgou A, Kyriazis D. A semantic similarity evaluation for healthcare ontologies matching to HL7 FHIR
+resources. Stud Health Technol Inform. Jun 16, 2020;270:13-17. [doi: 10.3233/SHTI200113] [Medline: 32570337]
+62.
+Kiourtis A, Nifakos S, Mavrogiorgou A, Kyriazis D. Aggregating the syntactic and semantic similarity of healthcare data
+towards their transformation to HL7 FHIR through ontology matching. Int J Med Inform. Dec 2019;132:104002. [doi:
+10.1016/j.ijmedinf.2019.104002] [Medline: 31629311]
+63.
+Kober G. Annotating FHIR-RDF-graphs with medication knowledge. In: Proceedings of the Workshop on Automation
+Experience across Domains, AutomationXP 2020, co-located with the ACM Conference on Human Factors in Computing
+Systems. Presented at: CEUR '20; April 26, 2020, 2020;1-8; Honolulu, HI. URL: https://ceur-ws.org/Vol-2759/paper5.pdf
+64.
+Kwon S, Yu J, Park S, Jun JA, Pyo CS. Automatic stroke medical ontology augmentation with standard medical terminology
+and unstructured textual medical knowledge. In: Proceedings of the 2021 International Conference on Platform Technology
+and Service. Presented at: PlatCon '21; August 23-25, 2021, 2021;1-5; Jeju, Korea. URL: https://ieeexplore.ieee.org/
+document/9680753 [doi: 10.1109/platcon53246.2021.9680753]
+65.
+Dong X, Samavi R, Topaloglou T. COC: an ontology for capturing semantics of circle of care. Procedia Comput Sci.
+2015;63:589-594. [FREE Full text] [doi: 10.1016/j.procs.2015.08.389]
+66.
+Jiang G, PrudHommeaux E, Xiao G, Solbrig HR. Developing a semantic web-based framework for executing the clinical
+quality language using FHIR. In: Proceedings of the 10th International Conference on Semantic Web Applications and
+Tools for Health Care and Life Sciences. Presented at: SWAT4LS '17; December 4-7, 2017, 2020;1-5; Rome, Italy. URL:
+https://ceur-ws.org/Vol-2042/paper40.pdf
+67.
+Prud'hommeaux E, Collins J, Booth D, Peterson KJ, Solbrig HR, Jiang G. Development of a FHIR RDF data transformation
+and validation framework and its evaluation. J Biomed Inform. May 2021;117:103755. [FREE Full text] [doi:
+10.1016/j.jbi.2021.103755] [Medline: 33781919]
+68.
+Sharma D, Prud'Hommeaux E, Booth D, Peterson KJ, Stone DJ, Solbrig H, et al. Implementing a new FHIR RDF specification
+for semantic clinical data using a JSONLD- based approach. In: Proceedings of the 13th International Conference on
+Semantic Web Applications and Tools for Health Care and Life Sciences. Presented at: SWAT4HCLS '22; January 10-14,
+2022, 2022;1-5; Leiden, The Netherlands. URL: https://ceur-ws.org/Vol-3127/paper-10.pdf
+69.
+Zong N, Ngo V, Stone DJ, Wen A, Zhao Y, Yu Y, et al. Leveraging genetic reports and electronic health records for the
+prediction of primary cancers: algorithm development and validation study. JMIR Med Inform. May 25, 2021;9(5):e23586.
+[FREE Full text] [doi: 10.2196/23586] [Medline: 34032581]
+70.
+Kober G, Paschke A. Medical information-graphs, based on ontologies and FHIR. In: Proceedings of the 2021 Conference
+on Digital Curation Technologies. Presented at: Qurator '21; February 8-12, 2021, 2021;1-13; Berlin, Germany. URL:
+https://ceur-ws.org/Vol-2836/qurator2021_paper_14.pdf
+71.
+Kober G, Robaldo L, Paschke A. Modeling medical guidelines by Prova and SHACL accessing FHIR/RDF. Use case: the
+medical ABCDE approach. Stud Health Technol Inform. May 16, 2022;293:59-66. [doi: 10.3233/SHTI220348] [Medline:
+35592961]
+72.
+Luz MP, Nogueira JR, Cavalini LT, Cook TW. Providing full semantic interoperability for the fast healthcare interoperability
+resources schemas with resource description framework. In: Proceedings of the 2015 International Conference on Healthcare
+Informatics. Presented at: ICHI '15; 2015, 2015;463-466; Dallas, TX. URL: https://ieeexplore.ieee.org/document/7349736
+[doi: 10.1109/ichi.2015.74]
+73.
+Szmeja P, Prud’hommeaux E. ShExMap and IPSM-AF: comparison of RDF transformation technologies. In: Proceedings
+of the 6th International Conference on Intelligent Systems, Technologies and Applications. Presented at: ISTA '21; June
+15-17, 2021, 2021;29-45; Chennai, India. URL: https://link.springer.com/chapter/10.1007/978-981-16-0730-1_3 [doi:
+10.1007/978-981-16-0730-1_3]
+74.
+Thornton K, Solbrig H, Stupp GS, Gayo JE, Mietchen D, Prud’hommeaux E, et al. Using shape expressions (ShEx) to share
+RDF data models and to guide curation with rigorous validation. In: Proceedings of the 16th International Conference on
+the Semantic Web. Presented at: ESWC '19; June 2-6, 2019, 2019;606-620; Portorož, Slovenia. URL: https://link.
+springer.com/chapter/10.1007/978-3-030-21348-0_39 [doi: 10.1007/978-3-030-21348-0_39]
+75.
+De A, Huang M, Feng T, Yue X, Yao L. Analyzing patient secure messages using a fast health care interoperability resources
+(FIHR)-based data model: development and topic modeling study. J Med Internet Res. Jul 30, 2021;23(7):e26770. [FREE
+Full text] [doi: 10.2196/26770] [Medline: 34328444]
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 21
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+76.
+Hong N, Wen A, Mojarad MR, Sohn S, Liu H, Jiang G. Standardizing heterogeneous annotation corpora using HL7 FHIR
+for facilitating their reuse and integration in clinical NLP. AMIA Annu Symp Proc. 2018;2018:574-583. [FREE Full text]
+[Medline: 30815098]
+77.
+Soni S, Gudala M, Wang DZ, Roberts K. Using FHIR to construct a corpus of clinical questions annotated with logical
+forms and answers. AMIA Annu Symp Proc. 2019;2019:1207-1215. [FREE Full text] [Medline: 32308918]
+78.
+Aberdeen J, Bayer S, Clark C, Keybl M, Tresner-Kirsch D. An annotation and modeling schema for prescription regimens.
+J Biomed Semantics. May 31, 2019;10(1):10. [FREE Full text] [doi: 10.1186/s13326-019-0201-9] [Medline: 31151407]
+79.
+Hong J, Davoudi A, Yu S, Mowery DL. Annotation and extraction of age and temporally-related events from clinical
+histories. BMC Med Inform Decis Mak. Dec 30, 2020;20(Suppl 11):338. [FREE Full text] [doi: 10.1186/s12911-020-01333-5]
+[Medline: 33380319]
+80.
+Ciampi M, Sicuranza M, Silvestri S. A privacy-preserving and standard-based architecture for secondary use of clinical
+data. Information. Feb 13, 2022;13(2):87. [FREE Full text] [doi: 10.3390/info13020087]
+81.
+Wu H, Toti G, Morley KI, Ibrahim ZM, Folarin A, Jackson R, et al. SemEHR: a general-purpose semantic search system
+to surface semantic data from clinical notes for tailored care, trial recruitment, and clinical research. J Am Med Inform
+Assoc. May 01, 2018;25(5):530-537. [FREE Full text] [doi: 10.1093/jamia/ocx160] [Medline: 29361077]
+82.
+Lenivtceva I, Slasten E, Kashina M, Kopanitsa G. Applicability of machine learning methods to multi-label medical text
+classification. In: Proceedings of the 20th International Conference on Computational Science. Presented at: ICCS '20; June
+3-5, 2020, 2020;509-522; Amsterdam, The Netherland. URL: https://link.springer.com/chapter/10.1007/
+978-3-030-50423-6_38#:~:text=Medical%20text%20classification%20task%20facilitates,manually%20labeled%20Russian%20medical%20notes
+[doi: 10.1007/978-3-030-50423-6_38]
+83.
+El-Sappagh S, Ali F, Hendawi A, Jang JH, Kwak KS. A mobile health monitoring-and-treatment system based on integration
+of the SSN sensor ontology and the HL7 FHIR standard. BMC Med Inform Decis Mak. May 10, 2019;19(1):97. [FREE
+Full text] [doi: 10.1186/s12911-019-0806-z] [Medline: 31077222]
+84.
+Solbrig HR, Prud'hommeaux E, Grieve G, McKenzie L, Mandel JC, Sharma DK, et al. Modeling and validating HL7 FHIR
+profiles using semantic web shape expressions (ShEx). J Biomed Inform. Mar 2017;67:90-100. [FREE Full text] [doi:
+10.1016/j.jbi.2017.02.009] [Medline: 28213144]
+85.
+Kiourtis A, Mavrogiorgou A, Menychtas A, Maglogiannis I, Kyriazis D. Structurally mapping healthcare data to HL7 FHIR
+through ontology alignment. J Med Syst. Feb 05, 2019;43(3):62. [doi: 10.1007/s10916-019-1183-y] [Medline: 30721349]
+Abbreviations
+AMIA: American Medical Informatics Association
+EHR: electronic health record
+FHIR: Fast Healthcare Interoperability Resources
+HL7: Health Level Seven International
+ICD: International Classification of Diseases
+IEEE: Institute of Electrical and Electronics Engineers
+LOINC: Logical Observation Identifiers Names and Codes
+ML: machine learning
+NLP: natural language processing
+OWL: web ontology language
+QA: quality assessment
+RDF: resource description framework
+RQ: research question
+SMR: systematic mapping review
+SNOMED CT: Systematized Nomenclature of Medicine–clinical terms
+Edited by A Mavragani; submitted 21.12.22; peer-reviewed by A Kiourtis, P Knaup-Gregori, S Thun, D Hansen; comments to author
+16.02.23; revised version received 07.03.23; accepted 19.12.23; published 30.01.24
+Please cite as:
+Amar F, April A, Abran A
+Electronic Health Record and Semantic Issues Using Fast Healthcare Interoperability Resources: Systematic Mapping Review
+J Med Internet Res 2024;26:e45209
+URL: https://www.jmir.org/2024/1/e45209
+doi: 10.2196/45209
+PMID: 38289660
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 22
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX
+©Fouzia Amar, Alain April, Alain Abran. Originally published in the Journal of Medical Internet Research (https://www.jmir.org),
+30.01.2024. This is an open-access article distributed under the terms of the Creative Commons Attribution License
+(https://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and reproduction in any medium,
+provided the original work, first published in the Journal of Medical Internet Research, is properly cited. The complete bibliographic
+information, a link to the original publication on https://www.jmir.org/, as well as this copyright and license information must
+be included.
+J Med Internet Res 2024 | vol. 26 | e45209 | p. 23
+https://www.jmir.org/2024/1/e45209
+(page number not for citation purposes)
+Amar et al
+JOURNAL OF MEDICAL INTERNET RESEARCH
+XSL•FO
+RenderX

@@ -1,0 +1,72 @@
+@startmindmap
+* Deficiencias en la interoperabilidad y en la gestión de historias clínicas de pacientes SIS en centros de salud del MINSA
+** Marco normativo habilitante
+*** RM N° 1104-2018-MINSA
+**** Crea RNIEDS (repositorio maestro de identificaciones estándar)
+**** Crea PIDESALUD (plataforma de interoperabilidad sectorial)
+*** RM N° 464-2019-MINSA
+**** Aprueba Directiva Administrativa N° 266-MINSA/2019/OGTI
+**** Define niveles de interoperabilidad y alcance institucional
+**** Exige uso de estándares de mensajería/codificación y seguridad
+*** RM N° 1193-2019-MINSA
+**** Aprueba Catálogos IEDS
+**** Estandariza identificadores clave para historia clínica electrónica
+** Arquitectura normativa objetivo
+*** RNIEDS
+**** Catálogos oficiales de datos en salud
+**** CIE-10, CPMS, RENAES, DIGEMID, identificación de paciente
+*** PIDESALUD
+**** Intercambio seguro de datos entre instituciones
+**** Consulta de servicios y validación interinstitucional
+*** Resultado esperado
+**** La información sigue al paciente
+**** Continuidad asistencial y trazabilidad clínica-administrativa
+** Causas
+*** Estandarización e interoperabilidad
+**** Falta de estándares técnicos unificados
+**** Ausencia de protocolos comunes para intercambio de datos
+**** Formatos y codificación clínica no estandarizados
+**** Falta de integración entre sistemas
+**** Implementación parcial de HL7 y DICOM
+**** Cumplimiento incompleto de CIE-10 y CPMS
+*** Infraestructura y tecnología
+**** Sistemas informáticos obsoletos o heredados
+**** Falta de equipos
+**** Conectividad deficiente
+**** Costos elevados de migración tecnológica
+**** Dependencia de proveedores antiguos
+**** Brecha de conexión operativa con PIDESALUD
+*** Procesos y gestión administrativa
+**** Duplicidad de registros
+**** Llenado incompleto de historias clínicas
+**** Pérdida de documentos e información
+**** Demoras en validación SIS
+*** Recursos humanos y organización
+**** Personal insuficiente
+**** Alta rotación del personal
+**** Falta de capacitación en registro e interoperabilidad
+**** Sobrecarga laboral
+**** Resistencia al cambio institucional
+**** Escasa coordinación entre instituciones de salud
+**** Débil gobernanza de datos en salud
+*** Marco normativo y presupuesto
+**** Normativas fragmentadas de privacidad e intercambio de datos
+**** Falta de marco legal y políticas de salud digital
+**** Incumplimiento de normas
+**** Recursos presupuestales limitados
+**** Escasa inversión en digitalización y mantenimiento
+**** Ausencia de incentivos para compartir información
+**** Débil monitoreo de cumplimiento normativo en campo
+** Efectos
+*** Fragmentación de la historia clínica del paciente
+*** Pérdida de información clínica relevante
+*** Duplicación de exámenes y procedimientos médicos
+*** Retrasos en diagnóstico y tratamiento
+*** Mayor riesgo de errores médicos
+*** Problemas en facturación y reembolsos SIS
+*** Incremento de costos en la atención de salud
+*** Dificultad para seguimiento de pacientes crónicos
+*** Insatisfacción y experiencia negativa del paciente
+*** Ineficiencia en la gestión de recursos sanitarios
+*** Observaciones y auditorías desfavorables
+@endmindmap
