@@ -22,53 +22,44 @@ import re
 import locale
 import subprocess
 import sys
+import tempfile
+from copy import deepcopy
 from pathlib import Path
 
 from docx import Document
-from docx.enum.style import WD_STYLE_TYPE
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt
 
 BASE = Path(__file__).parent
-PLANTILLA = BASE / "Plantilla de informe de tesis maestría.docx"
-REFERENCE = BASE / "reference_portada.docx"
+PLANTILLA = BASE / "plantilla_estilos.docx"
+CARATULA_MANUAL = BASE / "caratula.docx"
+CARATULA_MANUAL_ALT = BASE / "caratua.docx"
+REFERENCE = BASE / "document_reference.docx"
 ENTRADA = BASE / "Documento_Tesis.md"
 SALIDA = BASE / "Documento_Tesis_salida.docx"
 SALIDA_ALT = BASE / "Documento_Tesis_salida_nueva.docx"
+CUERPO_TEMP = BASE / "_cuerpo_tesis_temp.docx"
 
 
-def crear_reference_doc():
-    """Añade el estilo 'Portada-Centrado' a la plantilla y guarda como referencia."""
-    doc = Document(str(PLANTILLA))
-
-    # Evitar duplicar el estilo si ya existe
-    nombres_estilos = [s.name for s in doc.styles]
-
-    if "Portada-Centrado" not in nombres_estilos:
-        estilo = doc.styles.add_style("Portada-Centrado", WD_STYLE_TYPE.PARAGRAPH)
-        estilo.base_style = doc.styles["Normal"]
-        fmt = estilo.paragraph_format
-        fmt.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        fmt.space_before = Pt(6)
-        fmt.space_after = Pt(6)
-        fmt.keep_with_next = False
-        # Hereda la fuente de Normal; solo ajustamos que NO sea Heading
-        print("  Estilo 'Portada-Centrado' creado.")
+def preparar_reference_doc():
+    """Valida que exista la plantilla de estilos y la usa como reference-doc."""
+    if not PLANTILLA.exists():
+        raise FileNotFoundError(f"No se encontró la plantilla de estilos: {PLANTILLA.name}")
+    if PLANTILLA != REFERENCE:
+        Document(str(PLANTILLA)).save(str(REFERENCE))
+        print(f"  Reference doc guardado: {REFERENCE.name}")
     else:
-        print("  Estilo 'Portada-Centrado' ya existe en la plantilla.")
-
-    doc.save(str(REFERENCE))
-    print(f"  Reference doc guardado: {REFERENCE.name}")
+        print(f"  Se usará reference doc: {REFERENCE.name}")
 
 
-def ejecutar_pandoc(destino):
+def ejecutar_pandoc(origen_md, destino, reference_path):
     """Llama a pandoc para convertir el markdown al docx."""
     cmd = [
         "pandoc",
-        str(ENTRADA),
-        f"--reference-doc={REFERENCE}",
+        str(origen_md),
+        f"--reference-doc={reference_path}",
         "--from", "markdown+fenced_divs+raw_tex+pipe_tables+table_captions",
         "--to", "docx",
         "-o", str(destino),
@@ -108,6 +99,42 @@ def insertar_parrafo_despues(parrafo, texto=""):
     if texto:
         nuevo.add_run(texto)
     return nuevo
+
+
+def extraer_markdown_cuerpo(origen_md):
+    """Extrae el cuerpo del markdown (sin portada) y devuelve ruta temporal."""
+    texto = origen_md.read_text(encoding="utf-8")
+    idx = texto.find("\\newpage")
+    if idx == -1:
+        cuerpo = texto
+    else:
+        cuerpo = texto[idx + len("\\newpage"):].lstrip("\r\n")
+
+    with tempfile.NamedTemporaryFile(prefix="cuerpo_tesis_", suffix=".md", delete=False, encoding="utf-8", mode="w") as tmp:
+        tmp.write(cuerpo)
+        return Path(tmp.name)
+
+
+def combinar_caratula_y_cuerpo(caratula_path, cuerpo_path, salida_path):
+    """Combina la carátula manual (.docx) con el cuerpo generado por pandoc."""
+    doc_caratula = Document(str(caratula_path))
+    doc_cuerpo = Document(str(cuerpo_path))
+
+    body_caratula = doc_caratula.element.body
+    body_cuerpo = doc_cuerpo.element.body
+
+    indice_insercion = len(body_caratula)
+    sect_pr_caratula = body_caratula.sectPr
+    if sect_pr_caratula is not None:
+        indice_insercion -= 1
+
+    for child in body_cuerpo.iterchildren():
+        if child.tag == qn("w:sectPr"):
+            continue
+        body_caratula.insert(indice_insercion, deepcopy(child))
+        indice_insercion += 1
+
+    doc_caratula.save(str(salida_path))
 
 
 def insertar_campo_word(parrafo, instruccion, texto_placeholder="Actualice campos (F9)"):
@@ -224,10 +251,10 @@ def _eliminar_parrafo(parrafo):
 
 def ajustar_caratula(doc):
     """Aproxima la carátula al formato esperado (logo, jerarquía y espaciado)."""
-    # Reducir altura del logo para acercarse a la plantilla objetivo.
+    # Aumentar tamaño del logo para que tenga mayor presencia en portada.
     if doc.inline_shapes:
-        doc.inline_shapes[0].width = Inches(2.9)
-        doc.inline_shapes[0].height = Inches(0.95)
+        doc.inline_shapes[0].width = Inches(3.3)
+        doc.inline_shapes[0].height = Inches(1.32)
 
     # Ubicar fin de carátula usando el año.
     fin = None
@@ -238,11 +265,12 @@ def ajustar_caratula(doc):
     if fin is None:
         return
 
-    # Limpiar líneas vacías de la portada (excepto el párrafo del logo).
+    # Limpiar líneas vacías de la portada (excepto logo y saltos explícitos con nbsp).
     for p in list(doc.paragraphs[: fin + 1]):
         texto = p.text.strip()
+        tiene_nbsp = "\xa0" in p.text
         tiene_logo = "w:drawing" in p._p.xml
-        if not texto and not tiene_logo:
+        if not texto and not tiene_logo and not tiene_nbsp:
             _eliminar_parrafo(p)
 
     # Recalcular fin de portada tras limpieza.
@@ -261,6 +289,7 @@ def ajustar_caratula(doc):
 
     for idx, p in enumerate(doc.paragraphs[: fin + 1]):
         texto = p.text.strip()
+        tiene_nbsp = "\xa0" in p.text
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p.paragraph_format.line_spacing = 1.15
 
@@ -270,6 +299,12 @@ def ajustar_caratula(doc):
             p.paragraph_format.space_after = Pt(22 * factor)
             continue
 
+        # Saltos de línea explícitos colocados en el markdown de portada.
+        if not texto and tiene_nbsp:
+            p.paragraph_format.space_before = Pt(0)
+            p.paragraph_format.space_after = Pt(18 * factor)
+            continue
+
         if texto == "MAESTRÍA EN INGENIERÍA DE SOFTWARE":
             _ajustar_fuente_runs(p, 17, True)
             p.paragraph_format.space_after = Pt(14 * factor)
@@ -277,7 +312,7 @@ def ajustar_caratula(doc):
             _ajustar_fuente_runs(p, 16, True)
             p.paragraph_format.space_after = Pt(18 * factor)
         elif "MODELO DE INTEROPERABILIDAD BASADO EN HL7 FHIR" in texto:
-            _ajustar_fuente_runs(p, 15, True)
+            _ajustar_fuente_runs(p, 18, True)
             p.paragraph_format.space_after = Pt(18 * factor)
         elif texto == "PRESENTADO POR:":
             _ajustar_fuente_runs(p, 14, False)
@@ -293,10 +328,10 @@ def ajustar_caratula(doc):
             _ajustar_fuente_runs(p, 16, True)
             p.paragraph_format.space_after = Pt(10 * factor)
         elif texto == "LIMA":
-            _ajustar_fuente_runs(p, 13, False)
+            _ajustar_fuente_runs(p, 13, True)
             p.paragraph_format.space_after = Pt(6 * factor)
         elif texto == "2026":
-            _ajustar_fuente_runs(p, 13, False)
+            _ajustar_fuente_runs(p, 13, True)
 
 
 def excluir_preliminares_del_toc(doc):
@@ -382,7 +417,6 @@ $word.Quit()
 def postprocesar_docx(destino):
     """Aplica formato y campos Word después de la conversión de pandoc."""
     doc = Document(str(destino))
-    ajustar_caratula(doc)
     excluir_preliminares_del_toc(doc)
     aplicar_numeracion_titulos(doc)
     aplicar_saltos_pagina_encabezados(doc)
@@ -395,15 +429,34 @@ def postprocesar_docx(destino):
 
 
 if __name__ == "__main__":
-    print("=== Preparando reference doc con estilos de portada ===")
-    crear_reference_doc()
-    print("\n=== Ejecutando pandoc ===")
-    salida_objetivo = SALIDA
-    exito = ejecutar_pandoc(salida_objetivo)
-    if not exito:
-        print("\nEl archivo principal parece estar bloqueado. Se generará salida alternativa.")
-        salida_objetivo = SALIDA_ALT
-        if not ejecutar_pandoc(salida_objetivo):
+    print("=== Preparando reference doc con estilos ===")
+    preparar_reference_doc()
+
+    caratula_entrada = CARATULA_MANUAL if CARATULA_MANUAL.exists() else CARATULA_MANUAL_ALT
+    if not caratula_entrada.exists():
+        print(f"ERROR: No se encontró la carátula manual ({CARATULA_MANUAL.name} o {CARATULA_MANUAL_ALT.name})")
+        sys.exit(1)
+
+    md_cuerpo_tmp = extraer_markdown_cuerpo(ENTRADA)
+    try:
+        print("\n=== Ejecutando pandoc (solo cuerpo) ===")
+        exito = ejecutar_pandoc(md_cuerpo_tmp, CUERPO_TEMP, REFERENCE)
+        if not exito:
             sys.exit(1)
-    print("\n=== Aplicando postproceso DOCX ===")
-    postprocesar_docx(salida_objetivo)
+
+        print("\n=== Combinando carátula manual + cuerpo ===")
+        salida_objetivo = SALIDA
+        try:
+            combinar_caratula_y_cuerpo(caratula_entrada, CUERPO_TEMP, salida_objetivo)
+        except PermissionError:
+            print("El archivo principal parece estar bloqueado. Se generará salida alternativa.")
+            salida_objetivo = SALIDA_ALT
+            combinar_caratula_y_cuerpo(caratula_entrada, CUERPO_TEMP, salida_objetivo)
+
+        print("\n=== Aplicando postproceso DOCX ===")
+        postprocesar_docx(salida_objetivo)
+    finally:
+        if CUERPO_TEMP.exists():
+            CUERPO_TEMP.unlink()
+        if md_cuerpo_tmp.exists():
+            md_cuerpo_tmp.unlink()
