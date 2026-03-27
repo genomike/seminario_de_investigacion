@@ -142,5 +142,101 @@
     "DOI": "10.59573/emsj.7(6).2023.23",
     "URL": "https://doi.org/10.59573/emsj.7(6).2023.23",
     "Type": "journal-article"
+  },
+  {
+    "Year": "2024",
+    "Title": "HL7 Fast Healthcare Interoperability Resources (HL7 FHIR) in digital healthcare ecosystems for chronic disease management: Scoping review",
+    "Journal": "International Journal of Medical Informatics",
+    "DOI": "10.1016/j.ijmedinf.2024.105507",
+    "URL": "https://doi.org/10.1016/j.ijmedinf.2024.105507",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2023",
+    "Title": "Can OpenEHR, ISO 13606, and HL7 FHIR Work Together? An Agnostic Approach for the Selection and Application of Electronic Health Record Standards to the Next-Generation Health Data Spaces",
+    "Journal": "Journal of Medical Internet Research",
+    "DOI": "10.2196/48702",
+    "URL": "https://doi.org/10.2196/48702",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2022",
+    "Title": "HL7 FHIR with SNOMED-CT to Achieve Semantic and Structural Interoperability in Personal Health Data: A Proof-of-Concept Study",
+    "Journal": "Sensors",
+    "DOI": "10.3390/s22103756",
+    "URL": "https://doi.org/10.3390/s22103756",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2021",
+    "Title": "A National, Semantic-Driven, Three-Pillar Strategy to Enable Health Data Secondary Usage Interoperability for Research Within the Swiss Personalized Health Network: Methodological Study",
+    "Journal": "JMIR Medical Informatics",
+    "DOI": "10.2196/27591",
+    "URL": "https://doi.org/10.2196/27591",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2021",
+    "Title": "An HL7 FHIR and GraphQL approach for interoperability between heterogeneous Electronic Health Record systems",
+    "Journal": "Health Informatics Journal",
+    "DOI": "10.1177/14604582211043920",
+    "URL": "https://doi.org/10.1177/14604582211043920",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2025",
+    "Title": "Interoperability in universal healthcare systems: insights from Brazil's experience integrating primary and hospital health care data",
+    "Journal": "Frontiers in Digital Health",
+    "DOI": "10.3389/fdgth.2025.1622302",
+    "URL": "https://doi.org/10.3389/fdgth.2025.1622302",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2025",
+    "Title": "Influencia de la historia clinica electronica unica en la gestion de la calidad de un hospital de EsSalud",
+    "Journal": "Repositorio Institucional USIL",
+    "DOI": "",
+    "URL": "https://hdl.handle.net/20.500.14005/16177",
+    "Type": "thesis"
+  },
+  {
+    "Year": "2025",
+    "Title": "Confiabilidad de las historias clinicas electronicas y su relacion con la prestacion de servicios de salud preventiva en una micro red de salud",
+    "Journal": "Repositorio Institucional USIL",
+    "DOI": "",
+    "URL": "https://hdl.handle.net/20.500.14005/16817",
+    "Type": "thesis"
+  },
+  {
+    "Year": "2024",
+    "Title": "Arquitectura y requisitos de una historia clinica electronica ocupacional segun las normas ISO 18308:2011 e ISO 13606:2019",
+    "Journal": "Repositorio Institucional UPCH",
+    "DOI": "",
+    "URL": "https://hdl.handle.net/20.500.12866/17191",
+    "Type": "thesis"
+  },
+  {
+    "Year": "2021",
+    "Title": "Plan de negocio para integrar a las IPRESS con una plataforma de historia clinica electronica (HCE) utilizando tecnologia blockchain",
+    "Journal": "Repositorio Institucional ESAN",
+    "DOI": "",
+    "URL": "https://hdl.handle.net/20.500.12640/2139",
+    "Type": "thesis"
+  },
+  {
+    "Year": "2024",
+    "Title": "Interoperability Blockchain, InterPlanetary File System and Health Level 7 Framework for Electronic Health Records",
+    "Journal": "International Journal of Online and Biomedical Engineering (iJOE)",
+    "DOI": "10.3991/ijoe.v20i15.51515",
+    "URL": "https://doi.org/10.3991/ijoe.v20i15.51515",
+    "Type": "journal-article"
+  },
+  {
+    "Year": "2023",
+    "Title": "Electronic medical record and its impact on health care and management. A systematic review between the years 2013 - 2023",
+    "Journal": "Salud, Ciencia y Tecnologia - Serie de Conferencias",
+    "DOI": "10.56294/sctconf2023455",
+    "URL": "https://doi.org/10.56294/sctconf2023455",
+    "Type": "journal-article"
   }
 ]
