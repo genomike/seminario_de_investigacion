@@ -1,0 +1,39 @@
+@startuml diagrama-evolucion-estandares
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam shadowing false
+
+title <b>Evolución de estándares de interoperabilidad clínica</b>
+
+concise "Estándares HL7" as HL7
+concise "Contexto Perú" as PERU
+
+@0
+HL7 is "HL7 v2\n(Mensajería)"
+
+@6
+HL7 is "HL7 v3 / CDA\n(Documentos)"
+
+@12
+HL7 is "HL7 FHIR\n(APIs REST)"
+
+@17
+HL7 is "FHIR R4\n(Estable)"
+
+@0
+PERU is {hidden}
+
+@8
+PERU is "Ley 30024\nRENHICE (2013)"
+
+@13
+PERU is "IEDS / RNIEDS\nPIDESALUD\n(2018-2019)"
+
+@17
+PERU is "Pilotos\nnacionales\n(2022-2026)"
+
+highlight 12 to 20 #E8F5E9 : Era FHIR
+
+@enduml

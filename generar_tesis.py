@@ -60,6 +60,7 @@ def ejecutar_pandoc(origen_md, destino, reference_path):
         "pandoc",
         str(origen_md),
         f"--reference-doc={reference_path}",
+        f"--resource-path={BASE}",
         "--from", "markdown+fenced_divs+raw_tex+pipe_tables+table_captions",
         "--to", "docx",
         "-o", str(destino),
@@ -120,6 +121,35 @@ def combinar_caratula_y_cuerpo(caratula_path, cuerpo_path, salida_path):
     doc_caratula = Document(str(caratula_path))
     doc_cuerpo = Document(str(cuerpo_path))
 
+    # --- Copiar estilos faltantes (ImageCaption, CaptionedFigure, etc.) ---
+    caratula_styles_elem = doc_caratula.styles.element
+    cuerpo_styles_elem = doc_cuerpo.styles.element
+    ids_existentes = {
+        s.get(qn("w:styleId"))
+        for s in caratula_styles_elem.iterchildren()
+        if s.tag == qn("w:style")
+    }
+    for style_elem in cuerpo_styles_elem.iterchildren():
+        if style_elem.tag == qn("w:style"):
+            sid = style_elem.get(qn("w:styleId"))
+            if sid and sid not in ids_existentes:
+                caratula_styles_elem.append(deepcopy(style_elem))
+
+    # --- Copiar relaciones (imágenes, hipervínculos) del cuerpo al doc destino ---
+    cuerpo_part = doc_cuerpo.part
+    caratula_part = doc_caratula.part
+    rid_map: dict[str, str] = {}  # rId viejo → rId nuevo
+    for rel in cuerpo_part.rels.values():
+        if "image" in rel.reltype:
+            new_rid = caratula_part.relate_to(rel.target_part, rel.reltype)
+            rid_map[rel.rId] = new_rid
+        elif rel.is_external:
+            new_rid = caratula_part.relate_to(
+                rel.target_ref, rel.reltype, is_external=True
+            )
+            rid_map[rel.rId] = new_rid
+
+    # --- Copiar cuerpo XML remapeando rIds ---
     body_caratula = doc_caratula.element.body
     body_cuerpo = doc_cuerpo.element.body
 
@@ -128,10 +158,21 @@ def combinar_caratula_y_cuerpo(caratula_path, cuerpo_path, salida_path):
     if sect_pr_caratula is not None:
         indice_insercion -= 1
 
+    _R_EMBED = qn("r:embed")
+    _R_LINK = qn("r:link")
+    _R_ID = qn("r:id")
+
     for child in body_cuerpo.iterchildren():
         if child.tag == qn("w:sectPr"):
             continue
-        body_caratula.insert(indice_insercion, deepcopy(child))
+        copied = deepcopy(child)
+        # Remapear rIds de imágenes e hipervínculos en el XML copiado
+        for elem in copied.iter():
+            for attr in (_R_EMBED, _R_LINK, _R_ID):
+                old = elem.get(attr)
+                if old and old in rid_map:
+                    elem.set(attr, rid_map[old])
+        body_caratula.insert(indice_insercion, copied)
         indice_insercion += 1
 
     doc_caratula.save(str(salida_path))
@@ -393,6 +434,8 @@ $word.Visible = $false
 $word.DisplayAlerts = 0
 $doc = $word.Documents.Open($path)
 $doc.Repaginate() | Out-Null
+$doc.Fields.Update() | Out-Null
+$doc.Repaginate() | Out-Null
 foreach ($toc in $doc.TablesOfContents) {{ $toc.Update() }}
 foreach ($tof in $doc.TablesOfFigures) {{ $tof.Update() }}
 $doc.Fields.Update() | Out-Null
@@ -414,12 +457,92 @@ $word.Quit()
             print(resultado.stderr)
 
 
+def _pstyle_val(p):
+    """Devuelve el w:val del pStyle leyendo directamente el XML (no depende de styles.xml)."""
+    ppr = p._p.find(qn("w:pPr"))  # pyright: ignore[reportPrivateUsage]
+    if ppr is None:
+        return ""
+    ps = ppr.find(qn("w:pStyle"))
+    return ps.get(qn("w:val"), "") if ps is not None else ""
+
+
+def numerar_captions_figuras(doc):
+    """Agrega campo SEQ Figure a captions de imagen para que el índice de figuras funcione."""
+    for p in doc.paragraphs:
+        if _pstyle_val(p) != "ImageCaption":
+            continue
+        texto_original = p.text.strip()
+        if not texto_original:
+            continue
+
+        # Limpiar todos los runs existentes (preservar pPr)
+        p_elem = p._p  # pyright: ignore[reportPrivateUsage]
+        for child in list(p_elem):
+            if child.tag != qn("w:pPr"):
+                p_elem.remove(child)
+
+        # Run: "Figura "
+        run_pre = p.add_run("Figura ")
+        run_pre.font.size = Pt(10)
+        run_pre.italic = True
+
+        # Campo SEQ Figure — cada componente en su propio run (requerido por Word)
+        r_begin = p.add_run()._r  # pyright: ignore[reportPrivateUsage]
+        fld_begin = OxmlElement("w:fldChar")
+        fld_begin.set(qn("w:fldCharType"), "begin")
+        r_begin.append(fld_begin)
+
+        r_instr = p.add_run()._r  # pyright: ignore[reportPrivateUsage]
+        instr = OxmlElement("w:instrText")
+        instr.set(qn("xml:space"), "preserve")
+        instr.text = " SEQ Figure \\* ARABIC "
+        r_instr.append(instr)
+
+        r_sep = p.add_run()._r  # pyright: ignore[reportPrivateUsage]
+        fld_sep = OxmlElement("w:fldChar")
+        fld_sep.set(qn("w:fldCharType"), "separate")
+        r_sep.append(fld_sep)
+
+        run_num = p.add_run("#")
+        run_num.font.size = Pt(10)
+        run_num.italic = True
+
+        r_end = p.add_run()._r  # pyright: ignore[reportPrivateUsage]
+        fld_end = OxmlElement("w:fldChar")
+        fld_end.set(qn("w:fldCharType"), "end")
+        r_end.append(fld_end)
+
+        # Run: ". " + texto original del caption
+        run_post = p.add_run(f". {texto_original}")
+        run_post.font.size = Pt(10)
+        run_post.italic = True
+
+        # Centrar el caption
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+
+def formatear_notas_fuente(doc):
+    """Centra y ajusta las notas de fuente ('Nota. Elaboración propia...' debajo de figuras)."""
+    for p in doc.paragraphs:
+        texto = p.text.strip()
+        if not texto.startswith("Nota."):
+            continue
+        # Verificar que contiene "Elaboración propia" u otra indicación de fuente
+        if "laboración propia" not in texto and "daptado de" not in texto:
+            continue
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        for run in p.runs:
+            run.font.size = Pt(10)
+
+
 def postprocesar_docx(destino):
     """Aplica formato y campos Word después de la conversión de pandoc."""
     doc = Document(str(destino))
     excluir_preliminares_del_toc(doc)
     aplicar_numeracion_titulos(doc)
     aplicar_saltos_pagina_encabezados(doc)
+    numerar_captions_figuras(doc)
+    formatear_notas_fuente(doc)
     insertar_indices_automaticos(doc)
     aplicar_bordes_tablas(doc)
     activar_actualizacion_campos(doc)

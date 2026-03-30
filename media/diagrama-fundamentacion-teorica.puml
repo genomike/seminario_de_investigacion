@@ -1,0 +1,62 @@
+@startuml diagrama-fundamentacion-teorica
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam shadowing false
+
+skinparam rectangle {
+    RoundCorner 15
+    FontSize 13
+    BorderColor #555555
+}
+
+skinparam package {
+    BackgroundColor #FAFAFA
+    BorderColor #888888
+    FontSize 14
+    FontStyle bold
+}
+
+title <b>Enfoques teóricos que sustentan la investigación</b>
+
+package "Fundamentación Teórica" as FT {
+
+    rectangle "<b>Teoría General</b>\n<b>de Sistemas</b>\n(von Bertalanffy, 1968)" as TGS #FFE0B2 {
+    }
+
+    rectangle "<b>Enfoque</b>\n<b>Sociotécnico</b>\n(Emery y Trist, 1960)" as SOC #C8E6C9 {
+    }
+
+    rectangle "<b>Teoría de Difusión</b>\n<b>de Innovaciones</b>\n(Rogers, 2003)" as DIF #BBDEFB {
+    }
+
+    rectangle "<b>Modelo de Calidad</b>\n<b>de Datos</b>\n(Wang y Strong, 1996)" as CAL #F8BBD0 {
+    }
+}
+
+note bottom of TGS
+  Interoperabilidad como
+  propiedad emergente de
+  subsistemas articulados
+end note
+
+note bottom of SOC
+  Optimización conjunta de
+  componentes técnicos,
+  organizacionales y humanos
+end note
+
+note bottom of DIF
+  Adopción de FHIR según
+  ventaja relativa, compatibilidad,
+  complejidad, experimentabilidad
+end note
+
+note bottom of CAL
+  Dimensiones: contextual,
+  representacional, accesibilidad,
+  integridad referencial
+end note
+
+@enduml

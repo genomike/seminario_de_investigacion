@@ -1,4 +1,4 @@
-﻿::: {custom-style="Portada-Centrado"}
+::: {custom-style="Portada-Centrado"}
 ![](media/image1.png){height=2.8cm}
 :::
 
@@ -109,7 +109,7 @@ La interoperabilidad en salud constituye un factor crítico para garantizar la c
 
 En el contexto peruano, el Ministerio de Salud (MINSA) ha emitido un marco normativo específico —la Infraestructura de Estándares de Datos en Salud (IEDS), la Red Nacional de Interoperabilidad en Datos de Salud (RNIEDS) y la Plataforma de Interoperabilidad de Datos Estándares de Salud (PIDESALUD)— orientado a estandarizar el intercambio de información entre establecimientos del MINSA, articulando procesos asistenciales y administrativos financiados por el SIS cuando corresponde. Sin embargo, la implementación operativa de estas normativas permanece incompleta y heterogénea, como documentan Mauricio et al. (2024) al señalar que en Perú no existe actualmente un sistema integrado de historias clínicas electrónicas que permita compartir información automáticamente entre establecimientos.
 
-Frente a este escenario, la presente investigación propone un modelo de interoperabilidad basado en HL7 FHIR que integra tres fases secuenciales: diagnóstico de brechas, implementación piloto de una capa de integración y evaluación de impacto mediante indicadores de calidad del intercambio de información clínica. El estudio se sustenta en evidencia científica reciente —incluyendo revisiones sistemáticas de Amar et al. (2024), Tabari et al. (2024) y Pimenta et al. (2023)— y en experiencias internacionales de implementación en Estonia (Bossenko et al., 2024), Indonesia (Heryawan et al., 2025) y Sri Lanka (Jayathissa y Hewapathrana, 2024).
+Frente a este escenario, la presente investigación propone un modelo de interoperabilidad basado en HL7 FHIR que integra tres fases secuenciales: diagnóstico de brechas, implementación piloto de una capa de integración y evaluación de impacto mediante indicadores de calidad del intercambio de información clínica; y, a partir de los resultados obtenidos, formula lineamientos técnicos y operativos para la escalabilidad del modelo en otros establecimientos del MINSA. El estudio se sustenta en evidencia científica reciente —incluyendo revisiones sistemáticas de Amar et al. (2024), Tabari et al. (2024) y Pimenta et al. (2023)— y en experiencias internacionales de implementación en Estonia (Bossenko et al., 2024), Indonesia (Heryawan et al., 2025) y Sri Lanka (Jayathissa y Hewapathrana, 2024).
 
 El documento se estructura en cinco capítulos. El Capítulo I presenta el planteamiento del problema, los objetivos, la justificación y las limitaciones. El Capítulo II desarrolla el marco teórico, incluyendo antecedentes internacionales y nacionales, bases teóricas y la definición de términos. El Capítulo III formula las hipótesis y operacionaliza las variables. El Capítulo IV describe la metodología del estudio. El Capítulo V presenta los aspectos administrativos, incluyendo el presupuesto y el cronograma de actividades.
 
@@ -121,7 +121,7 @@ El documento se estructura en cinco capítulos. El Capítulo I presenta el plant
 
 ### 1.1.1.- Planteamiento del problema
 
-Actualmente, en los centros de salud del Ministerio de Salud (MINSA) del Perú, los sistemas de gestión de historias clínicas operan con una interoperabilidad limitada debido a la ausencia de implementación sistemática de estándares internacionales como HL7 FHIR (Fast Healthcare Interoperability Resources). Esta condición genera fragmentación de la información clínica del paciente, afectando su integridad, calidad y continuidad en la atención.
+Actualmente, en los centros de salud del Ministerio de Salud (MINSA) del Perú, los sistemas de gestión de historias clínicas operan con una interoperabilidad limitada. Si bien el MINSA ha establecido un marco normativo para la interoperabilidad (IEDS, RNIEDS, PIDESALUD), su implementación operativa es heterogénea y, en la práctica, no se ha logrado una adopción sistemática de estándares internacionales como HL7 FHIR (Fast Healthcare Interoperability Resources) que habilite un intercambio de información clínica con niveles adecuados de integridad, consistencia, disponibilidad y continuidad asistencial. Esta condición genera fragmentación de la información clínica del paciente, si bien cabe advertir que la sola adopción de un estándar no garantiza por sí misma la interoperabilidad efectiva sin la gestión adecuada de perfiles, terminologías y gobernanza institucional (Kramer y Moesel, 2023).
 
 En el ámbito global, la ausencia de una integración fluida de datos se reconoce como un obstáculo crítico para la digitalización de la salud. Pimenta et al. (2023) señalan que, sin una regulación uniforme, los establecimientos adoptan sistemas heterogéneos según criterios propios, produciendo registros segregados y fragmentación informacional. Por su parte, Torab-Miandoab et al. (2023) subrayan que esta desarticulación no solo reduce la calidad de la atención y desperdicia recursos financieros, sino que hace imperativa la adopción de estándares como HL7 FHIR, CDA y SNOMED-CT para lograr una integración efectiva.
 
@@ -196,6 +196,8 @@ Adicionalmente, Mukhiya et al. (2021) evidencian que capas de interoperabilidad 
 
 ![Fases del enfoque metodológico](media/fases_metodologicas.png)
 
+*Nota.* Elaboración propia.
+
 ### 1.3.3.- Justificación social
 
 Las brechas de interoperabilidad descritas en el planteamiento del problema —registros incompletos, codificación heterogénea, duplicidad de información y limitaciones en la trazabilidad— tienen consecuencias directas sobre la calidad de atención a los usuarios de los establecimientos del MINSA, especialmente en poblaciones vulnerables con cobertura financiera del SIS. De acuerdo con Holmgren et al. (2023), una interoperabilidad eficiente puede frenar el aumento de los gastos en salud al disminuir el uso innecesario de servicios y aliviar la carga administrativa para los pacientes al permitir que sus datos los acompañen de manera consistente a lo largo de su atención. De igual manera, Pimenta et al. (2023) argumentan que el tratamiento adecuado de un paciente solo se logra cuando los profesionales de la salud tienen acceso a la información más reciente y completa, siendo la interoperabilidad condición esencial para una atención de calidad.
@@ -268,254 +270,347 @@ La experiencia nacional respalda esta restricción. Porras Gamarra (2024) docume
 ### Internacionales
 
 **ADELUSI ET AL. (2025)**
-**Aporte:** Proponen un framework federado basado en HL7 FHIR para intercambio seguro entre hospitales heterogéneos.
-**Objetivo:** Demostrar que una arquitectura federada mejora interoperabilidad sin centralizar datos clínicos crudos.
-**Problema:** Fragmentación de EHR y riesgos de seguridad en modelos centralizados de intercambio.
-**Metodología utilizada:** Diseño y evaluación de framework en entorno simulado multi-hospital.
-**Instrumentos de validación:** Pruebas de recuperación de datos, latencia, cumplimiento FHIR y escalabilidad.
-**Resultados:** >95% de precisión en recuperación y 38% de reducción de latencia frente a enfoque centralizado.
+**Aporte:** Proponen un framework federado basado en HL7 FHIR para intercambio seguro entre hospitales heterogéneos, integrando principios de aprendizaje federado con gobernanza de datos y mecanismos de cumplimiento normativo.
+**Problema:** Fragmentación de EHR y riesgos de seguridad inherentes a modelos centralizados de intercambio de datos clínicos entre múltiples hospitales con plataformas disímiles.
+**Objetivo:** Demostrar que una arquitectura federada basada en FHIR mejora la interoperabilidad sin centralizar datos clínicos crudos.
+**Metodología:** Diseño y evaluación de framework en entorno simulado compuesto por tres sistemas hospitalarios con plataformas EHR diferentes (*Engineering and Technology Journal*).
+**Instrumentos de evaluación:** Pruebas de recuperación de datos, medición de latencia, verificación de adherencia al protocolo FHIR y pruebas de escalabilidad. El entorno simuló un gateway de interoperabilidad, APIs FHIR, módulos de gestión de consentimiento y repositorios distribuidos con validación por consenso.
+**Métricas o indicadores de desempeño:** Precisión de recuperación de datos, latencia de respuesta, tasa de adherencia al protocolo FHIR y capacidad de escalabilidad.
+**Resultados:** >95 % de precisión en recuperación de datos, 38 % de reducción de latencia frente a sistema centralizado, adherencia total a protocolos FHIR y reducción significativa del riesgo de brechas de datos al no transferir datos crudos.
+**Limitaciones:** Entorno exclusivamente simulado; sin implementación en hospitales reales. Los autores plantean como trabajo futuro integrar blockchain y cifrado homomórfico.
+**Crítica o aporte a la tesis:** La arquitectura federada validada respalda la viabilidad de intercambio FHIR entre establecimientos heterogéneos, condición afín al escenario MINSA con plataformas disímiles. Las métricas de integridad y latencia proveen un referente cuantitativo para la evaluación pre/post de esta investigación.
 
 **HERYAWAN ET AL. (2025)**
-**Aporte:** Caracterizan barreras reales de implementación FHIR en la plataforma nacional Satusehat (Indonesia).
+**Aporte:** Caracterizan barreras reales de implementación FHIR en la plataforma nacional Satusehat de Indonesia, primer despliegue masivo de interoperabilidad basada en FHIR en el sudeste asiático.
+**Problema:** Dificultades técnicas recurrentes en el uso de servidores, perfiles y mapeo semántico de datos durante la adopción nacional de FHIR.
 **Objetivo:** Identificar puntos críticos de adopción e integración para mejorar el despliegue interoperable nacional.
-**Problema:** Dificultades técnicas recurrentes en el uso de servidores, perfiles y mapeo semántico de datos.
-**Metodología utilizada:** Análisis de contenido de interacciones del Developer Hub y documentación técnica.
-**Instrumentos de validación:** Categorización temática de incidencias y frecuencia de problemas reportados.
-**Resultados:** Problemas en servidor FHIR (57%), mapeo de datos (34%) y selección de perfiles (9%).
+**Metodología:** Análisis de contenido cualitativo de interacciones del grupo Telegram del Developer Hub de Satusehat y de la documentación técnica oficial (*JMIR Formative Research*).
+**Instrumentos de evaluación:** Categorización temática de 107 incidencias reportadas y análisis de frecuencia por categoría. Fuente de datos: mensajes del grupo Telegram del Satusehat Developer Hub.
+**Métricas o indicadores de desempeño:** Frecuencia absoluta y porcentual de incidencias por categoría temática (servidor, mapeo, perfiles).
+**Resultados:** De 107 incidencias, 61 correspondieron a problemas del servidor FHIR (57 %), 37 a dificultades de mapeo de datos (34 %) y 9 a selección de perfiles (9 %). Los autores proponen una arquitectura federada con componentes FHIR writer/viewer.
+**Limitaciones:** Fuente de datos limitada a un canal de comunicación (Telegram); podría no capturar problemas en establecimientos sin participación en dicho canal.
+**Crítica o aporte a la tesis:** Los problemas de mapeo semántico y selección de perfiles son equivalentes a las brechas de *codificación* que esta tesis diagnostica. La experiencia de despliegue nacional progresivo es un referente directo para la implementación incremental en centros MINSA.
 
 **AMAR ET AL. (2024)**
-**Aporte:** Ofrecen taxonomía de enfoques para interoperabilidad semántica con FHIR en literatura reciente.
-**Objetivo:** Mapear tendencias metodológicas y tecnológicas en integración semántica de datos clínicos.
-**Problema:** Ausencia de consolidación sobre qué enfoques semánticos se usan y con qué peso relativo.
-**Metodología utilizada:** Revisión de mapeo sistemático de estudios publicados entre 2012 y 2022.
-**Instrumentos de validación:** Extracción estandarizada y clasificación por categorías de enfoque semántico.
-**Resultados:** n=70 estudios; mapeo (24,6%), RDF/OWL (19%), NLP/ML (15,9%), terminologías y anotación (14,3%).
+**Aporte:** Ofrecen taxonomía de seis enfoques para interoperabilidad semántica con FHIR, aportando una visión consolidada de las tendencias en integración semántica de datos clínicos.
+**Problema:** Ausencia de consolidación sobre qué enfoques semánticos se utilizan en implementaciones FHIR y con qué peso relativo en la literatura.
+**Objetivo:** Mapear tendencias metodológicas y tecnológicas en integración semántica de datos clínicos basados en FHIR.
+**Metodología:** Revisión de mapeo sistemático de estudios publicados entre 2012 y 2022, con búsqueda en 10 bases de datos (*JMIR*).
+**Instrumentos de evaluación:** Extracción estandarizada de datos y clasificación por categorías de enfoque semántico; n = 70 estudios incluidos.
+**Métricas o indicadores de desempeño:** Distribución porcentual de enfoques semánticos por categoría y frecuencia de recursos FHIR utilizados.
+**Resultados:** n = 70 estudios; seis categorías identificadas: mapeo (24,6 %), RDF/OWL (19,0 %), NLP/ML (15,9 %), servicios de terminología (14,3 %), anotación (14,3 %) y ontologías (11,9 %). FHIR R4B cuenta con 143 recursos organizados en 5 categorías.
+**Limitaciones:** Cobertura solo hasta 2022; la evolución posterior de FHIR R5 y nuevas guías de implementación no están representadas.
+**Crítica o aporte a la tesis:** La taxonomía de enfoques semánticos informa la selección de estrategias de codificación para la capa FHIR piloto de esta tesis, particularmente el mapeo terminológico (CIE-10, CPMS) como enfoque dominante.
 
 **TABARI ET AL. (2024)**
-**Aporte:** Sistematizan modelos de datos FHIR y priorización de recursos en implementación EHR.
-**Objetivo:** Describir estructuras de modelado FHIR usadas para integración, transmisión y análisis clínico.
-**Problema:** Dispersión de enfoques de modelado que dificulta diseño coherente en proyectos de interoperabilidad.
-**Metodología utilizada:** Scoping review en PubMed, Scopus, WoS, IEEE, ACM y Google Scholar.
-**Instrumentos de validación:** Matriz de extracción comparativa por tipo de modelo y recurso FHIR utilizado.
-**Resultados:** Identifican 2 familias (dinámicos/estáticos) y mayor uso de Observation, Condition y Patient.
+**Aporte:** Sistematizan los modelos de datos FHIR y la priorización de recursos utilizados en implementaciones EHR, clasificando las arquitecturas de modelado en dos familias.
+**Problema:** Dispersión de enfoques de modelado FHIR que dificulta el diseño coherente en proyectos de interoperabilidad clínica.
+**Objetivo:** Describir estructuras de modelado FHIR usadas para integración, transmisión y análisis de datos clínicos.
+**Metodología:** Scoping review conforme al protocolo PRISMA-ScR, con búsqueda en PubMed, Scopus, Web of Science, IEEE, ACM y Google Scholar (*JMIR Medical Informatics*).
+**Instrumentos de evaluación:** Matriz de extracción comparativa por tipo de modelo y recurso FHIR utilizado; síntesis por dominio clínico (enfermedades crónicas, COVID-19, oncología, cuidados agudos, notas médicas).
+**Métricas o indicadores de desempeño:** Frecuencia de uso de recursos FHIR y distribución de modelos por dominio clínico.
+**Resultados:** Identifican dos familias de modelos: dinámicos (basados en pipelines de transformación) y estáticos (estructuras predefinidas). Los recursos más utilizados son Observation, Condition y Patient.
+**Limitaciones:** Revisión de alcance que no evalúa calidad metodológica de los estudios incluidos; se limita a describir tendencias sin medir efectividad comparativa.
+**Crítica o aporte a la tesis:** La identificación de Observation, Condition y Patient como los recursos más adoptados orienta directamente la selección de recursos para la capa de integración FHIR piloto de esta tesis.
 
 **BOSSENKO ET AL. (2024)**
-**Aporte:** Desarrollan herramienta visual reutilizable para transformar HL7 CDA hacia recursos HL7 FHIR.
-**Objetivo:** Facilitar transición nacional de interoperabilidad documental a APIs FHIR con menor fricción técnica.
-**Problema:** Complejidad del mapeo CDA-FHIR para equipos clínicos y técnicos en despliegues a escala.
-**Metodología utilizada:** Desarrollo y validación aplicada en la transición del sistema nacional de Estonia.
-**Instrumentos de validación:** Evaluación por expertos de dominio sobre usabilidad y valor operativo.
-**Resultados:** Validación positiva de usabilidad y utilidad para transformación semántica reutilizable.
+**Aporte:** Desarrollan herramienta visual reutilizable para transformar documentos HL7 CDA hacia recursos HL7 FHIR utilizando el FHIR Mapping Language, permitiendo que expertos de dominio con mínimas habilidades técnicas especifiquen reglas de transformación.
+**Problema:** Complejidad del mapeo CDA-FHIR para equipos clínicos y técnicos en despliegues nacionales a escala.
+**Objetivo:** Facilitar la transición nacional de interoperabilidad documental (CDA) a APIs FHIR con menor fricción técnica.
+**Metodología:** Design Science Research con desarrollo y validación aplicada en la transición del sistema nacional de Estonia (ENHIS) hacia el ecosistema del European Health Data Space (*Frontiers in Digital Health*).
+**Instrumentos de evaluación:** Evaluación por expertos de dominio del ENHIS sobre usabilidad, valor operativo y capacidad de reutilización de los componentes visuales de transformación.
+**Métricas o indicadores de desempeño:** Valoración cualitativa de usabilidad y utilidad por parte de expertos clínicos y técnicos del sistema nacional estonio.
+**Resultados:** Validación positiva de usabilidad y utilidad para transformación semántica reutilizable; los componentes visuales permiten que personal no programador defina reglas de mapeo CDA→FHIR.
+**Limitaciones:** Evaluación basada en juicio experto cualitativo; no se reportan métricas cuantitativas de rendimiento o cobertura de los mapeos generados.
+**Crítica o aporte a la tesis:** La metodología Design Science y la transición CDA→FHIR guiada por expertos de dominio es relevante para el contexto MINSA, donde herramientas accesibles de mapeo podrían facilitar la adopción de FHIR sin requerir perfiles altamente técnicos.
 
 **JAYATHISSA Y HEWAPATHRANA (2024)**
-**Aporte:** Presentan caso técnico de servidor HAPI-FHIR para atención primaria en contexto de recursos limitados.
-**Objetivo:** Mejorar interoperabilidad entre sistemas primarios integrando identidad, seguridad y flujo de datos.
-**Problema:** Sistemas no integrados, debilidades de autenticación y baja estandarización de intercambio clínico.
-**Metodología utilizada:** Revisión técnica con implementación de caso de uso e integración progresiva.
-**Instrumentos de validación:** Pruebas funcionales con datasets sintéticos HHIMS y validación de intercambio.
-**Resultados:** Factibilidad técnica confirmada para integración FHIR en primer nivel con enfoque escalable.
+**Aporte:** Presentan caso técnico de implementación de servidor HAPI-FHIR para interoperabilidad en atención primaria en Sri Lanka, un contexto de recursos limitados comparable a países en desarrollo.
+**Problema:** Sistemas de información de salud primaria no integrados, debilidades de autenticación y baja estandarización del intercambio clínico entre establecimientos.
+**Objetivo:** Mejorar la interoperabilidad entre sistemas primarios integrando identidad de pacientes (Master Patient Index), seguridad y flujo de datos estandarizado.
+**Metodología:** Revisión técnica con implementación de caso de uso basada en el método ADR (Action Design Research) e integración progresiva en el sistema de salud primaria de Sri Lanka (*European Modern Studies Journal*).
+**Instrumentos de evaluación:** Pruebas funcionales con datasets sintéticos del HHIMS y validación de intercambio entre componentes; integración de MPI para matching probabilístico de pacientes.
+**Métricas o indicadores de desempeño:** Factibilidad técnica de integración, capacidad de intercambio entre sistemas primarios y secundarios, y escalabilidad del despliegue.
+**Resultados:** Factibilidad técnica confirmada para integración FHIR en primer nivel de atención con enfoque escalable; demuestran viabilidad del MPI para interconectar sistemas heterogéneos a nivel de clúster de atención.
+**Limitaciones:** Implementación circunscrita a un caso técnico de revisión; no reporta métricas cuantitativas de rendimiento en producción.
+**Crítica o aporte a la tesis:** El escenario de atención primaria con recursos limitados es directamente comparable al primer nivel del MINSA. La combinación HAPI-FHIR con MPI y despliegue progresivo informa la estrategia de implementación piloto de esta tesis.
 
 **TORAB-MIANDOAB ET AL. (2023)**
-**Aporte:** Consolidan requisitos de interoperabilidad para sistemas de salud heterogéneos en múltiples países.
+**Aporte:** Consolidan los requisitos de interoperabilidad para sistemas de salud heterogéneos en múltiples países, identificando los estándares y tecnologías más citados como críticos.
+**Problema:** Falta de interoperabilidad entre sistemas propietarios y heterogéneos con impacto directo en la calidad asistencial y coordinación clínica.
 **Objetivo:** Identificar tecnologías y estándares críticos para habilitar HCE interoperable de forma sostenible.
-**Problema:** Falta de interoperabilidad entre sistemas propietarios y heterogéneos con impacto en calidad asistencial.
-**Metodología utilizada:** Revisión sistemática en seis bases biomédicas y de ingeniería.
-**Instrumentos de validación:** Selección PRISMA y síntesis temática de requisitos técnicos y semánticos.
-**Resultados:** n=36 estudios; FHIR, CDA, SNOMED-CT y SOA aparecen como requisitos prioritarios.
+**Metodología:** Revisión sistemática conforme al protocolo PRISMA, con búsqueda en seis bases de datos: PubMed, Web of Science, Scopus, MEDLINE, Cochrane Library y Embase (*BMC Medical Informatics and Decision Making*).
+**Instrumentos de evaluación:** Cribado de 302 artículos con selección final de n = 36 estudios; síntesis temática de requisitos técnicos y semánticos categorizados por estándar, protocolo y tecnología.
+**Métricas o indicadores de desempeño:** Frecuencia de aparición de estándares y tecnologías como requisitos de interoperabilidad en los artículos seleccionados.
+**Resultados:** n = 36 estudios; HL7 FHIR, CDA, HIPAA, SNOMED-CT, SOA, RIM, XML, API, JAVA y SQL aparecen como requisitos más frecuentes. FHIR y CDA se posicionan como estándares prioritarios para interoperabilidad estructural y semántica.
+**Limitaciones:** La revisión no evalúa resultados clínicos de las implementaciones; se centra en requisitos técnicos declarados sin medir efectividad operativa.
+**Crítica o aporte a la tesis:** Confirma la pertinencia de HL7 FHIR y SNOMED-CT como estándares base para la capa de integración propuesta y valida la necesidad de combinar interoperabilidad técnica con semántica.
 
 **HOLMGREN ET AL. (2023)**
-**Aporte:** Comparan políticas de intercambio en cinco países para extraer factores de éxito en HIE.
-**Objetivo:** Entender cómo el diseño de política pública condiciona la adopción de interoperabilidad nacional.
-**Problema:** Variabilidad regulatoria y organizacional que limita escalamiento homogéneo del intercambio clínico.
-**Metodología utilizada:** Revisión narrativa comparada de marcos de política sanitaria internacional.
-**Instrumentos de validación:** Análisis transversal de diseño institucional, gobernanza y madurez de intercambio.
-**Resultados:** n=5 países; la priorización gubernamental centralizada se asocia a mayor avance interoperable.
+**Aporte:** Comparan políticas de intercambio de información de salud en cinco países para extraer factores de éxito en HIE, aportando un marco comparativo de gobernanza.
+**Problema:** Variabilidad regulatoria y organizacional entre países que limita el escalamiento homogéneo del intercambio clínico.
+**Objetivo:** Entender cómo el diseño de política pública condiciona la adopción de interoperabilidad a escala nacional.
+**Metodología:** Revisión narrativa comparada de marcos de política sanitaria en Estados Unidos, Reino Unido, Alemania, Israel y Portugal, con búsqueda en MEDLINE/PubMed y Google Scholar (*IMIA Yearbook of Medical Informatics*).
+**Instrumentos de evaluación:** Análisis transversal de diseño institucional, adopción de EHR, nivel de centralización, madurez de intercambio e incentivación, clasificando cada dimensión como baja, moderada o alta.
+**Métricas o indicadores de desempeño:** Grado de adopción de EHR, nivel de centralización de la política HIE, madurez del intercambio y estrategia de incentivación gubernamental.
+**Resultados:** n = 5 países analizados; la priorización gubernamental centralizada (Israel, Reino Unido) se asocia con mayor avance interoperable. La fragmentación institucional (EE. UU.) genera heterogeneidad en adopción pese a altas tasas de uso de EHR.
+**Limitaciones:** Revisión narrativa sin metaanálisis; la selección de cinco países puede no representar la diversidad de contextos de países en desarrollo.
+**Crítica o aporte a la tesis:** La importancia de la priorización gubernamental respalda la relevancia del marco normativo peruano (RNIEDS, PIDESALUD) y refuerza que las brechas identificadas en esta tesis tienen componente institucional además de técnico.
 
 **RICHWINE ET AL. (2025)**
-**Aporte:** Cuantifican el valor de las organizaciones de intercambio (HIO) para interoperabilidad hospitalaria.
-**Objetivo:** Estimar la contribución de las HIO en intercambio clínico y reporte de datos en hospitales.
-**Problema:** Dificultad para demostrar impacto operativo de la gobernanza del intercambio interinstitucional.
-**Metodología utilizada:** Estudio observacional con análisis comparativo de hospitales participantes y no participantes.
-**Instrumentos de validación:** Indicadores de intercambio clínico, reporte de salud pública y uso de datos sociales.
-**Resultados:** La participación en HIO se asocia con mayor interoperabilidad reportada y mejor intercambio de datos críticos.
+**Aporte:** Cuantifican el valor de las organizaciones de intercambio de información sanitaria (HIO) para la interoperabilidad hospitalaria a escala nacional en Estados Unidos.
+**Problema:** Dificultad para demostrar el impacto operativo de la gobernanza del intercambio interinstitucional de datos clínicos.
+**Objetivo:** Estimar la contribución de las HIO en intercambio clínico, reporte de salud pública e intercambio de datos sobre necesidades sociales en hospitales.
+**Metodología:** Estudio observacional con análisis comparativo de hospitales participantes y no participantes en HIOs, mediante vinculación de bases de datos nacionales (*Health Affairs Scholar*).
+**Instrumentos de evaluación:** Dataset vinculado del AHA IT Supplement 2023 (tasa de respuesta 58 %, N = 2 200 hospitales no federales de cuidados agudos) y HIO Survey 2023 (tasa de respuesta 86 %, N = 77 HIOs en 47 estados). Variables: intercambio clínico electrónico, reporte de salud pública, intercambio de datos HRSN y participación en TEFCA.
+**Métricas o indicadores de desempeño:** Tasas de intercambio de información clínica, reporte de salud pública, intercambio de datos sobre necesidades sociales y participación en TEFCA.
+**Resultados:** La participación en una HIO se asocia significativamente con mayor intercambio clínico electrónico, mayor reporte de salud pública y mayor intercambio de datos sobre necesidades sociales.
+**Limitaciones:** Estudio observacional que no permite inferir causalidad; datos de autoreporte hospitalario, lo que puede introducir sesgo.
+**Crítica o aporte a la tesis:** El enfoque cuantitativo de vinculación de bases de datos y medición de indicadores de intercambio proveen un modelo metodológico para la evaluación pre/post de esta tesis. La evidencia sobre gobernanza institucional refuerza la importancia de RNIEDS y PIDESALUD.
 
 **RAAB ET AL. (2023)**
-**Aporte:** Proponen un enfoque federado para el EHDS con control ciudadano del dato de salud.
-**Objetivo:** Diseñar una arquitectura interoperable que reduzca dependencia de silos centralizados.
-**Problema:** Riesgos de concentración de datos y baja portabilidad efectiva entre sistemas heterogéneos.
-**Metodología utilizada:** Desarrollo conceptual y técnico de arquitectura para espacios federados.
-**Instrumentos de validación:** Evaluación de factibilidad arquitectónica y criterios de gobernanza de datos.
-**Resultados:** Definen lineamientos para interoperabilidad federada con mejor control de acceso y compartición.
+**Aporte:** Proponen un enfoque federado de espacios de datos de salud personal para el European Health Data Space (EHDS), poniendo el control del dato en el ciudadano.
+**Problema:** Riesgos de concentración de datos sensibles en silos centralizados y baja portabilidad efectiva de registros clínicos entre sistemas heterogéneos en Europa.
+**Objetivo:** Diseñar una arquitectura interoperable que reduzca la dependencia de repositorios centralizados, almacenando datos en dispositivos personales.
+**Metodología:** Desarrollo conceptual y técnico de arquitectura para espacios de datos de salud federados, con enfoque privacy-by-design (*The Lancet Digital Health*).
+**Instrumentos de evaluación:** Evaluación de factibilidad arquitectónica y análisis de criterios de gobernanza de datos personales, alineados con la regulación europea de protección de datos.
+**Métricas o indicadores de desempeño:** Criterios cualitativos de control de acceso, portabilidad del dato y gobernanza descentralizada.
+**Resultados:** Definen lineamientos para interoperabilidad federada con mejor control de acceso ciudadano y mecanismos de compartición basados en consentimiento explícito.
+**Limitaciones:** Propuesta conceptual sin implementación técnica ni evaluación empírica; la viabilidad operativa a escala continental queda pendiente.
+**Crítica o aporte a la tesis:** El principio de privacidad por diseño y la descentralización del dato son relevantes para el contexto peruano, donde la protección de datos de poblaciones vulnerables del MINSA requiere mecanismos robustos de consentimiento.
 
 **MONSEN ET AL. (2023)**
-**Aporte:** Integran terminologías estandarizadas de enfermería con FHIR para aumentar reutilización del dato.
-**Objetivo:** Mejorar interoperabilidad semántica en flujos clínicos y analíticos.
-**Problema:** Subutilización de datos clínicos por baja normalización terminológica en implementaciones FHIR.
-**Metodología utilizada:** Estudio aplicado de integración terminológica en recursos FHIR.
-**Instrumentos de validación:** Verificación de consistencia semántica y reutilización para analítica clínica.
-**Resultados:** Muestran mejora en representación estandarizada y uso secundario de información clínica.
+**Aporte:** Integran terminologías estandarizadas de enfermería con recursos FHIR para aumentar la reutilización del dato clínico en contextos analíticos y asistenciales.
+**Problema:** Subutilización de datos clínicos por baja normalización terminológica en implementaciones FHIR, particularmente en datos de enfermería.
+**Objetivo:** Mejorar la interoperabilidad semántica de flujos clínicos y analíticos mediante integración de vocabularios estandarizados de enfermería en FHIR.
+**Metodología:** Estudio aplicado de integración terminológica en recursos FHIR, con mapeo de vocabularios de enfermería a recursos estándar.
+**Instrumentos de evaluación:** Verificación de consistencia semántica de los recursos generados y pruebas de reutilización para analítica clínica secundaria.
+**Métricas o indicadores de desempeño:** Grado de consistencia semántica y proporción de datos reutilizables en flujos analíticos.
+**Resultados:** Demuestran mejora en representación estandarizada de datos de enfermería y viabilidad del uso secundario de información clínica codificada en FHIR.
+**Limitaciones:** Alcance centrado en terminologías de enfermería; la generalización a otros dominios clínicos requiere validación adicional.
+**Crítica o aporte a la tesis:** Refuerza la importancia de la normalización terminológica para la *codificación* como dimensión de calidad, y valida que la integración de vocabularios estandarizados mejora la reutilización del dato clínico.
 
 **VORISEK ET AL. (2022)**
-**Aporte:** Ofrecen panorama cuantitativo robusto de usos de FHIR en investigación en salud.
-**Objetivo:** Medir áreas de aplicación, terminologías complementarias y madurez de adopción científica de FHIR.
-**Problema:** Escasa consolidación cuantitativa sobre para qué y cómo se usa FHIR en investigación aplicada.
-**Metodología utilizada:** Revisión sistemática de literatura 2011-2022 en cinco bases.
-**Instrumentos de validación:** Extracción estructurada de variables de uso, dominio y terminologías asociadas.
-**Resultados:** n=49; 73% investigación clínica; usos: estandarización 41%, captura 29%, análisis 12%.
+**Aporte:** Ofrecen un panorama cuantitativo robusto de los usos de FHIR en investigación en salud, incluyendo la distribución de terminologías complementarias.
+**Problema:** Escasa consolidación cuantitativa sobre para qué y cómo se utiliza FHIR en investigación clínica aplicada.
+**Objetivo:** Medir las áreas de aplicación, las terminologías complementarias y la madurez de adopción científica de FHIR.
+**Metodología:** Revisión sistemática de literatura 2011–2022, con búsqueda en cinco bases: PubMed, Embase, Web of Science, IEEE Xplore y Cochrane Library (*JMIR Medical Informatics*).
+**Instrumentos de evaluación:** Extracción estructurada de variables de uso, dominio clínico y terminologías asociadas; de 998 artículos cribados se incluyeron n = 49 estudios.
+**Métricas o indicadores de desempeño:** Distribución de usos por función y dominio, frecuencia de terminologías complementarias y tendencia temporal de publicaciones.
+**Resultados:** n = 49 estudios; 73 % en investigación clínica. Usos principales: estandarización (41 %), captura de datos (29 %), reclutamiento (14 %), análisis (12 %) y consentimiento (4 %). Terminologías más usadas: LOINC (37 %), SNOMED-CT (29 %), ICD-10 (18 %) y OMOP (12 %). Alemania y EE. UU. lideran publicaciones.
+**Limitaciones:** Intervalo de cinco años entre publicación del estándar FHIR y primera publicación científica relevante; investigación en países de mediano/bajo ingreso subrepresentada.
+**Crítica o aporte a la tesis:** La distribución de terminologías (LOINC 37 %, SNOMED-CT 29 %, ICD-10 18 %) proporciona un referente directo para evaluar *codificación* en los centros MINSA, donde CIE-10 y CPMS son los estándares obligatorios.
 
 **GAZZARATA ET AL. (2024)**
-**Aporte:** Vinculan FHIR con continuidad asistencial en ecosistemas de enfermedades crónicas.
-**Objetivo:** Evaluar el rol de FHIR en integración longitudinal de datos y coordinación entre niveles de atención.
-**Problema:** Discontinuidad clínica por fragmentación de información en trayectorias de atención crónica.
-**Metodología utilizada:** Scoping review centrada en aplicaciones FHIR para gestión clínica crónica.
-**Instrumentos de validación:** Síntesis estructurada por dominios de uso, capacidades técnicas y gobernanza.
-**Resultados:** Evidencian mejora de continuidad y articulación de red; sin KPI único universal reportado.
+**Aporte:** Vinculan FHIR con la continuidad asistencial en ecosistemas de enfermedades crónicas, evaluando su rol en la coordinación entre niveles de atención.
+**Problema:** Discontinuidad clínica por fragmentación de información en trayectorias de atención crónica entre diferentes niveles y proveedores.
+**Objetivo:** Evaluar el rol de FHIR en la integración longitudinal de datos clínicos y la coordinación interinstitucional en atención de enfermedades crónicas.
+**Metodología:** Scoping review centrada en aplicaciones FHIR para gestión clínica crónica, con síntesis por dominios de uso.
+**Instrumentos de evaluación:** Síntesis estructurada por dominios de uso clínico, capacidades técnicas de FHIR y modelos de gobernanza aplicados.
+**Métricas o indicadores de desempeño:** Grado de articulación de red, cobertura de continuidad asistencial y capacidades técnicas reportadas.
+**Resultados:** Evidencian mejora de continuidad asistencial y articulación de red mediante FHIR; no se identifica un KPI universal único, lo que sugiere necesidad de métricas contextualizadas.
+**Limitaciones:** Ausencia de indicadores cuantitativos estandarizados; resultados predominantemente cualitativos.
+**Crítica o aporte a la tesis:** La vinculación entre FHIR y continuidad asistencial refuerza la relevancia de la dimensión de *continuidad y trazabilidad* como variable dependiente de esta tesis y evidencia la necesidad de métricas operativas contextualizadas.
 
 **PEDRERA-JIMÉNEZ ET AL. (2023)**
-**Aporte:** Proponen enfoque agnóstico para combinar OpenEHR, ISO 13606 y FHIR sin tratarlos como excluyentes.
+**Aporte:** Proponen enfoque agnóstico de estándares donde openEHR, ISO 13606 y FHIR se combinan como componentes complementarios en espacios de datos clínicos de nueva generación.
+**Problema:** Decisiones de arquitectura basadas en una falsa dicotomía entre estándares clínicos que en realidad son complementarios.
 **Objetivo:** Definir criterios de selección y coexistencia de estándares en espacios de datos de nueva generación.
-**Problema:** Decisiones de arquitectura basadas en falsa dicotomía entre estándares clínicos complementarios.
-**Metodología utilizada:** Análisis técnico-conceptual comparativo de capacidades y capas de los estándares.
-**Instrumentos de validación:** Matriz de compatibilidad funcional por modelado, intercambio y reutilización.
-**Resultados:** Recomiendan arquitectura por capas; cada estándar aporta valor diferencial y complementario.
+**Metodología:** Análisis técnico-conceptual comparativo de las capacidades y capas funcionales de openEHR, ISO 13606 y FHIR.
+**Instrumentos de evaluación:** Matriz de compatibilidad funcional evaluando capacidades de modelado clínico, intercambio de datos y reutilización para cada estándar.
+**Métricas o indicadores de desempeño:** Cobertura funcional de cada estándar por capa (modelado, almacenamiento, intercambio, reutilización).
+**Resultados:** Recomiendan arquitectura por capas: openEHR para modelado y persistencia clínica, FHIR para intercambio y APIs, e ISO 13606 como puente. Cada estándar aporta valor diferencial y complementario.
+**Limitaciones:** Análisis conceptual sin implementación práctica; la factibilidad de coexistencia depende de la capacidad técnica institucional.
+**Crítica o aporte a la tesis:** Respalda la compatibilidad de FHIR con otros estándares usados en precedentes nacionales (Porras Gamarra, 2024, con openEHR) y orienta el diseño de la capa piloto como componente de una arquitectura multicapa.
 
 **CHATTERJEE ET AL. (2022)**
-**Aporte:** Integran HL7 FHIR y SNOMED-CT para lograr interoperabilidad estructural y semántica simultánea.
-**Objetivo:** Validar transferencia bidireccional de datos personales de salud sin pérdida semántica.
-**Problema:** Intercambio clínico con pérdida de significado al pasar entre sistemas heterogéneos.
-**Metodología utilizada:** Prueba de concepto con mapeo semántico y flujo bidireccional entre componentes.
-**Instrumentos de validación:** Pruebas de consistencia de conceptos y verificación de integridad de datos.
-**Resultados:** Logran intercambio bidireccional sin pérdida de datos y con consistencia semántica.
+**Aporte:** Integran HL7 FHIR con SNOMED-CT para lograr interoperabilidad estructural y semántica simultánea en el intercambio de datos personales de salud.
+**Problema:** Intercambio clínico con pérdida de significado semántico al transferir datos entre sistemas heterogéneos con codificaciones diferentes.
+**Objetivo:** Validar la transferencia bidireccional de datos personales de salud sin pérdida semántica.
+**Metodología:** Prueba de concepto con mapeo semántico FHIR-SNOMED-CT y flujo bidireccional entre componentes de un sistema de registro personal de salud.
+**Instrumentos de evaluación:** Pruebas de consistencia de conceptos codificados, verificación de integridad de datos transmitidos y comprobación de preservación semántica en ida y vuelta.
+**Métricas o indicadores de desempeño:** Tasa de preservación semántica en intercambio bidireccional e integridad de datos transmitidos.
+**Resultados:** Logran intercambio bidireccional sin pérdida de datos y con consistencia semántica verificada entre componentes FHIR y SNOMED-CT.
+**Limitaciones:** Prueba de concepto con alcance acotado; sin métricas de rendimiento a escala ni evaluación con datasets clínicos reales de gran volumen.
+**Crítica o aporte a la tesis:** Demuestra que la combinación FHIR + terminologías estándar es condición necesaria para preservar la *consistencia* del dato clínico, dimensión central de la evaluación pre/post de esta tesis.
 
 **GAUDET-BLAVIGNAC ET AL. (2021)**
-**Aporte:** Diseñan estrategia nacional de tres pilares para uso secundario interoperable de datos de salud.
-**Objetivo:** Habilitar investigación multicéntrica con datos clínicos interoperables en red nacional.
-**Problema:** Baja reutilización de datos clínicos por heterogeneidad semántica y barreras organizativas.
-**Metodología utilizada:** Estudio metodológico en contexto de la Swiss Personalized Health Network.
-**Instrumentos de validación:** Diseño de gobernanza, normalización semántica y evaluación de factibilidad operativa.
-**Resultados:** Propuesta operativa validada para escalar interoperabilidad de uso secundario.
+**Aporte:** Diseñan una estrategia nacional de tres pilares para habilitar el uso secundario interoperable de datos de salud en la Swiss Personalized Health Network.
+**Problema:** Baja reutilización de datos clínicos por heterogeneidad semántica entre hospitales y barreras organizativas para la compartición multicéntrica.
+**Objetivo:** Habilitar investigación multicéntrica con datos clínicos interoperables en una red nacional suiza.
+**Metodología:** Estudio metodológico en el contexto de la Swiss Personalized Health Network (SPHN), con desarrollo de estrategia de tres pilares: gobernanza, normalización semántica y evaluación operativa.
+**Instrumentos de evaluación:** Diseño de marco de gobernanza, definición de estándares de normalización semántica y evaluación de factibilidad operativa en hospitales participantes.
+**Métricas o indicadores de desempeño:** Factibilidad operativa de la estrategia y grado de normalización semántica logrado en la red.
+**Resultados:** Propuesta operativa validada para escalar interoperabilidad orientada al uso secundario; sin estrategia semántica coordinada, los registros presentan altas tasas de campos vacíos o mal estructurados.
+**Limitaciones:** Contexto suizo con alta madurez digital e inversión; la transferibilidad a países con menor infraestructura requiere adaptación.
+**Crítica o aporte a la tesis:** La advertencia sobre campos vacíos sin estrategia semántica fundamenta la hipótesis de esta tesis sobre brechas de *completitud* en centros MINSA y refuerza la necesidad de combinar estandarización técnica con gobernanza institucional.
 
 **MUKHIYA ET AL. (2021)**
-**Aporte:** Combinan FHIR con GraphQL para consultas clínicas flexibles sobre EHR heterogéneos.
-**Objetivo:** Reducir acoplamiento entre sistemas y facilitar integración incremental vía capa API.
-**Problema:** Rigidez en integración de datos cuando se depende de conectores punto a punto.
-**Metodología utilizada:** Desarrollo de aproximación arquitectónica y validación de interoperabilidad funcional.
-**Instrumentos de validación:** Pruebas de consulta, compatibilidad de intercambio y consistencia de respuesta.
-**Resultados:** Demuestran viabilidad de integración flexible con menor dependencia entre plataformas.
+**Aporte:** Combinan FHIR con GraphQL para consultas clínicas flexibles sobre EHR heterogéneos, reduciendo el acoplamiento entre sistemas.
+**Problema:** Rigidez en la integración de datos clínicos cuando se depende de conectores punto a punto entre sistemas.
+**Objetivo:** Reducir el acoplamiento entre sistemas y facilitar la integración incremental mediante una capa API basada en FHIR y GraphQL.
+**Metodología:** Desarrollo de aproximación arquitectónica con implementación de capa GraphQL sobre recursos FHIR y validación de interoperabilidad funcional.
+**Instrumentos de evaluación:** Pruebas de consulta multi-recurso, compatibilidad de intercambio entre sistemas y consistencia de respuestas devueltas.
+**Métricas o indicadores de desempeño:** Flexibilidad de consulta, grado de acoplamiento entre sistemas y consistencia de respuestas.
+**Resultados:** Demuestran viabilidad de integración flexible con menor dependencia entre plataformas; una sola consulta GraphQL agrega datos de múltiples recursos FHIR reduciendo llamadas al servidor.
+**Limitaciones:** Prototipo técnico sin evaluación en entorno clínico de producción; la adopción de GraphQL requiere capacitación adicional.
+**Crítica o aporte a la tesis:** La combinación FHIR + GraphQL es una alternativa para optimizar consultas clínicas complejas, aunque la prioridad de esta tesis es la conformidad con FHIR RESTful API estándar.
 
 **LIU ET AL. (2023)**
-**Aporte:** Implementan un EMR intercambiable en formato FHIR con enfoque de desempeño y visualización.
-**Objetivo:** Validar que una arquitectura basada en servidor FHIR mejore tiempos de transformación de datos.
-**Problema:** Costos y latencias elevadas en integración cuando se depende de gateways tradicionales.
-**Metodología utilizada:** Implementación experimental con pruebas de carga y comparación de arquitectura.
-**Instrumentos de validación:** Pruebas Apache JMeter y métricas de tiempo/costo de conversión.
-**Resultados:** Reportan reducción significativa en tiempos y costos de transformación de datos clínicos.
+**Aporte:** Implementan un sistema EMR intercambiable en formato FHIR con enfoque de rendimiento y visualización dinámica, sustituyendo el gateway del centro de intercambio de registros médicos de Taiwán.
+**Problema:** Costos elevados y latencias significativas en la integración de datos clínicos cuando se depende de gateways tradicionales basados en CDA R2.
+**Objetivo:** Validar que una arquitectura basada en servidor FHIR mejore los tiempos y costos de transformación de datos respecto al sistema CDA R2 existente.
+**Metodología:** Implementación experimental con pruebas de carga y comparación de arquitectura FHIR vs. CDA R2 en el contexto del Electronic Medical Record Exchange Center de Taiwán (*Healthcare*, MDPI).
+**Instrumentos de evaluación:** Pruebas de rendimiento con Apache JMeter para evaluar carga y tiempo de respuesta; transmisión segura mediante HTTPS/TLS. Métricas de tiempo y costo de conversión de formato.
+**Métricas o indicadores de desempeño:** Tiempo de respuesta, throughput (transacciones/segundo), tiempo de conversión de formato y costo operativo de integración.
+**Resultados:** Reducción significativa en tiempos y costos de transformación de datos clínicos al reemplazar el gateway CDA por un servidor FHIR; la transmisión HTTPS/TLS preserva la integridad de los datos.
+**Limitaciones:** Implementación en el contexto específico de Taiwán; los resultados pueden variar en ecosistemas con diferente madurez de infraestructura digital.
+**Crítica o aporte a la tesis:** Las pruebas con JMeter proveen una metodología de evaluación de rendimiento replicable para la capa FHIR piloto de esta tesis. La demostración de reducción de costos respalda la viabilidad económica de adoptar FHIR en centros MINSA.
 
 **ANAND Y SADHNA (2023)**
-**Aporte:** Analizan bibliométricamente la convergencia entre FHIR y blockchain en interoperabilidad EHR.
-**Objetivo:** Identificar tendencias, vacíos y líneas emergentes de investigación en interoperabilidad segura.
-**Problema:** Dispersión de evidencia sobre madurez de enfoques blockchain + FHIR para intercambio clínico.
-**Metodología utilizada:** Estudio bibliométrico y análisis temático de literatura especializada.
-**Instrumentos de validación:** Mapas temáticos, coocurrencia de términos y evolución temporal.
-**Resultados:** Confirman crecimiento del campo y centralidad de interoperabilidad y seguridad como ejes de investigación.
+**Aporte:** Analizan bibliométricamente la convergencia entre FHIR y blockchain en interoperabilidad EHR, identificando tendencias y líneas emergentes de investigación.
+**Problema:** Dispersión de evidencia sobre la madurez y evolución de los enfoques combinados blockchain + FHIR para intercambio clínico seguro.
+**Objetivo:** Identificar tendencias, vacíos y líneas emergentes de investigación en interoperabilidad segura basada en FHIR y blockchain.
+**Metodología:** Estudio bibliométrico con análisis temático de publicaciones 2013-2022 en la base Scopus, utilizando el software Bibliometrix de R-Studio (*Perspectives in Clinical Research*).
+**Instrumentos de evaluación:** Dos cadenas de búsqueda: String A (EHR + FHIR, 302 documentos) y String B (EHR + Blockchain, 758 documentos). Indicadores bibliométricos: producción anual, colaboración por país, evolución temática y mapas de coocurrencia.
+**Métricas o indicadores de desempeño:** Producción científica anual, citas promedio por documento (6,6 para FHIR y 15,4 para blockchain) y evolución temática de palabras clave.
+**Resultados:** Confirman crecimiento sostenido de ambos campos. La interoperabilidad de datos se introduce como tema desde 2020. El mapeo temático posiciona la “interoperabilidad” como un tema bien desarrollado. Blockchain con EHR muestra mayor producción y citación que FHIR con EHR.
+**Limitaciones:** Análisis limitado a Scopus; la exclusión de PubMed e IEEE puede subestimar publicaciones en informática biomédica.
+**Crítica o aporte a la tesis:** El hallazgo de que la interoperabilidad de datos es un dominio relativamente nuevo (desde 2020) refuerza la oportunidad de investigación que aborda esta tesis. La convergencia FHIR-blockchain es relevante para las propuestas de *trazabilidad* por blockchain en los antecedentes nacionales de Mauricio et al. (2024) y Bran et al. (2024).
 
 **SURISETTY (2026)**
-**Aporte:** Propone blueprint de interoperabilidad de extremo a extremo con HL7, FHIR, CCD y EHR.
-**Objetivo:** Integrar lineamientos técnicos en una secuencia práctica de implementación por fases.
-**Problema:** Brecha entre recomendaciones de alto nivel y guías operativas de implementación real.
-**Metodología utilizada:** Propuesta aplicada de arquitectura y flujo de integración integral.
-**Instrumentos de validación:** Definición de flujo técnico, componentes e hitos operativos de despliegue.
-**Resultados:** Ofrece hoja de ruta replicable para proyectos de interoperabilidad clínica por etapas.
+**Aporte:** Propone un blueprint de interoperabilidad clínica de extremo a extremo que integra HL7, FHIR, CCD y EHR en una secuencia práctica de implementación por fases.
+**Problema:** Brecha entre las recomendaciones conceptuales de alto nivel sobre interoperabilidad y la ausencia de guías operativas de implementación paso a paso.
+**Objetivo:** Integrar lineamientos técnicos en una secuencia práctica de implementación por fases que cubra los cuatro niveles de interoperabilidad.
+**Metodología:** Propuesta aplicada de arquitectura de referencia y flujo de integración integral, cubriendo ingestión, transformación, normalización semántica, seguridad y consentimiento (*International Journal of Multidisciplinary Science and Engineering in Health Research*).
+**Instrumentos de evaluación:** Definición de flujo técnico, componentes de arquitectura de referencia y hitos operativos de despliegue. Cobertura de los cuatro niveles: fundacional, estructural, semántico y organizacional.
+**Métricas o indicadores de desempeño:** Cobertura de los cuatro niveles de interoperabilidad y completitud del flujo de implementación propuesto.
+**Resultados:** Ofrece hoja de ruta replicable para proyectos de interoperabilidad clínica por etapas, incluyendo rutas de migración de HL7 v2 a FHIR, normalización semántica y marcos regulatorios (HIPAA, HITECH).
+**Limitaciones:** Propuesta teórica-aplicada sin validación empírica cuantitativa; la replicabilidad depende de la infraestructura disponible en cada contexto.
+**Crítica o aporte a la tesis:** La hoja de ruta por fases es un referente directo para la estrategia trifásica (diagnóstico, implementación piloto, evaluación) de esta tesis. La cobertura de los cuatro niveles de interoperabilidad alinea los requisitos técnicos con el marco conceptual del estudio.
 
 **FERNANDEZ ET AL. (2025)**
-**Aporte:** Aportan evidencia aplicada de interoperabilidad en sistema universal con el caso brasileño.
-**Objetivo:** Analizar integración entre atención primaria y hospitalaria para continuidad clínica poblacional.
-**Problema:** Fragmentación inter-nivel que limita seguimiento clínico y gestión integral del paciente.
-**Metodología utilizada:** Análisis de experiencia nacional y lecciones de implementación en red pública.
-**Instrumentos de validación:** Evaluación comparativa de flujos de información y coordinación asistencial.
-**Resultados:** Identifican que estándares + procesos + gobernanza sostenida son condición de impacto.
+**Aporte:** Aportan evidencia aplicada de interoperabilidad en un sistema de salud universal, con la red pública brasileña como referente para América Latina.
+**Problema:** Fragmentación inter-nivel que limita el seguimiento clínico y la gestión integral del paciente entre atención primaria y hospitalaria.
+**Objetivo:** Analizar la integración entre atención primaria y hospitalaria para la continuidad clínica poblacional en el sistema de salud de Brasil.
+**Metodología:** Análisis de la experiencia nacional brasileña y lecciones de implementación de interoperabilidad en la red pública de salud.
+**Instrumentos de evaluación:** Evaluación comparativa de flujos de información y coordinación asistencial entre niveles de atención.
+**Métricas o indicadores de desempeño:** Grado de coordinación asistencial y efectividad de los flujos de información entre niveles del sistema.
+**Resultados:** Identifican que la combinación de estándares técnicos + procesos organizacionales + gobernanza sostenida es condición necesaria para el impacto de la interoperabilidad en la continuidad del cuidado.
+**Limitaciones:** Estudio de un contexto nacional específico (Brasil); la transferibilidad a Perú requiere considerar diferencias en estructura del sistema y madurez digital.
+**Crítica o aporte a la tesis:** El hallazgo de que estándares solos no son suficientes sin gobernanza y procesos sostenidos respalda el enfoque integral de esta tesis, que combina componente técnico (FHIR) con evaluación de brechas institucionales y lineamientos de escalabilidad.
 
 ### Nacionales
 
 **MAURICIO ET AL. (2024)**
-**Aporte:** Proponen sistema peruano de interoperabilidad EHR con HL7 FHIR y blockchain.
-**Objetivo:** Permitir intercambio entre clínicas heterogéneas garantizando seguridad y privacidad de datos.
-**Problema:** En Perú no existe integración automática de historias clínicas entre establecimientos.
-**Metodología utilizada:** Diseño de arquitectura, homologación a recursos FHIR y simulación de caso.
-**Instrumentos de validación:** Encuesta de adopción (n=30 pacientes) y usabilidad (n=10 médicos).
-**Resultados:** Reportan niveles muy altos de adopción/usabilidad y factibilidad sin reemplazar sistemas legados. En relación con las brechas objeto de esta tesis, el estudio aporta evidencia sobre *trazabilidad* (el componente blockchain genera registro inmutable de transacciones) y *codificación* (la homologación a recursos FHIR estandariza la representación de datos), aunque no mide el efecto sobre *completitud* ni *duplicidad* de los registros clínicos.
+**Aporte:** Proponen un sistema peruano de interoperabilidad de EHR basado en HL7 FHIR y blockchain (Ethereum), incluyendo homologación de registros heterogéneos a recursos FHIR y almacenamiento descentralizado con IPFS.
+**Problema:** En Perú no existe integración automática de historias clínicas electrónicas entre establecimientos de salud; cada centro gestiona datos de forma aislada con formatos diferentes.
+**Objetivo:** Permitir el intercambio de EHR entre clínicas heterogéneas garantizando seguridad y privacidad de los datos mediante blockchain.
+**Metodología:** Diseño de arquitectura de interoperabilidad con homologación a recursos FHIR, blockchain (Ethereum) y simulación de caso entre establecimientos (*International Journal of Online and Biomedical Engineering*).
+**Instrumentos de evaluación:** Encuesta de adopción a n = 30 pacientes y encuesta de usabilidad a n = 10 médicos de un hospital público peruano. Variables evaluadas: percepción de adopción, usabilidad del sistema web y satisfacción con la interoperabilidad lograda. Fuente de datos: simulación con datos de caso clínico.
+**Métricas o indicadores de desempeño:** Nivel de adopción percibida y nivel de usabilidad percibida (escalas tipo Likert).
+**Resultados:** Niveles muy altos de adopción y usabilidad reportados tanto por pacientes como por médicos; factibilidad demostrada sin necesidad de reemplazar sistemas legados existentes.
+**Limitaciones:** Validación basada en simulación de caso, no en producción real; muestra pequeña (30 pacientes, 10 médicos). No se reportan métricas cuantitativas de integridad de datos ni cobertura de campos clínicos.
+**Crítica o aporte a la tesis:** El estudio aporta evidencia sobre *trazabilidad* (blockchain genera registro inmutable de transacciones) y *codificación* (la homologación FHIR estandariza la representación), aunque no mide el efecto sobre *completitud* ni *duplicidad*, brechas que esta tesis sí se propone diagnosticar. Su diseño sin reemplazo de sistemas legados es relevante para la estrategia de implementación gradual en centros MINSA.
 
 **PORRAS GAMARRA (2024)**
-**Aporte:** Documenta implementación de interoperabilidad HL7 FHIR + openEHR en entorno real.
-**Objetivo:** Validar intercambio clínico efectivo y persistencia semántica con estándares internacionales.
-**Problema:** Brecha tecnológica entre sistemas interoperables avanzados y realidad peruana fragmentada.
-**Metodología utilizada:** Estudio de suficiencia profesional con análisis de implementación del proyecto M-Connecta.
-**Instrumentos de validación:** Verificación funcional de mensajería FHIR y persistencia con arquetipos openEHR.
-**Resultados:** Evidencia viabilidad técnica y recomienda adopción de FHIR en historias clínicas peruanas. Su diseño aborda directamente *completitud* (los arquetipos openEHR estructuran el contenido completo del registro) y *codificación* (FHIR normaliza la representación semántica del intercambio), sentando precedente técnico para las brechas que esta tesis busca diagnosticar.
+**Aporte:** Documenta implementación real de interoperabilidad HL7 FHIR + openEHR en el proyecto M-Connecta (Cataluña), aportando experiencia técnica transferible al contexto peruano.
+**Problema:** Brecha tecnológica entre los estándares de interoperabilidad avanzados disponibles internacionalmente y la realidad peruana fragmentada, donde los sistemas de HCE carecen de integración efectiva.
+**Objetivo:** Validar el intercambio clínico efectivo y la persistencia semántica de datos mediante estándares internacionales HL7 FHIR y openEHR.
+**Metodología:** Trabajo de suficiencia profesional con análisis de implementación del proyecto M-Connecta, incluyendo despliegue de mensajería FHIR y persistencia con arquetipos openEHR (UNFV, Lima).
+**Instrumentos de evaluación:** Verificación funcional de mensajería FHIR entre sistemas, pruebas de persistencia con arquetipos openEHR y validación de la integridad del intercambio clínico. Experiencia práctica del autor en empresas como IN2 Ingeniería y Accenture España.
+**Métricas o indicadores de desempeño:** Factibilidad de intercambio clínico mediante FHIR y grado de persistencia semántica con arquetipos openEHR.
+**Resultados:** Evidencia viabilidad técnica de combinar FHIR (intercambio) con openEHR (persistencia semántica) y recomienda la adopción de FHIR en las HCE peruanas como paso fundamental hacia la interoperabilidad.
+**Limitaciones:** Implementación documentada en contexto europeo (Cataluña); la transferencia directa al ecosistema peruano requiere adaptación a la infraestructura local y al marco normativo MINSA.
+**Crítica o aporte a la tesis:** Aborda directamente *completitud* (arquetipos openEHR estructuran el contenido completo del registro) y *codificación* (FHIR normaliza la representación semántica), sentando precedente técnico para las brechas que esta tesis diagnostica. Su recomendación de adopción de FHIR en Perú refuerza la pertinencia de esta investigación.
 
 **ARRUÉ PAJARES Y VARGAS RIOJA (2022)**
-**Aporte:** Implementan HIS interoperable basado en HL7 para centros de categoría II-1 o superior.
-**Objetivo:** Integrar módulos administrativos y clínicos para mejorar flujo hospitalario e intercambio.
-**Problema:** Sistemas de salud peruanos fraccionados y sin integración efectiva entre componentes.
-**Metodología utilizada:** Desarrollo de plataforma web HIS con protocolo HL7 para interoperar módulos HIMS.
-**Instrumentos de validación:** Pruebas de integración entre módulos (HCE, farmacia, laboratorio y radiología).
-**Resultados:** Demuestran factibilidad de interoperabilidad operativa en contexto nacional con HL7. El estudio incide en *duplicidad* (la integración entre módulos HCE, farmacia y laboratorio reduce registros redundantes) y *completitud* (el flujo unificado asegura que la información clínica se transfiera íntegramente entre componentes del HIS).
+**Aporte:** Implementan un HIS interoperable basado en HL7 para centros de salud de categoría II-1 o superior en Perú, con integración de módulos clínicos y administrativos.
+**Problema:** Sistemas de salud peruanos fraccionados (MINSA, EsSalud, sector privado) y sin integración efectiva entre sus componentes, agravado por la pandemia de COVID-19.
+**Objetivo:** Integrar módulos administrativos y clínicos (HCE, farmacia, laboratorio, radiología) para mejorar el flujo hospitalario y habilitar el intercambio interinstitucional.
+**Metodología:** Desarrollo de plataforma web HIS con protocolo HL7 mediante metodología ágil (Scrum), con arquitectura de servicios web interoperables (PUCP, Lima).
+**Instrumentos de evaluación:** Pruebas de integración entre módulos (HCE, farmacia, laboratorio, radiología, citas), validación de requisitos de usabilidad y verificación de interoperabilidad. Herramientas: SonarQube para análisis de código, Spring Boot y Angular.
+**Métricas o indicadores de desempeño:** Factibilidad de integración entre módulos, conformidad con protocolo HL7 y cumplimiento de requisitos de usabilidad.
+**Resultados:** Demuestran factibilidad de interoperabilidad operativa en contexto nacional con HL7; la integración entre módulos permite flujo unificado de datos clínicos y administrativos.
+**Limitaciones:** Implementación basada en HL7 v2 (no FHIR); no incluye validación con datos clínicos reales en un establecimiento del MINSA. El alcance se limita a un prototipo funcional.
+**Crítica o aporte a la tesis:** El estudio incide en *duplicidad* (la integración entre módulos reduce registros redundantes) y *completitud* (el flujo unificado asegura transferencia íntegra de información). La evolución de HL7 v2 a FHIR que propone esta tesis representa el siguiente paso lógico en esta línea de trabajo.
 
 **BAYONA CASTAÑEDA (2019)**
-**Aporte:** Presenta diagnóstico estructural de la historia clínica electrónica en el sistema peruano.
-**Objetivo:** Analizar evolución normativa y barreras de implementación de HCE y RENHICE.
-**Problema:** Fragmentación MINSA-EsSalud, baja conectividad e implementación desigual de plataformas.
-**Metodología utilizada:** Trabajo de fin de máster con revisión documental y análisis del ecosistema nacional.
-**Instrumentos de validación:** Análisis normativo-técnico de Ley 30024, RENHICE y experiencias institucionales.
-**Resultados:** Identifica persistencia de múltiples historias por paciente y bajo avance interoperable. Este hallazgo conecta directamente con la brecha de *duplicidad* (múltiples HCE por paciente en distintas instituciones) y de *trazabilidad* (imposibilidad de seguir la continuidad del registro entre MINSA y EsSalud), confirmando que las brechas persisten a nivel del ecosistema nacional.
+**Aporte:** Presenta un diagnóstico estructural de la historia clínica electrónica en el sistema de salud peruano, analizando la evolución normativa y las barreras de implementación del RENHICE.
+**Problema:** Fragmentación entre MINSA y EsSalud, baja conectividad entre establecimientos e implementación desigual de plataformas de HCE a nivel nacional.
+**Objetivo:** Analizar la evolución normativa y las barreras de implementación de la HCE y del Registro Nacional de Historias Clínicas Electrónicas (RENHICE) en Perú.
+**Metodología:** Trabajo de fin de máster con revisión documental y análisis del ecosistema nacional, incluyendo visitas al Hospital Santa Rosa (Piura) y Hospital II de Tarapoto (UPV, Valencia).
+**Instrumentos de evaluación:** Análisis normativo-técnico de la Ley N° 30024, del RENHICE y de experiencias institucionales. Fuentes: documentación regulatoria del MINSA, entrevistas con directores hospitalarios y personal técnico.
+**Métricas o indicadores de desempeño:** Grado de implementación del RENHICE, conectividad entre establecimientos y número de historias clínicas por paciente.
+**Resultados:** Identifica persistencia de múltiples historias clínicas por paciente en distintas instituciones y bajo avance interoperable. Documenta inestabilidad política como barrera y fragmentación entre subsistemas (MINSA, EsSalud, FF. AA., sector privado).
+**Limitaciones:** Estudio descriptivo-analítico sin componente de implementación tecnológica; los datos corresponden al periodo 2018-2019, previo a las normativas RNIEDS y PIDESALUD.
+**Crítica o aporte a la tesis:** Conecta directamente con la brecha de *duplicidad* (múltiples HCE por paciente en distintas instituciones) y de *trazabilidad* (imposibilidad de seguir la continuidad del registro entre MINSA y EsSalud), confirmando que las brechas persisten a nivel del ecosistema nacional y justificando la necesidad de diagnóstico actualizado que esta tesis propone.
 
 **ESPARZA MORGAN (2025)**
-**Aporte:** Relaciona madurez de HCE única con mejora de gestión de calidad en hospital EsSalud.
-**Objetivo:** Medir influencia de la HCE en planificación, organización y garantía de servicios.
-**Problema:** Desempeño de calidad hospitalaria afectado por gestión clínica no plenamente digitalizada.
-**Metodología utilizada:** Estudio correlacional aplicado en entorno hospitalario peruano.
-**Instrumentos de validación:** Indicadores de calidad de gestión y medición de madurez de uso de HCE.
-**Resultados:** Reporta correlaciones positivas; mayor uso de HCE se asocia con mejor desempeño de calidad. La correlación entre madurez de HCE y calidad de gestión aporta evidencia indirecta sobre *completitud* (la HCE única consolida el registro clínico) y refuerza que cerrar brechas de digitalización impacta los indicadores de calidad del intercambio que esta tesis se propone medir.
+**Aporte:** Relaciona la madurez de uso de la HCE única con la mejora de indicadores de gestión de calidad en un hospital de EsSalud.
+**Problema:** Desempeño de calidad hospitalaria afectado por una gestión clínica no plenamente digitalizada ni estandarizada.
+**Objetivo:** Medir la influencia de la HCE en las dimensiones de planificación, organización y garantía de servicios de gestión de calidad hospitalaria.
+**Metodología:** Estudio correlacional aplicado en entorno hospitalario peruano (EsSalud).
+**Instrumentos de evaluación:** Indicadores de calidad de gestión (planificación, organización, garantía) y medición de madurez de uso de HCE mediante indicadores cuantitativos.
+**Métricas o indicadores de desempeño:** Coeficientes de correlación entre madurez de HCE y dimensiones de calidad de gestión.
+**Resultados:** Reporta correlaciones positivas estadísticamente significativas; mayor madurez de uso de HCE se asocia con mejor desempeño en planificación, organización y garantía de calidad.
+**Limitaciones:** Estudio en un solo hospital de EsSalud; la generalización a centros del MINSA requiere validación. No aísla el efecto de la interoperabilidad de otros factores de digitalización.
+**Crítica o aporte a la tesis:** Aporta evidencia indirecta sobre *completitud* (la HCE única consolida el registro clínico) y refuerza que cerrar brechas de digitalización impacta los indicadores de calidad que esta tesis se propone medir.
 
 **ARIAS GERONIMO (2025)**
-**Aporte:** Evidencia vínculo entre confiabilidad de HCE y calidad de servicios preventivos.
-**Objetivo:** Determinar relación entre calidad del registro electrónico y prestación preventiva en microred.
-**Problema:** Inconsistencias de datos y baja disponibilidad afectan continuidad y calidad percibida del servicio.
-**Metodología utilizada:** Estudio correlacional en red pública de primer nivel.
-**Instrumentos de validación:** Medición de confiabilidad del registro y desempeño en servicios preventivos.
-**Resultados:** Asociación positiva moderada y significativa entre confiabilidad HCE y prestación preventiva. Las dimensiones evaluadas —precisión de datos, disponibilidad del sistema y usabilidad— se alinean con las brechas de *completitud* (datos precisos y completos) y *codificación* (estandarización del registro que posibilita confiabilidad), reforzando la pertinencia de diagnosticar estas brechas en establecimientos del primer nivel.
+**Aporte:** Evidencia el vínculo entre confiabilidad de la HCE y calidad de los servicios preventivos en una microred de salud pública de primer nivel.
+**Problema:** Inconsistencias de datos y baja disponibilidad del sistema afectan la continuidad y calidad percibida del servicio preventivo.
+**Objetivo:** Determinar la relación entre la calidad del registro electrónico de salud y la prestación efectiva de servicios preventivos en una microred del primer nivel de atención.
+**Metodología:** Estudio correlacional aplicado en una red pública de primer nivel de atención en Perú.
+**Instrumentos de evaluación:** Medición de confiabilidad del registro electrónico (dimensiones: precisión de datos, disponibilidad del sistema, usabilidad) y evaluación del desempeño en servicios preventivos.
+**Métricas o indicadores de desempeño:** Coeficiente de correlación entre confiabilidad de HCE y desempeño en prestación preventiva; análisis por dimensiones de confiabilidad.
+**Resultados:** Asociación positiva moderada y estadísticamente significativa entre confiabilidad de la HCE y calidad de la prestación preventiva.
+**Limitaciones:** Estudio en una sola microred; la correlación no implica causalidad directa. No evalúa interoperabilidad entre establecimientos.
+**Crítica o aporte a la tesis:** Las dimensiones evaluadas —precisión, disponibilidad, usabilidad— se alinean con las brechas de *completitud* (datos precisos y completos) y *codificación* (estandarización que posibilita confiabilidad), reforzando la pertinencia de diagnosticar estas brechas en establecimientos del primer nivel de atención del MINSA.
 
 **SÁNCHEZ CALLE (2024)**
-**Aporte:** Formula arquitectura y requisitos de HCE ocupacional con base en ISO 18308 e ISO 13606.
-**Objetivo:** Definir especificaciones formales para interoperabilidad y sostenibilidad de HCE ocupacional.
-**Problema:** Ausencia de requerimientos técnicos estandarizados para intercambio clínico ocupacional.
-**Metodología utilizada:** Desarrollo de propuesta arquitectónica basada en normas internacionales.
-**Instrumentos de validación:** Trazabilidad de requisitos normativos y consistencia del diseño arquitectónico.
-**Resultados:** Entrega marco técnico aplicable para diseño interoperable y gobernable de HCE ocupacional. Su propuesta aborda las brechas de *codificación* (uso de ISO 13606 para normalizar la estructura del registro) y *completitud* (requisitos formales que aseguran la integralidad de los campos clínicos), aunque no evalúa su impacto operativo en *duplicidad* ni *trazabilidad*.
+**Aporte:** Formula una arquitectura y requisitos formales para HCE ocupacional con base en las normas internacionales ISO 18308 e ISO 13606.
+**Problema:** Ausencia de requerimientos técnicos estandarizados para el intercambio de información clínica ocupacional en el contexto peruano.
+**Objetivo:** Definir especificaciones formales para la interoperabilidad y sostenibilidad de una HCE ocupacional.
+**Metodología:** Desarrollo de propuesta arquitectónica basada en normas internacionales ISO 18308 (requisitos para arquitectura de HCE) e ISO 13606 (comunicación de HCE).
+**Instrumentos de evaluación:** Trazabilidad de requisitos normativos y evaluación de consistencia del diseño arquitectónico conforme a los estándares ISO aplicados.
+**Métricas o indicadores de desempeño:** Grado de cobertura de requisitos ISO y consistencia de la arquitectura propuesta.
+**Resultados:** Entrega un marco técnico aplicable para el diseño interoperable y gobernable de HCE ocupacional, con requisitos formales alineados a estándares internacionales.
+**Limitaciones:** Propuesta arquitectónica sin implementación ni validación empírica; no evalúa el impacto operativo en un entorno real.
+**Crítica o aporte a la tesis:** Aborda las brechas de *codificación* (ISO 13606 normaliza la estructura del registro) y *completitud* (requisitos formales aseguran integralidad de campos clínicos), aunque no evalúa su impacto en *duplicidad* ni *trazabilidad*, dimensiones que esta tesis sí diagnostica.
 
 **FERNÁNDEZ INFANZÓN Y HUARAC CUIZANO (2021)**
-**Aporte:** Proponen plan de negocio para integrar IPRESS a plataforma interoperable de HCE.
-**Objetivo:** Viabilizar articulación entre prestadores públicos/privados con blockchain y biometría.
-**Problema:** Barreras de confianza, trazabilidad y coordinación institucional para intercambio clínico.
-**Metodología utilizada:** Diseño de plan de negocio con enfoque tecnológico y de adopción multiactor.
-**Instrumentos de validación:** Evaluación de viabilidad, propuesta de modelo operativo y análisis de stakeholders.
-**Resultados:** Definen esquema de implementación gradual para interoperabilidad institucional en IPRESS. La propuesta apunta a reducir *duplicidad* (identificación única del paciente con biometría) y a mejorar *trazabilidad* (blockchain como registro inmutable de accesos y flujos), aunque permanece en nivel de plan de negocio sin validación operativa.
+**Aporte:** Proponen un plan de negocio para integrar IPRESS a una plataforma interoperable de HCE usando blockchain y biometría como habilitadores tecnológicos.
+**Problema:** Barreras de confianza, trazabilidad y coordinación institucional entre prestadores públicos y privados para el intercambio clínico.
+**Objetivo:** Viabilizar la articulación entre prestadores de salud públicos y privados mediante una plataforma interoperable con blockchain y verificación biométrica.
+**Metodología:** Diseño de plan de negocio con enfoque tecnológico y estrategia de adopción multiactor, incluyendo análisis de stakeholders del sector salud peruano.
+**Instrumentos de evaluación:** Evaluación de viabilidad técnica y económica, propuesta de modelo operativo y análisis de grupos de interés (MINSA, EsSalud, sector privado, SIS).
+**Métricas o indicadores de desempeño:** Viabilidad económica, cobertura de stakeholders y factibilidad del modelo operativo propuesto.
+**Resultados:** Definen esquema de implementación gradual para interoperabilidad institucional en IPRESS, combinando identificación biométrica única con registro blockchain de transacciones.
+**Limitaciones:** Permanece en nivel de plan de negocio sin implementación técnica ni validación operativa en establecimientos reales.
+**Crítica o aporte a la tesis:** Apunta a reducir *duplicidad* (identificación única del paciente con biometría) y a mejorar *trazabilidad* (blockchain como registro inmutable), aunque sin validación operativa, dimensiones que esta tesis sí evaluará empíricamente.
 
 **BRAN ET AL. (2024)**
-**Aporte:** Integran blockchain, IPFS y HL7 para fortalecer intercambio de historias clínicas electrónicas.
-**Objetivo:** Mejorar inmutabilidad, auditabilidad y confianza sobre flujo de datos clínicos compartidos.
-**Problema:** Riesgos de manipulación, baja trazabilidad y confianza limitada en ecosistemas interoperables.
-**Metodología utilizada:** Diseño de arquitectura híbrida y evaluación funcional de interoperabilidad segura.
-**Instrumentos de validación:** Pruebas de integridad, trazabilidad de transacciones y consistencia de intercambio.
-**Resultados:** Evidencian mejora en auditabilidad e integridad al combinar HL7 con blockchain/IPFS. La contribución apunta centralmente a la brecha de *trazabilidad* (registro inmutable de cada transacción clínica) y de *duplicidad* (IPFS como repositorio descentralizado que evita copias redundantes del mismo documento).
+**Aporte:** Integran blockchain, IPFS y HL7 para fortalecer la inmutabilidad, auditabilidad y confianza del intercambio de historias clínicas electrónicas.
+**Problema:** Riesgos de manipulación de datos, baja trazabilidad de transacciones y confianza limitada entre los actores de ecosistemas interoperables.
+**Objetivo:** Mejorar la inmutabilidad, auditabilidad y confianza sobre el flujo de datos clínicos compartidos entre establecimientos.
+**Metodología:** Diseño de arquitectura híbrida que combina HL7 con blockchain e IPFS (InterPlanetary File System) y evaluación funcional de interoperabilidad segura.
+**Instrumentos de evaluación:** Pruebas de integridad de datos, trazabilidad de transacciones en la cadena de bloques y consistencia del intercambio entre componentes del sistema.
+**Métricas o indicadores de desempeño:** Integridad de datos intercambiados, trazabilidad completa de cada transacción y consistencia del intercambio.
+**Resultados:** Evidencian mejora en auditabilidad e integridad al combinar HL7 con blockchain/IPFS; cada transacción clínica queda registrada de forma inmutable en la cadena de bloques.
+**Limitaciones:** Evaluación funcional sin despliegue en entorno hospitalario real; la escalabilidad de blockchain en producción con alto volumen de transacciones no se evalúa.
+**Crítica o aporte a la tesis:** Apunta centralmente a la brecha de *trazabilidad* (registro inmutable de cada transacción clínica) y de *duplicidad* (IPFS evita copias redundantes), brechas que esta tesis diagnostica con métricas operativas en centros MINSA.
 
 **MORALES-CAMARGO Y MENESES-CLAUDIO (2023)**
-**Aporte:** Sintetizan impacto del registro médico electrónico en atención y gestión sanitaria.
-**Objetivo:** Evaluar beneficios y barreras de implementación de EMR en evidencia reciente.
-**Problema:** Adopción desigual de EMR y brechas de estandarización/capacitación en servicios de salud.
-**Metodología utilizada:** Revisión sistemática del periodo 2013-2023.
-**Instrumentos de validación:** Búsqueda estructurada y análisis comparativo de resultados reportados.
-**Resultados:** Reportan mejoras en acceso, soporte a decisión y eficiencia, con barreras de adopción persistentes. La revisión confirma que las barreras de estandarización inciden en *codificación* (heterogeneidad de formatos entre sistemas) y que la adopción desigual perpetúa brechas de *completitud* (campos clínicos incompletos o ausentes), hallazgos convergentes con el contexto peruano que esta tesis busca diagnosticar.
+**Aporte:** Sintetizan el impacto del registro médico electrónico (EMR) en la atención y gestión sanitaria a partir de una revisión de la literatura reciente.
+**Problema:** Adopción desigual de EMR entre establecimientos de salud y brechas persistentes de estandarización y capacitación del personal.
+**Objetivo:** Evaluar los beneficios y barreras de implementación de EMR en la evidencia publicada entre 2013 y 2023.
+**Metodología:** Revisión sistemática de la literatura del periodo 2013-2023.
+**Instrumentos de evaluación:** Búsqueda estructurada en bases de datos y análisis comparativo de resultados reportados sobre impacto de EMR en atención clínica.
+**Métricas o indicadores de desempeño:** Beneficios reportados (acceso a información, soporte a decisión clínica, eficiencia) y barreras identificadas (adopción, estandarización, capacitación).
+**Resultados:** Reportan mejoras consistentes en acceso a información, soporte a la decisión clínica y eficiencia operativa; sin embargo, las barreras de adopción —capacitación insuficiente, resistencia al cambio, heterogeneidad de formatos— persisten en múltiples contextos.
+**Limitaciones:** La revisión no incluye estudios peruanos específicos; la generalización al contexto del MINSA requiere contextualización.
+**Crítica o aporte a la tesis:** Confirma que las barreras de estandarización inciden en *codificación* (heterogeneidad de formatos) y que la adopción desigual perpetúa brechas de *completitud* (campos clínicos incompletos), hallazgos convergentes con el contexto peruano que esta tesis busca diagnosticar operativamente.
 
 ### Síntesis crítica de antecedentes
 
@@ -543,9 +638,27 @@ La interoperabilidad en salud ha evolucionado progresivamente durante las últim
 
 Vorisek et al. (2022) observaron un crecimiento significativo en la adopción de FHIR en años recientes, y un intervalo de cinco años entre la publicación del estándar FHIR y la primera publicación científica de interés al respecto, con Alemania y Estados Unidos liderando el número de publicaciones. En el contexto europeo, Raab et al. (2023) describen cómo la Comisión Europea ha propuesto el European Health Data Space (EHDS) para empoderar a los ciudadanos a acceder a sus datos de salud y compartirlos con médicos. En América Latina, el desarrollo ha sido más reciente; en Perú, Bayona Castañeda (2019) documentó que la implementación de la HCE ha estado marcada por la fragmentación del sistema de salud, la inestabilidad política y la falta de integración entre MINSA y EsSalud, evidenciando que el objetivo de interoperabilidad del RENHICE se encontraba rezagado. Posteriormente, Arrué Pajares y Vargas Rioja (2022) implementaron un HIS interoperable basado en HL7 v2 para centros de categoría II-1, demostrando la viabilidad técnica del estándar en el contexto peruano. Más recientemente, Mauricio et al. (2024) señalan que el acceso al EHR ha aumentado, pero persisten brechas significativas de conectividad e integración entre establecimientos, y Porras Gamarra (2024) recomienda la adopción de FHIR en las HCE del país basándose en su experiencia de implementación de interoperabilidad HL7 FHIR y openEHR en Cataluña.
 
+![Evolución de estándares de interoperabilidad clínica](media/diagrama-evolucion-estandares.png)
+
+*Nota.* Elaboración propia basada en Surisetty (2026) y Amar et al. (2024).
+
 ### Fundamentación teórica
 
+La fundamentación teórica de esta investigación se organiza en torno a cuatro enfoques teóricos que proporcionan la base para analizar la interoperabilidad de datos clínicos en sistemas de salud pública y evaluar el impacto de una intervención tecnológica basada en estándares: la Teoría General de Sistemas, el Enfoque Sociotécnico, la Teoría de Difusión de Innovaciones y el Modelo de Calidad de Datos. Cada uno de estos marcos ofrece una perspectiva complementaria. La Teoría General de Sistemas fundamenta la concepción de la interoperabilidad como propiedad emergente de un sistema de salud articulado; el Enfoque Sociotécnico justifica por qué la implementación tecnológica debe integrarse con componentes organizacionales y humanos; la Teoría de Difusión de Innovaciones explica los patrones de adopción de FHIR y las barreras institucionales; y el Modelo de Calidad de Datos sustenta las dimensiones e indicadores de la variable dependiente.
+
+![Enfoques teóricos que sustentan la investigación](media/diagrama-fundamentacion-teorica.png)
+
+*Nota.* Elaboración propia.
+
+#### Teoría General de Sistemas
+
+La Teoría General de Sistemas (TGS), propuesta por Ludwig von Bertalanffy (1968), sostiene que los sistemas son conjuntos organizados de elementos interrelacionados que interactúan entre sí y con su entorno para lograr un propósito. Un principio central de la TGS es que las propiedades del todo no pueden deducirse de las propiedades de las partes aisladas: la interacción entre componentes genera propiedades emergentes. En el contexto de esta investigación, el sistema de salud peruano se concibe como un sistema complejo donde los establecimientos del MINSA, EsSalud y el sector privado constituyen subsistemas que deberían intercambiar información para lograr una atención integral. La interoperabilidad clínica es, desde esta perspectiva, una propiedad emergente que solo se manifiesta cuando los subsistemas (HIS, HCE, sistemas de laboratorio, farmacia) están efectivamente articulados. Bayona Castañeda (2019) documentó que la fragmentación MINSA-EsSalud impide esta articulación, lo que desde la TGS se interpreta como un sistema desarticulado cuyas partes operan como entidades aisladas. La TGS también introduce el concepto de retroalimentación: los resultados del sistema informan ajustes en los procesos y las entradas. El diseño pre-experimental O₁ → X → O₂ de esta tesis operacionaliza este principio: la medición de línea base (O₁) diagnostica el estado actual, la intervención FHIR (X) modifica los procesos de intercambio, y la medición post (O₂) evalúa si el sistema mejoró. Los cuatro niveles de interoperabilidad propuestos por HIMSS pueden interpretarse como capas sistémicas que deben funcionar coordinadamente para que la propiedad emergente del intercambio clínico efectivo se materialice.
+
 **Niveles de interoperabilidad.** La Healthcare Information and Management Systems Society (HIMSS) propone cuatro niveles de interoperabilidad: (1) fundacional, que establece los requisitos de interconexión para que un sistema envíe datos a otro; (2) estructural, que define el formato y organización del intercambio de datos; (3) semántico, que asegura que los datos intercambiados sean interpretados con el mismo significado por los sistemas emisor y receptor; y (4) organizacional, que incluye políticas, aspectos sociales y legales que facilitan la comunicación segura y oportuna de datos (Amar et al., 2024). La OPS (2024) sintetiza que para lograr la interoperabilidad deben resolverse la interoperabilidad técnica (transferencia fiable) y la interoperabilidad semántica (comprensión mutua).
+
+![Niveles de interoperabilidad en salud según HIMSS](media/diagrama-niveles-interoperabilidad.png)
+
+*Nota.* Elaboración propia basada en HIMSS, citado en Amar et al. (2024) y OPS (2024).
 
 **HL7 FHIR.** FHIR adopta un enfoque modular donde la información granular se representa como entidades modulares independientes llamadas "Resources" (recursos). Pimenta et al. (2023) describen cada recurso como un "ladrillo Lego®" de información sanitaria: múltiples recursos FHIR se combinan para formar mensajes con datos del paciente o para construir un EHR completo. Estos recursos pueden utilizarse solos, extenderse o acoplarse con otros para cubrir la gran mayoría de casos de uso clínico, superando la impredecibilidad inherente del sector salud sin incrementar costos y complejidad progresivamente. Las APIs RESTful y los servicios web generan, gestionan y distribuyen estos recursos (Pimenta et al., 2023).
 
@@ -553,13 +666,29 @@ Vorisek et al. (2022) observaron un crecimiento significativo en la adopción de
 
 **Modelos de datos clínicos y FHIR.** Tabari et al. (2024) identificaron que los modelos de datos FHIR se clasifican en dinámicos (basados en pipelines de transformación) y estáticos (estructuras de datos predefinidas). Los casos de uso clínicos cubren enfermedades crónicas, COVID-19 e infecciosas, investigación oncológica, cuidados agudos/intensivos y notas médicas generales. La implementación de modelado FHIR para datos de EHR facilita la integración y transmisión de datos, avanzando en investigación traslacional y fenotipado.
 
+![Recursos FHIR principales y sus relaciones](media/diagrama-recursos-fhir.png)
+
+*Nota.* Elaboración propia basada en HL7 International (2019) y Pimenta et al. (2023).
+
+#### Enfoque Sociotécnico
+
+El Enfoque Sociotécnico, originado en los estudios del Tavistock Institute (Emery y Trist, 1960) y aplicado a los sistemas de información por Bostrom y Heinen (1977), postula que los sistemas de información integran un componente técnico (hardware, software, estándares, redes) y un componente social (personas, procesos organizacionales, cultura institucional, estructuras de gobernanza). La optimización del sistema requiere el diseño conjunto de ambos componentes; intervenir solo el técnico o solo el social produce resultados subóptimos. Fernandez et al. (2025) identificaron que la combinación de estándares técnicos con procesos organizacionales y gobernanza sostenida es condición necesaria para el impacto de la interoperabilidad; esta triada corresponde exactamente a la integración sociotécnica. Holmgren et al. (2023) refuerzan que la priorización gubernamental y los arreglos institucionales son factores críticos que trascienden la infraestructura técnica. En la presente investigación, el Enfoque Sociotécnico se materializa en la consideración conjunta del componente técnico (estándares HL7 FHIR, servidor piloto), el organizacional (gobernanza RNIEDS/PIDESALUD, acuerdos institucionales, procesos de validación SIS) y el humano (capacitación del personal operativo, barreras de adopción). La Fase 1 de diagnóstico evalúa no solo infraestructura técnica sino también cumplimiento normativo y capacidad operativa, y la Fase 3 mide tanto indicadores técnicos (completitud, codificación) como indicadores de proceso (tiempo de validación administrativa).
+
 **Intercambio de información en salud (HIE).** Las organizaciones de intercambio de información sanitaria (HIOs) promueven el intercambio seguro de información entre hospitales, proveedores, organizaciones comunitarias y autoridades de salud pública. Richwine et al. (2025) encontraron que la participación en una HIO se asocia significativamente con mayor intercambio clínico, reportes de salud pública e intercambio de datos sobre necesidades sociales. Sin embargo, las HIOs son solo una vía de intercambio entre varias alternativas disponibles.
 
 **Arquitecturas federadas.** Raab et al. (2023) proponen espacios de datos de salud personal federados, una arquitectura que almacena datos de salud en dispositivos personales en lugar de silos de datos centralizados, poniendo al ciudadano en el centro. Adelusi et al. (2025) demostraron que un framework federado basado en FHIR reduce significativamente el riesgo de brechas de datos al no transferir datos crudos. Este enfoque es particularmente relevante para redes de múltiples hospitales con plataformas EHR heterogéneas.
 
 **Blockchain en interoperabilidad de EHR.** Anand y Sadhna (2023), mediante análisis bibliométrico, establecen que la interoperabilidad de datos y el intercambio electrónico de datos se introdujeron en el campo de EHR en 2020, infiriendo que la interoperabilidad de datos es un dominio relativamente nuevo. El mapeo temático sugiere que la “interoperabilidad” de EHR está bien desarrollada y es importante para la estructura del campo de investigación. Mauricio et al. (2024) demostraron la viabilidad de combinar blockchain con FHIR para garantizar seguridad y privacidad en el intercambio de EHR en Perú.
 
+#### Teoría de Difusión de Innovaciones
+
+La Teoría de Difusión de Innovaciones de Everett Rogers (2003) explica cómo las nuevas tecnologías se difunden a través de los sistemas sociales, identificando cinco atributos que determinan la tasa de adopción: ventaja relativa, compatibilidad, complejidad, posibilidad de prueba (*trialability*) y observabilidad de resultados. HL7 FHIR constituye una innovación tecnológica cuya adopción en el sistema de salud peruano se encuentra en etapas tempranas. Liu et al. (2023) documentaron la ventaja relativa de FHIR sobre estándares previos (reducción de tiempos y costos de transformación); Mauricio et al. (2024) validaron su compatibilidad con sistemas legados (integración sin reemplazo); y Holmgren et al. (2023) y Morales-Camargo y Meneses-Claudio (2023) identificaron que la complejidad técnica y las barreras de capacitación ralentizan la adopción, lo que desde la teoría de Rogers se interpreta como un factor inhibidor que requiere estrategias de reducción de complejidad. La Fase 2 (piloto) de esta investigación operacionaliza la *trialability*, permitiendo evaluar resultados sin comprometer todo el sistema, estrategia coherente con la adopción incremental recomendada por Heryawan et al. (2025) y Jayathissa y Hewapathrana (2024). Vorisek et al. (2022) documentaron que la adopción científica de FHIR tardó cinco años desde la publicación del estándar, lo que confirma la progresividad del proceso de difusión descrito por Rogers.
+
 **Enfoques híbridos y escalabilidad de implementación.** Pedrera-Jiménez et al. (2023) sostienen que OpenEHR, ISO 13606 y FHIR no deben tratarse como opciones excluyentes, sino como componentes complementarios de una arquitectura por capas. Surisetty (2026) y Liu et al. (2023) agregan que la escalabilidad técnica mejora cuando se definen rutas de transformación explícitas (documento-API) y se sustituyen componentes de alto acoplamiento por servicios FHIR nativos. En paralelo, Heryawan et al. (2025) y Jayathissa y Hewapathrana (2024) muestran que, en contextos de recursos limitados, el éxito depende de combinar decisiones arquitectónicas con capacidades operativas de despliegue progresivo.
+
+#### Modelo de Calidad de Datos
+
+Wang y Strong (1996) establecieron un marco seminal para la calidad de datos que identifica cuatro categorías: intrínseca (precisión, objetividad), contextual (relevancia, completitud, oportunidad), representacional (interpretabilidad, facilidad de comprensión) y de accesibilidad (disponibilidad, seguridad de acceso). Este modelo ha sido ampliado por DAMA International (2017), que define la calidad de datos como el grado en que los datos son adecuados para su uso previsto en operaciones, toma de decisiones y planificación, reconociendo dimensiones como completitud, consistencia, oportunidad, validez, unicidad e integridad. En esta investigación, el Modelo de Calidad de Datos fundamenta directamente la variable dependiente y sus cuatro dimensiones operativas: (a) *integridad*, alineada con la categoría contextual de Wang y Strong; (b) *consistencia*, correspondiente a la categoría representacional; (c) *disponibilidad*, vinculada a la categoría de accesibilidad; y (d) *continuidad*, que integra la integridad referencial propuesta por DAMA.
 
 **Calidad de datos clínicos en entornos interoperables.** La calidad de los datos clínicos constituye un requisito previo y un resultado esperado de la interoperabilidad: un sistema puede ser técnicamente interoperable pero producir intercambios inútiles si los datos transmitidos son incompletos, inconsistentes o no trazables. Las dimensiones de calidad de datos en salud se agrupan comúnmente en cuatro categorías operativas que esta tesis adopta como indicadores de evaluación:
 
@@ -575,13 +704,36 @@ Estas cuatro dimensiones convergen con los indicadores de la variable dependient
 
 ### Marco conceptual
 
-El marco conceptual de la presente investigación articula tres dimensiones complementarias:
+El marco conceptual de esta investigación se construye a partir de la fundamentación teórica y organiza las variables, sus dimensiones e indicadores en una estructura que guía la recolección y el análisis de datos. El estudio establece que la implementación del modelo de interoperabilidad basado en HL7 FHIR (variable independiente) mejora la calidad del intercambio de información clínica (variable dependiente), cuyas brechas actuales constituyen el problema de investigación.
 
-**Dimensión normativa-institucional:** Comprende el marco regulatorio peruano (IEDS, RNIEDS, PIDESALUD) que establece los lineamientos técnicos y operativos para la interoperabilidad en el sector salud del MINSA, así como la Ley N° 30024 que crea el RENHICE (Bayona Castañeda, 2019). Se alinea con el contexto internacional descrito por Holmgren et al. (2023), quienes destacan que la priorización gubernamental del intercambio de datos es un factor común en los marcos exitosos.
+![Marco conceptual de la investigación](media/diagrama-marco-conceptual.png)
 
-**Dimensión técnica-semántica:** Integra los estándares de intercambio (HL7 FHIR, CDA/CCD), codificación clínica (CIE-10, CPMS, SNOMED-CT, LOINC), y los niveles de interoperabilidad propuestos por HIMSS. Bossenko et al. (2024) demuestran que la transformación de CDA a FHIR mediante herramientas visuales permite a expertos del dominio con mínimas habilidades técnicas especificar y validar reglas de transformación de datos.
+*Nota.* Elaboración propia.
 
-**Dimensión de evaluación de calidad:** Operacionaliza la variable dependiente mediante cuatro subdimensiones con ocho indicadores cuantitativos, alineados con la fundamentación teórica de calidad de datos clínicos desarrollada en este capítulo: (a) *integridad de datos* —completitud de HCE, codificación CIE-10 y codificación CPMS—, que mide la proporción de campos obligatorios correctamente registrados según los perfiles FHIR definidos; (b) *duplicidad* —duplicidad de pacientes y de exámenes (tasas por 1 000)—, que evalúa la unicidad de los registros en el ecosistema interoperable; (c) *eficiencia administrativa* —tiempo promedio de validación de prestaciones—, que captura el efecto del intercambio estandarizado sobre los procesos de validación del SIS; y (d) *continuidad y trazabilidad* —porcentaje de HCE con trazabilidad de continuidad y porcentaje de registros con log completo de accesos—, que mide la preservación del dato a lo largo del circuito de atención. Esta estructura se sustenta empíricamente en las métricas de latencia, integridad y escalabilidad validadas por Adelusi et al. (2025) en frameworks federados FHIR, y en la demostración de Liu et al. (2023) de que la sustitución de gateways por servidores FHIR reduce tiempo y costo de conversión.
+#### Definición conceptual de la variable independiente: Modelo de interoperabilidad basado en HL7 FHIR
+
+El modelo de interoperabilidad basado en HL7 FHIR se define como el conjunto integrado de componentes técnicos, normativos y operativos que, organizados en tres fases secuenciales (diagnóstico, implementación piloto y evaluación de impacto), buscan habilitar el intercambio estandarizado de datos clínicos entre sistemas de información en salud del MINSA. Desde la Teoría General de Sistemas, el modelo actúa como una intervención que articula subsistemas previamente desconectados; desde la Teoría de Difusión de Innovaciones, constituye la innovación tecnológica cuya adopción se evalúa; y desde el Enfoque Sociotécnico, integra componentes técnicos, organizacionales y humanos.
+
+*Dimensiones de la variable independiente:*
+
+- *Diagnóstico (Fase 1):* Evaluación del cumplimiento normativo (RNIEDS, PIDESALUD), adopción de estándares (HL7/FHIR), codificación clínica (CIE-10, CPMS), seguridad, trazabilidad e infraestructura de conectividad.
+- *Implementación piloto (Fase 2):* Desarrollo de la capa de integración FHIR (recursos, perfiles, terminologías), mapeo de datos locales al modelo FHIR, implementación del servicio de intercambio y capacitación del personal operativo.
+- *Evaluación de impacto (Fase 3):* Comparación pre/post de los indicadores de calidad del intercambio de información clínica.
+
+#### Definición conceptual de la variable dependiente: Calidad del intercambio de información clínica
+
+La calidad del intercambio de información clínica se define como el grado en que los datos clínicos intercambiados entre establecimientos del MINSA son completos, correctamente codificados, no duplicados y trazables a lo largo del circuito de atención, en concordancia con el Modelo de Calidad de Datos de Wang y Strong (1996) y DAMA International (2017). Esta variable se operacionaliza mediante cuatro dimensiones con ocho indicadores cuantitativos medidos antes y después de la intervención.
+
+*Dimensiones de la variable dependiente:*
+
+- *Integridad de datos:* Completitud de HCE (% campos obligatorios completos), codificación CIE-10 (% diagnósticos correctamente codificados) y codificación CPMS (% procedimientos correctamente codificados). Fundamentada en la categoría contextual de Wang y Strong (1996) y evidenciada por Gaudet-Blavignac et al. (2021), quienes advierten altas tasas de campos vacíos sin estrategia semántica coordinada; Arias Geronimo (2025), quien documenta el impacto de la precisión de datos en la prestación preventiva; y Morales-Camargo y Meneses-Claudio (2023), quienes confirman que la adopción desigual perpetúa campos incompletos.
+- *Duplicidad:* Duplicidad de pacientes y de exámenes (tasas por 1 000 atenciones). Documentada como problema estructural del sistema peruano por Bayona Castañeda (2019), quien identificó la persistencia de múltiples historias clínicas por paciente en distintas instituciones.
+- *Eficiencia administrativa:* Tiempo promedio de validación de prestaciones SIS (horas). Respaldada por la demostración de Liu et al. (2023) de reducción significativa de tiempos y costos al sustituir gateways por servidores FHIR.
+- *Continuidad y trazabilidad:* Continuidad de atención (% HCE con trazabilidad verificable entre establecimientos) y trazabilidad de accesos (% registros con log completo). Validada por Adelusi et al. (2025) en frameworks federados FHIR, y complementada por las propuestas de blockchain de Bran et al. (2024) y Fernández Infanzón y Huarac Cuizano (2021).
+
+#### Marco regulatorio peruano
+
+El marco regulatorio que sustenta la dimensión normativa del modelo comprende la RM N° 1104-2018-MINSA (IEDS), la RM N° 464-2019-MINSA (RNIEDS), la RM N° 1193-2019-MINSA (PIDESALUD) y la Ley N° 30024 (RENHICE). Holmgren et al. (2023) identifican la priorización gubernamental como factor común en marcos de interoperabilidad exitosos. Bossenko et al. (2024) demuestran que la transformación de CDA a FHIR mediante herramientas visuales permite a expertos del dominio con mínimas habilidades técnicas especificar y validar reglas de transformación. En Perú, la brecha entre normativa vigente y operación efectiva —documentada por Bayona Castañeda (2019), Mauricio et al. (2024) y Esparza Morgan (2025)— justifica el componente diagnóstico de esta tesis.
 
 ## Definición de términos básicos
 
@@ -597,7 +749,7 @@ El marco conceptual de la presente investigación articula tres dimensiones comp
 
 - **EHR (Electronic Health Record):** Registro electrónico de salud; repositorio digital longitudinal de la información de salud de un paciente, que puede ser compartido entre diferentes establecimientos y proveedores de atención. A diferencia del EMR (Electronic Medical Record), que es propio de una institución, el EHR está diseñado para ser interoperable (Mauricio et al., 2024).
 
-- **FHIR (Fast Healthcare Interoperability Resources):** Estándar desarrollado por HL7 International para el intercambio electrónico de información de salud. FHIR adopta un enfoque modular basado en recursos independientes — unidades mínimas de información clínica como Patient, Observation y Condition — que se combinan para representar datos clínicos complejos. Utiliza tecnologías web modernas (REST, JSON, XML, OAuth) para facilitar la implementación (Pimenta et al., 2023; Tabari et al., 2024).
+- **FHIR (Fast Healthcare Interoperability Resources):** Estándar desarrollado por HL7 International para el intercambio electrónico de información de salud. FHIR adopta un enfoque modular basado en recursos independientes — unidades mínimas de información clínica como Patient, Observation y Condition — que se combinan para representar datos clínicos complejos. Utiliza tecnologías web modernas (REST, JSON, XML, OAuth) para facilitar la implementación. Para la presente investigación se utilizará la versión FHIR R4 (Release 4), por ser la versión estable con mayor adopción internacional y contar con perfiles predefinidos (US Core, International Patient Summary) que facilitan la implementación en contextos de interoperabilidad clínica (Pimenta et al., 2023; Tabari et al., 2024).
 
 - **GraphQL:** Lenguaje de consulta y entorno de ejecución para APIs que permite al cliente solicitar exactamente los datos que necesita en una sola petición, a diferencia de REST, que expone recursos fijos. En el contexto de FHIR, la especificación incluye un binding oficial GraphQL que posibilita consultas clínicas complejas (multi-recurso) con menor número de llamadas al servidor, facilitando escenarios de integración donde se requiere agregar datos de Patient, Encounter y Observation en una misma transacción.
 
@@ -636,6 +788,18 @@ El marco conceptual de la presente investigación articula tres dimensiones comp
 - **SMART on FHIR (Substitutable Medical Applications, Reusable Technologies):** Plataforma de estándares abiertos que define cómo las aplicaciones clínicas se autentican, autorizan y conectan a servidores FHIR de forma segura y portátil. Combina OAuth 2.0, OpenID Connect y perfiles FHIR para permitir que una misma aplicación funcione sobre cualquier EHR compatible, promoviendo un ecosistema de aplicaciones clínicas intercambiables.
 
 - **SNOMED-CT (Systematized Nomenclature of Medicine — Clinical Terms):** Terminología clínica integral y multilingüe mantenida por SNOMED International, que proporciona códigos, términos, sinónimos y definiciones para representar hallazgos clínicos, procedimientos, organismos y sustancias. Es la terminología de referencia para la interoperabilidad semántica de datos clínicos en ecosistemas FHIR, al permitir que conceptos médicos sean codificados de forma unívoca entre sistemas emisores y receptores (Torab-Miandoab et al., 2023).
+
+### Definiciones operacionales de los indicadores de calidad del intercambio
+
+Los siguientes términos se definen en su acepción operacional específica para esta investigación, en correspondencia con las dimensiones de la variable dependiente operacionalizada en el Capítulo III y con la fundamentación teórica sobre calidad de datos clínicos presentada en la sección 2.2.
+
+- **Integridad del registro clínico (operacional):** Proporción de campos clínicos obligatorios —según los perfiles FHIR definidos en la Guía de Implementación del estudio— que se encuentran completos y con valores válidos en los recursos intercambiados (Patient, Condition, Observation). Se calcula como el porcentaje de recursos FHIR que contienen valores válidos en los campos marcados como obligatorios (must-support = true).
+
+- **Consistencia en la codificación clínica (operacional):** Grado de concordancia entre la codificación empleada por los sistemas emisores y los estándares definidos en el marco normativo (CIE-10, CPMS). Se mide como el porcentaje de diagnósticos y procedimientos que cumplen con la codificación estándar vigente respecto al total de registros auditados.
+
+- **Disponibilidad del intercambio (operacional):** Porcentaje de transacciones FHIR exitosas respecto al total de transacciones programadas durante el periodo de evaluación, calculado mediante el análisis de logs del servidor FHIR piloto.
+
+- **Continuidad asistencial (operacional):** Capacidad de acceder al historial clínico completo de un paciente a lo largo de los diferentes niveles de atención dentro del circuito piloto, medida como el porcentaje de pacientes cuya información clínica está disponible en su totalidad en cada punto de atención visitado.
 
 # Capítulo III: Hipótesis y variables
 
@@ -832,6 +996,8 @@ El siguiente cronograma presenta la distribución temporal de las actividades de
 \newpage
 
 # Anexos
+
+
 
 
 

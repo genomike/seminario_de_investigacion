@@ -1,0 +1,49 @@
+@startuml diagrama-marco-conceptual
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam shadowing false
+skinparam nodesep 60
+skinparam ranksep 40
+
+skinparam rectangle {
+    RoundCorner 10
+    BorderColor #555555
+}
+
+skinparam card {
+    BorderColor #777777
+    BackgroundColor #FFFDE7
+    FontSize 11
+}
+
+title <b>Marco Conceptual</b>
+
+together {
+    rectangle "<b>Variable</b>\n<b>Independiente</b>" as VI #FFF9C4 {
+    }
+
+    rectangle "<i>Modelo de interoperabilidad</i>\n<i>basado en HL7 FHIR</i>" as MOD #FFE082 {
+    }
+}
+
+together {
+    rectangle "<b>Variable</b>\n<b>Dependiente</b>" as VD #E3F2FD {
+    }
+
+    rectangle "<i>Calidad del intercambio</i>\n<i>de información clínica</i>" as CAL #90CAF9 {
+    }
+}
+
+VI -right-> MOD : " Solución\n y/o Propuesta"
+VD -right-> CAL : "  Problema"
+
+card "<b>Dimensiones / Categorías (VI)</b>\n\n1. <b>Diagnóstico (Fase 1):</b> Cumplimiento\n   normativo, adopción de estándares,\n   codificación, seguridad, infraestructura\n\n2. <b>Implementación piloto (Fase 2):</b> Capa\n   de integración FHIR, mapeo de datos,\n   servicio de intercambio, capacitación\n\n3. <b>Evaluación de impacto (Fase 3):</b>\n   Comparación pre/post de indicadores\n   de calidad" as DIM_VI #FFF8E1
+
+card "<b>Dimensiones / Categorías (VD)</b>\n\n1. <b>Integridad de datos:</b> Completitud HCE,\n   codificación CIE-10, codificación CPMS\n\n2. <b>Duplicidad:</b> Tasa de duplicidad de\n   pacientes, tasa de duplicidad de exámenes\n\n3. <b>Eficiencia administrativa:</b> Tiempo\n   promedio de validación de prestaciones SIS\n\n4. <b>Continuidad y trazabilidad:</b> Continuidad\n   de atención, trazabilidad de accesos" as DIM_VD #E3F2FD
+
+MOD -down-> DIM_VI
+CAL -down-> DIM_VD
+
+@enduml

@@ -1,0 +1,38 @@
+@startuml diagrama-niveles-interoperabilidad
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam shadowing false
+skinparam rectangle {
+    RoundCorner 12
+    BorderColor #555555
+    FontSize 13
+}
+
+title <b>Niveles de interoperabilidad en salud (HIMSS)</b>
+
+rectangle "<b>Nivel 4: Organizacional</b>\nPolíticas, gobernanza, acuerdos\ninstitucionales, aspectos legales\ny éticos del intercambio" as N4 #E1BEE7
+
+rectangle "<b>Nivel 3: Semántico</b>\nDatos interpretados con el mismo\nsignificado clínico (CIE-10,\nSNOMED-CT, LOINC, CPMS)" as N3 #BBDEFB
+
+rectangle "<b>Nivel 2: Estructural</b>\nFormato y organización\ndel intercambio (HL7 FHIR,\nCDA, recursos, perfiles)" as N2 #C8E6C9
+
+rectangle "<b>Nivel 1: Fundacional</b>\nRequisitos de interconexión\nbásica (redes, transporte,\nprotocolos TCP/IP, HTTPS)" as N1 #FFE0B2
+
+N4 -[hidden]down- N3
+N3 -[hidden]down- N2
+N2 -[hidden]down- N1
+
+note right of N4
+  Regulado en Perú por
+  RNIEDS (RM 464-2019)
+  y PIDESALUD (RM 1193-2019)
+end note
+
+note right of N2
+  HL7 FHIR opera en
+  niveles 2 y 3
+end note
+
+@enduml
