@@ -1,0 +1,53 @@
+@startuml diagrama-alineacion-problemas-objetivos
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 10
+skinparam shadowing false
+skinparam rectangle {
+    RoundCorner 10
+    BorderColor #555555
+    FontSize 10
+}
+
+title <b>Alineación entre problemas específicos y objetivos específicos</b>
+
+rectangle "**Problemas específicos**" as PE_BOX #FCE4EC {
+    rectangle "PE1: ¿Cuáles son las brechas\nen completitud, codificación,\nduplicidad y trazabilidad?" as PE1 #F8BBD0
+
+    rectangle "PE2: ¿Cuáles son los\nrequerimientos técnicos,\nfuncionales y normativos?" as PE2 #F8BBD0
+
+    rectangle "PE3: ¿En qué medida el\nmodelo HL7 FHIR permite\nintegrar sistemas heterogéneos?" as PE3 #F8BBD0
+
+    rectangle "PE4: ¿Cuál es el efecto\nen la calidad del intercambio\nde información clínica?" as PE4 #F8BBD0
+}
+
+rectangle "**Objetivos específicos**" as OE_BOX #E8F5E9 {
+    rectangle "OE1: Diagnosticar brechas\nen completitud, codificación,\nduplicidad y trazabilidad" as OE1 #C8E6C9
+
+    rectangle "OE2: Identificar requerimientos\ntécnicos, funcionales\ny normativos" as OE2 #C8E6C9
+
+    rectangle "OE3: Diseñar e implementar\ncapa de interoperabilidad\nbasada en HL7 FHIR" as OE3 #C8E6C9
+
+    rectangle "OE4: Evaluar el efecto\nmediante diseño pre-post\ncon indicadores de calidad" as OE4 #C8E6C9
+
+    rectangle "OE5: Formular lineamientos\ntécnicos y operativos\npara escalabilidad" as OE5 #C8E6C9
+}
+
+PE1 --> OE1 : "Fase 1"
+PE2 --> OE2 : "Fase 1"
+PE3 --> OE3 : "Fase 2"
+PE4 --> OE4 : "Fase 3"
+OE4 -down-> OE5 : "Derivado"
+
+PE1 -[hidden]down- PE2
+PE2 -[hidden]down- PE3
+PE3 -[hidden]down- PE4
+
+OE1 -[hidden]down- OE2
+OE2 -[hidden]down- OE3
+OE3 -[hidden]down- OE4
+
+PE_BOX -[hidden]right- OE_BOX
+
+@enduml

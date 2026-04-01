@@ -1,0 +1,47 @@
+@startuml diagrama-marco-normativo-peru
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam shadowing false
+skinparam rectangle {
+    RoundCorner 10
+    BorderColor #555555
+}
+skinparam package {
+    BackgroundColor #FAFAFA
+    BorderColor #888888
+    FontSize 13
+    FontStyle bold
+}
+top to bottom direction
+
+title <b>Marco normativo peruano para la interoperabilidad en salud</b>
+
+package "Resoluciones Ministeriales" as RM {
+    rectangle "**RM N° 1104-2018-MINSA**\n\nCrea la Infraestructura de\nEstándares de Datos en Salud\n(IEDS)" as RM1 #BBDEFB
+
+    rectangle "**RM N° 464-2019-MINSA**\n\nAprueba Directiva Administrativa\nN° 266 que define niveles de\ninteroperabilidad y alcance" as RM2 #C8E6C9
+
+    rectangle "**RM N° 1193-2019-MINSA**\n\nAprueba catálogos IEDS\ny estandariza identificadores\npara HCE" as RM3 #FFE0B2
+}
+
+package "Componentes operativos" as COMP {
+    rectangle "**IEDS**\nInfraestructura de\nEstándares de Datos\nen Salud" as IEDS #E3F2FD
+
+    rectangle "**RNIEDS**\nRed Nacional de\nInteroperabilidad en\nDatos de Salud" as RNIEDS #E8F5E9
+
+    rectangle "**PIDESALUD**\nPlataforma de\nInteroperabilidad de\nDatos Estándares de Salud" as PIDE #FFF8E1
+}
+
+RM1 -down-> IEDS
+RM2 -down-> RNIEDS
+RM3 -down-> PIDE
+
+rectangle "**Brecha identificada**\nImplementación no uniforme;\npersisten brechas operativas\nen los centros del MINSA" as BRECHA #FFCDD2
+
+IEDS -down-> BRECHA
+RNIEDS -down-> BRECHA
+PIDE -down-> BRECHA
+
+@enduml

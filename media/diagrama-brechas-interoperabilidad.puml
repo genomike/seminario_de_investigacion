@@ -1,0 +1,42 @@
+@startuml diagrama-brechas-interoperabilidad
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam shadowing false
+skinparam rectangle {
+    RoundCorner 12
+    BorderColor #555555
+    FontSize 11
+}
+top to bottom direction
+
+title <b>Brechas de interoperabilidad identificadas en centros de salud del MINSA</b>
+
+together {
+    rectangle "**B1. Completitud**\n**de registros clínicos**\n\nInformación incompleta\nen historias clínicas" as B1 #FFCDD2
+    rectangle "**B2. Inconsistencias**\n**en codificación clínica**\n\nUso heterogéneo de\nCIE-10 y CPMS" as B2 #FFE0B2
+    rectangle "**B3. Duplicidad**\n**de información**\n\nMúltiples registros de\nun mismo paciente" as B3 #FFF9C4
+    rectangle "**B4. Trazabilidad**\n**y continuidad**\n\nDificultad de seguimiento\nentre niveles de salud" as B4 #C8E6C9
+}
+
+together {
+    rectangle "Incremento de\ncostos asistenciales" as C1 #E3F2FD
+    rectangle "Riesgo para la\nseguridad del paciente" as C2 #E3F2FD
+    rectangle "Ineficiencia en la\ngestión del sistema" as C3 #E3F2FD
+    rectangle "Pérdida de continuidad\nasistencial" as C4 #E3F2FD
+}
+
+B1 -down-> C1
+B2 -down-> C2
+B3 -down-> C3
+B4 -down-> C4
+
+B1 -[hidden]right- B2
+B2 -[hidden]right- B3
+B3 -[hidden]right- B4
+C1 -[hidden]right- C2
+C2 -[hidden]right- C3
+C3 -[hidden]right- C4
+
+@enduml

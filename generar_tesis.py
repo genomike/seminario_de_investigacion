@@ -219,7 +219,6 @@ def activar_actualizacion_campos(doc):
 def aplicar_saltos_pagina_encabezados(doc):
     """Aplica salto de página antes de los encabezados clave."""
     objetivos = {
-        "Agradecimiento",
         "Índice",
         "Índice de tablas",
         "Índice de figuras",
@@ -428,8 +427,8 @@ def ajustar_caratula(doc):
 
 
 def excluir_preliminares_del_toc(doc):
-    """Quita Agradecimiento del TOC cambiando su estilo a Normal."""
-    excluir = {"Agradecimiento"}
+    """Excluye secciones preliminares del TOC si es necesario."""
+    excluir: set[str] = set()  # no hay secciones preliminares a excluir actualmente
     for p in doc.paragraphs:
         if p.text.strip() in excluir:
             p.style = doc.styles["Normal"]
@@ -573,6 +572,71 @@ def numerar_captions_figuras(doc):
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
 
+def numerar_captions_tablas(doc):
+    """Agrega campo SEQ Table a captions de tabla para que el índice de tablas funcione."""
+    # Detectar captions por posición: párrafo directamente antes de w:tbl en el body
+    body = doc.element.body
+    p_ids_caption: set[int] = set()
+    children = list(body)
+    for i, child in enumerate(children):
+        if child.tag == qn("w:tbl") and i > 0:
+            prev = children[i - 1]
+            if prev.tag == qn("w:p"):
+                p_ids_caption.add(id(prev))
+
+    for p in doc.paragraphs:
+        pstyle = _pstyle_val(p)
+        es_caption = (
+            id(p._p) in p_ids_caption  # pyright: ignore[reportPrivateUsage]
+            or pstyle in {"TableCaption", "TableTitle", "Tabletitre"}
+        )
+        if not es_caption:
+            continue
+
+        texto_original = re.sub(r"\s*\{#[^}]+\}", "", p.text.strip()).strip()
+        if not texto_original or texto_original.startswith("Nota."):
+            continue
+
+        # Limpiar todos los runs existentes (preservar pPr)
+        p_elem = p._p  # pyright: ignore[reportPrivateUsage]
+        for child in list(p_elem):
+            if child.tag != qn("w:pPr"):
+                p_elem.remove(child)
+
+        # Run: "Tabla "
+        run_pre = p.add_run("Tabla ")
+        run_pre.font.size = Pt(12)
+
+        # Campo SEQ Table — cada componente en su propio run (requerido por Word)
+        r_begin = p.add_run()._r  # pyright: ignore[reportPrivateUsage]
+        fld_begin = OxmlElement("w:fldChar")
+        fld_begin.set(qn("w:fldCharType"), "begin")
+        r_begin.append(fld_begin)
+
+        r_instr = p.add_run()._r  # pyright: ignore[reportPrivateUsage]
+        instr = OxmlElement("w:instrText")
+        instr.set(qn("xml:space"), "preserve")
+        instr.text = " SEQ Table \\* ARABIC "
+        r_instr.append(instr)
+
+        r_sep = p.add_run()._r  # pyright: ignore[reportPrivateUsage]
+        fld_sep = OxmlElement("w:fldChar")
+        fld_sep.set(qn("w:fldCharType"), "separate")
+        r_sep.append(fld_sep)
+
+        run_num = p.add_run("#")
+        run_num.font.size = Pt(12)
+
+        r_end = p.add_run()._r  # pyright: ignore[reportPrivateUsage]
+        fld_end = OxmlElement("w:fldChar")
+        fld_end.set(qn("w:fldCharType"), "end")
+        r_end.append(fld_end)
+
+        # Run: ". " + texto original del caption
+        run_post = p.add_run(f". {texto_original}")
+        run_post.font.size = Pt(12)
+
+
 def formatear_notas_fuente(doc):
     """Centra y ajusta las notas de fuente ('Nota. Elaboración propia...' debajo de figuras)."""
     for p in doc.paragraphs:
@@ -595,6 +659,7 @@ def postprocesar_docx(destino):
     convertir_listas_a_bullets(doc)
     aplicar_saltos_pagina_encabezados(doc)
     numerar_captions_figuras(doc)
+    numerar_captions_tablas(doc)
     formatear_notas_fuente(doc)
     insertar_indices_automaticos(doc)
     aplicar_bordes_tablas(doc)

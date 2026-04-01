@@ -1,0 +1,52 @@
+@startuml diagrama-limitaciones-mitigacion
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 10
+skinparam shadowing false
+skinparam rectangle {
+    RoundCorner 10
+    BorderColor #555555
+    FontSize 10
+}
+
+title <b>Limitaciones de la investigación y estrategias de mitigación</b>
+
+rectangle "**L1. Disponibilidad y calidad de los datos**\nRegistros con deficiencias estructurales\ny semánticas" as L1 #FFCDD2
+rectangle "Criterios de exclusión por umbral de\nincompletitud; documentar datos excluidos" as M1 #E8F5E9
+
+rectangle "**L2. Acceso a fuentes de información**\nRetrasos regulatorios y restricciones\ntécnicas" as L2 #FFCDD2
+rectangle "Gestión temprana de permisos; datos\nanonimizados o sintéticos (enfoque HHIMS)" as M2 #E8F5E9
+
+rectangle "**L3. Alcance geográfico**\nFocalizado en Lima; no generalizable\ndirectamente" as L3 #FFCDD2
+rectangle "Seleccionar establecimientos con 2-3\nniveles de complejidad; formular\ndirectrices de escalabilidad" as M3 #E8F5E9
+
+rectangle "**L4. Limitaciones del modelo implementado**\nIncompatibilidad potencial entre\nperfiles FHIR" as L4 #FFCDD2
+rectangle "Perfiles alineados a US Core e IPS;\ndocumentar versiones y limitaciones\nconocidas" as M4 #E8F5E9
+
+rectangle "**L5. Variables no identificadas**\nFactores organizativos, culturales\no técnicos ocultos" as L5 #FFCDD2
+rectangle "Componente cualitativo: entrevistas\nsemiestructuradas al personal de salud" as M5 #E8F5E9
+
+rectangle "**L6. Restricciones de tiempo y recursos**\nCircunscrita al periodo académico" as L6 #FFCDD2
+rectangle "Matriz de priorización; piloto funcional\nacotado escalable en fases" as M6 #E8F5E9
+
+L1 -right-> M1 : "Mitigación"
+L2 -right-> M2 : "Mitigación"
+L3 -right-> M3 : "Mitigación"
+L4 -right-> M4 : "Mitigación"
+L5 -right-> M5 : "Mitigación"
+L6 -right-> M6 : "Mitigación"
+
+L1 -[hidden]down- L2
+L2 -[hidden]down- L3
+L3 -[hidden]down- L4
+L4 -[hidden]down- L5
+L5 -[hidden]down- L6
+
+M1 -[hidden]down- M2
+M2 -[hidden]down- M3
+M3 -[hidden]down- M4
+M4 -[hidden]down- M5
+M5 -[hidden]down- M6
+
+@enduml
