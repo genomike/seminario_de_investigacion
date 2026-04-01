@@ -275,53 +275,193 @@ def aplicar_numeracion_titulos(doc):
 
 
 def convertir_listas_a_bullets(doc):
-    """Convierte listas con estilo 'List Paragraph' a viñetas (bullet •).
+    """Convierte a viñetas (•) las listas que pandoc genera con abstractNum decimal
+    o cuyo numId no está definido en la parte de numeración del documento combinado.
 
-    Pandoc genera listas markdown '-' con estilo 'List Paragraph'. La plantilla
-    puede definir ese estilo como lista numerada a nivel de estilo. Para anular
-    completamente esa numeración se usa numId=0 en el numPr inline, que tiene
-    prioridad absoluta sobre la definición del estilo.
+    El problema raíz: combinar_caratula_y_cuerpo copia el cuerpo XML de pandoc
+    (con numPr referenciando numIds 58-68) al doc de carátula, pero NO copia la
+    numbering_part. Así esos numIds quedan sin definición → Word los muestra como
+    decimales. Esta función crea una definición bullet (•, Symbol) para todos ellos.
     """
-    for p in doc.paragraphs:
-        style_name = p.style.name if p.style else ""
-        if "List" not in style_name:
-            continue
+    NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 
+    # Obtenemos la parte de numeración
+    try:
+        np_part = doc.part.numbering_part
+        numbering_el = np_part._element
+    except Exception:
+        return  # Sin parte de numeración, nada que hacer
+
+    # --- Paso 1: catalogar qué numIds usan párrafos "normales" (no encabezados)
+    numids_heading: set[str] = set()
+    numids_normal: set[str] = set()
+
+    for p in doc.paragraphs:
         pPr = p._p.find(qn("w:pPr"))
         if pPr is None:
-            pPr = OxmlElement("w:pPr")
-            p._p.insert(0, pPr)
-
-        # Quitar numPr existente (si lo hay)
-        existing_numPr = pPr.find(qn("w:numPr"))
-        if existing_numPr is not None:
-            pPr.remove(existing_numPr)
-
-        # Añadir numPr con numId=0 → deshabilita la numeración del estilo
-        numPr = OxmlElement("w:numPr")
-        ilvl_el = OxmlElement("w:ilvl")
-        ilvl_el.set(qn("w:val"), "0")
-        numId_el = OxmlElement("w:numId")
-        numId_el.set(qn("w:val"), "0")
-        numPr.append(ilvl_el)
-        numPr.append(numId_el)
-        pPr.insert(0, numPr)
-
-        # Anteponer '• ' al primer run solo si aún no tiene el bullet
-        runs = p.runs
-        if runs:
-            if not runs[0].text.startswith("•"):
-                runs[0].text = "•\t" + runs[0].text
+            continue
+        numPr = pPr.find(qn("w:numPr"))
+        if numPr is None:
+            continue
+        nid_el = numPr.find(qn("w:numId"))
+        if nid_el is None:
+            continue
+        numId_val = nid_el.get(qn("w:val"))
+        if not numId_val or numId_val == "0":
+            continue
+        sn = p.style.name if p.style else ""
+        if sn.startswith("Heading"):
+            numids_heading.add(numId_val)
         else:
-            p.add_run("•\t")
+            numids_normal.add(numId_val)
 
-        # Indentación: sangría izquierda y francesa
-        ind = pPr.find(qn("w:ind"))
-        if ind is None:
-            ind = OxmlElement("w:ind")
-            pPr.append(ind)
-        ind.set(qn("w:left"), "720")
-        ind.set(qn("w:hanging"), "360")
+    # numIds usados sólo por párrafos normales (candidatos a convertir)
+    candidatos = numids_normal - numids_heading
+
+    if not candidatos:
+        return
+
+    # --- Paso 2: separar en definidos vs indefinidos ---
+    definidos_decimales: set[str] = set()   # numIds con abstractNum decimal
+    indefinidos: set[str] = set()           # numIds sin abstractNum en el doc
+
+    def get_abstractNum(numId_str):
+        num_el = numbering_el.find(f'{{{NS}}}num[@{{{NS}}}numId="{numId_str}"]')
+        if num_el is None:
+            return None
+        abref = num_el.find(f'{{{NS}}}abstractNumId')
+        if abref is None:
+            return None
+        abid = abref.get(f'{{{NS}}}val')
+        return numbering_el.find(f'{{{NS}}}abstractNum[@{{{NS}}}abstractNumId="{abid}"]')
+
+    for numId_str in candidatos:
+        abn = get_abstractNum(numId_str)
+        if abn is None:
+            indefinidos.add(numId_str)
+        else:
+            # Check if any level is decimal
+            for lvl in abn.findall(f'{{{NS}}}lvl'):
+                nf = lvl.find(f'{{{NS}}}numFmt')
+                if nf is not None and nf.get(f'{{{NS}}}val') == 'decimal':
+                    definidos_decimales.add(numId_str)
+                    break
+
+    # --- Paso 3a: convertir en-place los abstractNums decimales ya definidos ---
+    for numId_str in definidos_decimales:
+        abn = get_abstractNum(numId_str)
+        if abn is None:
+            continue
+        for lvl in abn.findall(f'{{{NS}}}lvl'):
+            nf = lvl.find(f'{{{NS}}}numFmt')
+            if nf is None or nf.get(f'{{{NS}}}val') != 'decimal':
+                continue
+            nf.set(f'{{{NS}}}val', 'bullet')
+            lt = lvl.find(f'{{{NS}}}lvlText')
+            if lt is None:
+                lt = OxmlElement('w:lvlText')
+                lvl.append(lt)
+            lt.set(f'{{{NS}}}val', '\uf0b7')
+            rpr = lvl.find(f'{{{NS}}}rPr')
+            if rpr is None:
+                rpr = OxmlElement('w:rPr')
+                lvl.append(rpr)
+            rfonts = rpr.find(f'{{{NS}}}rFonts')
+            if rfonts is None:
+                rfonts = OxmlElement('w:rFonts')
+                rpr.insert(0, rfonts)
+            rfonts.set(f'{{{NS}}}ascii', 'Symbol')
+            rfonts.set(f'{{{NS}}}hAnsi', 'Symbol')
+            rfonts.set(f'{{{NS}}}hint', 'default')
+
+
+    # --- Paso 3b: crear UN único abstractNum bullet para todos los numIds sin definición ---
+    if not indefinidos:
+        return
+
+    # Determinar un abstractNumId libre (mayor que los existentes)
+    abstract_ids_existentes = [
+        int(el.get(f'{{{NS}}}abstractNumId', '0'))
+        for el in numbering_el.findall(f'{{{NS}}}abstractNum')
+    ]
+    nuevo_abstract_id = str(max(abstract_ids_existentes, default=0) + 1)
+
+    # Construir el abstractNum bullet
+    new_abn = OxmlElement('w:abstractNum')
+    new_abn.set(f'{{{NS}}}abstractNumId', nuevo_abstract_id)
+
+    # Solo nivel 0 — bullet
+    new_lvl = OxmlElement('w:lvl')
+    new_lvl.set(f'{{{NS}}}ilvl', '0')
+
+    el_start = OxmlElement('w:start')
+    el_start.set(f'{{{NS}}}val', '1')
+
+    el_numFmt = OxmlElement('w:numFmt')
+    el_numFmt.set(f'{{{NS}}}val', 'bullet')
+
+    el_lvlText = OxmlElement('w:lvlText')
+    el_lvlText.set(f'{{{NS}}}val', '\uf0b7')
+
+    el_lvlJc = OxmlElement('w:lvlJc')
+    el_lvlJc.set(f'{{{NS}}}val', 'left')
+
+    el_pPr = OxmlElement('w:pPr')
+    el_ind = OxmlElement('w:ind')
+    el_ind.set(f'{{{NS}}}left', '720')
+    el_ind.set(f'{{{NS}}}hanging', '360')
+    el_pPr.append(el_ind)
+
+    el_rPr = OxmlElement('w:rPr')
+    el_rFonts = OxmlElement('w:rFonts')
+    el_rFonts.set(f'{{{NS}}}ascii', 'Symbol')
+    el_rFonts.set(f'{{{NS}}}hAnsi', 'Symbol')
+    el_rFonts.set(f'{{{NS}}}hint', 'default')
+    el_rPr.append(el_rFonts)
+
+    new_lvl.append(el_start)
+    new_lvl.append(el_numFmt)
+    new_lvl.append(el_lvlText)
+    new_lvl.append(el_lvlJc)
+    new_lvl.append(el_pPr)
+    new_lvl.append(el_rPr)
+    new_abn.append(new_lvl)
+
+    # Insertar abstractNum antes del primer w:num
+    first_num = numbering_el.find(f'{{{NS}}}num')
+    if first_num is not None:
+        numbering_el.insert(list(numbering_el).index(first_num), new_abn)
+    else:
+        numbering_el.append(new_abn)
+
+    # Determinar un numId libre para este abstractNum
+    num_ids_existentes = [
+        int(el.get(f'{{{NS}}}numId', '0'))
+        for el in numbering_el.findall(f'{{{NS}}}num')
+    ]
+    nuevo_num_id = str(max(num_ids_existentes, default=0) + 1)
+
+    # Crear el w:num que referencia el nuevo abstractNum
+    new_num = OxmlElement('w:num')
+    new_num.set(f'{{{NS}}}numId', nuevo_num_id)
+    el_abId = OxmlElement('w:abstractNumId')
+    el_abId.set(f'{{{NS}}}val', nuevo_abstract_id)
+    new_num.append(el_abId)
+    numbering_el.append(new_num)
+
+    # Reasignar todos los párrafos con numIds indefinidos al nuevo numId
+    for p in doc.paragraphs:
+        pPr = p._p.find(qn("w:pPr"))
+        if pPr is None:
+            continue
+        numPr = pPr.find(qn("w:numPr"))
+        if numPr is None:
+            continue
+        nid_el = numPr.find(qn("w:numId"))
+        if nid_el is None:
+            continue
+        if nid_el.get(qn("w:val")) in indefinidos:
+            nid_el.set(qn("w:val"), nuevo_num_id)
 
 
 def _ajustar_fuente_runs(parrafo, tamano_pt, negrita=None):
