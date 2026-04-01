@@ -1,0 +1,45 @@
+@startuml diagrama-taxonomia-estandares-interoperabilidad
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam shadowing false
+
+title <b>Taxonomía de estándares de interoperabilidad en salud</b>
+
+@startmindmap
++ <b>Estándares de\ninteroperabilidad\nen salud</b>
+++ <b>Transporte</b>\n(intercambio de datos)
++++ HL7 FHIR
+++++ RESTful API
+++++ JSON / XML
++++ HL7 v2
+++++ Mensajería ADT, ORU
++++ DICOM
+++++ Imágenes médicas
+++ <b>Contenido</b>\n(estructura documental)
++++ HL7 CDA R2
+++++ Documentos XML
++++ CCD
+++++ Resúmenes de cuidado
++++ IPS
+++++ International Patient Summary
+++ <b>Terminología</b>\n(codificación semántica)
++++ SNOMED-CT
+++++ Hallazgos, procedimientos
++++ LOINC
+++++ Laboratorio, signos vitales
++++ CIE-10
+++++ Diagnósticos
++++ CPMS
+++++ Procedimientos (Perú)
+++ <b>Seguridad</b>\n(privacidad y acceso)
++++ OAuth 2.0 / SMART on FHIR
+++++ Autorización de apps
++++ TLS / HTTPS
+++++ Cifrado en tránsito
++++ Ley 29733
+++++ Protección de datos (Perú)
+@endmindmap
+
+@enduml

@@ -1,0 +1,72 @@
+@startuml diagrama-arquitecturas-hie
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 10
+skinparam shadowing false
+skinparam rectangle {
+    RoundCorner 10
+    BorderColor #555555
+    FontSize 10
+}
+skinparam card {
+    BorderColor #777777
+    FontSize 9
+}
+
+title <b>Modelos de arquitectura para el intercambio de información en salud (HIE)</b>
+
+rectangle "**a) Centralizada\n(Integrated Registry-Repository)**" as A #E3F2FD {
+    card "Hospital A" as A1
+    card "Hospital B" as A2
+    card "Hospital C" as A3
+    database "Repositorio\nCentral +\nRegistro" as ADB #BBDEFB
+    A1 --> ADB
+    A2 --> ADB
+    A3 --> ADB
+}
+
+rectangle "**b) Un Registro – Múltiples Repositorios**" as B #E8F5E9 {
+    card "Hospital D" as B1
+    card "Hospital E" as B2
+    database "Repo D" as BD1 #C8E6C9
+    database "Repo E" as BD2 #C8E6C9
+    rectangle "Registro\nCentral" as BR #A5D6A7
+    B1 --> BD1
+    B2 --> BD2
+    BD1 --> BR
+    BD2 --> BR
+}
+
+rectangle "**c) Federada\n(Federated Registry – Multiple Repos)**" as C #FFF3E0 {
+    card "Hospital F" as C1
+    card "Hospital G" as C2
+    database "Repo F" as CD1 #FFE0B2
+    database "Repo G" as CD2 #FFE0B2
+    rectangle "Registro\nFederado" as CR #FFCC80
+    C1 --> CD1
+    C2 --> CD2
+    CD1 <..> CR : "metadatos"
+    CD2 <..> CR : "metadatos"
+}
+
+rectangle "**d) Peer-to-Peer\n(Descentralizada)**" as D #FCE4EC {
+    card "Hospital H" as D1
+    card "Hospital I" as D2
+    card "Hospital J" as D3
+    D1 <--> D2 : "directo"
+    D2 <--> D3 : "directo"
+    D1 <--> D3 : "directo"
+}
+
+note bottom of A
+  Máximo control central;
+  riesgo de punto único de fallo
+end note
+
+note bottom of C
+  Datos permanecen en origen;
+  mayor privacidad y escalabilidad
+end note
+
+@enduml

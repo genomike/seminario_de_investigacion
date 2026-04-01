@@ -1,0 +1,55 @@
+@startuml diagrama-fragmentacion-sistema-salud-peru
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam shadowing false
+skinparam rectangle {
+    RoundCorner 12
+    BorderColor #555555
+    FontSize 11
+}
+skinparam card {
+    BorderColor #777777
+    FontSize 10
+}
+
+title <b>Fragmentación del sistema de salud peruano y su impacto en la interoperabilidad</b>
+
+together {
+    rectangle "**MINSA**\nMinisterio de Salud\n(primer nivel, hospitales\nnacionales)" as MINSA #BBDEFB
+    rectangle "**EsSalud**\nSeguro Social\n(trabajadores formales)" as ESS #C8E6C9
+    rectangle "**FF. AA. / PNP**\nSanidades Militares\ny Policiales" as FFAA #FFF9C4
+    rectangle "**Sector Privado**\nClínicas, consultorios\nparticulares" as PRIV #FFE0B2
+}
+
+rectangle "**Paciente**" as PAC #E1BEE7
+
+PAC -down-> MINSA : "HC #1"
+PAC -down-> ESS : "HC #2"
+PAC -down-> FFAA : "HC #3"
+PAC -down-> PRIV : "HC #4"
+
+MINSA -[hidden]right- ESS
+ESS -[hidden]right- FFAA
+FFAA -[hidden]right- PRIV
+
+rectangle "**Consecuencias de la fragmentación**" as CONSEC #FFCDD2 {
+    card "Múltiples historias\nclínicas por paciente" as C1
+    card "Sin intercambio\nautomático de datos" as C2
+    card "Exámenes duplicados\ny costos innecesarios" as C3
+    card "Pérdida de continuidad\nasistencial" as C4
+}
+
+MINSA -down--> CONSEC
+ESS -down--> CONSEC
+FFAA -down--> CONSEC
+PRIV -down--> CONSEC
+
+note bottom of CONSEC
+  Un paciente puede tener tantas historias
+  clínicas como establecimientos visita
+  (Bayona-Castañeda, 2019)
+end note
+
+@enduml

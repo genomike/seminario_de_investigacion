@@ -114,6 +114,12 @@ En el ámbito global, la ausencia de una integración fluida de datos se reconoc
 
 El panorama peruano refleja esta problemática de manera crítica. Bayona-Castañeda (2019) documenta que un paciente puede tener tantas historias clínicas como establecimientos visita, como resultado de un sistema segmentado y fragmentado. Arrué Pajares y Vargas Rioja (2022) señalan la ausencia de sistemas interoperables que optimicen la gestión de citas, camas y referencias. Mauricio et al. (2024) advierten que actualmente no existe un sistema integrado de historias clínicas electrónicas compartible entre establecimientos, lo que incrementa costos por exámenes duplicados y tiempos adicionales de gestión clínica. Porras-Gamarra (2024), con experiencia directa en interoperabilidad europea, contrasta que, durante la pandemia, mientras Europa debatía sobre estándares de mensajería, en Perú se construían sistemas aislados sin planificación ni estándares.
 
+La siguiente figura ilustra la fragmentación del sistema de salud peruano y sus consecuencias directas sobre la continuidad de la información clínica del paciente.
+
+![Fragmentación del sistema de salud peruano y múltiples historias clínicas por paciente](media/diagrama-fragmentacion-sistema-salud-peru.png)
+
+*Nota.* Elaboración propia a partir de Bayona-Castañeda (2019).
+
 Si bien el MINSA ha establecido un marco normativo para la interoperabilidad mediante la Infraestructura de Estándares de Datos en Salud (IEDS), la Red Nacional de Interoperabilidad en Datos de Salud (RNIEDS) y la Plataforma de Interoperabilidad de Datos Estándares de Salud (PIDESALUD), reguladas por la RM N° 1104-2018-MINSA, RM N° 464-2019-MINSA y RM N° 1193-2019-MINSA, su implementación no es uniforme. La siguiente figura presenta la estructura del marco normativo y la brecha entre lo establecido y lo operativo.
 
 ![Marco normativo peruano para la interoperabilidad en salud](media/diagrama-marco-normativo-peru.png)
@@ -372,6 +378,12 @@ Ante esta limitación, en la presente investigación se priorizarán las brechas
 **Resultados:** De 107 incidencias, 61 correspondieron a problemas del servidor FHIR (57 %), 37 a dificultades de mapeo de datos (34 %) y 9 a selección de perfiles (9 %). Los autores proponen una arquitectura federada con componentes FHIR writer/viewer.
 **Limitaciones:** Fuente de datos limitada a un canal de comunicación (Telegram); podría no capturar problemas en establecimientos sin participación en dicho canal.
 **Crítica o aporte a la tesis:** Los problemas de mapeo semántico y selección de perfiles son equivalentes a las brechas de *codificación* que esta tesis diagnostica. La experiencia de despliegue nacional progresivo es un referente directo para la implementación incremental en centros MINSA.
+
+La siguiente figura presenta la distribución de las 107 incidencias reportadas en la plataforma Satusehat de Indonesia, evidenciando las categorías de problemas más frecuentes durante un despliegue FHIR a escala nacional.
+
+![Distribución de incidencias reportadas en la plataforma Satusehat de Indonesia](media/diagrama-incidencias-satusehat.png)
+
+*Nota.* Elaboración propia a partir de Heryawan et al. (2025).
 
 **AMAR ET AL. (2024)**
 **Aporte:** Ofrecen taxonomía de seis enfoques para interoperabilidad semántica con FHIR, aportando una visión consolidada de las tendencias en integración semántica de datos clínicos.
@@ -821,6 +833,12 @@ La Tabla 7 presenta una comparación de los principales estándares de interoper
 
 *Nota.* Elaboración propia a partir de Surisetty (2026), Pedrera-Jiménez et al. (2023) y Amar et al. (2024).
 
+La siguiente figura presenta una taxonomía visual de los estándares de interoperabilidad clínica, organizados por su función en el ecosistema de intercambio: transporte de datos, estructura de contenido, codificación terminológica y seguridad.
+
+![Taxonomía de estándares de interoperabilidad en salud](media/diagrama-taxonomia-estandares-interoperabilidad.png)
+
+*Nota.* Elaboración propia a partir de Torab-Miandoab et al. (2023), Amar et al. (2024) y Surisetty (2026).
+
 ### Fundamentación teórica
 
 La fundamentación teórica de esta investigación se organiza en torno a cuatro enfoques teóricos que proporcionan la base para analizar la interoperabilidad de datos clínicos en sistemas de salud pública y evaluar el impacto de una intervención tecnológica basada en estándares: la Teoría General de Sistemas, el Enfoque Sociotécnico, la Teoría de Difusión de Innovaciones y el Modelo de Calidad de Datos. Cada uno de estos marcos ofrece una perspectiva complementaria. La Teoría General de Sistemas fundamenta la concepción de la interoperabilidad como propiedad emergente de un sistema de salud articulado; el Enfoque Sociotécnico justifica por qué la implementación tecnológica debe integrarse con componentes organizacionales y humanos; la Teoría de Difusión de Innovaciones explica los patrones de adopción de FHIR y las barreras institucionales; y el Modelo de Calidad de Datos sustenta las dimensiones e indicadores de la variable dependiente.
@@ -884,6 +902,12 @@ La Tabla 9 complementa esta información con la distribución de enfoques de int
 
 *Nota.* Adaptado de "Semantic Interoperability in Health: A Mapping Study of Approaches Related to the Fast Healthcare Interoperability Resources Standard", por Amar et al., 2024, *JMIR*, 26, e45209. La suma supera n = 70 estudios porque un estudio puede emplear más de un enfoque.
 
+La siguiente figura visualiza la distribución de estos seis enfoques, permitiendo apreciar el predominio del mapeo terminológico y la diversidad de estrategias complementarias identificadas en la literatura.
+
+![Distribución de enfoques de interoperabilidad semántica con FHIR](media/diagrama-enfoques-semanticos-fhir.png)
+
+*Nota.* Elaboración propia a partir de Amar et al. (2024).
+
 #### Enfoque Sociotécnico
 
 El Enfoque Sociotécnico, originado en los estudios del Tavistock Institute (Emery y Trist, 1960) y aplicado a los sistemas de información por Bostrom y Heinen (1977), postula que los sistemas de información integran un componente técnico (hardware, software, estándares, redes) y un componente social (personas, procesos organizacionales, cultura institucional, estructuras de gobernanza). La optimización del sistema requiere el diseño conjunto de ambos componentes; intervenir solo el técnico o solo el social produce resultados subóptimos. Fernandez et al. (2025) identificaron que la combinación de estándares técnicos con procesos organizacionales y gobernanza sostenida es condición necesaria para el impacto de la interoperabilidad; esta triada corresponde exactamente a la integración sociotécnica. Holmgren et al. (2023) refuerzan que la priorización gubernamental y los arreglos institucionales son factores críticos que trascienden la infraestructura técnica. En la presente investigación, el Enfoque Sociotécnico se materializa en la consideración conjunta del componente técnico (estándares HL7 FHIR, servidor piloto), el organizacional (gobernanza RNIEDS/PIDESALUD, acuerdos institucionales, procesos de validación SIS) y el humano (capacitación del personal operativo, barreras de adopción). La Fase 1 de diagnóstico evalúa no solo infraestructura técnica sino también cumplimiento normativo y capacidad operativa, y la Fase 3 mide tanto indicadores técnicos (completitud, codificación) como indicadores de proceso (tiempo de validación administrativa).
@@ -902,7 +926,11 @@ El Enfoque Sociotécnico, originado en los estudios del Tavistock Institute (Eme
 
 *Nota.* Adaptado de "Health Information Exchange Policies of Five Countries: Implications for Health Information Exchange in the United States", por Holmgren et al., 2023, *IMIA Yearbook of Medical Informatics*, 32, pp. 208–215.
 
-**Arquitecturas federadas.** Raab et al. (2023) proponen espacios de datos de salud personal federados, una arquitectura que almacena datos de salud en dispositivos personales en lugar de silos de datos centralizados, poniendo al ciudadano en el centro. Adelusi et al. (2025) demostraron que un framework federado basado en FHIR reduce significativamente el riesgo de brechas de datos al no transferir datos crudos. Este enfoque es particularmente relevante para redes de múltiples hospitales con plataformas EHR heterogéneas.
+**Arquitecturas federadas.** Raab et al. (2023) proponen espacios de datos de salud personal federados, una arquitectura que almacena datos de salud en dispositivos personales en lugar de silos de datos centralizados, poniendo al ciudadano en el centro. Adelusi et al. (2025) demostraron que un framework federado basado en FHIR reduce significativamente el riesgo de brechas de datos al no transferir datos crudos. Este enfoque es particularmente relevante para redes de múltiples hospitales con plataformas EHR heterogéneas. La siguiente figura presenta cuatro modelos arquitectónicos para el intercambio de información en salud, desde enfoques centralizados hasta modelos completamente descentralizados.
+
+![Modelos de arquitectura para el intercambio de información en salud (HIE)](media/diagrama-arquitecturas-hie.png)
+
+*Nota.* Elaboración propia a partir de Adelusi et al. (2025) y Lee et al. (2015).
 
 **Blockchain en interoperabilidad de EHR.** Anand y Sadhna (2023), mediante análisis bibliométrico, establecen que la interoperabilidad de datos y el intercambio electrónico de datos se introdujeron en el campo de EHR en 2020, infiriendo que la interoperabilidad de datos es un dominio relativamente nuevo. El mapeo temático sugiere que la “interoperabilidad” de EHR está bien desarrollada y es importante para la estructura del campo de investigación. Mauricio et al. (2024) demostraron la viabilidad de combinar blockchain con FHIR para garantizar seguridad y privacidad en el intercambio de EHR en Perú.
 
@@ -910,7 +938,11 @@ El Enfoque Sociotécnico, originado en los estudios del Tavistock Institute (Eme
 
 La Teoría de Difusión de Innovaciones de Everett Rogers (2003) explica cómo las nuevas tecnologías se difunden a través de los sistemas sociales, identificando cinco atributos que determinan la tasa de adopción: ventaja relativa, compatibilidad, complejidad, posibilidad de prueba (*trialability*) y observabilidad de resultados. HL7 FHIR constituye una innovación tecnológica cuya adopción en el sistema de salud peruano se encuentra en etapas tempranas. Liu et al. (2023) documentaron la ventaja relativa de FHIR sobre estándares previos (reducción de tiempos y costos de transformación); Mauricio et al. (2024) validaron su compatibilidad con sistemas legados (integración sin reemplazo); y Holmgren et al. (2023) y Morales-Camargo y Meneses-Claudio (2023) identificaron que la complejidad técnica y las barreras de capacitación ralentizan la adopción, lo que desde la teoría de Rogers se interpreta como un factor inhibidor que requiere estrategias de reducción de complejidad. La Fase 2 (piloto) de esta investigación operacionaliza la *trialability*, permitiendo evaluar resultados sin comprometer todo el sistema, estrategia coherente con la adopción incremental recomendada por Heryawan et al. (2025) y Jayathissa y Hewapathrana (2024). Vorisek et al. (2022) documentaron que la adopción científica de FHIR tardó cinco años desde la publicación del estándar, lo que confirma la progresividad del proceso de difusión descrito por Rogers.
 
-**Enfoques híbridos y escalabilidad de implementación.** Pedrera-Jiménez et al. (2023) sostienen que OpenEHR, ISO 13606 y FHIR no deben tratarse como opciones excluyentes, sino como componentes complementarios de una arquitectura por capas. Surisetty (2026) y Liu et al. (2023) agregan que la escalabilidad técnica mejora cuando se definen rutas de transformación explícitas (documento-API) y se sustituyen componentes de alto acoplamiento por servicios FHIR nativos. En paralelo, Heryawan et al. (2025) y Jayathissa y Hewapathrana (2024) muestran que, en contextos de recursos limitados, el éxito depende de combinar decisiones arquitectónicas con capacidades operativas de despliegue progresivo.
+**Enfoques híbridos y escalabilidad de implementación.** Pedrera-Jiménez et al. (2023) sostienen que OpenEHR, ISO 13606 y FHIR no deben tratarse como opciones excluyentes, sino como componentes complementarios de una arquitectura por capas. Surisetty (2026) y Liu et al. (2023) agregan que la escalabilidad técnica mejora cuando se definen rutas de transformación explícitas (documento-API) y se sustituyen componentes de alto acoplamiento por servicios FHIR nativos. En paralelo, Heryawan et al. (2025) y Jayathissa y Hewapathrana (2024) muestran que, en contextos de recursos limitados, el éxito depende de combinar decisiones arquitectónicas con capacidades operativas de despliegue progresivo. La siguiente figura ilustra una arquitectura por capas para la interoperabilidad clínica de extremo a extremo, desde los sistemas fuente hasta las aplicaciones consumidoras.
+
+![Arquitectura por capas para interoperabilidad clínica end-to-end](media/diagrama-capas-interoperabilidad-end-to-end.png)
+
+*Nota.* Elaboración propia a partir de Surisetty (2026).
 
 #### Modelo de Calidad de Datos
 

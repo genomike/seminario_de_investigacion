@@ -1,0 +1,33 @@
+@startuml diagrama-enfoques-semanticos-fhir
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam shadowing false
+
+title <b>Distribución de enfoques de interoperabilidad semántica con FHIR</b>
+
+@startmindmap
++ <b>Enfoques de\ninteroperabilidad\nsemántica con FHIR</b>\n(n = 126 enfoques\nen 70 estudios)
+++ <b>Mapeo terminológico</b>\n24,6 % (n = 31)
++++ Mapeo CIE-10 ↔ SNOMED-CT
++++ Mapeo de vocabularios locales
++++ Mapeo estructural entre recursos
+++ <b>Representación RDF/OWL</b>\n19,0 % (n = 24)
++++ Ontologías formales
++++ Web semántica aplicada
+++ <b>ML y NLP</b>\n15,9 % (n = 20)
++++ Extracción de entidades
++++ Clasificación automática
+++ <b>Servicios terminológicos</b>\n14,3 % (n = 18)
++++ Servidores de terminología
++++ ValueSets y CodeSystems
+++ <b>Anotación</b>\n14,3 % (n = 18)
++++ Enriquecimiento de datos
++++ Metadata clínica
+++ <b>Basado en ontologías</b>\n11,9 % (n = 15)
++++ Modelos de dominio
++++ Razonamiento automatizado
+@endmindmap
+
+@enduml

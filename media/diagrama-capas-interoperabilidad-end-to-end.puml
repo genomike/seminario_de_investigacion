@@ -1,0 +1,44 @@
+@startuml diagrama-capas-interoperabilidad-end-to-end
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam shadowing false
+skinparam rectangle {
+    RoundCorner 8
+    BorderColor #555555
+    FontSize 11
+}
+skinparam card {
+    BorderColor #888888
+    FontSize 10
+}
+
+title <b>Arquitectura por capas para interoperabilidad clínica end-to-end</b>
+
+rectangle "**Capa 6: Aplicaciones consumidoras**\nPortales clínicos, dashboards, apps móviles, analítica" as L6 #E8EAF6
+rectangle "**Capa 5: Seguridad y gobernanza**\nOAuth 2.0 / SMART on FHIR · TLS/HTTPS · Consentimiento · Ley 29733" as L5 #FFCDD2
+rectangle "**Capa 4: Normalización semántica**\nSNOMED-CT · LOINC · CIE-10 · CPMS · Terminología local → estándar" as L4 #FFF9C4
+rectangle "**Capa 3: Servicios de interoperabilidad**\nFHIR RESTful API · Servidor FHIR (HAPI) · Validación de perfiles · MPI" as L3 #C8E6C9
+rectangle "**Capa 2: Integración y mediación**\nParsing HL7 v2/CDA · Transformación CDA→FHIR · Mapeo de datos" as L2 #FFE0B2
+rectangle "**Capa 1: Sistemas fuente**\nHIS · HCE · Laboratorio · Farmacia · Sistemas propietarios del MINSA" as L1 #BBDEFB
+
+L1 -up-> L2
+L2 -up-> L3
+L3 -up-> L4
+L4 -up-> L5
+L5 -up-> L6
+
+note right of L3
+  Capa central del
+  modelo propuesto
+  en esta tesis
+end note
+
+note left of L1
+  Sistemas heterogéneos
+  existentes en centros
+  de salud del MINSA
+end note
+
+@enduml

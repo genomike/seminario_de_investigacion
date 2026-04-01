@@ -1,0 +1,53 @@
+@startuml diagrama-incidencias-satusehat
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam shadowing false
+skinparam rectangle {
+    RoundCorner 12
+    BorderColor #555555
+    FontSize 11
+}
+skinparam card {
+    BorderColor #777777
+    FontSize 10
+}
+
+title <b>Distribución de incidencias en la plataforma Satusehat (Indonesia)</b>
+
+together {
+    rectangle "**Problemas de\nservidor FHIR**\nn = 61 (57 %)" as S #FFCDD2 {
+        card "Errores de autenticación" as S1
+        card "Caídas del servidor" as S2
+        card "Tiempos de respuesta" as S3
+    }
+
+    rectangle "**Problemas de\nmapeo de datos**\nn = 37 (34 %)" as M #FFE0B2 {
+        card "Datos legacy no mapeados" as M1
+        card "Pérdida de campos" as M2
+        card "Inconsistencia de formatos" as M3
+    }
+
+    rectangle "**Problemas de\nselección de perfiles**\nn = 9 (9 %)" as P #FFF9C4 {
+        card "Perfil incorrecto" as P1
+        card "Extensiones faltantes" as P2
+    }
+}
+
+S -[hidden]right- M
+M -[hidden]right- P
+
+rectangle "**Total: 107 incidencias analizadas**\nde 219 mensajes en el Developer Hub de Satusehat (Telegram)\n1 067 miembros activos" as TOTAL #E3F2FD
+
+S -down-> TOTAL
+M -down-> TOTAL
+P -down-> TOTAL
+
+note bottom of TOTAL
+  Los problemas de mapeo (34 %) son equivalentes
+  a las brechas de codificación del contexto peruano
+  (Heryawan et al., 2025)
+end note
+
+@enduml
