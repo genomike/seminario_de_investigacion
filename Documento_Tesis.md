@@ -259,7 +259,7 @@ La presente investigación adopta un diseño pre-experimental con comparación p
 
 Adicionalmente, Mukhiya et al. (2021) evidencian que capas de interoperabilidad basadas en FHIR con interfaces flexibles (GraphQL) reducen el acoplamiento entre sistemas heterogéneos, y Richwine et al. (2025) reportan que los mayores beneficios se materializan cuando la integración técnica se acompaña de mecanismos de gobernanza del intercambio. Ambos hallazgos respaldan el enfoque metodológico del estudio, que combina diseño técnico de integración con evaluación operacional de resultados alineada a las brechas específicas identificadas en la fase diagnóstica.
 
-![Fases del enfoque metodológico](media/fases_metodologicas.png)
+![Fases del enfoque metodológico](media/diagrama-fases-metodologicas.png)
 
 *Nota.* Elaboración propia.
 

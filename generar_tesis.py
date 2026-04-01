@@ -102,6 +102,60 @@ def insertar_parrafo_despues(parrafo, texto=""):
     return nuevo
 
 
+# ---------------------------------------------------------------------------
+# Secciones a excluir del DOCX generado.
+# Cada entrada es el texto exacto del encabezado de nivel 1 (# Título).
+# Se excluye ese encabezado y todo su contenido hasta el siguiente H1 (o fin).
+# Modificar esta lista para incluir o excluir secciones según sea necesario.
+# ---------------------------------------------------------------------------
+SECCIONES_EXCLUIDAS: list[str] = [
+    "Resumen",
+    "Abstract",
+    "Introducción",
+    "Capítulo III: Hipótesis y variables",
+    "Capítulo IV: Metodología del estudio",
+    "Capítulo V: Aspectos administrativos",
+    "Anexos",
+]
+
+
+def _filtrar_secciones_excluidas(texto_md: str) -> str:
+    """Elimina del markdown las secciones de nivel 1 listadas en SECCIONES_EXCLUIDAS.
+
+    Conserva el resto del contenido intacto, incluyendo saltos de página
+    (\\newpage) que preceden a secciones incluidas.
+    """
+    if not SECCIONES_EXCLUIDAS:
+        return texto_md
+
+    lineas = texto_md.splitlines(keepends=True)
+    resultado: list[str] = []
+    omitiendo = False
+
+    for linea in lineas:
+        stripped = linea.strip()
+        # Detectar encabezados de nivel 1
+        if stripped.startswith("# ") and not stripped.startswith("## "):
+            titulo = stripped[2:].strip()
+            if titulo in SECCIONES_EXCLUIDAS:
+                omitiendo = True
+                # También eliminar el \newpage que precede a esta sección
+                # si el último elemento añadido era solo ese comando
+                while resultado and resultado[-1].strip() in ("\\newpage", ""):
+                    resultado.pop()
+                continue
+            else:
+                if omitiendo:
+                    # Venía de una sección omitida: reinsertar salto de página
+                    resultado.append("\\newpage\n\n")
+                omitiendo = False
+
+        if not omitiendo:
+            resultado.append(linea)
+
+    return "".join(resultado)
+
+
 def extraer_markdown_cuerpo(origen_md):
     """Extrae el cuerpo del markdown (sin portada) y devuelve ruta temporal."""
     texto = origen_md.read_text(encoding="utf-8")
@@ -110,6 +164,8 @@ def extraer_markdown_cuerpo(origen_md):
         cuerpo = texto
     else:
         cuerpo = texto[idx + len("\\newpage"):].lstrip("\r\n")
+
+    cuerpo = _filtrar_secciones_excluidas(cuerpo)
 
     with tempfile.NamedTemporaryFile(prefix="cuerpo_tesis_", suffix=".md", delete=False, encoding="utf-8", mode="w") as tmp:
         tmp.write(cuerpo)

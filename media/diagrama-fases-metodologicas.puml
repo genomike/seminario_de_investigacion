@@ -1,0 +1,28 @@
+@startuml diagrama-fases-metodologicas
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam shadowing false
+
+skinparam state {
+    BackgroundColor #1A3A6B
+    BorderColor #1A237E
+    FontColor white
+    FontSize 13
+    FontStyle bold
+    RoundCorner 8
+    ArrowColor #455A64
+    ArrowThickness 3
+}
+
+left to right direction
+
+state "Fase de\ndiagnóstico" as F1
+state "Fase de\nimplementación\npiloto" as F2
+state "Fase de\nevaluación" as F3
+
+F1 --> F2
+F2 --> F3
+
+@enduml
