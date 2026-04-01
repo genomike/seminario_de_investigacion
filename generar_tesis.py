@@ -257,7 +257,7 @@ def aplicar_numeracion_titulos(doc):
                 nivel3 = 0
                 dentro_de_capitulo = True
                 if ": " in texto:
-                    p.text = texto.replace(": ", ".- ", 1)
+                    p.text = texto.replace(": ", ". ", 1)
             else:
                 dentro_de_capitulo = False
 
@@ -265,12 +265,64 @@ def aplicar_numeracion_titulos(doc):
             nivel2 += 1
             nivel3 = 0
             limpio = re.sub(r"^\d+\.\d+\.?\s*(->\s*)?", "", texto)
-            p.text = f"{capitulo_actual}.{nivel2}. -> {limpio}"
+            limpio = re.sub(r"^-\s*", "", limpio)
+            p.text = f"{capitulo_actual}.{nivel2}. {limpio}"
 
         elif dentro_de_capitulo and estilo == "Heading 3":
             nivel3 += 1
             limpio = re.sub(r"^\d+\.\d+\.\d+\.?\s*(->\s*)?", "", texto)
-            p.text = f"{capitulo_actual}.{nivel2}.{nivel3}. -> {limpio}"
+            limpio = re.sub(r"^-\s*", "", limpio)
+            p.text = f"{capitulo_actual}.{nivel2}.{nivel3}. {limpio}"
+
+
+def convertir_listas_a_bullets(doc):
+    """Convierte listas con estilo 'List Paragraph' a viñetas (bullet •).
+
+    Pandoc genera listas markdown '-' con estilo 'List Paragraph'. La plantilla
+    puede definir ese estilo como lista numerada a nivel de estilo. Para anular
+    completamente esa numeración se usa numId=0 en el numPr inline, que tiene
+    prioridad absoluta sobre la definición del estilo.
+    """
+    for p in doc.paragraphs:
+        style_name = p.style.name if p.style else ""
+        if "List" not in style_name:
+            continue
+
+        pPr = p._p.find(qn("w:pPr"))
+        if pPr is None:
+            pPr = OxmlElement("w:pPr")
+            p._p.insert(0, pPr)
+
+        # Quitar numPr existente (si lo hay)
+        existing_numPr = pPr.find(qn("w:numPr"))
+        if existing_numPr is not None:
+            pPr.remove(existing_numPr)
+
+        # Añadir numPr con numId=0 → deshabilita la numeración del estilo
+        numPr = OxmlElement("w:numPr")
+        ilvl_el = OxmlElement("w:ilvl")
+        ilvl_el.set(qn("w:val"), "0")
+        numId_el = OxmlElement("w:numId")
+        numId_el.set(qn("w:val"), "0")
+        numPr.append(ilvl_el)
+        numPr.append(numId_el)
+        pPr.insert(0, numPr)
+
+        # Anteponer '• ' al primer run solo si aún no tiene el bullet
+        runs = p.runs
+        if runs:
+            if not runs[0].text.startswith("•"):
+                runs[0].text = "•\t" + runs[0].text
+        else:
+            p.add_run("•\t")
+
+        # Indentación: sangría izquierda y francesa
+        ind = pPr.find(qn("w:ind"))
+        if ind is None:
+            ind = OxmlElement("w:ind")
+            pPr.append(ind)
+        ind.set(qn("w:left"), "720")
+        ind.set(qn("w:hanging"), "360")
 
 
 def _ajustar_fuente_runs(parrafo, tamano_pt, negrita=None):
@@ -540,6 +592,7 @@ def postprocesar_docx(destino):
     doc = Document(str(destino))
     excluir_preliminares_del_toc(doc)
     aplicar_numeracion_titulos(doc)
+    convertir_listas_a_bullets(doc)
     aplicar_saltos_pagina_encabezados(doc)
     numerar_captions_figuras(doc)
     formatear_notas_fuente(doc)
