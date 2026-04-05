@@ -49,7 +49,7 @@ PRIV -down--> CONSEC
 note bottom of CONSEC
   Un paciente puede tener tantas historias
   clínicas como establecimientos visita
-  (Bayona-Castañeda, 2019)
+  (Bayona, 2019)
 end note
 
 @enduml

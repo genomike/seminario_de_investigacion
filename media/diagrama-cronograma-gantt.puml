@@ -1,0 +1,36 @@
+@startgantt
+Project starts 2025-07-01
+
+printscale weekly zoom 2
+
+title Cronograma de actividades de la investigacion
+
+-- Fase preparatoria --
+[Revision y aprobacion del proyecto] lasts 4 weeks
+[Gestion de permisos institucionales] lasts 8 weeks
+[Validacion de instrumentos] lasts 4 weeks
+
+-- Fase 1 Diagnostico --
+[Diagnostico de brechas y linea base] lasts 8 weeks
+[Diagnostico de brechas y linea base] starts at [Gestion de permisos institucionales]'s end
+
+-- Fase 2 Implementacion --
+[Diseno e implementacion capa FHIR] lasts 8 weeks
+[Diseno e implementacion capa FHIR] starts 4 weeks after [Diagnostico de brechas y linea base]'s start
+[Capacitacion del personal] lasts 4 weeks
+[Capacitacion del personal] starts at [Diseno e implementacion capa FHIR]'s end
+[Operacion piloto] lasts 8 weeks
+[Operacion piloto] starts at [Capacitacion del personal]'s start
+
+-- Fase 3 Evaluacion --
+[Evaluacion de impacto] lasts 4 weeks
+[Evaluacion de impacto] starts at [Operacion piloto]'s end
+[Analisis e interpretacion] lasts 8 weeks
+[Analisis e interpretacion] starts at [Evaluacion de impacto]'s start
+
+-- Cierre --
+[Redaccion del informe final] lasts 4 weeks
+[Redaccion del informe final] starts at [Analisis e interpretacion]'s end
+[Sustentacion de tesis] happens at [Redaccion del informe final]'s end
+
+@endgantt

@@ -29,7 +29,7 @@ rectangle "<b>Percepción de usuarios</b>" as PU #E8F5E9 {
 }
 
 rectangle "<b>Impacto económico</b>" as IE #FCE4EC {
-    rectangle "Ahorro potencial de\nhasta 80% en costos\npor repetición de pruebas\n(Bayona-Castañeda, 2019)" as E1 #F8BBD0
+    rectangle "Ahorro potencial de\nhasta 80% en costos\npor repetición de pruebas\n(Bayona, 2019)" as E1 #F8BBD0
 }
 
 AT -[hidden]right- BT

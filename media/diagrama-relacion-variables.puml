@@ -1,0 +1,62 @@
+@startuml diagrama-relacion-variables
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam shadowing false
+skinparam rectangle {
+    RoundCorner 12
+    BorderColor #555555
+}
+skinparam package {
+    BackgroundColor #FAFAFA
+    BorderColor #888888
+    FontSize 13
+    FontStyle bold
+}
+
+title <b>Relación entre variable independiente y variable dependiente</b>
+
+package "Variable Independiente:\nModelo de Interoperabilidad HL7 FHIR" as VI {
+    rectangle "<b>Fase 1</b>\nDiagnóstico de\nbrechas" as F1 #FFE0B2
+    rectangle "<b>Fase 2</b>\nImplementación\npiloto FHIR" as F2 #C8E6C9
+    rectangle "<b>Fase 3</b>\nEvaluación de\nimpacto" as F3 #BBDEFB
+}
+
+F1 -right-> F2
+F2 -right-> F3
+
+package "Variable Dependiente:\nCalidad del intercambio de información clínica" as VD {
+    rectangle "<b>D1: Integridad\nde datos</b>" as D1 #E8EAF6
+    rectangle "<b>D2: Duplicidad</b>" as D2 #FFF3E0
+    rectangle "<b>D3: Eficiencia\nadministrativa</b>" as D3 #E8F5E9
+    rectangle "<b>D4: Continuidad\ny trazabilidad</b>" as D4 #FCE4EC
+}
+
+F3 -down-> D1
+F3 -down-> D2
+F3 -down-> D3
+F3 -down-> D4
+
+note bottom of D1
+  I1: Completitud de HCE
+  I2: Codificación CIE-10
+  I3: Codificación CPMS
+end note
+
+note bottom of D2
+  I4: Duplicidad de pacientes
+  I5: Duplicidad de exámenes
+end note
+
+note bottom of D3
+  I6: Tiempo de validación
+  administrativa de prestaciones
+end note
+
+note bottom of D4
+  I7: Continuidad de atención
+  I8: Trazabilidad de accesos
+end note
+
+@enduml

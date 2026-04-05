@@ -1,0 +1,46 @@
+@startuml diagrama-diseno-preexperimental
+!theme plain
+skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam shadowing false
+skinparam rectangle {
+    RoundCorner 12
+    BorderColor #555555
+}
+
+title <b>Diseño pre-experimental: pre-test / post-test con un solo grupo</b>
+
+rectangle "<b>O₁</b>\nPre-test\n(Línea base)" as O1 #FFE0B2
+rectangle "<b>X</b>\nIntervención\n(Modelo FHIR)" as X #C8E6C9
+rectangle "<b>O₂</b>\nPost-test\n(Evaluación)" as O2 #BBDEFB
+
+O1 -right-> X : ""
+X -right-> O2 : ""
+
+note bottom of O1
+  <b>Fase 1: Diagnóstico</b>
+  ● Lista de chequeo normativo-técnico
+  ● Auditoría de registros (8 indicadores)
+  ● Entrevistas semiestructuradas
+  ● Revisión documental
+end note
+
+note bottom of X
+  <b>Fase 2: Implementación piloto</b>
+  ● Capa de integración FHIR
+  ● Mapeo de datos locales → FHIR
+  ● Recursos: Patient, Encounter,
+    Condition, Observation, Procedure
+  ● Capacitación del personal
+end note
+
+note bottom of O2
+  <b>Fase 3: Evaluación de impacto</b>
+  ● Medición post de 8 indicadores
+  ● Comparación O₁ vs O₂
+  ● Pruebas estadísticas (t / Wilcoxon)
+  ● Triangulación cuali-cuantitativa
+end note
+
+@enduml

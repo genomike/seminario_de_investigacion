@@ -112,9 +112,6 @@ SECCIONES_EXCLUIDAS: list[str] = [
     "Resumen",
     "Abstract",
     "Introducción",
-    "Capítulo III: Hipótesis y variables",
-    "Capítulo IV: Metodología del estudio",
-    "Capítulo V: Aspectos administrativos",
     "Anexos",
 ]
 
