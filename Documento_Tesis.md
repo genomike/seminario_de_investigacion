@@ -305,9 +305,9 @@ La Tabla 3 sintetiza estos hallazgos con sus implicaciones directas para las dim
 | Indicador | Urbano | Rural | Brecha de calidad afectada |
 |:----------------------------------------------|:--------:|:-------:|:---------------------------------|
 | Establecimientos con EHR operativo | 42 % | 18 % | Completitud, codificación |
-| Dependencia de registros en papel/planillas | — | 65 % | Completitud, disponibilidad |
+| Dependencia de registros en papel/planillas | — | 65 % | Integridad |
 | Interrupciones que afectan continuidad | — | 72 % | Trazabilidad, continuidad |
-| Tiempo de conciliación manual | — | 48–72 h | Eficiencia, disponibilidad |
+| Tiempo de conciliación manual | — | 48–72 h | Eficiencia administrativa |
 | Establecimientos con integración HL7/FHIR | 22 % (promedio) | | Consistencia, codificación |
 | Tasa de errores en entrada de datos (sin integración) | 35 % (promedio) | | Integridad, consistencia |
 | Pacientes crónicos con pérdida de datos en transiciones | 55 % (promedio) | | Continuidad, trazabilidad |
@@ -323,7 +323,7 @@ Ante esta limitación, en la presente investigación se gestionarán los permiso
 
 El estudio se focaliza en centros de salud del MINSA ubicados en Lima, lo que limita la generalización de los hallazgos a otras regiones del país. Las condiciones de infraestructura tecnológica difieren sustancialmente entre zonas urbanas y rurales del Perú: mientras que Lima dispone de conectividad estable, equipamiento actualizado y personal con mayor familiarización digital, las regiones de sierra y selva enfrentan cortes de energía frecuentes, conexiones de baja velocidad y uso extendido de registros manuales (Mauricio et al., 2024). Holmgren et al. (2023), en su análisis comparado de políticas de intercambio en cinco países, corroboran que los modelos de interoperabilidad diseñados para entornos urbanos con infraestructura madura presentan dificultades significativas de transferencia a contextos con menor madurez digital.
 
-En consecuencia, el modelo propuesto —y los resultados de la evaluación pre-post intervención— son válidos para el contexto específico del estudio, pero requieren adaptaciones para su escalabilidad a otras localidades, aspecto que se aborda como lineamiento en el objetivo específico 4.
+En consecuencia, el modelo propuesto —y los resultados de la evaluación pre-post intervención— son válidos para el contexto específico del estudio, pero requieren adaptaciones para su escalabilidad a otras localidades, aspecto que se aborda como lineamiento en el objetivo específico 5.
 
 Ante esta limitación, en la presente investigación se seleccionarán establecimientos que representen al menos dos o tres niveles de complejidad dentro de Lima, para captar variabilidad representativa, y se formularán directrices explícitas de escalabilidad como parte de los lineamientos derivados del piloto.
 
@@ -349,7 +349,7 @@ La implementación del proyecto piloto está circunscrita al periodo académico 
 
 La experiencia nacional respalda esta restricción. Porras (2024) documenta que la implementación de interoperabilidad HL7 FHIR y openEHR en un entorno hospitalario real involucró múltiples iteraciones de ajuste y validación, y Arrué y Vargas (2022) reportan que su implementación de HIS interoperable basado en HL7 v2 requirió una fase extensa de configuración y pruebas adaptadas a la infraestructura local. En contextos internacionales con desafíos similares de madurez digital, Heryawan et al. (2025) muestran que la adopción de FHIR en Indonesia avanzó de forma incremental, priorizando funcionalidades críticas en cada iteración.
 
-Ante esta limitación, en la presente investigación se priorizarán las brechas con mayor impacto y viabilidad mediante una matriz de priorización, concentrando los recursos en un piloto funcional y acotado que pueda generar evidencia evaluable dentro del periodo académico y ser escalado en fases subsiguientes, en coherencia con los lineamientos de escalabilidad planteados en el objetivo específico 4.
+Ante esta limitación, en la presente investigación se priorizarán las brechas con mayor impacto y viabilidad mediante una matriz de priorización, concentrando los recursos en un piloto funcional y acotado que pueda generar evidencia evaluable dentro del periodo académico y ser escalado en fases subsiguientes, en coherencia con los lineamientos de escalabilidad planteados en el objetivo específico 5.
 
 # Capítulo II: Marco teórico
 
@@ -1198,7 +1198,7 @@ La siguiente tabla detalla la especificación técnica de cada indicador, incluy
 
 *Nota.* Elaboración propia.
 
-### Síntesis de métricas de referencia en implementaciones FHIR internacionales
+#### Síntesis de métricas de referencia en implementaciones FHIR internacionales
 
 La siguiente tabla sintetiza las métricas de resultados reportadas en estudios internacionales de implementación FHIR que constituyen los referentes empíricos para los indicadores del presente estudio.
 
@@ -1395,7 +1395,7 @@ La siguiente tabla detalla las pruebas estadísticas que se aplicarán a cada in
 
 Se construirá un índice compuesto de cumplimiento de interoperabilidad que integre los resultados de la lista de chequeo normativo-técnico, siguiendo el enfoque de Holmgren et al. (2023), quienes clasifican la madurez de HIE en dimensiones con niveles diferenciados (baja, moderada, alta). Los datos se procesarán con software estadístico R, empleado también por Vorisek et al. (2022) en su revisión sistemática sobre FHIR (R v4.0.5) y por Anand y Sadhna (2023) en su análisis bibliométrico con Bibliometrix. Las métricas de rendimiento técnico del servidor FHIR (latencia, throughput, tasa de éxito) se analizarán mediante estadística descriptiva y comparación con los umbrales de referencia reportados por Adelusi et al. (2025) —más del 95% de precisión y 38% de reducción de latencia— y por Liu et al. (2023) en sus pruebas con Apache JMeter.
 
-**Análisis cualitativo.** La información obtenida de las entrevistas semiestructuradas se analizará mediante categorización temática, identificando patrones recurrentes sobre barreras organizacionales, técnicas y culturales para la implementación de interoperabilidad FHIR. Este enfoque se alinea con la metodología de categorización empleada por Heryawan et al. (2025), quienes clasificaron 107 incidencias de la plataforma Satusehat en tres categorías principales (servidor, mapeo y perfiles) mediante etiquetado manual por dos investigadores con verificación de confiabilidad inter-codificador. Las categorías de análisis se establecerán de forma apríastica a partir de las dimensiones de las variables operacionalizadas en el Capítulo III, complementadas con categorías emergentes que surjan durante el análisis.
+**Análisis cualitativo.** La información obtenida de las entrevistas semiestructuradas se analizará mediante categorización temática, identificando patrones recurrentes sobre barreras organizacionales, técnicas y culturales para la implementación de interoperabilidad FHIR. Este enfoque se alinea con la metodología de categorización empleada por Heryawan et al. (2025), quienes clasificaron 107 incidencias de la plataforma Satusehat en tres categorías principales (servidor, mapeo y perfiles) mediante etiquetado manual por dos investigadores con verificación de confiabilidad inter-codificador. Las categorías de análisis se establecerán de forma apriorística a partir de las dimensiones de las variables operacionalizadas en el Capítulo III, complementadas con categorías emergentes que surjan durante el análisis.
 
 Los hallazgos cualitativos se triangularán con los resultados cuantitativos siguiendo el enfoque de convergencia descrito por Hernández-Sampieri y Mendoza (2018), donde los hallazgos de ambas vertientes se comparan e integran para generar conclusiones robustas. Esta triangulación es particularmente relevante porque, como evidencian Holmgren et al. (2023), los factores de gobernanza institucional —que solo se captan cualitativamente— condicionan la efectividad de las soluciones técnicas de interoperabilidad.
 
@@ -1447,7 +1447,7 @@ La siguiente tabla presenta la distribución del presupuesto agrupada por fase d
 
 : Tabla 10. Distribución del presupuesto por fase de investigación
 
-*Nota.* Elaboración propia. Los montos se derivan de la Tabla 2 y se agrupan según la fase en la que se ejecutará cada gasto.
+*Nota.* Elaboración propia. Los montos se derivan de la tabla de presupuesto y se agrupan según la fase en la que se ejecutará cada gasto.
 
 ## Cronograma de actividades
 
