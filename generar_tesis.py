@@ -18,6 +18,7 @@ Uso:
 # pyright: reportPrivateUsage=false
 # pylint: disable=protected-access
 
+import math
 import re
 import locale
 import subprocess
@@ -728,6 +729,7 @@ def numerar_captions_figuras(doc):
         # Run: "Figura "
         run_pre = p.add_run("Figura ")
         run_pre.font.size = Pt(10)
+        run_pre.font.name = "Arial"
         run_pre.italic = True
 
         # Campo SEQ Figure — cada componente en su propio run (requerido por Word)
@@ -749,6 +751,7 @@ def numerar_captions_figuras(doc):
 
         run_num = p.add_run("#")
         run_num.font.size = Pt(10)
+        run_num.font.name = "Arial"
         run_num.italic = True
 
         r_end = p.add_run()._r  # pyright: ignore[reportPrivateUsage]
@@ -759,6 +762,7 @@ def numerar_captions_figuras(doc):
         # Run: ". " + texto original del caption
         run_post = p.add_run(f". {texto_original}")
         run_post.font.size = Pt(10)
+        run_post.font.name = "Arial"
         run_post.italic = True
 
         # Centrar el caption
@@ -787,6 +791,8 @@ def numerar_captions_tablas(doc):
             continue
 
         texto_original = re.sub(r"\s*\{#[^}]+\}", "", p.text.strip()).strip()
+        # Quitar prefijo "Tabla N. " o "Tabla N: " que pandoc ya incluyó en el texto
+        texto_original = re.sub(r"^Tabla\s+\d+\s*[\.:]\.?\s*", "", texto_original).strip()
         if not texto_original or texto_original.startswith("Nota."):
             continue
 
@@ -798,7 +804,8 @@ def numerar_captions_tablas(doc):
 
         # Run: "Tabla "
         run_pre = p.add_run("Tabla ")
-        run_pre.font.size = Pt(12)
+        run_pre.font.size = Pt(10)
+        run_pre.font.name = "Arial"
 
         # Campo SEQ Table — cada componente en su propio run (requerido por Word)
         r_begin = p.add_run()._r  # pyright: ignore[reportPrivateUsage]
@@ -818,7 +825,8 @@ def numerar_captions_tablas(doc):
         r_sep.append(fld_sep)
 
         run_num = p.add_run("#")
-        run_num.font.size = Pt(12)
+        run_num.font.size = Pt(10)
+        run_num.font.name = "Arial"
 
         r_end = p.add_run()._r  # pyright: ignore[reportPrivateUsage]
         fld_end = OxmlElement("w:fldChar")
@@ -827,21 +835,380 @@ def numerar_captions_tablas(doc):
 
         # Run: ". " + texto original del caption
         run_post = p.add_run(f". {texto_original}")
-        run_post.font.size = Pt(12)
+        run_post.font.size = Pt(10)
+        run_post.font.name = "Arial"
 
 
 def formatear_notas_fuente(doc):
-    """Centra y ajusta las notas de fuente ('Nota. Elaboración propia...' debajo de figuras)."""
+    """Centra y aplica Arial 10pt a TODAS las notas ('Nota. ...') fuera de tablas."""
     for p in doc.paragraphs:
         texto = p.text.strip()
         if not texto.startswith("Nota."):
             continue
-        # Verificar que contiene "Elaboración propia" u otra indicación de fuente
-        if "laboración propia" not in texto and "daptado de" not in texto:
-            continue
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        _set_fuente_parrafo_ppr(p, 10, "Arial")
         for run in p.runs:
-            run.font.size = Pt(10)
+            _set_fuente_run(run, 10, "Arial")
+
+
+# ---------------------------------------------------------------------------
+# Secciones landscape automáticas para tablas anchas
+# ---------------------------------------------------------------------------
+
+def _contar_columnas_tabla(tbl_elem):
+    """Cuenta columnas de una tabla DOCX usando w:tblGrid o la primera fila."""
+    tbl_grid = tbl_elem.find(qn("w:tblGrid"))
+    if tbl_grid is not None:
+        return len(tbl_grid.findall(qn("w:gridCol")))
+    first_row = tbl_elem.find(qn("w:tr"))
+    if first_row is not None:
+        return len(first_row.findall(qn("w:tc")))
+    return 0
+
+
+def _texto_elem(elem):
+    """Texto concatenado de todos los w:t dentro del elemento."""
+    return "".join(t.text or "" for t in elem.iter(qn("w:t"))).strip()
+
+
+def _es_caption_tabla(elem):
+    """True si el elemento es un párrafo caption de tabla (por estilo o texto)."""
+    if elem.tag != qn("w:p"):
+        return False
+    ppr = elem.find(qn("w:pPr"))
+    if ppr is not None:
+        ps = ppr.find(qn("w:pStyle"))
+        if ps is not None and ps.get(qn("w:val"), "") in {"TableCaption", "TableTitle", "Tabletitre"}:
+            return True
+    # Fallback: comienza con "Tabla" (tras numerar_captions_tablas)
+    return _texto_elem(elem).startswith("Tabla")
+
+
+def _hacer_sectpr(landscape: bool):
+    """Crea w:sectPr A4 en orientación vertical (portrait) u horizontal (landscape)."""
+    sect = OxmlElement("w:sectPr")
+    pgSz = OxmlElement("w:pgSz")
+    if landscape:
+        pgSz.set(qn("w:w"), "16838")   # 29.7 cm → twips
+        pgSz.set(qn("w:h"), "11906")   # 21 cm  → twips
+        pgSz.set(qn("w:orient"), "landscape")
+    else:
+        pgSz.set(qn("w:w"), "11906")
+        pgSz.set(qn("w:h"), "16838")
+    sect.append(pgSz)
+    pgMar = OxmlElement("w:pgMar")
+    # Márgenes 1 pulgada (1440 twips) en landscape, reducir laterales para más espacio
+    if landscape:
+        pgMar.set(qn("w:top"), "720")
+        pgMar.set(qn("w:right"), "720")
+        pgMar.set(qn("w:bottom"), "720")
+        pgMar.set(qn("w:left"), "720")
+    else:
+        pgMar.set(qn("w:top"), "1440")
+        pgMar.set(qn("w:right"), "1440")
+        pgMar.set(qn("w:bottom"), "1440")
+        pgMar.set(qn("w:left"), "1440")
+    pgMar.set(qn("w:header"), "708")
+    pgMar.set(qn("w:footer"), "708")
+    pgMar.set(qn("w:gutter"), "0")
+    sect.append(pgMar)
+    return sect
+
+
+def _parrafo_seccion(landscape: bool):
+    """Párrafo vacío cuyo pPr contiene un sectPr para marcar inicio de sección."""
+    p = OxmlElement("w:p")
+    pPr = OxmlElement("w:pPr")
+    pPr.append(_hacer_sectpr(landscape))
+    p.append(pPr)
+    return p
+
+
+def aplicar_orientacion_tablas_anchas(doc, min_columnas: int = 4):
+    """Envuelve tablas de ≥ min_columnas columnas en secciones landscape.
+
+    Dos tablas anchas consecutivas (separadas solo por párrafos vacíos o notas)
+    se mantienen en la misma sección landscape.
+    """
+    body = doc.element.body
+
+    # Elementos del body sin el w:sectPr final
+    ch = [c for c in body if c.tag != qn("w:sectPr")]
+    n = len(ch)
+
+    # ── Paso 1: encontrar bloques (start, end) ──────────────────────────────
+    bloques: list[tuple[int, int]] = []
+    i = 0
+    while i < n:
+        if ch[i].tag != qn("w:tbl") or _contar_columnas_tabla(ch[i]) < min_columnas:
+            i += 1
+            continue
+
+        # Tabla ancha encontrada en ch[i]
+        start = i
+        # Extender hacia atrás: incluir caption si el párrafo anterior lo es
+        if start > 0 and _es_caption_tabla(ch[start - 1]):
+            start -= 1
+
+        end = i
+        # Extender hacia adelante: incluir párrafos de nota ("Nota. ...")
+        j = end + 1
+        while j < n and ch[j].tag == qn("w:p") and _texto_elem(ch[j]).startswith("Nota."):
+            end = j
+            j += 1
+
+        bloques.append((start, end))
+        i = end + 1
+
+    if not bloques:
+        return
+
+    # ── Paso 2: fusionar bloques separados solo por párrafos vacíos ─────────
+    fusionados: list[tuple[int, int]] = [bloques[0]]
+    for blk_s, blk_e in bloques[1:]:
+        prev_s, prev_e = fusionados[-1]
+        gap_vacios = all(
+            ch[k].tag == qn("w:p") and not _texto_elem(ch[k])
+            for k in range(prev_e + 1, blk_s)
+        ) if blk_s > prev_e + 1 else True
+        if gap_vacios:
+            fusionados[-1] = (prev_s, blk_e)
+        else:
+            fusionados.append((blk_s, blk_e))
+
+    # ── Paso 3: capturar referencias antes de modificar el body ─────────────
+    grupos_elems = [(ch[s], ch[e]) for s, e in fusionados]
+
+    # ── Paso 4: insertar section breaks en orden inverso ────────────────────
+    for first_elem, last_elem in reversed(grupos_elems):
+        # Párrafo con sectPr(landscape) DESPUÉS del bloque → cierra sección landscape
+        last_elem.addnext(_parrafo_seccion(landscape=True))
+        # Párrafo con sectPr(portrait) ANTES del bloque → cierra sección portrait anterior
+        first_elem.addprevious(_parrafo_seccion(landscape=False))
+
+    tablas_envueltas = len(grupos_elems)
+    print(f"  Secciones landscape aplicadas: {tablas_envueltas} grupo(s) de tablas anchas.")
+
+
+# ---------------------------------------------------------------------------
+# Ajuste dinámico de anchos de columnas proporcional al contenido
+# ---------------------------------------------------------------------------
+
+# Ancho de texto disponible en twips para cada orientación
+_ANCHO_LANDSCAPE = 16838 - 1440   # A4 landscape - márgenes 720+720
+_ANCHO_PORTRAIT  = 11906 - 2880   # A4 portrait  - márgenes 1440+1440
+_MIN_COL_TWIPS   = 800             # ancho mínimo garantizado por columna (~1.4 cm)
+
+
+def _max_len_por_columna(tbl_elem):
+    """Longitud máxima de texto (caracteres) por columna, manejando celdas fusionadas."""
+    tbl_grid = tbl_elem.find(qn("w:tblGrid"))
+    n_cols = len(tbl_grid.findall(qn("w:gridCol"))) if tbl_grid is not None else 0
+    if n_cols == 0:
+        first_row = tbl_elem.find(qn("w:tr"))
+        if first_row is None:
+            return []
+        n_cols = len(first_row.findall(qn("w:tc")))
+    if n_cols == 0:
+        return []
+
+    max_len: list[int] = [0] * n_cols
+    for tr in tbl_elem.findall(qn("w:tr")):
+        col_idx = 0
+        for tc in tr.findall(qn("w:tc")):
+            if col_idx >= n_cols:
+                break
+            tc_pr = tc.find(qn("w:tcPr"))
+            span = 1
+            if tc_pr is not None:
+                gs = tc_pr.find(qn("w:gridSpan"))
+                if gs is not None:
+                    span = int(gs.get(qn("w:val"), "1") or "1")
+            texto = "".join(t.text or "" for t in tc.iter(qn("w:t"))).strip()
+            # Imputar solo a la primera columna del span (heurística conservadora)
+            max_len[col_idx] = max(max_len[col_idx], len(texto))
+            col_idx += span
+    return max_len
+
+
+def _distribuir_anchos(max_len: list[int], ancho_total: int) -> list[int]:
+    """Distribuye ancho_total (twips) entre columnas de forma proporcional.
+
+    Usa raíz cuadrada de la longitud para suavizar el impacto de columnas
+    con mucho texto y evitar que dominen excesivamente el espacio.
+    """
+    n = len(max_len)
+    if n == 0:
+        return []
+    # Raíz cuadrada para distribución suavizada
+    pesos = [math.sqrt(max(ml, 1)) for ml in max_len]
+    total_peso = sum(pesos) or 1
+    # Ancho proporcional con piso mínimo
+    espacio_libre = max(0, ancho_total - _MIN_COL_TWIPS * n)
+    anchos = [
+        _MIN_COL_TWIPS + int(espacio_libre * (p / total_peso))
+        for p in pesos
+    ]
+    # Ajustar diferencia de redondeo en la última columna
+    anchos[-1] += ancho_total - sum(anchos)
+    return anchos
+
+
+def _aplicar_anchos_a_tabla(tbl_elem, anchos: list[int]):
+    """Escribe los anchos calculados en w:tblGrid, w:tblW y cada celda."""
+    n = len(anchos)
+    ancho_total = sum(anchos)
+
+    # w:tblGrid
+    tbl_grid = tbl_elem.find(qn("w:tblGrid"))
+    if tbl_grid is not None:
+        for k, gc in enumerate(tbl_grid.findall(qn("w:gridCol"))):
+            if k < n:
+                gc.set(qn("w:w"), str(anchos[k]))
+
+    # w:tblPr → w:tblW y w:tblLayout
+    tbl_pr = tbl_elem.tblPr
+    tbl_w = tbl_pr.find(qn("w:tblW"))
+    if tbl_w is None:
+        tbl_w = OxmlElement("w:tblW")
+        tbl_pr.append(tbl_w)
+    tbl_w.set(qn("w:w"), str(ancho_total))
+    tbl_w.set(qn("w:type"), "dxa")
+
+    tbl_layout = tbl_pr.find(qn("w:tblLayout"))
+    if tbl_layout is None:
+        tbl_layout = OxmlElement("w:tblLayout")
+        tbl_pr.append(tbl_layout)
+    tbl_layout.set(qn("w:type"), "fixed")
+
+    # Ancho de cada celda
+    for tr in tbl_elem.findall(qn("w:tr")):
+        col_idx = 0
+        for tc in tr.findall(qn("w:tc")):
+            if col_idx >= n:
+                break
+            tc_pr = tc.find(qn("w:tcPr"))
+            if tc_pr is None:
+                tc_pr = OxmlElement("w:tcPr")
+                tc.insert(0, tc_pr)
+            span = 1
+            gs = tc_pr.find(qn("w:gridSpan"))
+            if gs is not None:
+                span = int(gs.get(qn("w:val"), "1") or "1")
+            w_val = sum(anchos[col_idx: col_idx + span]) if col_idx + span <= n else anchos[col_idx]
+            tc_w = tc_pr.find(qn("w:tcW"))
+            if tc_w is None:
+                tc_w = OxmlElement("w:tcW")
+                tc_pr.append(tc_w)
+            tc_w.set(qn("w:w"), str(w_val))
+            tc_w.set(qn("w:type"), "dxa")
+            col_idx += span
+
+
+def _set_fuente_run(run, tamano_pt: float, fuente: str = "Arial"):
+    """Fija fuente y tamaño en un run y sus marcas rPr XML."""
+    run.font.name = fuente
+    run.font.size = Pt(tamano_pt)
+    r = run._r  # pyright: ignore[reportPrivateUsage]
+    rPr = r.find(qn("w:rPr"))
+    if rPr is None:
+        rPr = OxmlElement("w:rPr")
+        r.insert(0, rPr)
+    for tag, attr, val in [
+        ("w:sz",     qn("w:val"), str(int(tamano_pt * 2))),
+        ("w:szCs",   qn("w:val"), str(int(tamano_pt * 2))),
+        ("w:rFonts", qn("w:ascii"), fuente),
+        ("w:rFonts", qn("w:hAnsi"), fuente),
+        ("w:rFonts", qn("w:cs"),    fuente),
+    ]:
+        el = rPr.find(qn(tag))
+        if el is None:
+            el = OxmlElement(tag)
+            rPr.append(el)
+        el.set(attr, val)
+        if tag == "w:rFonts":
+            el.set(qn("w:eastAsia"), fuente)
+
+
+def _set_fuente_parrafo_ppr(p, tamano_pt: float, fuente: str = "Arial"):
+    """Inyecta sz/szCs/rFonts en el w:pPr/w:rPr para cubrir runs vacíos y herencia."""
+    p_elem = p._p  # pyright: ignore[reportPrivateUsage]
+    pPr = p_elem.find(qn("w:pPr"))
+    if pPr is None:
+        pPr = OxmlElement("w:pPr")
+        p_elem.insert(0, pPr)
+    rPr_pPr = pPr.find(qn("w:rPr"))
+    if rPr_pPr is None:
+        rPr_pPr = OxmlElement("w:rPr")
+        pPr.append(rPr_pPr)
+    for tag, attr, val in [
+        ("w:sz",     qn("w:val"), str(int(tamano_pt * 2))),
+        ("w:szCs",   qn("w:val"), str(int(tamano_pt * 2))),
+        ("w:rFonts", qn("w:ascii"), fuente),
+        ("w:rFonts", qn("w:hAnsi"), fuente),
+        ("w:rFonts", qn("w:cs"),    fuente),
+    ]:
+        el = rPr_pPr.find(qn(tag))
+        if el is None:
+            el = OxmlElement(tag)
+            rPr_pPr.append(el)
+        el.set(attr, val)
+        if tag == "w:rFonts":
+            el.set(qn("w:eastAsia"), fuente)
+
+
+def aplicar_fuente_arial_documento(doc, tamano_pt: float = 12, fuente: str = "Arial"):
+    """Aplica Arial 12pt a todos los párrafos del cuerpo que no sean tabla ni caption."""
+    estilos_excluidos = {"ImageCaption", "TableCaption", "TableTitle", "Tabletitre", "Caption"}
+
+    for p in doc.paragraphs:
+        estilo = _pstyle_val(p)
+        if estilo in estilos_excluidos:
+            continue
+        # Exclusiones por texto: notas, captions figura, captions tabla
+        texto = p.text.strip()
+        if texto.startswith("Nota."):
+            continue
+        if re.match(r"^Figura\s", texto):
+            continue
+        if re.match(r"^Tabla\s+[\d#]", texto):
+            continue
+        _set_fuente_parrafo_ppr(p, tamano_pt, fuente)
+        for run in p.runs:
+            _set_fuente_run(run, tamano_pt, fuente)
+
+
+def ajustar_fuente_tablas(doc, tamano_pt: float = 10, fuente: str = "Arial"):
+    """Establece Arial 10pt en todo el contenido de las tablas."""
+    for tabla in doc.tables:
+        for row in tabla.rows:
+            for cell in row.cells:
+                for p in cell.paragraphs:
+                    _set_fuente_parrafo_ppr(p, tamano_pt, fuente)
+                    for run in p.runs:
+                        _set_fuente_run(run, tamano_pt, fuente)
+
+
+def ajustar_anchos_tablas(doc, umbral_landscape: int = 4):
+    """Ajusta anchos de columnas proporcionales al contenido máximo.
+
+    Tablas con ≥ umbral_landscape columnas reciben el ancho de página landscape;
+    las demás, el ancho de página portrait.
+    """
+    ajustadas = 0
+    for tabla in doc.tables:
+        tbl_elem = tabla._tbl  # pyright: ignore[reportPrivateUsage]
+        n_cols = _contar_columnas_tabla(tbl_elem)
+        if n_cols < 2:
+            continue
+        ancho = _ANCHO_LANDSCAPE if n_cols >= umbral_landscape else _ANCHO_PORTRAIT
+        max_len = _max_len_por_columna(tbl_elem)
+        if not max_len:
+            continue
+        anchos = _distribuir_anchos(max_len, ancho)
+        _aplicar_anchos_a_tabla(tbl_elem, anchos)
+        ajustadas += 1
+    print(f"  Anchos dinámicos aplicados: {ajustadas} tabla(s).")
 
 
 def postprocesar_docx(destino):
@@ -856,6 +1223,10 @@ def postprocesar_docx(destino):
     formatear_notas_fuente(doc)
     insertar_indices_automaticos(doc)
     aplicar_bordes_tablas(doc)
+    aplicar_orientacion_tablas_anchas(doc)
+    ajustar_anchos_tablas(doc)
+    aplicar_fuente_arial_documento(doc)
+    ajustar_fuente_tablas(doc)
     activar_actualizacion_campos(doc)
     doc.save(str(destino))
     actualizar_campos_con_word(destino)

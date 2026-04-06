@@ -1119,7 +1119,7 @@ La implementación del modelo de interoperabilidad basado en HL7 FHIR mejora sig
 
 La hipótesis general y las hipótesis específicas se fundamentan en la convergencia de hallazgos provenientes de las fuentes consultadas en el marco teórico.
 
-Respecto de la **HE1 (integridad)**, Gaudet-Blavignac et al. (2021) advierten que sin una estrategia semántica coordinada, los registros clínicos presentan altas tasas de campos vacíos que invalidan su reutilización. Adelusi et al. (2025) obtuvieron más del 95% de precisión en recuperación de datos con su framework federado FHIR en un entorno simulado de tres hospitales. En el contexto peruano, Arias (2025) documentó que la precisión de los datos en HCE del primer nivel influye directamente en la calidad de prestaciones preventivas, y Morales-Camargo y Meneses-Claudio (2023) confirmaron que la adopción desigual de registros médicos electrónicos perpetúa campos clínicos incompletos.
+Respecto de la **HE1 (integridad)**, Gaudet-Blavignac et al. (2021) advierten que, sin una estrategia semántica coordinada, los registros clínicos presentan altas tasas de campos vacíos que invalidan su reutilización. Adelusi et al. (2025) obtuvieron más del 95% de precisión en recuperación de datos con su framework federado FHIR en un entorno simulado de tres hospitales. En el contexto peruano, Arias (2025) documentó que la precisión de los datos en HCE del primer nivel influye directamente en la calidad de prestaciones preventivas, y Morales-Camargo y Meneses-Claudio (2023) confirmaron que la adopción desigual de registros médicos electrónicos perpetúa campos clínicos incompletos.
 
 Respecto de la **HE2 (consistencia en codificación)**, Vorisek et al. (2022) identifican ICD-10 como la tercera terminología más usada en implementaciones FHIR (18%), junto con LOINC (37%) y SNOMED-CT (29%). Chatterjee et al. (2022) demostraron que la compatibilidad de terminologías es crítica para la interoperabilidad semántica: cuando los sistemas producen el mismo dato codificado de manera heterogénea, el receptor pierde la capacidad de interpretación automática. Heryawan et al. (2025) reportan que el 34% de las incidencias en la plataforma nacional Satusehat de Indonesia correspondieron a problemas de mapeo de datos con SNOMED-CT y LOINC, corroborando la relevancia de este indicador.
 
@@ -1133,17 +1133,17 @@ Respecto de la **HE5 (continuidad y trazabilidad)**, Gazzarata et al. (2024) vin
 
 La siguiente tabla presenta la correspondencia lógica entre cada hipótesis específica, el objetivo específico vinculado, los indicadores de medición asociados y las fuentes de evidencia que la sustentan. Todas las hipótesis específicas se contrastan mediante el OE4, que es el único objetivo que implica pruebas estadísticas, ya que busca establecer si la implementación del modelo FHIR (variable independiente) causó una mejora en la calidad del intercambio de información clínica (variable dependiente). Los objetivos OE1, OE2, OE3 y OE5 son descriptivos, propositivos o de acción, y se cumplen mediante la ejecución de las fases del estudio y la documentación de sus resultados.
 
-| Hipótesis específica | Objetivo vinculado | Dimensión VD | Indicadores | Fuentes de evidencia |
-|---|---|---|---|---|
-| HE1: Integridad de datos | OE4: Evaluar efecto pre-post | Integridad | I1: Completitud de HCE | Gaudet-Blavignac et al. (2021); Adelusi et al. (2025); Arias (2025) |
-| HE2: Consistencia en codificación | OE4: Evaluar efecto pre-post | Consistencia | I2: Codificación CIE-10; I3: Codificación CPMS | Vorisek et al. (2022); Chatterjee et al. (2022); Heryawan et al. (2025) |
-| HE3: Reducción de duplicidad | OE4: Evaluar efecto pre-post | Duplicidad | I4: Duplicidad de pacientes; I5: Duplicidad de exámenes | Bayona (2019); Jayathissa y Hewapathrana (2024); Mauricio et al. (2024) |
-| HE4: Eficiencia administrativa | OE4: Evaluar efecto pre-post | Eficiencia administrativa | I6: Tiempo de validación SIS | Mauricio et al. (2024); Adelusi et al. (2025); Liu et al. (2023) |
-| HE5: Continuidad y trazabilidad | OE4: Evaluar efecto pre-post | Continuidad y trazabilidad | I7: Continuidad de atención; I8: Trazabilidad de accesos | Gazzarata et al. (2024); Richwine et al. (2025); Bran et al. (2024) |
+| Hipótesis específica | Objetivo específico vinculado | Indicadores de medición | Fuentes de evidencia |
+|---|---|---|---|
+| HE1: Incremento de integridad | OE4: Evaluar el efecto del modelo mediante diseño pre-post | % de campos obligatorios completos | Gaudet-Blavignac et al. (2021); Adelusi et al. (2025); Arias (2025) |
+| HE2: Incremento de consistencia en codificación | OE4: Evaluar el efecto del modelo mediante diseño pre-post | % diagnósticos CIE-10 correctos; % procedimientos CPMS correctos | Vorisek et al. (2022); Chatterjee et al. (2022); Heryawan et al. (2025) |
+| HE3: Reducción de duplicidad | OE4: Evaluar el efecto del modelo mediante diseño pre-post | Tasa duplicidad pacientes/1 000; Tasa duplicidad exámenes/1 000 | Bayona (2019); Jayathissa y Hewapathrana (2024) |
+| HE4: Reducción de tiempo de validación | OE4: Evaluar el efecto del modelo mediante diseño pre-post | Tiempo promedio validación SIS (horas) | Mauricio et al. (2024); Adelusi et al. (2025); Liu et al. (2023) |
+| HE5: Incremento de continuidad y trazabilidad | OE4: Evaluar el efecto del modelo mediante diseño pre-post | % HCE con trazabilidad verificable; % registros con log completo | Gazzarata et al. (2024); Mauricio et al. (2024); Bran et al. (2024) |
 
 : Trazabilidad entre hipótesis específicas, objetivos, indicadores y fuentes de evidencia {#tbl:trazabilidad-he-oe}
 
-*Nota.* Elaboración propia. El OE5 (lineamientos de escalabilidad), aunque no deriva de un problema específico de investigación, es un objetivo de proyección práctica metodológicamente aceptable en tesis de maestría con enfoque aplicado.
+*Nota.* Elaboración propia.
 
 ## Operacionalización de variables
 
@@ -1163,6 +1163,14 @@ En la **Fase 1 (Diagnóstico)**, se evalúa el nivel de cumplimiento de la arqui
 
 Esta definición operacional se enmarca en los niveles de interoperabilidad reconocidos internacionalmente. Surisetty (2026) describe una arquitectura de referencia de seis capas para interoperabilidad clínica end-to-end: sistemas fuente, integración, servicios de interoperabilidad, semántica y terminología, seguridad y consumidores. La OPS (2024) distingue entre interoperabilidad técnica (transferencia fiable de datos) e interoperabilidad semántica (comprensión mutua de la información), y establece cuatro componentes de política para su habilitación: principios de seguridad y privacidad, requisitos de intercambio, adopción formal de normas e identificadores nacionales. Torab-Miandoab et al. (2023) confirman que HL7 FHIR y CDA son los estándares prioritarios para interoperabilidad estructural y semántica, mientras que Amar et al. (2024) identifican seis enfoques para la integración semántica con FHIR: mapeo (24,6%), servicios terminológicos (14,3%), RDF/OWL (19,0%), anotación (14,3%), aprendizaje automático y procesamiento del lenguaje natural (15,9%) y ontologías (11,9%). La selección de recursos FHIR para la capa de integración piloto se apoya en Tabari et al. (2024), quienes identifican los recursos Observation, Condition y Patient como los más utilizados en implementaciones EHR a nivel global. La fase de implementación incorpora el enfoque de perfiles y guías de implementación que Kramer y Moesel (2023) consideran determinantes para la interoperabilidad efectiva, distinguiendo cinco relaciones posibles entre perfiles FHIR: equivalente, subconjunto, superconjunto, superpuesto y disjunto.
 
+**Dimensiones e indicadores de verificación de la implementación:**
+
+| Dimensión (Fase) | Indicadores de verificación | Estándar de cumplimiento | Instrumento |
+|---|---|---|---|
+| Diagnóstico (Fase 1) | Aplicación de lista de chequeo; cálculo de 8 indicadores pre-test | 100% de los hitos documentados | Lista de chequeo; bitácora de proyecto |
+| Implementación piloto (Fase 2) | Servidor HAPI-FHIR R4 desplegado; recursos Patient, Condition y Observation mapeados; tasa de éxito en pruebas ≥ 95% | 100% de los hitos técnicos verificados | Auditoría técnica; logs de JMeter |
+| Evaluación (Fase 3) | Re-medición de 8 indicadores post-test; comparación estadística completada | 100% de los hitos de evaluación documentados | Informe de análisis estadístico |
+
 ### Variable dependiente: Calidad del intercambio de información clínica en establecimientos del MINSA
 
 Grado en que la información clínica intercambiada entre establecimientos del MINSA es completa, correctamente codificada, no duplicada, eficientemente validada y trazable a lo largo del circuito de atención, en concordancia con el Modelo de Calidad de Datos de Wang y Strong (1996) y DAMA International (2017). Se operacionaliza mediante ocho indicadores cuantitativos evaluados antes (pre-test) y después (post-test) de la implementación del modelo, organizados en cinco dimensiones de calidad: (1) **completitud de HCE**, definida como el porcentaje de campos obligatorios completos en la historia clínica electrónica; (2) **codificación CIE-10**, porcentaje de diagnósticos correctamente codificados; (3) **codificación CPMS**, porcentaje de procedimientos correctamente codificados; (4) **duplicidad de pacientes**, tasa de registros duplicados por cada 1 000 atenciones; (5) **duplicidad de exámenes**, tasa de exámenes y procedimientos duplicados por cada 1 000 atenciones; (6) **tiempo de validación administrativa de prestaciones**, tiempo promedio en horas desde la atención hasta la validación administrativa de prestaciones financiadas por el SIS; (7) **continuidad de atención**, porcentaje de HCE con trazabilidad verificable entre establecimientos; y (8) **trazabilidad de accesos**, porcentaje de registros con log completo de acceso y modificación. Los indicadores se obtienen por auditoría de registros, muestras de atenciones, bases de datos HIS, registros administrativos de validación de prestaciones (SIS), cruce de registros entre establecimientos y logs del sistema.
@@ -1173,18 +1181,18 @@ La **duplicidad de pacientes y exámenes** se sustenta en Bayona (2019), quien d
 
 La **continuidad de atención** y la **trazabilidad de accesos** responden a la evidencia de Gazzarata et al. (2024) sobre el rol de FHIR en la coordinación entre niveles de atención en ecosistemas de enfermedades crónicas, y a Richwine et al. (2025), quienes cuantifican que la participación en organizaciones de intercambio incrementa significativamente el intercambio clínico electrónico. Mauricio et al. (2024) refuerzan esta selección al reportar que el 55% de los pacientes crónicos experimenta pérdida de datos durante las transiciones de atención, con un 28% de probabilidad adicional de readmisión atribuida a información incompleta en las historias clínicas.
 
-La siguiente tabla detalla la especificación técnica de cada indicador, incluyendo su fórmula de cálculo, unidad de medida, fuente de datos y frecuencia de medición.
+La siguiente tabla detalla la especificación técnica de cada indicador, incluyendo su dimensión, fórmula de cálculo, unidad de medida y fuente de datos.
 
-| N° | Indicador | Fórmula de cálculo | Unidad | Fuente de datos | Frecuencia |
+| N° | Dimensión | Indicador | Fórmula de cálculo | Unidad | Fuente de datos |
 |---:|---|---|---|---|---|
-| I1 | Completitud de HCE | (Campos obligatorios completos / Total campos obligatorios) × 100 | % | Auditoría de registros HIS | Pre-test y post-test |
-| I2 | Codificación CIE-10 | (Diagnósticos correctamente codificados CIE-10 / Total diagnósticos) × 100 | % | Base de datos HIS | Pre-test y post-test |
-| I3 | Codificación CPMS | (Procedimientos correctamente codificados CPMS / Total procedimientos) × 100 | % | Base de datos HIS | Pre-test y post-test |
-| I4 | Duplicidad de pacientes | (Registros duplicados detectados / Total atenciones) × 1 000 | Tasa por 1 000 | Cruce de registros entre establecimientos | Pre-test y post-test |
-| I5 | Duplicidad de exámenes | (Exámenes duplicados detectados / Total atenciones) × 1 000 | Tasa por 1 000 | Registros de laboratorio y procedimientos | Pre-test y post-test |
-| I6 | Tiempo de validación administrativa | Σ(Fecha validación SIS − Fecha atención) / n | Horas promedio | Registros administrativos SIS | Pre-test y post-test |
-| I7 | Continuidad de atención | (HCE con trazabilidad verificable entre establecimientos / Total HCE) × 100 | % | Cruce de registros entre establecimientos | Pre-test y post-test |
-| I8 | Trazabilidad de accesos | (Registros con log completo de acceso y modificación / Total registros) × 100 | % | Logs del sistema | Pre-test y post-test |
+| I1 | Integridad | Completitud de HCE | (Campos obligatorios completos / Total campos obligatorios) × 100 | % | Auditoría de registros HIS |
+| I2 | Consistencia | Codificación CIE-10 | (Diagnósticos correctamente codificados / Total diagnósticos) × 100 | % | Base de datos HIS |
+| I3 | Consistencia | Codificación CPMS | (Procedimientos correctamente codificados / Total procedimientos) × 100 | % | Base de datos HIS |
+| I4 | Duplicidad | Duplicidad de pacientes | (Registros duplicados detectados / Total atenciones) × 1 000 | Tasa por 1 000 | Cruce de registros entre establecimientos |
+| I5 | Duplicidad | Duplicidad de exámenes | (Exámenes duplicados detectados / Total atenciones) × 1 000 | Tasa por 1 000 | Registros de laboratorio y procedimientos |
+| I6 | Eficiencia | Tiempo de validación administrativa | Σ(Fecha validación SIS − Fecha atención) / n | Horas promedio | Registros administrativos SIS |
+| I7 | Continuidad | Continuidad de atención | (HCE con trazabilidad verificable entre establecimientos / Total HCE) × 100 | % | Cruce de registros entre establecimientos |
+| I8 | Trazabilidad | Trazabilidad de accesos | (Registros con log completo de acceso y modificación / Total registros) × 100 | % | Logs del sistema |
 
 : Tabla 5. Especificación técnica de los indicadores de calidad del intercambio de información clínica
 
@@ -1196,16 +1204,14 @@ La siguiente tabla sintetiza las métricas de resultados reportadas en estudios 
 
 | Estudio | País / Contexto | Métrica reportada | Resultado | Relevancia para la investigación |
 |---|---|---|---|---|
-| Adelusi et al. (2025) | Nigeria / 3 hospitales simulados | Precisión de recuperación de datos | > 95% | Referente para completitud e integridad de datos |
-| Adelusi et al. (2025) | Nigeria / 3 hospitales simulados | Reducción de latencia vs. sistemas centralizados | 38% | Referente para tiempo de validación administrativa |
-| Richwine et al. (2025) | EE. UU. / 2 200 hospitales | Integración de información en 4 dominios clínicos (con FHIR) | 62% vs. 48% (p<0.05) | Referente para continuidad de atención |
-| Liu et al. (2023) | Taiwán / 1 institución médica | Reducción de tiempo de transformación FHIR vs. CDA | Significativa (JMeter) | Referente para eficiencia de intercambio |
-| Mauricio et al. (2024) | Perú / MINSA | Madurez de interoperabilidad EHR | < 10% | Línea base del contexto peruano |
-| Mauricio et al. (2024) | Perú / MINSA | Tasa de errores en entrada de datos sin integración | 35% | Referente para codificación CIE-10/CPMS |
-| Mauricio et al. (2024) | Perú / MINSA | Pérdida de datos en transiciones de atención (crónicos) | 55% | Referente para continuidad de atención |
-| Heryawan et al. (2025) | Indonesia / Satusehat | Incidencias de mapeo de datos (SNOMED-CT, LOINC) | 34% del total | Referente para problemas de codificación |
-| Bayona (2019) | Perú | Ahorro potencial por eliminación de duplicidad de pruebas | Hasta 80% | Referente para duplicidad de exámenes |
-| Vorisek et al. (2022) | Revisión sistemática global | Uso de FHIR para estandarización de datos | 41% de los estudios | Validación del enfoque de estandarización |
+| Adelusi et al. (2025) | Nigeria / 3 hospitales simulados | Precisión de recuperación de datos | > 95% | Referente para integridad (HE1) |
+| Adelusi et al. (2025) | Nigeria / 3 hospitales simulados | Reducción de latencia vs. sistemas centralizados | 38% | Referente para eficiencia (HE4) |
+| Richwine et al. (2025) | EE. UU. / 2 200 hospitales | Integración de información en 4 dominios clínicos (con FHIR) | 62% vs. 48% (p<0.05) | Referente para continuidad (HE5) |
+| Liu et al. (2023) | Taiwán / 1 institución médica | Reducción de tiempo de transformación FHIR vs. CDA | Significativa (JMeter) | Referente para eficiencia (HE4) |
+| Mauricio et al. (2024) | Perú / MINSA | Tasa de errores en entrada de datos sin integración | 35% | Línea base para consistencia (HE2) |
+| Mauricio et al. (2024) | Perú / MINSA | Pérdida de datos en transiciones de atención (crónicos) | 55% | Línea base para continuidad (HE5) |
+| Heryawan et al. (2025) | Indonesia / Satusehat | Incidencias de mapeo de datos (SNOMED-CT, LOINC) | 34% del total | Referente para consistencia (HE2) |
+| Bayona (2019) | Perú | Ahorro potencial por eliminación de duplicidad de pruebas | Hasta 80% | Referente para duplicidad (HE3) |
 
 : Tabla 6. Síntesis de métricas de referencia en implementaciones FHIR internacionales
 
@@ -1232,14 +1238,17 @@ La siguiente figura ilustra la relación conceptual entre la variable independie
 
 ## Matriz de operacionalización de variables
 
-| Variable | Definición conceptual | Definición operacional | Dimensiones | Indicadores | Escala de valoración | Instrumentos |
-|---|---|---|---|---|---|---|
-| Variable independiente: Implementación del modelo de interoperabilidad basado en HL7 FHIR | Conjunto integrado de componentes técnicos, normativos y operativos que habilitan el intercambio estandarizado de datos clínicos, organizado en tres fases secuenciales. | Dicotómica (implementado/no implementado), definida por el cumplimiento de todos los hitos verificables de las Fases 1, 2 y 3. | Fase 1: Diagnóstico; Fase 2: Implementación piloto; Fase 3: Evaluación | % de hitos de implementación cumplidos (lista de chequeo aplicada, HAPI-FHIR R4 desplegado, recursos mapeados, pruebas ≥ 95%, post-test completado). | Nominal dicotómica (implementado / no implementado). | Lista de chequeo normativo-técnico; auditoría de registros; pruebas de integración; bitácora de hitos. |
-| Variable dependiente: Calidad del intercambio de información clínica en establecimientos del MINSA | Grado de integridad, consistencia, no duplicidad, eficiencia y trazabilidad del intercambio de información clínica en establecimientos del MINSA. | Medición pre y post intervención de 8 indicadores cuantitativos de calidad de HCE, organizados en 5 dimensiones. | Integridad (HE1) | I1: Completitud de HCE (% campos obligatorios completos). | De razón (%). | Auditoría de registros; base de datos HIS. |
-| | | | Consistencia (HE2) | I2: Codificación CIE-10 (%); I3: Codificación CPMS (%). | De razón (%). | Base de datos HIS. |
-| | | | Duplicidad (HE3) | I4: Duplicidad de pacientes (tasa/1 000); I5: Duplicidad de exámenes (tasa/1 000). | De razón (tasa). | Cruce de registros entre establecimientos. |
-| | | | Eficiencia administrativa (HE4) | I6: Tiempo de validación administrativa de prestaciones (horas promedio). | De razón (horas). | Registros administrativos de validación (SIS). |
-| | | | Continuidad y trazabilidad (HE5) | I7: Continuidad de atención (% HCE con trazabilidad); I8: Trazabilidad de accesos (% registros con log completo). | De razón (%). | Cruce de registros entre establecimientos; logs del sistema. |
+| Variable | Dimensión | Indicador | Escala | Instrumento | Momento de medición |
+|---|---|---|---|---|---|
+| VI: Implementación del modelo de interoperabilidad basado en HL7 FHIR | Fidelidad de la intervención | % de hitos de implementación cumplidos (0-100%) | Razón (%) | Lista de chequeo / Bitácora de proyecto | Durante la intervención |
+| VD: Calidad del intercambio de información clínica | Integridad | % completitud de campos obligatorios | Razón (%) | Auditoría de registros HIS | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Consistencia | % codificación CIE-10 correcta | Razón (%) | Auditoría de registros HIS | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Consistencia | % codificación CPMS correcta | Razón (%) | Auditoría de registros HIS | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Duplicidad | Tasa duplicidad pacientes (× 1 000) | Razón | Cruce de registros entre establecimientos | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Duplicidad | Tasa duplicidad exámenes (× 1 000) | Razón | Registros de laboratorio | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Eficiencia | Tiempo validación administrativa (horas) | Razón | Registros administrativos SIS | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Continuidad | % HCE con trazabilidad entre establecimientos | Razón (%) | Logs del sistema / cruce de registros | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Trazabilidad | % registros con log completo de accesos | Razón (%) | Logs del sistema | Pre-test y post-test |
 
 : Matriz de operacionalización de variables {#tbl:matriz-operacionalizacion}
 
