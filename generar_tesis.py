@@ -113,7 +113,6 @@ SECCIONES_EXCLUIDAS: list[str] = [
     "Resumen",
     "Abstract",
     "Introducción",
-    "Anexos",
 ]
 
 

@@ -357,16 +357,9 @@ Ante esta limitación, en la presente investigación se priorizarán las brechas
 
 ### Internacionales
 
-**ADELUSI ET AL. (2025)**
-**Aporte:** Proponen un framework federado basado en HL7 FHIR para intercambio seguro entre hospitales heterogéneos, integrando principios de aprendizaje federado con gobernanza de datos y mecanismos de cumplimiento normativo.
-**Problema:** Fragmentación de EHR y riesgos de seguridad inherentes a modelos centralizados de intercambio de datos clínicos entre múltiples hospitales con plataformas disímiles.
-**Objetivo:** Demostrar que una arquitectura federada basada en FHIR mejora la interoperabilidad sin centralizar datos clínicos crudos.
-**Metodología:** Diseño y evaluación de framework en entorno simulado compuesto por tres sistemas hospitalarios con plataformas EHR diferentes (*Engineering and Technology Journal*).
-**Instrumentos de evaluación:** Pruebas de recuperación de datos, medición de latencia, verificación de adherencia al protocolo FHIR y pruebas de escalabilidad. El entorno simuló un gateway de interoperabilidad, APIs FHIR, módulos de gestión de consentimiento y repositorios distribuidos con validación por consenso.
-**Métricas o indicadores de desempeño:** Precisión de recuperación de datos, latencia de respuesta, tasa de adherencia al protocolo FHIR y capacidad de escalabilidad.
-**Resultados:** >95 % de precisión en recuperación de datos, 38 % de reducción de latencia frente a sistema centralizado, adherencia total a protocolos FHIR y reducción significativa del riesgo de brechas de datos al no transferir datos crudos.
-**Limitaciones:** Entorno exclusivamente simulado; sin implementación en hospitales reales. Los autores plantean como trabajo futuro integrar blockchain y cifrado homomórfico.
-**Crítica o aporte a la tesis:** La arquitectura federada validada respalda la viabilidad de intercambio FHIR entre establecimientos heterogéneos, condición afín al escenario MINSA con plataformas disímiles. Las métricas de integridad y latencia proveen un referente cuantitativo para la evaluación pre/post de esta investigación.
+**ADELUSI ET AL. (2025)** proponen un framework federado basado en HL7 FHIR para el intercambio seguro entre hospitales heterogéneos, integrando principios de aprendizaje federado con gobernanza de datos y mecanismos de cumplimiento normativo. Parten de la fragmentación de EHR y de los riesgos de seguridad inherentes a los modelos centralizados de intercambio de datos clínicos entre múltiples hospitales con plataformas disímiles; por ello, buscan demostrar que una arquitectura federada basada en FHIR puede mejorar la interoperabilidad sin centralizar datos clínicos crudos.
+
+Para ello, desarrollan y evalúan el framework en un entorno simulado compuesto por tres sistemas hospitalarios con plataformas EHR diferentes (*Engineering and Technology Journal*), donde implementan un gateway de interoperabilidad, APIs FHIR, módulos de gestión de consentimiento y repositorios distribuidos con validación por consenso. Asimismo, aplican pruebas de recuperación de datos, medición de latencia, verificación de adherencia al protocolo FHIR y pruebas de escalabilidad, considerando como indicadores la precisión de recuperación, la latencia de respuesta, la tasa de adherencia al protocolo y la capacidad de escalamiento. Los resultados muestran más de 95 % de precisión en la recuperación de datos, una reducción de 38 % en la latencia frente a un sistema centralizado, adherencia total a protocolos FHIR y menor riesgo de brechas de datos al no transferir datos crudos. Sin embargo, el estudio se limita a un entorno exclusivamente simulado, sin implementación en hospitales reales; además, los autores proponen como trabajo futuro integrar blockchain y cifrado homomórfico. En conjunto, la evidencia reportada respalda la viabilidad del intercambio FHIR entre establecimientos heterogéneos, condición afín al escenario MINSA, y también aporta métricas de integridad y latencia como referente cuantitativo para la evaluación pre/post de la presente investigación.
 
 **HERYAWAN ET AL. (2025)**
 **Aporte:** Caracterizan barreras reales de implementación FHIR en la plataforma nacional Satusehat de Indonesia, primer despliegue masivo de interoperabilidad basada en FHIR en el sudeste asiático.
@@ -1167,7 +1160,7 @@ Esta definición operacional se enmarca en los niveles de interoperabilidad reco
 
 | Dimensión (Fase) | Indicadores de verificación | Estándar de cumplimiento | Instrumento |
 |---|---|---|---|
-| Diagnóstico (Fase 1) | Aplicación de lista de chequeo; cálculo de 8 indicadores pre-test | 100% de los hitos documentados | Lista de chequeo; bitácora de proyecto |
+| Diagnóstico (Fase 1) | Aplicación de lista de chequeo; cálculo de 8 indicadores pre-test | 100% de los hitos documentados | Lista de chequeo normativo-técnico / Bitácora de proyecto |
 | Implementación piloto (Fase 2) | Servidor HAPI-FHIR R4 desplegado; recursos Patient, Condition y Observation mapeados; tasa de éxito en pruebas ≥ 95% | 100% de los hitos técnicos verificados | Auditoría técnica; logs de JMeter |
 | Evaluación (Fase 3) | Re-medición de 8 indicadores post-test; comparación estadística completada | 100% de los hitos de evaluación documentados | Informe de análisis estadístico |
 
@@ -1238,17 +1231,17 @@ La siguiente figura ilustra la relación conceptual entre la variable independie
 
 ## Matriz de operacionalización de variables
 
-| Variable | Dimensión | Indicador | Escala | Instrumento | Momento de medición |
+| Variable | Dimensión | Indicador | Escala | Instrumento (fuente de datos) | Momento de medición |
 |---|---|---|---|---|---|
-| VI: Implementación del modelo de interoperabilidad basado en HL7 FHIR | Fidelidad de la intervención | % de hitos de implementación cumplidos (0-100%) | Razón (%) | Lista de chequeo / Bitácora de proyecto | Durante la intervención |
-| VD: Calidad del intercambio de información clínica | Integridad | % completitud de campos obligatorios | Razón (%) | Auditoría de registros HIS | Pre-test y post-test |
-| VD: Calidad del intercambio de información clínica | Consistencia | % codificación CIE-10 correcta | Razón (%) | Auditoría de registros HIS | Pre-test y post-test |
-| VD: Calidad del intercambio de información clínica | Consistencia | % codificación CPMS correcta | Razón (%) | Auditoría de registros HIS | Pre-test y post-test |
-| VD: Calidad del intercambio de información clínica | Duplicidad | Tasa duplicidad pacientes (× 1 000) | Razón | Cruce de registros entre establecimientos | Pre-test y post-test |
-| VD: Calidad del intercambio de información clínica | Duplicidad | Tasa duplicidad exámenes (× 1 000) | Razón | Registros de laboratorio | Pre-test y post-test |
-| VD: Calidad del intercambio de información clínica | Eficiencia | Tiempo validación administrativa (horas) | Razón | Registros administrativos SIS | Pre-test y post-test |
-| VD: Calidad del intercambio de información clínica | Continuidad | % HCE con trazabilidad entre establecimientos | Razón (%) | Logs del sistema / cruce de registros | Pre-test y post-test |
-| VD: Calidad del intercambio de información clínica | Trazabilidad | % registros con log completo de accesos | Razón (%) | Logs del sistema | Pre-test y post-test |
+| VI: Implementación del modelo de interoperabilidad basado en HL7 FHIR | Fidelidad de la intervención | % de hitos de implementación cumplidos (0-100%) | Razón (%) | Lista de chequeo normativo-técnico / Bitácora de proyecto | Durante la intervención |
+| VD: Calidad del intercambio de información clínica | Integridad | % completitud de campos obligatorios | Razón (%) | Ficha de auditoría de registros clínico-administrativos (registros HIS) | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Consistencia | % codificación CIE-10 correcta | Razón (%) | Ficha de auditoría de registros clínico-administrativos (registros HIS) | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Consistencia | % codificación CPMS correcta | Razón (%) | Ficha de auditoría de registros clínico-administrativos (registros HIS) | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Duplicidad | Tasa duplicidad pacientes (× 1 000) | Razón | Ficha de auditoría de registros clínico-administrativos (cruce inter-establecimientos) | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Duplicidad | Tasa duplicidad exámenes (× 1 000) | Razón | Ficha de auditoría de registros clínico-administrativos (registros de laboratorio) | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Eficiencia | Tiempo validación administrativa (horas) | Razón | Ficha de auditoría de registros clínico-administrativos (registros administrativos SIS) | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Continuidad | % HCE con trazabilidad entre establecimientos | Razón (%) | Ficha de auditoría de registros clínico-administrativos (logs del sistema / cruce de registros) | Pre-test y post-test |
+| VD: Calidad del intercambio de información clínica | Trazabilidad | % registros con log completo de accesos | Razón (%) | Ficha de auditoría de registros clínico-administrativos (logs del sistema) | Pre-test y post-test |
 
 : Matriz de operacionalización de variables {#tbl:matriz-operacionalizacion}
 
@@ -1328,27 +1321,50 @@ La muestra se definirá mediante muestreo no probabilístico por conveniencia, c
 
 ### Técnicas e instrumentos
 
-Se emplearán las siguientes técnicas e instrumentos, seleccionados en función de los objetivos y las fases del diseño de investigación. La siguiente tabla presenta la correspondencia entre cada técnica, su instrumento, la fase de aplicación, el objetivo específico al que contribuye y los indicadores que permite medir.
+Se emplearán técnicas e instrumentos diferenciados según su función en el diseño de investigación. En primer lugar, se presentan las técnicas vinculadas directamente a la medición de las variables operacionalizadas (sección 3.3), que permiten la contrastación de hipótesis y la verificación de hitos. En segundo lugar, se describen las técnicas complementarias del componente cualitativo, que contribuyen a los objetivos descriptivos y propositivos del estudio (OE1, OE2, OE5) pero no miden indicadores de la variable dependiente.
 
-| Técnica | Instrumento | Fase de aplicación | Objetivo específico | Indicadores asociados |
-|---|---|---|---|---|
-| Revisión documental | Ficha de análisis documental | Fase 1 (Diagnóstico) | OE1, OE2 | Cumplimiento normativo RNIEDS-PIDESALUD; requerimientos técnicos y normativos |
-| Observación estructurada | Lista de chequeo normativo-técnico | Fase 1 (Diagnóstico) | OE1 | Adopción HL7/FHIR; codificación CIE-10/CPMS; seguridad; conectividad |
-| Auditoría de registros | Ficha de auditoría de registros clínico-administrativos | Fases 1 y 3 (Pre-test / Post-test) | OE1, OE4 | I1–I8: integridad (HE1), consistencia (HE2), duplicidad (HE3), eficiencia (HE4), continuidad/trazabilidad (HE5) |
-| Entrevista | Guía de entrevista semiestructurada | Fases 1 y 3 | OE1, OE5 | Barreras organizacionales, culturales y técnicas; factores emergentes para lineamientos de escalabilidad |
-| Pruebas técnicas | Suite de pruebas de integración FHIR (JMeter, Postman) | Fase 2 (Implementación) | OE3 | Tasa de éxito de intercambio; latencia; adherencia FHIR; hitos verificables de implementación |
+#### Técnicas para la medición de variables operacionalizadas
 
-: Tabla 8. Correspondencia entre técnicas, instrumentos, fases y objetivos de la investigación
+La siguiente tabla presenta la trazabilidad entre cada técnica de medición, su instrumento, la fuente de datos correspondiente, la fase de aplicación, la variable e indicadores que mide, y la hipótesis asociada. Todas las filas de esta tabla tienen correspondencia directa con la matriz de operacionalización de variables.
 
-*Nota.* Elaboración propia.
+| Técnica | Instrumento | Fuente de datos | Fase de aplicación | Variable / Indicador | Hipótesis |
+|---|---|---|---|---|---|
+| Observación estructurada | Lista de chequeo normativo-técnico / Bitácora de proyecto | Establecimientos seleccionados; registros de implementación | Fases 1, 2 y 3 | VI: % de hitos de implementación cumplidos (fidelidad de la intervención) | — (verificación de VI) |
+| Auditoría de registros clínicos | Ficha de auditoría de registros clínico-administrativos | Base de datos HIS | Fases 1 y 3 (Pre-test / Post-test) | VD — I1: completitud de campos obligatorios; I2: codificación CIE-10; I3: codificación CPMS | HE1 (integridad); HE2 (consistencia) |
+| Cruce de registros entre establecimientos | Ficha de auditoría de registros clínico-administrativos | Registros inter-establecimientos; registros de laboratorio | Fases 1 y 3 (Pre-test / Post-test) | VD — I4: duplicidad de pacientes; I5: duplicidad de exámenes; I7: continuidad de atención | HE3 (duplicidad); HE5 (continuidad) |
+| Análisis de registros administrativos | Ficha de auditoría de registros clínico-administrativos | Registros de validación de prestaciones SIS | Fases 1 y 3 (Pre-test / Post-test) | VD — I6: tiempo de validación administrativa | HE4 (eficiencia) |
+| Análisis de logs del sistema | Ficha de auditoría de registros clínico-administrativos | Logs de auditoría y acceso del sistema | Fases 1 y 3 (Pre-test / Post-test) | VD — I7: continuidad de atención; I8: trazabilidad de accesos | HE5 (continuidad/trazabilidad) |
+| Pruebas técnicas de integración | Suite de pruebas FHIR (JMeter, Postman) | Servidor HAPI-FHIR; sistemas HIS integrados | Fase 2 (Implementación) | VI: tasa de éxito de intercambio; latencia; adherencia FHIR (hitos Fase 2) | — (verificación de VI) |
 
-A continuación se describe cada instrumento en detalle:
+: Correspondencia entre técnicas de medición, variables operacionalizadas e hipótesis {#tbl:correspondencia-tecnicas}
 
-- **Revisión documental normativa y técnica:** Análisis sistemático del marco regulatorio (RM N° 1104-2018-MINSA, RM N° 464-2019-MINSA, RM N° 1193-2019-MINSA) y de la documentación técnica de los sistemas de información en los establecimientos seleccionados. Según Hernández-Sampieri y Mendoza (2018), la revisión documental permite obtener datos secundarios de fuentes institucionales que complementan la información primaria.
-- **Lista de chequeo de cumplimiento normativo-técnico:** Instrumento estructurado con ítems dicotómicos (cumple/no cumple) que evalúa el grado de adopción de los estándares de interoperabilidad (RNIEDS, PIDESALUD, HL7, CIE-10, CPMS) en cada establecimiento. Este instrumento se estructura en cinco componentes alineados con la Infraestructura de Estándares de Datos en Salud (IEDS): (a) arquitectura RNIEDS-PIDESALUD, (b) adopción de estándares de intercambio HL7/FHIR, (c) codificación clínica CIE-10 y CPMS, (d) seguridad y trazabilidad de datos, y (e) capacidad de infraestructura y conectividad. Su diseño se inspira en el marco de evaluación de Holmgren et al. (2023), quienes clasifican la madurez de HIE en dimensiones de adopción, centralización, madurez de intercambio e incentivación. La operacionalización de los ítems responde a los requisitos técnicos identificados por Torab-Miandoab et al. (2023) en su revisión de 36 estudios sobre interoperabilidad de sistemas heterogéneos, donde HL7 FHIR, CDA, SNOMED-CT, ICD-10 y SOA aparecen como los requisitos más frecuentes.
-- **Ficha de auditoría de registros clínico-administrativos:** Instrumento que permite medir los ocho indicadores de calidad del intercambio de información clínica (completitud, codificación CIE-10, codificación CPMS, duplicidad de pacientes, duplicidad de exámenes, tiempo de validación administrativa de prestaciones, continuidad de atención y trazabilidad de accesos) en las mediciones pre y post intervención.
-- **Entrevistas semiestructuradas:** Dirigidas a responsables de TI y áreas asistenciales de los establecimientos, con el objetivo de identificar barreras organizacionales, culturales y técnicas no capturables mediante los instrumentos cuantitativos.
+*Nota.* Cada fila corresponde a un indicador o grupo de indicadores definidos en la matriz de operacionalización de variables. La ficha de auditoría de registros clínico-administrativos es un instrumento unificado que se aplica a diferentes fuentes de datos según el indicador. Elaboración propia.
+
+#### Técnicas complementarias del componente cualitativo
+
+Además de las técnicas de medición de variables, el enfoque mixto del estudio requiere técnicas cualitativas que contribuyen a los objetivos descriptivos (OE1, OE2) y propositivos (OE5), pero que no miden indicadores de la variable dependiente ni se utilizan para la contrastación de hipótesis:
+
+| Técnica | Instrumento | Fuente de datos | Fase de aplicación | Objetivo específico | Propósito |
+|---|---|---|---|---|---|
+| Revisión documental | Ficha de análisis documental | Normativa MINSA; documentación técnica institucional | Fase 1 (Diagnóstico) | OE1, OE2 | Identificar brechas normativas y requerimientos técnicos para el diseño de la intervención |
+| Entrevista semiestructurada | Guía de entrevista semiestructurada | Responsables de TI y áreas asistenciales | Fases 1 y 3 | OE1, OE5 | Identificar barreras organizacionales, culturales y técnicas; captar factores emergentes para lineamientos de escalabilidad |
+
+: Técnicas complementarias del componente cualitativo {#tbl:tecnicas-cualitativas}
+
+*Nota.* Estas técnicas no miden indicadores de la variable dependiente. Contribuyen al diagnóstico contextual (OE1, OE2) y a la formulación de lineamientos de escalabilidad (OE5), objetivos que se cumplen mediante la ejecución documentada de las fases del estudio. Elaboración propia.
+
+A continuación se describe cada instrumento en detalle, agrupados según su función:
+
+**Instrumentos para la medición de variables operacionalizadas:**
+
+- **Lista de chequeo de cumplimiento normativo-técnico y bitácora de proyecto:** Instrumento estructurado con ítems dicotómicos (cumple/no cumple) que evalúa el grado de adopción de los estándares de interoperabilidad (RNIEDS, PIDESALUD, HL7, CIE-10, CPMS) en cada establecimiento, y que adicionalmente registra el cumplimiento de los hitos verificables de la variable independiente a lo largo de las tres fases de la investigación (sección 3.2.1). Este instrumento se estructura en cinco componentes alineados con la Infraestructura de Estándares de Datos en Salud (IEDS): (a) arquitectura RNIEDS-PIDESALUD, (b) adopción de estándares de intercambio HL7/FHIR, (c) codificación clínica CIE-10 y CPMS, (d) seguridad y trazabilidad de datos, y (e) capacidad de infraestructura y conectividad. Su diseño se inspira en el marco de evaluación de Holmgren et al. (2023), quienes clasifican la madurez de HIE en dimensiones de adopción, centralización, madurez de intercambio e incentivación. La operacionalización de los ítems responde a los requisitos técnicos identificados por Torab-Miandoab et al. (2023) en su revisión de 36 estudios sobre interoperabilidad de sistemas heterogéneos, donde HL7 FHIR, CDA, SNOMED-CT, ICD-10 y SOA aparecen como los requisitos más frecuentes.
+- **Ficha de auditoría de registros clínico-administrativos:** Instrumento unificado que permite medir los ocho indicadores de calidad del intercambio de información clínica en las mediciones pre y post intervención. Se aplica a diferentes fuentes de datos según el indicador a medir, garantizando correspondencia directa con la matriz de operacionalización de variables: (a) sobre **registros HIS** para medir completitud de campos obligatorios (I1), codificación CIE-10 (I2) y codificación CPMS (I3); (b) mediante **cruce de registros entre establecimientos y registros de laboratorio** para medir duplicidad de pacientes (I4), duplicidad de exámenes (I5) y continuidad de atención (I7); (c) sobre **registros administrativos de validación de prestaciones SIS** para medir tiempo de validación administrativa (I6); y (d) sobre **logs de auditoría y acceso del sistema** para medir continuidad de atención (I7) y trazabilidad de accesos (I8).
 - **Pruebas de integración técnica:** Conjunto de pruebas automatizadas para validar la interoperabilidad FHIR (envío/recepción de recursos, validación de perfiles, tiempos de respuesta), siguiendo el enfoque de pruebas de rendimiento empleado por Liu et al. (2023) y las métricas de Adelusi et al. (2025). El diseño de estas pruebas se fundamenta en las metodologías de evaluación de rendimiento documentadas en la literatura: Liu et al. (2023) utilizaron Apache JMeter para evaluar comparativamente el rendimiento de servidores FHIR versus gateways CDA, midiendo tiempos de respuesta y throughput bajo diferentes cargas; Adelusi et al. (2025) evaluaron su framework federado mediante pruebas de recuperación de datos, medición de latencia, verificación de adherencia al protocolo FHIR y pruebas de escalabilidad; y Jayathissa y Hewapathrana (2024) estructuraron su evaluación en pruebas unitarias, de integración, end-to-end, retroalimentación de usuarios, evaluación de rendimiento y análisis costo-beneficio. Para la presente investigación, se diseñará un conjunto de pruebas que incluya: validación de conformidad de recursos FHIR respecto a los perfiles seleccionados (siguiendo la taxonomía de relaciones de Kramer y Moesel, 2023), medición de tiempos de respuesta en operaciones CRUD sobre el servidor HAPI-FHIR, verificación de integridad semántica en operaciones de mapeo CIE-10/CPMS (alineada con los enfoques de mapeo terminológico identificados por Amar et al., 2024), y pruebas de interoperabilidad bidireccional entre sistemas heterogéneos.
+
+**Instrumentos complementarios del componente cualitativo:**
+
+- **Revisión documental normativa y técnica:** Análisis sistemático del marco regulatorio (RM N° 1104-2018-MINSA, RM N° 464-2019-MINSA, RM N° 1193-2019-MINSA) y de la documentación técnica de los sistemas de información en los establecimientos seleccionados. Este instrumento no mide indicadores de la variable dependiente; su propósito es informar el diagnóstico de brechas (OE1) y la identificación de requerimientos (OE2) que fundamentan el diseño de la intervención. Según Hernández-Sampieri y Mendoza (2018), la revisión documental permite obtener datos secundarios de fuentes institucionales que complementan la información primaria.
+- **Entrevistas semiestructuradas:** Dirigidas a responsables de TI y áreas asistenciales de los establecimientos, con el objetivo de identificar barreras organizacionales, culturales y técnicas no capturables mediante los instrumentos cuantitativos. Al igual que la revisión documental, este instrumento no mide indicadores de la variable dependiente; contribuye al diagnóstico contextual (OE1) y, en la etapa de cierre (Fase 3), aporta insumos para la formulación de lineamientos de escalabilidad (OE5).
 
 ### Validez y confiabilidad
 
@@ -1570,6 +1586,22 @@ Wang, R. Y., & Strong, D. M. (1996). Beyond accuracy: What data quality means to
 \newpage
 
 # Anexos
+
+## Anexo 1: Matriz de consistencia
+
+: Matriz de consistencia de la investigación {#tbl:matriz-consistencia}
+
+| Problemas | Objetivos | Hipótesis | Variables | Dimensiones | Indicadores | Metodología | Población y muestra | Técnicas e instrumentos |
+|---|---|---|---|---|---|---|---|---|
+| PG: ¿De qué manera la implementación de un modelo de interoperabilidad basado en HL7 FHIR mejora el intercambio de información clínica en los centros de salud del MINSA del Perú? | OG: Evaluar el efecto de un modelo basado en HL7 FHIR en la mejora del intercambio de información clínica en centros de salud del MINSA del Perú | HG: La implementación del modelo HL7 FHIR mejora significativamente la calidad del intercambio de información clínica en los centros de salud del MINSA del Perú | VI: Modelo de interoperabilidad basado en HL7 FHIR (dicotómica) | Fase 1: Diagnóstico; Fase 2: Piloto; Fase 3: Evaluación | Hitos verificables por fase | Enfoque: Mixto predominancia cuantitativa. Tipo: Aplicada. Alcance: Explicativo-propositivo. Diseño: Pre-experimental O₁→X→O₂ | Población: Establecimientos MINSA Perú. Muestra: 2–3 establecimientos Lima Metropolitana; no probabilístico por conveniencia | Revisión documental; Lista de chequeo normativo-técnico / Bitácora; Ficha de auditoría clínico-administrativa (registros HIS, cruce inter-establecimientos, registros SIS, logs); Entrevista semiestructurada; Pruebas técnicas FHIR (JMeter, Postman) |
+| | | | VD: Calidad del intercambio de información clínica | Integridad; Consistencia; Duplicidad; Eficiencia adm.; Continuidad/trazabilidad | I1: completitud HCE; I2: codificación CIE-10; I3: codificación CPMS; I4: duplicidad pacientes; I5: duplicidad exámenes; I6: tiempo validación; I7: continuidad; I8: trazabilidad | | | |
+| PE1: ¿Cuáles son las brechas de interoperabilidad en completitud, codificación, duplicidad y trazabilidad? | OE1: Diagnosticar brechas de interoperabilidad | Se cumple mediante Fase 1 | VD | Integridad; Consistencia; Duplicidad; Continuidad | I1–I8 (pre-test) | | | Revisión documental; Lista de chequeo normativo-técnico; Auditoría de registros clínicos (HIS); Entrevista semiestructurada |
+| PE2: ¿Cuáles son los requerimientos técnicos, funcionales y normativos para implementar HL7 FHIR en el MINSA? | OE2: Identificar requerimientos técnicos, funcionales y normativos | Se cumple mediante Fase 1 | VI | Diagnóstico (Fase 1) | Cumplimiento IEDS, RNIEDS, PIDESALUD; HL7/FHIR; CIE-10/CPMS | | | Revisión documental; Lista de chequeo normativo-técnico |
+| PE3: ¿En qué medida HL7 FHIR permite integrar sistemas heterogéneos en el MINSA? | OE3: Diseñar e implementar capa de interoperabilidad FHIR | Se cumple mediante Fase 2 | VI | Implementación piloto (Fase 2) | HAPI-FHIR R4; Patient, Condition, Observation mapeados; tasa éxito ≥ 95% | | | Lista de chequeo normativo-técnico / Bitácora; Pruebas técnicas (JMeter, Postman) |
+| PE4: ¿Cuál es el efecto del modelo en la calidad del intercambio de información clínica? | OE4: Evaluar efecto pre-post del modelo | HE1: integridad (I1); HE2: consistencia (I2, I3); HE3: duplicidad (I4, I5); HE4: eficiencia (I6); HE5: continuidad/trazabilidad (I7, I8) | VD | Integridad; Consistencia; Duplicidad; Eficiencia adm.; Continuidad/trazabilidad | I1–I8 (pre-post; t Student/Wilcoxon; α=0.05; d Cohen) | | | Ficha de auditoría clínico-administrativa (HIS, cruce inter-establ., SIS, logs) pre/post; Análisis estadístico (R/SPSS) |
+| — | OE5: Formular lineamientos de escalabilidad del modelo | Se cumple mediante documentación de resultados | — | Lineamientos de escalabilidad | Directrices técnicas y operativas | | | Entrevista semiestructurada de cierre; Revisión documental |
+
+*Nota.* Elaboración propia. PG = Problema general; PE = Problema específico; OG = Objetivo general; OE = Objetivo específico; HG = Hipótesis general; HE = Hipótesis específica; VI = Variable independiente; VD = Variable dependiente; I1–I8 = Indicadores de calidad del intercambio de información clínica. Las columnas "Metodología" y "Población y muestra" aplican de forma transversal a todos los problemas y objetivos. Los OE1, OE2, OE3 y OE5 se cumplen mediante la ejecución documentada de las fases del estudio; solo el OE4 requiere contrastación de hipótesis (HE1–HE5). La ficha de auditoría de registros clínico-administrativos se aplica a diferentes fuentes de datos según el indicador (registros HIS, cruce inter-establecimientos, registros SIS, logs del sistema), conforme a la Tabla 8.
 
 
 
