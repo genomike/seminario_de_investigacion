@@ -32,7 +32,7 @@ from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
-from docx.shared import Inches, Pt
+from docx.shared import Cm, Inches, Pt
 
 BASE = Path(__file__).parent
 PLANTILLA = BASE / "plantilla_estilos.docx"
@@ -1166,10 +1166,10 @@ def _hacer_sectpr(landscape: bool):
         pgMar.set(qn("w:bottom"), "720")
         pgMar.set(qn("w:left"), "720")
     else:
-        pgMar.set(qn("w:top"), "1440")
-        pgMar.set(qn("w:right"), "1440")
-        pgMar.set(qn("w:bottom"), "1440")
-        pgMar.set(qn("w:left"), "1440")
+        pgMar.set(qn("w:top"), "1701")    # 3 cm
+        pgMar.set(qn("w:right"), "1440")  # 2.54 cm
+        pgMar.set(qn("w:bottom"), "1440") # 2.54 cm
+        pgMar.set(qn("w:left"), "1701")   # 3 cm
     pgMar.set(qn("w:header"), "708")
     pgMar.set(qn("w:footer"), "708")
     pgMar.set(qn("w:gutter"), "0")
@@ -1265,7 +1265,7 @@ def aplicar_orientacion_tablas_anchas(doc, min_columnas: int = 4):
 
 # Ancho de texto disponible en twips para cada orientación
 _ANCHO_LANDSCAPE = 16838 - 1440   # A4 landscape - márgenes 720+720
-_ANCHO_PORTRAIT  = 11906 - 2880   # A4 portrait  - márgenes 1440+1440
+_ANCHO_PORTRAIT  = 11906 - 3141   # A4 portrait  - márgenes 1701(3cm) + 1440(2.54cm)
 _MIN_COL_TWIPS   = 800             # ancho mínimo garantizado por columna (~1.4 cm)
 
 
@@ -1480,6 +1480,203 @@ def ajustar_anchos_tablas(doc, umbral_landscape: int = 4):
     print(f"  Anchos dinámicos aplicados: {ajustadas} tabla(s).")
 
 
+# ---------------------------------------------------------------------------
+# Numeración de páginas y formato de referencias
+# ---------------------------------------------------------------------------
+
+def _insertar_campo_pagina(parrafo):
+    """Inserta un campo PAGE (número de página) con fuente Arial 12 pt."""
+    run = parrafo.add_run()
+    r = run._r  # pyright: ignore[reportPrivateUsage]
+    fld_begin = OxmlElement("w:fldChar")
+    fld_begin.set(qn("w:fldCharType"), "begin")
+    r.append(fld_begin)
+
+    r_instr = parrafo.add_run()._r  # pyright: ignore[reportPrivateUsage]
+    instr = OxmlElement("w:instrText")
+    instr.set(qn("xml:space"), "preserve")
+    instr.text = " PAGE "
+    r_instr.append(instr)
+
+    r_sep = parrafo.add_run()._r  # pyright: ignore[reportPrivateUsage]
+    fld_sep = OxmlElement("w:fldChar")
+    fld_sep.set(qn("w:fldCharType"), "separate")
+    r_sep.append(fld_sep)
+
+    run_num = parrafo.add_run("#")
+    run_num.font.name = "Arial"
+    run_num.font.size = Pt(12)
+
+    r_end = parrafo.add_run()._r  # pyright: ignore[reportPrivateUsage]
+    fld_end = OxmlElement("w:fldChar")
+    fld_end.set(qn("w:fldCharType"), "end")
+    r_end.append(fld_end)
+
+
+def _crear_sectpr_inline(fmt=None, start=None):
+    """Crea w:sectPr inline (nextPage) con A4 portrait y márgenes tesis."""
+    sect = OxmlElement("w:sectPr")
+
+    sect_type = OxmlElement("w:type")
+    sect_type.set(qn("w:val"), "nextPage")
+    sect.append(sect_type)
+
+    pgSz = OxmlElement("w:pgSz")
+    pgSz.set(qn("w:w"), "11906")
+    pgSz.set(qn("w:h"), "16838")
+    sect.append(pgSz)
+
+    pgMar = OxmlElement("w:pgMar")
+    pgMar.set(qn("w:top"), "1701")     # 3 cm
+    pgMar.set(qn("w:left"), "1701")    # 3 cm
+    pgMar.set(qn("w:bottom"), "1440")  # 2.54 cm
+    pgMar.set(qn("w:right"), "1440")   # 2.54 cm
+    pgMar.set(qn("w:header"), "708")
+    pgMar.set(qn("w:footer"), "708")
+    pgMar.set(qn("w:gutter"), "0")
+    sect.append(pgMar)
+
+    if fmt is not None:
+        pgNum = OxmlElement("w:pgNumType")
+        pgNum.set(qn("w:fmt"), fmt)
+        if start is not None:
+            pgNum.set(qn("w:start"), str(start))
+        sect.append(pgNum)
+
+    return sect
+
+
+def _insertar_sectpr_en_parrafo(parrafo, fmt=None, start=None):
+    """Inserta (o reemplaza) un w:sectPr en el w:pPr del párrafo."""
+    p_elem = parrafo._p  # pyright: ignore[reportPrivateUsage]
+    pPr = p_elem.find(qn("w:pPr"))
+    if pPr is None:
+        pPr = OxmlElement("w:pPr")
+        p_elem.insert(0, pPr)
+    existing = pPr.find(qn("w:sectPr"))
+    if existing is not None:
+        pPr.remove(existing)
+    pPr.append(_crear_sectpr_inline(fmt=fmt, start=start))
+
+
+def aplicar_numeracion_paginas(doc):
+    """Numeración de páginas según reglamento:
+
+    - Carátula: cuenta como pág. i pero NO muestra número.
+    - Preliminares (Índice → antes de Capítulo I): romanos minúscula, inf. derecha.
+    - Cuerpo (Capítulo I → fin): arábigos continuación, inf. derecha.
+    """
+    # --- Localizar encabezados clave ---
+    idx_indice = None
+    idx_capitulo = None
+    for i, p in enumerate(doc.paragraphs):
+        estilo = p.style.name if p.style else ""
+        texto = p.text.strip()
+        if estilo == "Heading 1":
+            if texto == "Índice" and idx_indice is None:
+                idx_indice = i
+            elif texto.startswith("Capítulo ") and idx_capitulo is None:
+                idx_capitulo = i
+
+    if idx_indice is None or idx_capitulo is None or idx_indice < 1 or idx_capitulo < 2:
+        print("  AVISO: No se encontraron Índice/Capítulo para numeración de páginas.")
+        return
+
+    # --- Section break: fin de carátula (antes de Índice) ---
+    _insertar_sectpr_en_parrafo(doc.paragraphs[idx_indice - 1],
+                                fmt="lowerRoman", start=1)
+
+    # --- Section break: fin de preliminares (antes de Capítulo I) ---
+    _insertar_sectpr_en_parrafo(doc.paragraphs[idx_capitulo - 1],
+                                fmt="lowerRoman")
+
+    # --- pgNumType del body sectPr (última sección = cuerpo) ---
+    last_sect_pr = doc.sections[-1]._sectPr  # pyright: ignore[reportPrivateUsage]
+    pgNum = last_sect_pr.find(qn("w:pgNumType"))
+    if pgNum is None:
+        pgNum = OxmlElement("w:pgNumType")
+        last_sect_pr.append(pgNum)
+    pgNum.set(qn("w:fmt"), "decimal")
+    # Sin w:start → continúa la cuenta desde la sección previa
+
+    # --- Márgenes de secciones portrait (3 cm sup/izq, 2.54 cm inf/der) ---
+    for section in doc.sections:
+        sect_pr = section._sectPr  # pyright: ignore[reportPrivateUsage]
+        pgSz = sect_pr.find(qn("w:pgSz"))
+        is_landscape = pgSz is not None and pgSz.get(qn("w:orient")) == "landscape"
+        if not is_landscape:
+            pgMar = sect_pr.find(qn("w:pgMar"))
+            if pgMar is not None:
+                pgMar.set(qn("w:top"), "1701")
+                pgMar.set(qn("w:left"), "1701")
+                pgMar.set(qn("w:bottom"), "1440")
+                pgMar.set(qn("w:right"), "1440")
+
+    # --- Footers por sección ---
+    sections = list(doc.sections)
+    for i, section in enumerate(sections):
+        if i == 0:
+            # Carátula: pie vacío → no muestra número
+            section.footer.is_linked_to_previous = False
+            for p in section.footer.paragraphs:
+                p.clear()
+        elif i == 1:
+            # Preliminares: número romano, inferior derecha
+            section.footer.is_linked_to_previous = False
+            for p in section.footer.paragraphs:
+                p.clear()
+            p_footer = section.footer.paragraphs[0]
+            p_footer.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+            _insertar_campo_pagina(p_footer)
+        elif i == 2:
+            # Primer cuerpo: número arábigo, inferior derecha
+            section.footer.is_linked_to_previous = False
+            for p in section.footer.paragraphs:
+                p.clear()
+            p_footer = section.footer.paragraphs[0]
+            p_footer.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+            _insertar_campo_pagina(p_footer)
+        else:
+            # Secciones restantes (landscape, etc.): heredan footer anterior
+            section.footer.is_linked_to_previous = True
+
+    print("  Numeración de páginas configurada (romanos preliminares, arábigos cuerpo).")
+
+
+def aplicar_formato_referencias(doc):
+    """Formato APA 7 para referencias: orden alfabético, sangría francesa 1.27 cm,
+    sin viñetas ni numeración."""
+    en_referencias = False
+    count = 0
+    for p in doc.paragraphs:
+        estilo = p.style.name if p.style else ""
+        texto = p.text.strip()
+
+        if estilo == "Heading 1":
+            if texto == "Referencias":
+                en_referencias = True
+                continue
+            elif en_referencias:
+                break
+
+        if not en_referencias or not texto:
+            continue
+
+        # Sangría francesa: 1.27 cm
+        p.paragraph_format.left_indent = Cm(1.27)
+        p.paragraph_format.first_line_indent = Cm(-1.27)
+
+        # Quitar viñetas/numeración si las hay
+        pPr = p._p.find(qn("w:pPr"))  # pyright: ignore[reportPrivateUsage]
+        if pPr is not None:
+            numPr = pPr.find(qn("w:numPr"))
+            if numPr is not None:
+                pPr.remove(numPr)
+        count += 1
+
+    print(f"  Formato de referencias aplicado: {count} entradas (sangría francesa 1.27 cm).")
+
+
 def postprocesar_docx(destino):
     """Aplica formato y campos Word después de la conversión de pandoc."""
     doc = Document(str(destino))
@@ -1497,6 +1694,8 @@ def postprocesar_docx(destino):
     ajustar_anchos_tablas(doc)
     aplicar_fuente_arial_documento(doc)
     ajustar_fuente_tablas(doc)
+    aplicar_formato_referencias(doc)
+    aplicar_numeracion_paginas(doc)
     activar_actualizacion_campos(doc)
     doc.save(str(destino))
     actualizar_campos_con_word(destino)
