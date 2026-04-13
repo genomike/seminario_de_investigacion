@@ -2,38 +2,46 @@
 !theme plain
 skinparam backgroundColor white
 skinparam defaultFontName Arial
-skinparam defaultFontSize 11
+skinparam defaultFontSize 12
 skinparam shadowing false
+skinparam rectangle {
+    RoundCorner 10
+    BorderColor #555555
+}
+top to bottom direction
 
 title <b>Evolución de estándares de interoperabilidad clínica</b>
 
-concise "Estándares HL7" as HL7
-concise "Contexto Perú" as PERU
+rectangle "<b>Estándares HL7</b>" as COL_HL7 #E3F2FD {
+    rectangle "HL7 v2\n(Mensajería)" as HL7v2 #BBDEFB
+    rectangle "HL7 v3 / CDA\n(Documentos)" as HL7v3 #BBDEFB
+    rectangle "HL7 FHIR\n(APIs REST)" as FHIR #C8E6C9
+    rectangle "FHIR R4\n(Estable)" as FHIR4 #A5D6A7
+    HL7v2 -down-> HL7v3
+    HL7v3 -down-> FHIR
+    FHIR -down-> FHIR4
+}
 
-@0
-HL7 is "HL7 v2\n(Mensajería)"
+rectangle "<b>Contexto Perú</b>" as COL_PERU #FFF3E0 {
+    rectangle "Ley 30024\nRENHICE (2013)" as P1 #FFE0B2
+    rectangle "IEDS / RNIEDS\nPIDESALUD\n(2018-2019)" as P2 #FFE0B2
+    rectangle "Pilotos nacionales\n(2022-2026)" as P3 #FFE0B2
+    P1 -down-> P2
+    P2 -down-> P3
+}
 
-@6
-HL7 is "HL7 v3 / CDA\n(Documentos)"
+' Layout: side by side
+COL_HL7 -[hidden]right- COL_PERU
 
-@12
-HL7 is "HL7 FHIR\n(APIs REST)"
+' Cross-references
+HL7v3 .[#888888].> P1 : " contemporáneos"
+FHIR .[#888888].> P2 : " adopción"
+FHIR4 .[#888888].> P3 : " implementación"
 
-@17
-HL7 is "FHIR R4\n(Estable)"
-
-@0
-PERU is {hidden}
-
-@8
-PERU is "Ley 30024\nRENHICE (2013)"
-
-@13
-PERU is "IEDS / RNIEDS\nPIDESALUD\n(2018-2019)"
-
-@17
-PERU is "Pilotos\nnacionales\n(2022-2026)"
-
-highlight 12 to 20 #E8F5E9 : Era FHIR
+note bottom of FHIR4 #E8F5E9
+  <b>Era FHIR</b>
+  Estándar vigente para
+  interoperabilidad clínica
+end note
 
 @enduml

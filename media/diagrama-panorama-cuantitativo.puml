@@ -2,37 +2,27 @@
 !theme plain
 skinparam backgroundColor white
 skinparam defaultFontName Arial
-skinparam defaultFontSize 11
+skinparam defaultFontSize 14
 skinparam shadowing false
 skinparam rectangle {
     RoundCorner 10
     BorderColor #555555
+    FontSize 13
 }
+top to bottom direction
 
 title <b>Panorama cuantitativo de la interoperabilidad en el sistema de salud peruano</b>
 
-rectangle "<b>Adopción tecnológica</b>" as AT #E8EAF6 {
-    rectangle "74% de IPRESS\nsin sistema adecuado\npara HCE" as A1 #C5CAE9
-    rectangle "Solo 26% usa\nalgún sistema digital" as A2 #C5CAE9
-    rectangle "39% aún se basa\nen registros en papel" as A3 #C5CAE9
-    rectangle "Madurez en interoperabilidad\ninferior al 10%" as A4 #C5CAE9
-}
+rectangle "<b>1) Adopción tecnológica</b>\n\n• 74% de IPRESS sin sistema adecuado para HCE\n• Solo 26% usa algún sistema digital\n• 39% aún se basa en registros en papel\n• Madurez en interoperabilidad < 10%" as AT #E8EAF6
 
-rectangle "<b>Brecha territorial</b>" as BT #FFF3E0 {
-    rectangle "< 4% de adopción\nde HCE fuera de Lima" as T1 #FFE0B2
-    rectangle "< 40% de adopción\nde HCE en Lima" as T2 #FFE0B2
-}
+rectangle "<b>2) Brecha territorial</b>\n\n• < 40% de adopción de HCE en Lima\n• < 4% de adopción de HCE fuera de Lima" as BT #FFF3E0
 
-rectangle "<b>Percepción de usuarios</b>" as PU #E8F5E9 {
-    rectangle "83.33% expresa\ninsatisfacción con\nmanejo de información" as U1 #C8E6C9
-    rectangle "81.48% opina que\nuna HCE única mejoraría\nla atención" as U2 #C8E6C9
-}
+rectangle "<b>3) Percepción de usuarios</b>\n\n• 81.48% opina que una HCE única mejoraría la atención\n• 83.33% expresa insatisfacción con el manejo de información" as PU #E8F5E9
 
-rectangle "<b>Impacto económico</b>" as IE #FCE4EC {
-    rectangle "Ahorro potencial de\nhasta 80% en costos\npor repetición de pruebas\n(Bayona, 2019)" as E1 #F8BBD0
-}
+rectangle "<b>4) Impacto económico</b>\n\n• Ahorro potencial de hasta 80% en costos\n  por repetición de pruebas (Bayona, 2019)" as IE #FCE4EC
 
-AT -[hidden]right- BT
-PU -[hidden]right- IE
+AT -down-> BT : "dimensión territorial"
+BT -down-> PU : "experiencia de usuarios"
+PU -down-> IE : "consecuencia económica"
 
 @enduml

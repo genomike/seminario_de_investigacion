@@ -24,6 +24,7 @@ import locale
 import subprocess
 import sys
 import tempfile
+import time
 from copy import deepcopy
 from pathlib import Path
 
@@ -40,7 +41,6 @@ CARATULA_MANUAL_ALT = BASE / "caratua.docx"
 REFERENCE = BASE / "document_reference.docx"
 ENTRADA = BASE / "Documento_Tesis.md"
 SALIDA = BASE / "Documento_Tesis_salida.docx"
-SALIDA_ALT = BASE / "Documento_Tesis_salida_nueva.docx"
 CUERPO_TEMP = BASE / "_cuerpo_tesis_temp.docx"
 
 
@@ -89,6 +89,83 @@ def ejecutar_pandoc(origen_md, destino, reference_path):
             print(stdout)
         print(f"\nDocumento generado correctamente: {destino.name}")
         return True
+
+
+def _cerrar_procesos_bloqueando_docx(destino):
+    """Intenta cerrar procesos de ofimática que mantienen bloqueado el DOCX."""
+    path = str(destino).replace("'", "''")
+    nombre = destino.name.replace("'", "''")
+    script = rf"""
+$ErrorActionPreference = 'SilentlyContinue'
+$path = '{path}'
+$name = '{nombre}'
+$targetBases = @('WINWORD', 'SOFFICE', 'WPS')
+$pathRegex = [regex]::Escape($path)
+$nameRegex = [regex]::Escape($name)
+
+$matched = Get-CimInstance Win32_Process | Where-Object {{
+    $base = [System.IO.Path]::GetFileNameWithoutExtension($_.Name).ToUpperInvariant()
+    ($targetBases -contains $base) -and $_.CommandLine -and
+    ($_.CommandLine -match $pathRegex -or $_.CommandLine -match $nameRegex)
+}}
+
+foreach ($proc in $matched) {{
+    Stop-Process -Id $proc.ProcessId -Force -ErrorAction SilentlyContinue
+}}
+
+# Fallback: si el archivo sigue bloqueado, cerrar cualquier Word/Office abierto.
+if (Test-Path -LiteralPath $path) {{
+    Get-Process -ErrorAction SilentlyContinue |
+        Where-Object {{
+            $base = [System.IO.Path]::GetFileNameWithoutExtension($_.Name).ToUpperInvariant()
+            $targetBases -contains $base
+        }} |
+        Stop-Process -Force -ErrorAction SilentlyContinue
+}}
+"""
+    resultado = subprocess.run(
+        ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", script],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if resultado.returncode != 0 and resultado.stderr:
+        print("  Aviso al liberar bloqueo:", resultado.stderr.strip())
+
+
+def preparar_archivo_salida(destino, reintentos=3):
+    """Elimina la salida previa; si está bloqueada, cierra el proceso y reintenta."""
+    if not destino.exists():
+        return
+
+    for intento_bloqueo in range(1, reintentos + 1):
+        try:
+            destino.unlink()
+            print(f"  Archivo anterior eliminado: {destino.name}")
+            return
+        except PermissionError:
+            print(
+                f"  {destino.name} está en uso. "
+                f"Intentando liberar bloqueo ({intento_bloqueo}/{reintentos})..."
+            )
+            _cerrar_procesos_bloqueando_docx(destino)
+            time.sleep(1)
+        except OSError as exc:
+            # WinError 32 = archivo en uso por otro proceso.
+            if getattr(exc, "winerror", None) == 32:
+                print(
+                    f"  {destino.name} está bloqueado por otro proceso. "
+                    f"Reintentando ({intento_bloqueo}/{reintentos})..."
+                )
+                _cerrar_procesos_bloqueando_docx(destino)
+                time.sleep(1)
+                continue
+            raise
+
+    if destino.exists():
+        raise PermissionError(
+            f"No se pudo eliminar {destino.name}; el archivo sigue bloqueado."
+        )
 
 
 def insertar_parrafo_despues(parrafo, texto=""):
@@ -710,6 +787,188 @@ def _pstyle_val(p):
     return ps.get(qn("w:val"), "") if ps is not None else ""
 
 
+_RE_CAPTION_FIG = re.compile(r"^Figura\s+(?:\d+|#)\s*[\.:]\s*(.+)$", re.IGNORECASE)
+_RE_CAPTION_TAB = re.compile(r"^Tabla\s+(?:\d+|#)\s*[\.:]\s*(.+)$", re.IGNORECASE)
+
+
+def _extraer_num_titulo_caption(texto: str, tipo: str):
+    """Extrae número y título de captions tipo 'Figura N. Título' o 'Tabla N. Título'."""
+    limpio = re.sub(r"\s*\{#[^}]+\}\s*$", "", (texto or "").strip())
+    if tipo == "Figura":
+        m = _RE_CAPTION_FIG.match(limpio)
+    else:
+        m = _RE_CAPTION_TAB.match(limpio)
+    if not m:
+        return None, None
+    return "", m.group(1).strip()
+
+
+def _reconstruir_caption_dos_lineas(parrafo, etiqueta: str, seq_name: str, titulo: str):
+    """Reconstruye caption en dos líneas:
+    1) 'Figura/Tabla X:' (con SEQ)
+    2) título
+    """
+    p_elem = parrafo._p  # pyright: ignore[reportPrivateUsage]
+    for child in list(p_elem):
+        if child.tag != qn("w:pPr"):
+            p_elem.remove(child)
+
+    # Primera línea: Etiqueta + número secuencial
+    run_pre = parrafo.add_run(f"{etiqueta} ")
+    run_pre.font.size = Pt(10)
+    run_pre.font.name = "Arial"
+
+    r_begin = parrafo.add_run()._r  # pyright: ignore[reportPrivateUsage]
+    fld_begin = OxmlElement("w:fldChar")
+    fld_begin.set(qn("w:fldCharType"), "begin")
+    r_begin.append(fld_begin)
+
+    r_instr = parrafo.add_run()._r  # pyright: ignore[reportPrivateUsage]
+    instr = OxmlElement("w:instrText")
+    instr.set(qn("xml:space"), "preserve")
+    instr.text = f" SEQ {seq_name} \\* ARABIC "
+    r_instr.append(instr)
+
+    r_sep = parrafo.add_run()._r  # pyright: ignore[reportPrivateUsage]
+    fld_sep = OxmlElement("w:fldChar")
+    fld_sep.set(qn("w:fldCharType"), "separate")
+    r_sep.append(fld_sep)
+
+    run_num = parrafo.add_run("#")
+    run_num.font.size = Pt(10)
+    run_num.font.name = "Arial"
+
+    r_end = parrafo.add_run()._r  # pyright: ignore[reportPrivateUsage]
+    fld_end = OxmlElement("w:fldChar")
+    fld_end.set(qn("w:fldCharType"), "end")
+    r_end.append(fld_end)
+
+    run_colon = parrafo.add_run(":")
+    run_colon.font.size = Pt(10)
+    run_colon.font.name = "Arial"
+
+    # Segunda línea: título
+    run_break = parrafo.add_run()
+    run_break.add_break()
+    run_title = parrafo.add_run(titulo)
+    run_title.font.size = Pt(10)
+    run_title.font.name = "Arial"
+    run_title.italic = True
+
+    parrafo.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    parrafo.paragraph_format.keep_with_next = True
+    parrafo.paragraph_format.keep_together = True
+    parrafo.paragraph_format.space_after = Pt(0)
+
+
+def _insertar_parrafo_texto_despues(elem, texto: str):
+    """Inserta un párrafo de texto inmediatamente después de un elemento XML del body."""
+    p = OxmlElement("w:p")
+    r = OxmlElement("w:r")
+    t = OxmlElement("w:t")
+    t.text = texto
+    r.append(t)
+    p.append(r)
+    elem.addnext(p)
+    return p
+
+
+def aplicar_formato_cuatro_lineas_figuras_tablas(doc):
+    """Impone formato:
+    - Figura X:\nTítulo\n[Imagen]\nNota.
+    - Tabla X:\nTítulo\n[Tabla]\nNota.
+    """
+    body = doc.element.body
+    tree = body.getroottree()
+    p_map = {
+        tree.getpath(p._p): p  # pyright: ignore[reportPrivateUsage]
+        for p in doc.paragraphs
+    }
+
+    # --- Figuras: mover caption antes de imagen y partir en 2 líneas ---
+    ch = [c for c in body if c.tag != qn("w:sectPr")]
+    movimientos_fig: list[tuple[object, object]] = []
+    for i in range(len(ch) - 1):
+        actual = ch[i]
+        sig = ch[i + 1]
+        if actual.tag != qn("w:p") or sig.tag != qn("w:p"):
+            continue
+        if "w:drawing" not in actual.xml:
+            continue
+
+        txt_caption = _texto_elem(sig)
+        _, titulo = _extraer_num_titulo_caption(txt_caption, "Figura")
+        if not titulo:
+            continue
+
+        p_caption = p_map.get(tree.getpath(sig))
+        p_imagen = p_map.get(tree.getpath(actual))
+        if p_caption is None:
+            continue
+
+        _reconstruir_caption_dos_lineas(p_caption, "Figura", "Figure", titulo)
+        if p_imagen is not None:
+            p_imagen.paragraph_format.keep_with_next = True
+            p_imagen.paragraph_format.keep_together = True
+
+        movimientos_fig.append((actual, sig))
+
+    for img_elem, cap_elem in movimientos_fig:
+        parent = img_elem.getparent()
+        if parent is None or cap_elem.getparent() is not parent:
+            continue
+        idx_img = parent.index(img_elem)
+        parent.remove(cap_elem)
+        parent.insert(idx_img, cap_elem)
+
+    # --- Tablas: caption en 2 líneas (mantener antes de tabla) ---
+    tree = body.getroottree()
+    p_map = {
+        tree.getpath(p._p): p  # pyright: ignore[reportPrivateUsage]
+        for p in doc.paragraphs
+    }
+    ch = [c for c in body if c.tag != qn("w:sectPr")]
+    for i in range(1, len(ch)):
+        if ch[i].tag != qn("w:tbl"):
+            continue
+        prev = ch[i - 1]
+        if prev.tag != qn("w:p"):
+            continue
+
+        txt_caption = _texto_elem(prev)
+        _, titulo = _extraer_num_titulo_caption(txt_caption, "Tabla")
+        p_caption = p_map.get(tree.getpath(prev))
+        if p_caption is None:
+            continue
+
+        if not titulo:
+            # Fallback: cuando el título viene sin prefijo "Tabla N:", usar el
+            # párrafo previo como título y reconstruir caption en 2 líneas.
+            if _es_nota_parrafo(prev):
+                continue
+            titulo_fallback = txt_caption.strip()
+            if not titulo_fallback:
+                continue
+            titulo = titulo_fallback
+
+        _reconstruir_caption_dos_lineas(p_caption, "Tabla", "Table", titulo)
+
+        # Garantiza línea 4 (nota) para todas las tablas.
+        k = i + 1
+        while k < len(ch):
+            if _es_marcador_no_visible(ch[k]):
+                k += 1
+                continue
+            if ch[k].tag == qn("w:p") and not _texto_elem(ch[k]):
+                k += 1
+                continue
+            break
+
+        tiene_nota = k < len(ch) and _es_nota_parrafo(ch[k])
+        if not tiene_nota:
+            _insertar_parrafo_texto_despues(ch[i], "Nota. Elaboración propia.")
+
+
 def numerar_captions_figuras(doc):
     """Agrega campo SEQ Figure a captions de imagen para que el índice de figuras funcione."""
     for p in doc.paragraphs:
@@ -770,26 +1029,16 @@ def numerar_captions_figuras(doc):
 
 def numerar_captions_tablas(doc):
     """Agrega campo SEQ Table a captions de tabla para que el índice de tablas funcione."""
-    # Detectar captions por posición: párrafo directamente antes de w:tbl en el body
-    body = doc.element.body
-    p_ids_caption: set[int] = set()
-    children = list(body)
-    for i, child in enumerate(children):
-        if child.tag == qn("w:tbl") and i > 0:
-            prev = children[i - 1]
-            if prev.tag == qn("w:p"):
-                p_ids_caption.add(id(prev))
-
     for p in doc.paragraphs:
         pstyle = _pstyle_val(p)
+        texto_original = re.sub(r"\s*\{#[^}]+\}", "", p.text.strip()).strip()
         es_caption = (
-            id(p._p) in p_ids_caption  # pyright: ignore[reportPrivateUsage]
-            or pstyle in {"TableCaption", "TableTitle", "Tabletitre"}
+            pstyle in {"TableCaption", "TableTitle", "Tabletitre"}
+            or re.match(r"^Tabla\s+(?:\d+|#)\s*[\.:]", texto_original, flags=re.IGNORECASE) is not None
         )
         if not es_caption:
             continue
 
-        texto_original = re.sub(r"\s*\{#[^}]+\}", "", p.text.strip()).strip()
         # Quitar prefijo "Tabla N. " o "Tabla N: " que pandoc ya incluyó en el texto
         texto_original = re.sub(r"^Tabla\s+\d+\s*[\.:]\.?\s*", "", texto_original).strip()
         if not texto_original or texto_original.startswith("Nota."):
@@ -839,12 +1088,14 @@ def numerar_captions_tablas(doc):
 
 
 def formatear_notas_fuente(doc):
-    """Centra y aplica Arial 10pt a TODAS las notas ('Nota. ...') fuera de tablas."""
+    """Aplica Arial 10pt a TODAS las notas ('Nota. ...') y las mantiene unidas."""
     for p in doc.paragraphs:
         texto = p.text.strip()
         if not texto.startswith("Nota."):
             continue
-        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        p.paragraph_format.keep_together = True
+        p.paragraph_format.keep_with_next = False
         _set_fuente_parrafo_ppr(p, 10, "Arial")
         for run in p.runs:
             _set_fuente_run(run, 10, "Arial")
@@ -879,8 +1130,20 @@ def _es_caption_tabla(elem):
         ps = ppr.find(qn("w:pStyle"))
         if ps is not None and ps.get(qn("w:val"), "") in {"TableCaption", "TableTitle", "Tabletitre"}:
             return True
-    # Fallback: comienza con "Tabla" (tras numerar_captions_tablas)
-    return _texto_elem(elem).startswith("Tabla")
+    # Fallback: comienza con "Tabla N"
+    return re.match(r"^Tabla\s+\d+", _texto_elem(elem)) is not None
+
+
+def _es_nota_parrafo(elem):
+    """True si el elemento es un párrafo de nota (Nota. / Nota:)."""
+    if elem.tag != qn("w:p"):
+        return False
+    return re.match(r"^\s*Nota\s*[\.:]", _texto_elem(elem), flags=re.IGNORECASE) is not None
+
+
+def _es_marcador_no_visible(elem):
+    """True para elementos XML no visibles (bookmarkEnd, bookmarkStart, etc.)."""
+    return elem.tag not in {qn("w:p"), qn("w:tbl")}
 
 
 def _hacer_sectpr(landscape: bool):
@@ -950,11 +1213,18 @@ def aplicar_orientacion_tablas_anchas(doc, min_columnas: int = 4):
             start -= 1
 
         end = i
-        # Extender hacia adelante: incluir párrafos de nota ("Nota. ...")
+        # Extender hacia adelante: incluir marcadores XML no visibles y notas.
         j = end + 1
-        while j < n and ch[j].tag == qn("w:p") and _texto_elem(ch[j]).startswith("Nota."):
-            end = j
-            j += 1
+        while j < n:
+            if _es_marcador_no_visible(ch[j]):
+                end = j
+                j += 1
+                continue
+            if ch[j].tag == qn("w:p") and _es_nota_parrafo(ch[j]):
+                end = j
+                j += 1
+                continue
+            break
 
         bloques.append((start, end))
         i = end + 1
@@ -967,7 +1237,7 @@ def aplicar_orientacion_tablas_anchas(doc, min_columnas: int = 4):
     for blk_s, blk_e in bloques[1:]:
         prev_s, prev_e = fusionados[-1]
         gap_vacios = all(
-            ch[k].tag == qn("w:p") and not _texto_elem(ch[k])
+            (ch[k].tag == qn("w:p") and not _texto_elem(ch[k])) or _es_marcador_no_visible(ch[k])
             for k in range(prev_e + 1, blk_s)
         ) if blk_s > prev_e + 1 else True
         if gap_vacios:
@@ -1219,6 +1489,7 @@ def postprocesar_docx(destino):
     aplicar_saltos_pagina_encabezados(doc)
     numerar_captions_figuras(doc)
     numerar_captions_tablas(doc)
+    aplicar_formato_cuatro_lineas_figuras_tablas(doc)
     formatear_notas_fuente(doc)
     insertar_indices_automaticos(doc)
     aplicar_bordes_tablas(doc)
@@ -1248,14 +1519,24 @@ if __name__ == "__main__":
         if not exito:
             sys.exit(1)
 
+        print("\n=== Preparando archivo de salida ===")
+        preparar_archivo_salida(SALIDA)
+
         print("\n=== Combinando carátula manual + cuerpo ===")
         salida_objetivo = SALIDA
-        try:
-            combinar_caratula_y_cuerpo(caratula_entrada, CUERPO_TEMP, salida_objetivo)
-        except PermissionError:
-            print("El archivo principal parece estar bloqueado. Se generará salida alternativa.")
-            salida_objetivo = SALIDA_ALT
-            combinar_caratula_y_cuerpo(caratula_entrada, CUERPO_TEMP, salida_objetivo)
+        for intento_escritura in range(1, 4):
+            try:
+                combinar_caratula_y_cuerpo(caratula_entrada, CUERPO_TEMP, salida_objetivo)
+                break
+            except PermissionError:
+                if intento_escritura == 3:
+                    raise
+                print(
+                    f"  {salida_objetivo.name} se bloqueó durante la escritura. "
+                    f"Reintentando ({intento_escritura}/3)..."
+                )
+                _cerrar_procesos_bloqueando_docx(salida_objetivo)
+                preparar_archivo_salida(salida_objetivo)
 
         print("\n=== Aplicando postproceso DOCX ===")
         postprocesar_docx(salida_objetivo)

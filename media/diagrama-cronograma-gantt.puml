@@ -1,9 +1,27 @@
 @startgantt
-Project starts 2025-07-01
+<style>
+ganttDiagram {
+    task {
+        FontSize 14
+    }
+    separator {
+        FontSize 14
+    }
+    timeline {
+        FontSize 12
+    }
+    note {
+        FontSize 13
+    }
+}
+</style>
 
 printscale weekly zoom 2
+scale max 1900 width
 
 title Cronograma de actividades de la investigacion
+
+Project starts 2025-07-01
 
 -- Fase preparatoria --
 [Revision y aprobacion del proyecto] lasts 4 weeks

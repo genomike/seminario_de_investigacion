@@ -27,10 +27,10 @@ F1 -right-> F2
 F2 -right-> F3
 
 package "Variable Dependiente:\nCalidad del intercambio de información clínica" as VD {
-    rectangle "<b>D1: Integridad\nde datos</b>" as D1 #E8EAF6
+    rectangle "<b>D1: Integridad</b>\n<b>de datos</b>" as D1 #E8EAF6
     rectangle "<b>D2: Duplicidad</b>" as D2 #FFF3E0
-    rectangle "<b>D3: Eficiencia\nadministrativa</b>" as D3 #E8F5E9
-    rectangle "<b>D4: Continuidad\ny trazabilidad</b>" as D4 #FCE4EC
+    rectangle "<b>D3: Eficiencia</b>\n<b>administrativa</b>" as D3 #E8F5E9
+    rectangle "<b>D4: Continuidad</b>\n<b>y trazabilidad</b>" as D4 #FCE4EC
 }
 
 F3 -down-> D1
