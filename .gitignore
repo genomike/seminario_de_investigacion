@@ -1,6 +1,28 @@
-Documento_Tesis_salida.docx
-Documento_Tesis_salida_nueva.docx
-~$cumento_Tesis_salida_nueva.docx
-~$cumento_Tesis_salida.docx
-Documento_Tesis_salida_validacion.docx
-~$cumento_Tesis_salida_validacion.docx
+# === Build outputs (efímeros) ===
+build/
+**/_reference.docx
+**/_cuerpo_tesis_temp.docx
+
+# === Legacy outputs (ya migrados a build/) ===
+Documento_Tesis_salida*.docx
+document_reference.docx
+
+# === Word lockfiles ===
+~$*
+
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+.env
+
+# === IDE ===
+.vscode/settings.json
+.idea/
+
+# === OS ===
+Thumbs.db
+.DS_Store
