@@ -14,45 +14,61 @@ infraestructura.
 ## Qué se conserva tal cual
 
 ```
-platform/scripts/build/build_thesis.py
-platform/scripts/build/build_diagrams.py
-plantuml.jar
-plantilla_estilos.docx
-documentos_apoyo/                 (la guía EPG y el template universidad)
-guia-apa7-tesis.md
-.github/skills/                   (este conjunto de skills)
-.github/copilot-instructions.md   (bootstrap del asistente)
-scripts/                          (scripts de fix como esqueletos)
+platform/                          # motor reusable (build, fixes, cleanup, tests)
+  scripts/build/build_thesis.py
+  scripts/build/build_diagrams.py
+  scripts/cleanup/reset_for_new_thesis.py
+  scripts/fixes/                   # esqueletos de scripts de corrección masiva
+  templates/styles/plantilla_estilos.docx
+  templates/portada/caratula.docx
+  templates/guides/                # guía EPG, guía APA7
+  tools/plantuml.jar
+tests/
+docs/ARCHITECTURE.md
+.github/skills/                    # este conjunto de skills
+.github/copilot-instructions.md    # bootstrap del asistente
 ```
 
 ## Qué se vacía
 
+Lo más fácil es delegar en el script:
+
+```powershell
+python platform/scripts/cleanup/reset_for_new_thesis.py            # dry-run
+python platform/scripts/cleanup/reset_for_new_thesis.py --apply    # aplicar
 ```
-Documento_Tesis.md                → dejar solo portada + esqueleto de capítulos
-fuentes/internacionales/*         → vaciar
-fuentes/nacionales/*              → vaciar
-media/*.png  + media/*.puml       → vaciar (excepto image1.png si se reusa logo)
-diagramas/*.puml                  → vaciar
-observaciones/*                   → vaciar
-tesis/*                           → vaciar (es trabajo en curso)
-caratula.docx                     → reemplazar con portada del nuevo tema
+
+Equivalente manual (no recomendado):
+
+```
+content/manuscript/Documento_Tesis.md  → reset al esqueleto base
+content/sources/international/*        → vaciar
+content/sources/national/*             → vaciar
+content/media/diagrams/*.puml          → vaciar
+content/media/figures/*.png            → vaciar
+content/observations/*                 → vaciar
+content/drafts/*                       → vaciar
+build/*                                → vaciar (regenerable)
 ```
 
 ## Qué hay que **adaptar** al nuevo tema
 
 1. **`thesis-portada`** — actualizar título, autores, año.
-2. **`thesis-dominio-*`** — eliminar el skill
-   `thesis-dominio-interoperabilidad` y crear uno nuevo
+2. **`thesis-dominio-*`** — eliminar el skill de dominio anterior
+   (p. ej. `thesis-dominio-interoperabilidad`) y crear uno nuevo
    (`thesis-dominio-<tu-tema>`) con:
    - vocabulario / siglas del nuevo dominio,
    - normativa aplicable,
    - métricas y datasets típicos,
    - bases de datos académicas más fuertes para el tema.
+   > Para tesis de Derecho ya existe `thesis-dominio-derecho` y
+   > `thesis-fuentes-derecho`; úsalos como referencia.
 3. **`README.md` raíz** (si lo hay) — sustituir descripción por la del nuevo tema.
-4. **`.github/copilot-instructions.md`** — actualizar las dos líneas que
-   dicen el tema y el contexto.
-5. **`tesis/Elaboración_Tesis.md`** — recrear los pasos de keywords →
-   búsqueda → fuentes finales → título para el nuevo tema.
+4. **`.github/copilot-instructions.md`** — actualizar la sección
+   *Tema actual* y, si corresponde, la fila del skill de dominio en la
+   tabla de skills.
+5. **`content/drafts/`** — recrear los pasos de keywords → búsqueda
+   → fuentes finales → título para el nuevo tema.
 
 ## Qué **NO** hay que cambiar
 

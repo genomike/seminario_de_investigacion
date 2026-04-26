@@ -55,7 +55,7 @@ title <Título corto opcional>
 
 ```markdown
 
-![Marco normativo peruano para la interoperabilidad en salud](../media/figures/diagrama-marco-normativo-peru.png)
+![<Título descriptivo de la figura>](../media/figures/diagrama-<slug>.png)
 
 ```
 
@@ -91,7 +91,7 @@ vez de editar a mano.
 | Mapa mental | Marco conceptual, fundamentación teórica |
 | Diagrama de flujo | Procesos metodológicos, fases |
 | Diagrama de Gantt | Cronograma |
-| Diagrama de clases | Modelo de datos / recursos FHIR |
+| Diagrama de clases | Modelo de datos / entidades del dominio |
 | Diagrama de despliegue | Infraestructura |
 
 Para el cronograma, PlantUML soporta `@startgantt`. Mantener nombres de

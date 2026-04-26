@@ -14,21 +14,21 @@ reglas más usadas y los errores más frecuentes; ante duda, abrir la guía.
 
 | Caso | Forma narrativa | Forma parentética |
 |---|---|---|
-| 1 autor | Adelusi (2025) afirma… | (Adelusi, 2025) |
-| 2 autores | Mauricio y Pérez (2024) | (Mauricio y Pérez, 2024) |
-| 3+ autores (1.ª y siguientes) | Adelusi et al. (2025) | (Adelusi et al., 2025) |
-| Cita textual con página | Bender y Sartipi (2013, p. 326) | (Bender y Sartipi, 2013, p. 326) |
-| Múltiples fuentes | (Adelusi et al., 2025; Heryawan et al., 2025; Tabari et al., 2024) — orden alfabético separado por `;` |
-| Institución (1.ª vez) | Organización Panamericana de la Salud (OPS, 2023) | (Organización Panamericana de la Salud [OPS], 2023) |
-| Institución (siguientes) | OPS (2023) | (OPS, 2023) |
+| 1 autor | Apellido (Año) afirma… | (Apellido, Año) |
+| 2 autores | Apellido1 y Apellido2 (Año) | (Apellido1 y Apellido2, Año) |
+| 3+ autores (1.ª y siguientes) | Apellido1 et al. (Año) | (Apellido1 et al., Año) |
+| Cita textual con página | Apellido1 y Apellido2 (Año, p. NN) | (Apellido1 y Apellido2, Año, p. NN) |
+| Múltiples fuentes | (Apellido1 et al., Año; Apellido2 et al., Año; Apellido3 et al., Año) — orden alfabético separado por `;` |
+| Institución (1.ª vez) | Nombre Completo de la Institución (SIGLA, Año) | (Nombre Completo de la Institución [SIGLA], Año) |
+| Institución (siguientes) | SIGLA (Año) | (SIGLA, Año) |
 
 **Reglas:**
 
 - `et al.` desde la **primera mención** cuando hay 3+ autores (APA 7,
   cambio respecto a APA 6).
 - En español usar `y` (no `&`) para unir dos autores en el cuerpo del texto.
-- Punto **después** del paréntesis: `…en hospitales heterogéneos
-  (Adelusi et al., 2025).`
+- Punto **después** del paréntesis: `…en el contexto estudiado
+  (Apellido et al., Año).`
 - Citas textuales > 40 palabras: bloque sangrado, sin comillas, cita al final.
 
 ## Lista de referencias
@@ -52,10 +52,10 @@ Reglas globales:
 ### Artículo de revista con DOI
 
 ```markdown
-Adelusi, B. S., Uzoka, A. C., Hassan, Y. G., y Ojika, F. U. (2025). Building
-secure and interoperable health data systems through HL7 FHIR and federated
-identity frameworks. *Engineering and Technology Journal*, *10*(7),
-4855-4869. https://doi.org/10.47191/etj/v10i7.27
+Apellido1, A. B., Apellido2, C. D., Apellido3, E. F., y Apellido4, G. H. (Año).
+Título del artículo en minúsculas salvo nombres propios. *Nombre de la
+Revista en Cursiva*, *vol*(núm), ppágina-inicio-ppágina-fin.
+https://doi.org/10.xxxx/yyyy
 ```
 
 ### Artículo sin DOI (con URL)
@@ -68,9 +68,9 @@ https://www.example.org/path
 ### Tesis de maestría / doctorado
 
 ```markdown
-Esparza Morgan, J. M. (2025). *Título de la tesis* [Tesis de maestría,
-Universidad de San Ignacio de Loyola]. Repositorio USIL.
-https://hdl.handle.net/20.500.14005/16177
+Apellido, X. Y. (Año). *Título de la tesis* [Tesis de maestría,
+Nombre de la Universidad]. Nombre del Repositorio Institucional.
+https://hdl.handle.net/<handle>
 ```
 
 ### Libro
@@ -90,27 +90,27 @@ Apellido, A. A. (Año). Título del capítulo. En B. B. Editor (Ed.),
 ### Informe institucional
 
 ```markdown
-Ministerio de Salud del Perú. (2024). *Resolución Ministerial N.º 1104-2024/MINSA*.
-https://www.gob.pe/institucion/minsa/normas-legales/...
+Nombre Completo de la Institución. (Año). *Título del informe o norma*
+(Número o código si aplica). https://<dominio-oficial>/<ruta>
 ```
 
 ### Página web (informe en línea de organismo)
 
 ```markdown
-Organización Panamericana de la Salud. (2023). *Estado de la
-interoperabilidad en salud en América Latina*. https://www.paho.org/...
+Nombre Completo de la Institución. (Año). *Título del documento en línea*.
+https://<dominio-oficial>/<ruta>
 ```
 
 ## Resumen y Abstract
 
 - Bloque `*Palabras clave:*` (cursiva, sin "s" final, dos puntos), seguido
-  de 3-5 términos separados por `;`. Ejemplo:
+  de 3-5 términos separados por `;`. Ejemplo genérico:
 
   ```markdown
-  *Palabras clave:* interoperabilidad; HL7 FHIR; historia clínica electrónica; Perú
+  *Palabras clave:* <término1>; <término2>; <término3>; <término4>
   ```
 
-- En inglés, equivalente: `*Keywords:* interoperability; HL7 FHIR; electronic health record; Peru`.
+- En inglés, equivalente: `*Keywords:* <term1>; <term2>; <term3>; <term4>`.
 
 ## Validaciones rápidas
 

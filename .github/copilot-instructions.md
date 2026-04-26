@@ -22,14 +22,27 @@ Ver [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md) para el detalle.
 2. `content/` no contiene `.py` ejecutable.
 3. El output va siempre a `build/tesis.docx` (no a la raíz).
 
-## Tema actual
+## Tema actual (override del fork — no es parte del motor)
 
-> Modelo de interoperabilidad basado en HL7 FHIR para mejorar el
-> intercambio de información clínica en centros de salud del MINSA — Perú.
+> **Tema vigente en este fork:** Modelo de interoperabilidad basado en
+> HL7 FHIR para mejorar el intercambio de información clínica en
+> centros de salud del MINSA — Perú.
 >
-> Para forkear sobre otro tema: ejecutar
-> `python platform/scripts/cleanup/reset_for_new_thesis.py --apply`,
-> reemplazar la línea de tema y cambiar el skill de dominio.
+> Esta línea es lo único acoplado al tema en `copilot-instructions.md`.
+> Todos los skills genéricos (`thesis-structure-epg`, `thesis-tablas-apa`,
+> `thesis-figuras-plantuml`, `thesis-citas-apa7`, `thesis-antecedentes`,
+> `thesis-fuentes`, `thesis-pipeline-build`, etc.) son **agnósticos al
+> tema**: solo usan placeholders genéricos. El conocimiento topic-specific
+> vive exclusivamente en los skills `thesis-dominio-*` y
+> `thesis-fuentes-<dominio>`.
+>
+> Para forkear sobre otro tema:
+> 1. `python platform/scripts/cleanup/reset_for_new_thesis.py --apply`
+> 2. Reemplazar la línea de tema de arriba.
+> 3. Sustituir el skill de dominio (`thesis-dominio-interoperabilidad`)
+>    por uno propio (`thesis-dominio-<tu-tema>`) y, si aplica, agregar
+>    un `thesis-fuentes-<dominio>` análogo a `thesis-fuentes-derecho`.
+> 4. Ajustar la fila correspondiente en la tabla de skills de abajo.
 
 ## Stack
 

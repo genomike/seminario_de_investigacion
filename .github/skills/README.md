@@ -36,7 +36,7 @@ usuario pide algo que cae en el dominio de un skill, hay que abrir su
 | [thesis-observaciones-asesor](thesis-observaciones-asesor/SKILL.md) | Procesar comentarios del asesor (formales y de fondo). |
 | [thesis-scripts-fix](thesis-scripts-fix/SKILL.md) | Escribir scripts idempotentes de corrección masiva del Markdown. |
 | [thesis-fork-new-topic](thesis-fork-new-topic/SKILL.md) | Reusar este repo como base para una tesis sobre otro tema. |
-| [thesis-dominio-interoperabilidad](thesis-dominio-interoperabilidad/SKILL.md) | Solo aplicable a tesis de interoperabilidad/MINSA. |
+| [thesis-dominio-interoperabilidad](thesis-dominio-interoperabilidad/SKILL.md) | Skill de dominio de **ejemplo** (interoperabilidad clínica/HL7 FHIR). Reemplázalo en cada fork por `thesis-dominio-<tu-tema>`. |
 | [thesis-dominio-derecho](thesis-dominio-derecho/SKILL.md) | Solo aplicable a tesis de **Derecho** (jurídica). |
 | [thesis-fuentes-derecho](thesis-fuentes-derecho/SKILL.md) | Fuentes especializadas para tesis de Derecho (SPIJ, TC, vLex, etc.). |
 

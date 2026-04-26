@@ -22,17 +22,22 @@ abajo, solo bordes horizontales, ancho fijo).
 
 ```markdown
 
-: Tabla 7. Comparativa de estándares de interoperabilidad clínica {#tbl:estandares}
+: Tabla 7. <Título descriptivo de la tabla> {#tbl:slug-unico}
 
-| Estándar | Año | Tipo | Adopción global |
-|----------|-----|------|-----------------|
-| HL7 v2   | 1989 | Mensajería | Alta |
-| HL7 CDA  | 2005 | Documental | Media |
-| HL7 FHIR | 2014 | Recurso/REST | Alta y creciente |
+| <Columna 1> | <Columna 2> | <Columna 3> | <Columna 4> |
+|-------------|-------------|-------------|-------------|
+| <Valor>     | <Valor>     | <Valor>     | <Valor>     |
+| <Valor>     | <Valor>     | <Valor>     | <Valor>     |
+| <Valor>     | <Valor>     | <Valor>     | <Valor>     |
 
-Nota. Elaboración propia con base en HL7 (2024) y Bender y Sartipi (2013).
+Nota. Elaboración propia con base en <Autor1> (<Año>) y <Autor2> (<Año>).
 
 ```
+
+> Reemplaza los placeholders `<...>` por el contenido real del dominio
+> de tu tesis. El `slug` del caption debe ser kebab-case y único en
+> todo el documento (p. ej. `tbl:metodos-comparados`, `tbl:variables-op`).
+
 
 Detalles obligatorios:
 
@@ -58,8 +63,8 @@ Toda tabla **debe ser referenciada** en el cuerpo al menos una vez, con
 la forma explícita `**La Tabla N** <verbo>` (no "la tabla siguiente", no
 "como se ve a continuación"):
 
-> La Tabla 7 sintetiza la comparativa entre los principales estándares
-> de interoperabilidad clínica.
+> La Tabla 7 sintetiza <breve descripción de lo que la tabla compara o
+> resume>.
 
 Si una tabla queda sin referencia en texto, el asesor la marca como
 huérfana. Validar con:

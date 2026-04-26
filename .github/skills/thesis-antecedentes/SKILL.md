@@ -39,13 +39,13 @@ investigación>.
 
 1. **Apellido del primer autor en MAYÚSCULAS** seguido de `ET AL.` cuando
    son 3+ autores; si son 1 o 2, listarlos en MAYÚSCULAS unidos por `Y`.
-   Ejemplo: `**ADELUSI ET AL. (2025)**`, `**MAURICIO Y PÉREZ (2024)**`.
+   Ejemplo: `**APELLIDO ET AL. (AÑO)**`, `**APELLIDO1 Y APELLIDO2 (AÑO)**`.
 2. **Año entre paréntesis**, sin coma antes.
 3. Los **conectores van en negrita exactamente** como aparecen arriba
    (incluyendo la coma final cuando aplica). No traducirlos, no
    parafrasearlos, no quitarles la coma.
-4. La **revista** o repositorio va en cursiva: `*JMIR Medical Informatics*`,
-   `*Frontiers in Digital Health*`, `*Repositorio UNFV*`.
+4. La **revista** o repositorio va en cursiva: `*Nombre de la Revista*`,
+   `*Repositorio Institucional <Universidad>*`.
 5. Cada antecedente debe **terminar con `**En relación con esta tesis,**`**.
    Sin esa frase, el asesor lo marca como incompleto.
 6. Cuando una pieza no aplica (ej. estudio cualitativo sin métricas), **no
@@ -74,29 +74,27 @@ formato narrativo o parentético:
 - Narrativo (preferido cuando el autor abre el bloque): el "(AÑO)" del
   encabezado **ya cuenta** como cita; añadir solo si hay paráfrasis directa
   con número de página.
-- Parentético adicional cuando se cita una métrica concreta: `(Adelusi
-  et al., 2025, p. 7)`.
+- Parentético adicional cuando se cita una métrica concreta: `(Apellido
+  et al., Año, p. NN)`.
 
-## Ejemplo canónico (forma corta)
+## Ejemplo canónico (forma corta, agnóstico al tema)
 
-> **HERYAWAN ET AL. (2025)** caracterizan barreras reales de implementación
-> FHIR en la plataforma nacional Satusehat de Indonesia, primer despliegue
-> masivo de interoperabilidad basada en FHIR en el sudeste asiático. **En
-> cuanto al porte,** el estudio abarca el primer análisis cualitativo a
-> escala de ecosistema nacional de adopción FHIR en el sudeste asiático,
-> con 107 incidencias documentadas en el *Developer Hub* de la plataforma
-> Satusehat de Indonesia. **En ese marco,** el problema se centró en
-> dificultades técnicas recurrentes en el uso de servidores, perfiles y
-> mapeo semántico de datos durante la adopción nacional de FHIR. **A
-> partir de ello,** el objetivo se orientó a identificar puntos críticos
-> de adopción e integración para mejorar el despliegue interoperable
-> nacional. **Para abordarlo,** se empleó la siguiente metodología:
-> análisis de contenido cualitativo de interacciones del grupo Telegram
-> del Developer Hub de Satusehat y de la documentación técnica oficial
-> (*JMIR Formative Research*).
-> ...
-> **En relación con esta tesis,** … (cómo conecta con la presente
-> investigación).
+> **APELLIDO ET AL. (AÑO)** <verbo de aporte: proponen / desarrollan /
+> analizan> <objeto del aporte en el dominio de la tesis>, <complemento
+> breve que sitúa el estudio>. **En cuanto al porte,** el estudio
+> abarca <descripción del alcance: tipo de estudio, n, ámbito>, publicado
+> en *<Nombre de la Revista>*. **En ese marco,** el problema se centró
+> en <enunciado del problema reportado por el autor>. **A partir de
+> ello,** el objetivo se orientó a <enunciado del objetivo del estudio>.
+>
+> **Para abordarlo, se empleó la siguiente metodología:** <diseño,
+> técnicas e instrumentos>. **Para la evaluación,** <entorno y
+> procedimiento>. **Como métricas o indicadores de desempeño,**
+> <indicadores reportados, o nota explícita de su ausencia>. **En
+> términos de resultados,** <hallazgos cuantitativos o cualitativos>.
+> **No obstante,** <limitaciones declaradas y/o trabajo futuro>. **En
+> relación con esta tesis,** <aporte específico al diseño, métricas o
+> validación de la presente investigación>.
 
 ## Tabla comparativa al final de cada bloque
 
@@ -133,7 +131,7 @@ Ese script:
 
 - Conectores **sin negrita** o **sin la coma**: el asesor los marca.
 - Apellido en minúsculas o sin `ET AL.`.
-- Mezclar dos estudios en el mismo bloque ("Adelusi et al. (2025) y
-  Heryawan et al. (2025) coinciden en…").
+- Mezclar dos estudios en el mismo bloque ("Apellido1 et al. (Año) y
+  Apellido2 et al. (Año) coinciden en…").
 - Saltarse `**En cuanto al porte,**` o `**En relación con esta tesis,**`.
 - Bullets dentro del antecedente: debe ser prosa.
