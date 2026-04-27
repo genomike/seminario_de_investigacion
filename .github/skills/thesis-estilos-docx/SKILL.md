@@ -8,8 +8,8 @@ description: Modificar el reference-doc DOCX (estilos Word) que Pandoc usa para 
 ## Archivos involucrados
 
 - `platform/templates/styles/plantilla_estilos.docx` — fuente principal de estilos (en repo).
-- `document_reference.docx` — copia preparada por
-  `generar_tesis.preparar_reference_doc()` (no editar a mano; se
+- `build/_reference.docx` — copia preparada por
+  `build_thesis.preparar_reference_doc()` (no editar a mano; se
   regenera en cada build).
 - `platform/templates/styles/caratula.docx` — opcional; si existe se concatena al inicio.
 
@@ -51,7 +51,7 @@ description: Modificar el reference-doc DOCX (estilos Word) que Pandoc usa para 
 3. Modificar el estilo en *Inicio → Estilos → modificar*. Confirmar
    que el cambio quede a nivel de **estilo**, no de párrafo.
 4. Guardar y cerrar.
-5. Borrar `document_reference.docx` para forzar regeneración.
+5. Borrar `build/_reference.docx` para forzar regeneración.
 6. Ejecutar `python platform/scripts/build/build_thesis.py` y validar el DOCX resultante.
 
 ## Cuando los cambios "no se ven"
@@ -65,7 +65,7 @@ Causas frecuentes:
 - El estilo se cambió a nivel de párrafo y no de definición de estilo.
 - El cuerpo del Markdown está aplicando un override (ej. `<span
   style="…">`) que pisa el estilo.
-- `document_reference.docx` quedó del build anterior — borrar y
+- `build/_reference.docx` quedó del build anterior — borrar y
   regenerar.
 
 ## Postproceso adicional vía `python-docx`

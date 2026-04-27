@@ -80,8 +80,8 @@ Select-String -Path Documento_Tesis.md -Pattern "siguiente figura" -SimpleMatch
 ```
 
 Cuando hay > 3 figuras sin referencia, escribir un script tipo
-[platform/scripts/fixes/fix_referencias_v3.py](../../../platform/scripts/fixes/fix_referencias_v3.py) en
-vez de editar a mano.
+[platform/scripts/fixes/template_fix_markdown.py](../../../platform/scripts/fixes/template_fix_markdown.py)
+adaptado al caso, en vez de editar a mano.
 
 ## Tipos de diagrama soportados
 

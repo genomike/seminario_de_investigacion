@@ -54,19 +54,18 @@ build/*                                → vaciar (regenerable)
 ## Qué hay que **adaptar** al nuevo tema
 
 1. **`thesis-portada`** — actualizar título, autores, año.
-2. **`thesis-dominio-*`** — eliminar el skill de dominio anterior
-   (p. ej. `thesis-dominio-interoperabilidad`) y crear uno nuevo
-   (`thesis-dominio-<tu-tema>`) con:
+2. **`thesis-dominio-*`** — copiar `thesis-dominio-template` como
+  `thesis-dominio-<tu-tema>` y completarlo con:
    - vocabulario / siglas del nuevo dominio,
    - normativa aplicable,
    - métricas y datasets típicos,
    - bases de datos académicas más fuertes para el tema.
-   > Para tesis de Derecho ya existe `thesis-dominio-derecho` y
-   > `thesis-fuentes-derecho`; úsalos como referencia.
+  Si el tema necesita fuentes especializadas, copiar también
+  `thesis-fuentes-dominio-template` como `thesis-fuentes-<tu-tema>`.
 3. **`README.md` raíz** (si lo hay) — sustituir descripción por la del nuevo tema.
-4. **`.github/copilot-instructions.md`** — actualizar la sección
-   *Tema actual* y, si corresponde, la fila del skill de dominio en la
-   tabla de skills.
+4. **`.github/copilot-instructions.md`** — mantenerlo agnóstico. No colocar
+  el tema completo ahí; el tema vive en `content/manuscript/Documento_Tesis.md`
+  y, si existe, en el skill de dominio del fork.
 5. **`content/drafts/`** — recrear los pasos de keywords → búsqueda
    → fuentes finales → título para el nuevo tema.
 
@@ -89,7 +88,7 @@ build/*                                → vaciar (regenerable)
       un DOCX casi vacío, pero sin errores).
 - [ ] Cargar `thesis-orchestrator` y arrancar el flujo:
       `thesis-fuentes` → primera batch de fuentes → `thesis-antecedentes`.
-- [ ] Reescribir el skill de dominio.
+- [ ] Crear el skill de dominio a partir de `thesis-dominio-template`.
 - [ ] Hacer commit "chore: scaffold para tesis sobre <tema>".
 
 ## Sugerencias de mejora opcionales para el fork
@@ -115,7 +114,8 @@ pena considerar al iniciar de cero:
 ## Anti-patrones del fork
 
 - Mantener fuentes del tema viejo "por si sirven": confunden al asesor y al lector.
-- No actualizar el skill de dominio: el orquestador termina cargando el del tema viejo.
+- Dejar vocabulario del tema viejo en `.github/skills/`, `platform/`,
+  `tests/`, `docs/` o README: contamina los siguientes forks.
 - Cambiar la estructura "porque ahora es cualitativa" — la guía EPG
   acepta cualitativa con los mismos capítulos, solo cambia Cap. III a
   "Supuestos y categorías".

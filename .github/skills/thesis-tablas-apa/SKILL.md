@@ -94,7 +94,7 @@ porque:
 - Pandoc no soporta repetir el encabezado en cada página automáticamente
   desde Markdown. Si una tabla pasa de una página, después de generar el
   DOCX:
-  1. Abrir Word, click derecho en la fila de encabezado → *Repetir como
+  1. Abrir Word, usar el menú contextual en la fila de encabezado → *Repetir como
      fila de encabezado*.
   2. Anotar este paso manual en el changelog para no olvidarlo en la
      próxima regeneración.

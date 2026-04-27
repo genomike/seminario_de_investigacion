@@ -29,7 +29,7 @@ Idempotente: sí — verifica antes de tocar.
 import sys
 from pathlib import Path
 
-DOC = Path("Documento_Tesis.md")
+DOC = Path("content/manuscript/Documento_Tesis.md")
 text = DOC.read_text(encoding="utf-8")
 changes = 0
 errors = 0
@@ -87,30 +87,28 @@ else:
    antes de pedir intervención humana.
 6. **Salida verbose**: una línea por reemplazo (✓), por idempotente (·),
    por error (✗). Un humano debe poder revisar el log.
-7. **Ubicación**: `scripts/fix_<tema>_v<N>.py`. Versionar `vN` cuando se
+7. **Ubicación**: `platform/scripts/fixes/fix_<patron>_v<N>.py`. Versionar `vN` cuando se
    itera sobre el mismo tema (no sobrescribir scripts viejos: pueden
    re-correrse en otro fork).
 
 ## Catálogo del repo
 
-- [platform/scripts/fixes/add_porte_conectores.py](../../../platform/scripts/fixes/add_porte_conectores.py) — patrón de
-  conectores en antecedentes.
-- [platform/scripts/fixes/fix_referencias_v3.py](../../../platform/scripts/fixes/fix_referencias_v3.py) — referencias
-  explícitas a figuras y tablas.
-- [platform/scripts/fixes/fix_conectores_mayusculas.py](../../../platform/scripts/fixes/fix_conectores_mayusculas.py) —
-  uniformar mayúsculas en conectores.
+- [platform/scripts/fixes/template_fix_markdown.py](../../../platform/scripts/fixes/template_fix_markdown.py) —
+  plantilla agnóstica para correcciones masivas idempotentes.
 
-Reusarlos como esqueleto antes de escribir uno nuevo.
+Copiar la plantilla y renombrarla según el patrón a corregir. Los scripts
+one-off que contengan texto de un tema concreto no deben vivir en `platform/`
+después de que el cambio quede consolidado.
 
 ## Validaciones útiles (read-only, PowerShell)
 
 ```powershell
 # Antecedentes que faltan el cierre obligatorio:
-Select-String Documento_Tesis.md -Pattern '^\*\*[A-ZÁÉÍÓÚÑ]+ ET AL\.' -Context 0,40 |
+Select-String content/manuscript/Documento_Tesis.md -Pattern '^\*\*[A-ZÁÉÍÓÚÑ]+ ET AL\.' -Context 0,40 |
   Where-Object { $_.Context.PostContext -notmatch 'En relación con esta tesis' }
 
 # Captions de tabla mal formados:
-Select-String Documento_Tesis.md -Pattern '^: Tabla \d+\.' -NotMatch |
+Select-String content/manuscript/Documento_Tesis.md -Pattern '^: Tabla \d+\.' -NotMatch |
   Select-String -Pattern '^: '
 ```
 

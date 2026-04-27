@@ -36,9 +36,8 @@ usuario pide algo que cae en el dominio de un skill, hay que abrir su
 | [thesis-observaciones-asesor](thesis-observaciones-asesor/SKILL.md) | Procesar comentarios del asesor (formales y de fondo). |
 | [thesis-scripts-fix](thesis-scripts-fix/SKILL.md) | Escribir scripts idempotentes de corrección masiva del Markdown. |
 | [thesis-fork-new-topic](thesis-fork-new-topic/SKILL.md) | Reusar este repo como base para una tesis sobre otro tema. |
-| [thesis-dominio-interoperabilidad](thesis-dominio-interoperabilidad/SKILL.md) | Skill de dominio de **ejemplo** (interoperabilidad clínica/HL7 FHIR). Reemplázalo en cada fork por `thesis-dominio-<tu-tema>`. |
-| [thesis-dominio-derecho](thesis-dominio-derecho/SKILL.md) | Solo aplicable a tesis de **Derecho** (jurídica). |
-| [thesis-fuentes-derecho](thesis-fuentes-derecho/SKILL.md) | Fuentes especializadas para tesis de Derecho (SPIJ, TC, vLex, etc.). |
+| [thesis-dominio-template](thesis-dominio-template/SKILL.md) | Molde para crear un skill de dominio en un fork (`thesis-dominio-<tema>`). |
+| [thesis-fuentes-dominio-template](thesis-fuentes-dominio-template/SKILL.md) | Molde para crear un skill de fuentes especializadas por dominio. |
 
 ## Pipeline canónico (resumen ejecutivo)
 
@@ -78,7 +77,6 @@ formato), el camino más corto es:
    en `content/`.
 3. Conservar tal cual: todo `platform/`, `tests/`, `docs/`,
    `.github/skills/`, `.github/copilot-instructions.md`.
-4. Adaptar `thesis-portada` (datos del autor/título), `thesis-dominio-*`
-   (reemplazar por el dominio del nuevo tema) y arrancar por
-   `thesis-orchestrator`. Para tesis de Derecho, cargar
-   `thesis-dominio-derecho` y `thesis-fuentes-derecho`.
+4. Adaptar `thesis-portada` (datos del autor/título), copiar
+   `thesis-dominio-template` como `thesis-dominio-<tema>` si el nuevo tema
+   requiere conocimiento especializado, y arrancar por `thesis-orchestrator`.

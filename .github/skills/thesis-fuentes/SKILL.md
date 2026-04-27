@@ -8,29 +8,31 @@ description: Buscar, validar, descargar y catalogar fuentes académicas (artícu
 ## Pipeline de búsqueda
 
 1. **Refinar palabras clave** en español + inglés. Combinar con `AND` / `OR`.
-   Guardar el set de keywords en `tesis/problema-unificado.md` (o equivalente)
-   para reproducibilidad.
+   Guardar el set de keywords en `content/drafts/` para reproducibilidad.
 2. **Bases recomendadas** (en este orden de confiabilidad):
    - Crossref (`api.crossref.org/works?query=...`) → metadata + DOI.
    - OpenAlex (`api.openalex.org/works?search=...`) → metadata + URL al PDF
      en `open_access.oa_url` o `best_oa_location.pdf_url`.
-   - JMIR / Frontiers / BMC / MDPI / Oxford Academic / Lancet → directo del DOI.
-   - Repositorios institucionales para tesis nacionales (UNFV, PUCP, USIL, UPCH, ESAN).
-3. **Criterios de inclusión** acordados:
-   - Ventana 2022-2026 (recientes; aceptar ≥2019 solo para clásicos).
-   - Tipo: `journal-article` o tesis con DOI/handle verificable.
-   - Idioma: inglés o español.
-   - Q1/Q2 indicativo (verificar en SCImago/JCR antes de defensa).
+   - Scielo / Redalyc / DOAJ → cobertura regional y acceso abierto.
+   - Repositorios institucionales → tesis nacionales o locales.
+   - Bases especializadas del dominio → definirlas en
+     `thesis-fuentes-<dominio>` si el tema lo requiere.
+3. **Criterios de inclusión** a completar por tema:
+   - Ventana temporal: `<años>` (justificar excepciones para clásicos).
+   - Tipo: artículos revisados por pares, tesis, normas, reportes técnicos o
+     datasets, según el diseño.
+   - Idioma: `<idiomas aceptados>`.
+   - Calidad: cuartil, indexación, fuente oficial, revisión por pares,
+     pertinencia metodológica o vigencia normativa.
 4. **Clasificar el cuartil** explícitamente en tres grupos: *núcleo
-   recomendado*, *soporte complementario*, *uso con cautela* (ver
-   `tesis/Elaboración_Tesis.md` para ejemplo).
+   recomendado*, *soporte complementario*, *uso con cautela*.
 
 ## Descarga (PowerShell)
 
 Plantilla idempotente con validación de firma `%PDF`:
 
 ```powershell
-$base = 'fuentes/<grupo>'
+$base = 'content/sources/<grupo>'
 New-Item -ItemType Directory -Force -Path $base | Out-Null
 
 $items = @(
@@ -53,28 +55,31 @@ foreach ($item in $items) {
 }
 ```
 
-Ver ejemplo real en [platform/scripts/downloads/download_12_docs.ps1](../../../platform/scripts/downloads/download_12_docs.ps1).
+Para lotes masivos, copiar
+[platform/scripts/downloads/template_download_sources.ps1](../../../platform/scripts/downloads/template_download_sources.ps1)
+y completarlo dentro del fork.
 
 ## Cuando la descarga falla (Cloudflare / JS challenge)
 
 Síntomas: archivo bajado pero los primeros bytes no son `%PDF` (suele ser HTML).
 Acciones:
 
-1. Probar URL alternativa de OpenAlex (`content.openalex.org/works/Wxxx.pdf`).
-2. Probar URL del editor (Elsevier/SAGE) usando el DOI directo.
+1. Probar URL alternativa de OpenAlex o repositorio institucional.
+2. Probar URL del editor usando el DOI directo.
 3. Si el portal requiere navegador, **no insistir con curl/Invoke-WebRequest**:
-   añadir el ítem a `fuentes/<grupo>/PENDIENTES_DESCARGA_MANUAL.md` con:
+   añadir el ítem a `content/sources/<grupo>/PENDIENTES_DESCARGA_MANUAL.md` con:
    - Cita APA completa
    - DOI / handle
    - URL editor
    - Estado: `pendiente — requiere navegador / acceso institucional`
-4. Editores conocidos como bloqueadores: ScienceDirect, MDPI (a veces), AGEDITOR.
+4. Si el bloqueo persiste, registrar la fuente como pendiente en vez de
+   guardar HTML renombrado como PDF.
 
 ## Convención de nombres
 
 ```
-NN_<ApellidoPrimerAutor>_<Año>_<doi-slug>.pdf
-NN_<ApellidoPrimerAutor>_<Año>_hdl_<handle-slug>.pdf   # tesis con handle
+NN_<ApellidoPrimerAutor>_<Año>_<slug-identificador>.pdf
+NN_<ApellidoPrimerAutor>_<Año>_<slug-identificador>.txt
 ```
 
 donde `NN` es un número ordinal por grupo, y `doi-slug` reemplaza `/` por `-`.
@@ -91,18 +96,18 @@ Para cada PDF nuevo:
    ```
 
    (alternativa: `pypdf` si pdftotext no está instalado).
-2. Registrar la fuente en la tabla del paso 3 de `tesis/Elaboración_Tesis.md`
-   con: año, autor, título, revista, DOI, disponibilidad.
+2. Registrar la fuente en una matriz de `content/drafts/` con: año, autor,
+   título, tipo de fuente, DOI/URL/handle, disponibilidad y aporte.
 3. Si va a aparecer en el cuerpo, agregar entrada APA a `# Referencias` en
    `content/manuscript/Documento_Tesis.md` (ver `thesis-citas-apa7`).
 
-## Reglas para tesis nacionales
+## Reglas para tesis o trabajos académicos
 
 - Usar handle como identificador (`hdl.handle.net/20.500.xxxxx/yyyy`) cuando
   no haya DOI.
 - Tipo entre corchetes: `[Tesis de maestría, Universidad X]` o
   `[Trabajo de suficiencia profesional, Universidad X]`.
-- Repositorio al final: `Repositorio UNFV`, `Repositorio PUCP`, etc.
+- Repositorio al final: `Repositorio <Institución>`.
 
 ## Anti-patrones
 

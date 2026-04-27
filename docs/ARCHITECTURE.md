@@ -105,7 +105,7 @@ Reglas:
 ```python
 # tests/test_architecture.py debe garantizar:
 # - platform/* nunca importa de content/
-# - platform/* nunca hardcodea texto del tema (HL7, FHIR, MINSA, ...)
+# - platform/* nunca hardcodea texto de un tema concreto
 # - content/* no contiene .py ejecutable
 ```
 

@@ -21,8 +21,8 @@ Capa **estable** del repositorio. **No depende del tema** de la tesis.
 ## Reglas
 
 - **No** importar nada de `content/`. Tomar paths como datos.
-- **No** hardcodear texto del tema (palabras como "FHIR", "MINSA",
-  "interoperabilidad" no deben aparecer en `platform/scripts/build/`).
+- **No** hardcodear texto, instituciones, tecnologias, normas, autores,
+  variables ni ejemplos propios de un tema concreto en `platform/`.
 - Toda ruta a `content/` o `build/` se calcula desde `REPO_ROOT` en cada
   script: `REPO_ROOT = Path(__file__).resolve().parents[N]`.
 - Idempotencia: scripts de `fixes/` deben poder ejecutarse N veces sin

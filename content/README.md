@@ -8,7 +8,8 @@ Todo lo que **cambia con la tesis** vive aquí.
   Es la **fuente de verdad** del documento.
 - **`sources/`** — bibliografía descargada.
   - `international/` — fuentes Q1/SciELO/internacionales.
-  - `national/` — fuentes nacionales, normativa MINSA/Estado peruano.
+  - `national/` — fuentes nacionales, normativa local o documentos del
+    contexto de estudio.
 - **`media/`**
   - `diagrams/` — `*.puml` (fuente PlantUML).
   - `figures/` — `*.png` (renderizadas + imágenes externas).

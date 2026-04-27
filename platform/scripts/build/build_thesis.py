@@ -1,18 +1,18 @@
 """
-Genera Documento_Tesis.docx desde Documento_Tesis.md usando pandoc.
+Genera build/tesis.docx desde content/manuscript/Documento_Tesis.md usando pandoc.
 
 Pasos:
-  1. Crea 'reference_portada.docx' basado en la plantilla, añadiendo el
-     estilo 'Portada-Centrado' (centrado, sin salto automático de página).
-    2. Ejecuta pandoc con ese reference-doc para generar el .docx base.
-    3. Postprocesa el .docx para aplicar:
+    1. Prepara el reference-doc de estilos.
+    2. Rellena la carátula genérica con los datos de la portada Markdown.
+    3. Ejecuta pandoc con ese reference-doc para generar el .docx base.
+    4. Postprocesa el .docx para aplicar:
          - índice automático con formato Word,
          - índice de tablas e índice de figuras,
          - saltos de página en secciones preliminares,
          - numeración de títulos de nivel 2 y 3 por capítulo.
 
 Uso:
-  python generar_tesis.py
+    python platform/scripts/build/build_thesis.py
 """
 
 # pyright: reportPrivateUsage=false
@@ -57,6 +57,7 @@ BUILD_DIR.mkdir(parents=True, exist_ok=True)
 REFERENCE = BUILD_DIR / "_reference.docx"
 SALIDA = BUILD_DIR / "tesis.docx"
 CUERPO_TEMP = BUILD_DIR / "_cuerpo_tesis_temp.docx"
+CARATULA_TEMP = BUILD_DIR / "_caratula_temp.docx"
 
 # Compatibilidad con código existente que usa BASE como resource-path de pandoc.
 BASE = REPO_ROOT
@@ -71,6 +72,109 @@ def preparar_reference_doc():
         print(f"  Reference doc guardado: {REFERENCE.name}")
     else:
         print(f"  Se usará reference doc: {REFERENCE.name}")
+
+
+def _limpiar_linea_portada(linea: str) -> str:
+    texto = linea.strip()
+    if not texto or texto.startswith(":::") or texto.startswith("![]("):
+        return ""
+    if texto == "&nbsp;":
+        return ""
+    texto = re.sub(r"^\*\*(.+?)\*\*$", r"\1", texto).strip()
+    return texto.strip()
+
+
+def _normalizar_autor_portada(autor: str) -> str:
+    return re.sub(r"^(Bach\.?|Mgtr\.?|Dr\.?|Dra\.?)\s+", "", autor.strip(), flags=re.IGNORECASE)
+
+
+def extraer_datos_portada(origen_md: Path) -> dict[str, str]:
+    """Extrae datos de la portada Markdown sin acoplarse a un tema concreto."""
+    texto = origen_md.read_text(encoding="utf-8")
+    portada_md = texto.split("\\newpage", 1)[0]
+    lineas = [
+        limpia
+        for limpia in (_limpiar_linea_portada(linea) for linea in portada_md.splitlines())
+        if limpia
+    ]
+
+    tipo_idx = next((i for i, linea in enumerate(lineas) if linea.upper() in {"PROYECTO DE TESIS", "TESIS"}), None)
+    presentado_idx = next((i for i, linea in enumerate(lineas) if linea.upper() == "PRESENTADO POR:"), None)
+    grado_idx = next((i for i, linea in enumerate(lineas) if linea.upper().startswith("PARA OPTAR")), None)
+
+    programa = lineas[tipo_idx - 1] if tipo_idx and tipo_idx > 0 else ""
+    titulo = ""
+    if tipo_idx is not None and presentado_idx is not None and tipo_idx < presentado_idx:
+        titulo = " ".join(lineas[tipo_idx + 1:presentado_idx]).strip()
+
+    autores: list[str] = []
+    if presentado_idx is not None and grado_idx is not None and presentado_idx < grado_idx:
+        autores = [_normalizar_autor_portada(linea) for linea in lineas[presentado_idx + 1:grado_idx]]
+
+    grado = ""
+    ciudad = ""
+    ano = ""
+    if grado_idx is not None:
+        posteriores = lineas[grado_idx + 1:]
+        if posteriores:
+            grado = posteriores[0]
+        for idx, linea in enumerate(posteriores):
+            if re.fullmatch(r"\d{4}", linea):
+                ano = linea
+                if idx > 0:
+                    ciudad = posteriores[idx - 1]
+                break
+
+    return {
+        "programa": programa,
+        "titulo": titulo,
+        "autor_1": autores[0] if len(autores) > 0 else "",
+        "autor_2": autores[1] if len(autores) > 1 else "",
+        "autor_3": autores[2] if len(autores) > 2 else "",
+        "grado": grado,
+        "ciudad": ciudad,
+        "ano": ano,
+    }
+
+
+def _reemplazar_en_parrafo(parrafo, reemplazos: dict[str, str]) -> None:
+    for run in parrafo.runs:
+        texto = run.text
+        for marcador, valor in reemplazos.items():
+            if valor:
+                texto = texto.replace(marcador, valor)
+        run.text = texto
+
+
+def preparar_caratula(template_path: Path) -> Path:
+    """Rellena la carátula genérica con datos definidos en content/."""
+    datos = extraer_datos_portada(ENTRADA)
+    reemplazos = {
+        "<PROGRAMA DE POSGRADO>": datos["programa"],
+        "<TITULO DE LA TESIS>": datos["titulo"],
+        "<TÍTULO DE LA TESIS>": datos["titulo"],
+        "<AUTOR 1>": datos["autor_1"],
+        "<AUTOR 2>": datos["autor_2"],
+        "<AUTOR 3>": datos["autor_3"],
+        "<GRADO ACADEMICO>": datos["grado"],
+        "<GRADO ACADÉMICO>": datos["grado"],
+        "<CIUDAD>": datos["ciudad"],
+        "<ANO>": datos["ano"],
+        "<AÑO>": datos["ano"],
+    }
+
+    doc = Document(str(template_path))
+    for parrafo in doc.paragraphs:
+        _reemplazar_en_parrafo(parrafo, reemplazos)
+    for tabla in doc.tables:
+        for fila in tabla.rows:
+            for celda in fila.cells:
+                for parrafo in celda.paragraphs:
+                    _reemplazar_en_parrafo(parrafo, reemplazos)
+
+    doc.save(str(CARATULA_TEMP))
+    print(f"  Carátula preparada: {CARATULA_TEMP.name}")
+    return CARATULA_TEMP
 
 
 def ejecutar_pandoc(origen_md, destino, reference_path):
@@ -437,7 +541,7 @@ def convertir_listas_a_bullets(doc):
     try:
         np_part = doc.part.numbering_part
         numbering_el = np_part._element
-    except Exception:
+    except (AttributeError, KeyError):
         return  # Sin parte de numeración, nada que hacer
 
     # --- Paso 1: catalogar qué numIds usan párrafos "normales" (no encabezados)
@@ -636,10 +740,10 @@ def ajustar_caratula(doc):
         doc.inline_shapes[0].width = Inches(3.3)
         doc.inline_shapes[0].height = Inches(1.32)
 
-    # Ubicar fin de carátula usando el año.
+    # Ubicar fin de carátula usando el año (4 dígitos).
     fin = None
     for idx, p in enumerate(doc.paragraphs):
-        if p.text.strip() == "2026":
+        if re.fullmatch(r"\d{4}", p.text.strip()) or p.text.strip().upper() == "<ANO>":
             fin = idx
             break
     if fin is None:
@@ -656,7 +760,7 @@ def ajustar_caratula(doc):
     # Recalcular fin de portada tras limpieza.
     fin = None
     for idx, p in enumerate(doc.paragraphs):
-        if p.text.strip() == "2026":
+        if re.fullmatch(r"\d{4}", p.text.strip()) or p.text.strip().upper() == "<ANO>":
             fin = idx
             break
     if fin is None:
@@ -666,6 +770,16 @@ def ajustar_caratula(doc):
     texto_portada = " ".join(p.text.strip() for p in doc.paragraphs[: fin + 1] if p.text.strip())
     modo_compacto = len(texto_portada) > 650
     factor = 0.82 if modo_compacto else 1.0
+
+    portada = doc.paragraphs[: fin + 1]
+    proyecto_idx = next(
+        (i for i, parrafo in enumerate(portada) if parrafo.text.strip().upper() in {"PROYECTO DE TESIS", "TESIS"}),
+        None,
+    )
+    presentado_idx = next(
+        (i for i, parrafo in enumerate(portada) if parrafo.text.strip().upper() == "PRESENTADO POR:"),
+        None,
+    )
 
     for idx, p in enumerate(doc.paragraphs[: fin + 1]):
         texto = p.text.strip()
@@ -685,13 +799,20 @@ def ajustar_caratula(doc):
             p.paragraph_format.space_after = Pt(18 * factor)
             continue
 
-        if texto == "MAESTRÍA EN INGENIERÍA DE SOFTWARE":
+        es_titulo_tesis = (
+            proyecto_idx is not None
+            and presentado_idx is not None
+            and proyecto_idx < idx < presentado_idx
+            and bool(texto)
+        )
+
+        if texto.upper().startswith(("MAESTRÍA", "MAESTRIA")):
             _ajustar_fuente_runs(p, 17, True)
             p.paragraph_format.space_after = Pt(14 * factor)
-        elif texto == "PROYECTO DE TESIS":
+        elif texto.upper() in {"PROYECTO DE TESIS", "TESIS"}:
             _ajustar_fuente_runs(p, 16, True)
             p.paragraph_format.space_after = Pt(18 * factor)
-        elif "MODELO DE INTEROPERABILIDAD BASADO EN HL7 FHIR" in texto:
+        elif es_titulo_tesis:
             _ajustar_fuente_runs(p, 18, True)
             p.paragraph_format.space_after = Pt(18 * factor)
         elif texto == "PRESENTADO POR:":
@@ -704,13 +825,13 @@ def ajustar_caratula(doc):
             _ajustar_fuente_runs(p, 14, False)
             p.paragraph_format.space_before = Pt(10 * factor)
             p.paragraph_format.space_after = Pt(12 * factor)
-        elif texto == "MAESTRO(A) EN INGENIERÍA DE SOFTWARE":
+        elif texto.upper().startswith("MAESTRO(A) EN"):
             _ajustar_fuente_runs(p, 16, True)
             p.paragraph_format.space_after = Pt(10 * factor)
-        elif texto == "LIMA":
+        elif idx == fin - 1:
             _ajustar_fuente_runs(p, 13, True)
             p.paragraph_format.space_after = Pt(6 * factor)
-        elif texto == "2026":
+        elif re.fullmatch(r"\d{4}", texto) or texto.upper() == "<ANO>":
             _ajustar_fuente_runs(p, 13, True)
 
 
@@ -1828,10 +1949,11 @@ if __name__ == "__main__":
     print("=== Preparando reference doc con estilos ===")
     preparar_reference_doc()
 
-    caratula_entrada = CARATULA_MANUAL if CARATULA_MANUAL.exists() else CARATULA_MANUAL_ALT
-    if not caratula_entrada.exists():
+    selected_caratula_template = CARATULA_MANUAL if CARATULA_MANUAL.exists() else CARATULA_MANUAL_ALT
+    if not selected_caratula_template.exists():
         print(f"ERROR: No se encontró la carátula manual ({CARATULA_MANUAL.name} o {CARATULA_MANUAL_ALT.name})")
         sys.exit(1)
+    caratula_entrada = preparar_caratula(selected_caratula_template)
 
     md_cuerpo_tmp = extraer_markdown_cuerpo(ENTRADA)
     try:
@@ -1864,5 +1986,7 @@ if __name__ == "__main__":
     finally:
         if CUERPO_TEMP.exists():
             CUERPO_TEMP.unlink()
+        if CARATULA_TEMP.exists():
+            CARATULA_TEMP.unlink()
         if md_cuerpo_tmp.exists():
             md_cuerpo_tmp.unlink()

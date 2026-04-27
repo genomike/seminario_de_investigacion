@@ -22,27 +22,19 @@ Ver [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md) para el detalle.
 2. `content/` no contiene `.py` ejecutable.
 3. El output va siempre a `build/tesis.docx` (no a la raíz).
 
-## Tema actual (override del fork — no es parte del motor)
+## Agnosticidad del motor
 
-> **Tema vigente en este fork:** Modelo de interoperabilidad basado en
-> HL7 FHIR para mejorar el intercambio de información clínica en
-> centros de salud del MINSA — Perú.
->
-> Esta línea es lo único acoplado al tema en `copilot-instructions.md`.
-> Todos los skills genéricos (`thesis-structure-epg`, `thesis-tablas-apa`,
-> `thesis-figuras-plantuml`, `thesis-citas-apa7`, `thesis-antecedentes`,
-> `thesis-fuentes`, `thesis-pipeline-build`, etc.) son **agnósticos al
-> tema**: solo usan placeholders genéricos. El conocimiento topic-specific
-> vive exclusivamente en los skills `thesis-dominio-*` y
-> `thesis-fuentes-<dominio>`.
->
-> Para forkear sobre otro tema:
-> 1. `python platform/scripts/cleanup/reset_for_new_thesis.py --apply`
-> 2. Reemplazar la línea de tema de arriba.
-> 3. Sustituir el skill de dominio (`thesis-dominio-interoperabilidad`)
->    por uno propio (`thesis-dominio-<tu-tema>`) y, si aplica, agregar
->    un `thesis-fuentes-<dominio>` análogo a `thesis-fuentes-derecho`.
-> 4. Ajustar la fila correspondiente en la tabla de skills de abajo.
+Este repositorio debe poder iniciar una tesis sobre **cualquier tema**.
+Por eso, `.github/`, `platform/`, `docs/`, `tests/` y los README no deben
+contener vocabulario, autores, instituciones, tecnologias, normas,
+variables, poblaciones o ejemplos propios de una tesis concreta.
+
+El contenido especifico de una tesis vive en `content/`. Si un fork necesita
+conocimiento especializado, crear un skill nuevo copiando
+`skills/thesis-dominio-template/SKILL.md` como
+`skills/thesis-dominio-<tema>/SKILL.md`. Si necesita fuentes especializadas,
+copiar `skills/thesis-fuentes-dominio-template/SKILL.md` como
+`skills/thesis-fuentes-<tema>/SKILL.md`.
 
 ## Stack
 
@@ -80,7 +72,7 @@ Todos los flujos están documentados en [.github/skills/](skills/README.md).
 | estructura / capítulos / numeración    | `skills/thesis-structure-epg/SKILL.md`              |
 | portada / carátula                     | `skills/thesis-portada/SKILL.md`                    |
 | buscar o descargar fuentes (genérico)  | `skills/thesis-fuentes/SKILL.md`                    |
-| fuentes para tesis de **Derecho**      | `skills/thesis-fuentes-derecho/SKILL.md`            |
+| fuentes especializadas por dominio     | `skills/thesis-fuentes-dominio-template/SKILL.md`   |
 | antecedentes                           | `skills/thesis-antecedentes/SKILL.md`               |
 | tablas                                 | `skills/thesis-tablas-apa/SKILL.md`                 |
 | figuras / diagramas                    | `skills/thesis-figuras-plantuml/SKILL.md`           |
@@ -90,8 +82,7 @@ Todos los flujos están documentados en [.github/skills/](skills/README.md).
 | comentarios del asesor                 | `skills/thesis-observaciones-asesor/SKILL.md`       |
 | corrección masiva del MD               | `skills/thesis-scripts-fix/SKILL.md`                |
 | reusar el repo para otra tesis         | `skills/thesis-fork-new-topic/SKILL.md`             |
-| dominio: interoperabilidad / HL7 FHIR  | `skills/thesis-dominio-interoperabilidad/SKILL.md`  |
-| dominio: **Derecho** (jurídico)        | `skills/thesis-dominio-derecho/SKILL.md`            |
+| crear skill de dominio nuevo           | `skills/thesis-dominio-template/SKILL.md`           |
 
 ## Convenciones rápidas
 

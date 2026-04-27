@@ -46,17 +46,27 @@ python platform/scripts/build/build_diagrams.py
 python -m pytest tests/
 
 # Resetear el repo para una nueva tesis (limpia content/, build/)
-python platform/scripts/cleanup/reset_for_new_thesis.py --dry-run
+python platform/scripts/cleanup/reset_for_new_thesis.py
 python platform/scripts/cleanup/reset_for_new_thesis.py --apply
 ```
 
-## Tema actual
+## Uso como base para cualquier tesis
 
-> **Modelo de interoperabilidad basado en HL7 FHIR para mejorar el intercambio
-> de información clínica en centros de salud del MINSA — Perú.**
+Este repositorio separa el **contenido de una tesis concreta** del **motor de
+generación**. El tema, las fuentes, los diagramas, las observaciones y los
+borradores viven en `content/`; las reglas reutilizables, scripts, plantillas
+y skills viven en `platform/`, `tests/`, `docs/` y `.github/`.
 
-Para reusar este repositorio en **otra tesis** (p. ej. Derecho), seguir
-[.github/skills/thesis-fork-new-topic/SKILL.md](.github/skills/thesis-fork-new-topic/SKILL.md).
+Para iniciar una tesis nueva, seguir
+[.github/skills/thesis-fork-new-topic/SKILL.md](.github/skills/thesis-fork-new-topic/SKILL.md)
+o ejecutar primero:
+
+```powershell
+python platform/scripts/cleanup/reset_for_new_thesis.py --apply
+```
+
+Después del reset, el repositorio queda como scaffold agnóstico: sin fuentes,
+diagramas, manuscrito ni instrucciones acopladas a un tema previo.
 
 ## Skills (Copilot)
 

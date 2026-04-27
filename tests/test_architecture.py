@@ -1,12 +1,8 @@
 """Tests de arquitectura: validan reglas de dependencia entre capas."""
 from pathlib import Path
 import re
-import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-
-# Vocabulario del tema actual que NO debería aparecer en el motor.
-TOPIC_KEYWORDS = ["FHIR", "MINSA", "HL7", "interoperabilidad clínica"]
 
 
 def _python_files(folder: Path):
@@ -29,26 +25,41 @@ def test_content_has_no_executable_python():
     assert not pys, f"content/ no debe tener .py: {pys}"
 
 
-@pytest.mark.xfail(
-    reason="Deuda técnica: build_thesis.py contiene strings 'FHIR'/'HL7' en "
-           "comentarios y heurísticas. Migrar a config externa para hacer el "
-           "motor 100%% reusable.",
-    strict=False,
-)
-def test_build_scripts_have_no_topic_keywords():
-    """platform/scripts/build/ no debe tener keywords del tema (motor reusable)."""
+def test_build_scripts_do_not_embed_topic_content():
+    """platform/scripts/build/ no debe traer contenido de una tesis concreta."""
     build_dir = REPO_ROOT / "platform" / "scripts" / "build"
     bad = []
     for py in _python_files(build_dir):
         text = py.read_text(encoding="utf-8", errors="ignore")
-        for kw in TOPIC_KEYWORDS:
-            if kw.lower() in text.lower():
-                bad.append((py.relative_to(REPO_ROOT), kw))
-    # build_diagrams.py contiene texto inline de diagramas del tema actual:
-    # se acepta como deuda técnica conocida hasta migrar los diagramas inline
-    # a archivos .puml en content/media/diagrams/.
-    bad = [(p, k) for (p, k) in bad if "build_diagrams.py" not in str(p)]
-    assert not bad, f"Keywords del tema en motor: {bad}"
+        if "@startuml" in text or "@startgantt" in text:
+            bad.append(py.relative_to(REPO_ROOT))
+    assert not bad, f"Diagramas hardcodeados en motor: {bad}"
+
+
+def test_platform_scripts_do_not_embed_external_source_urls():
+    """Las URLs de fuentes pertenecen a content/, no al motor reusable."""
+    allowed_technical_hosts = [
+        "schemas.openxmlformats.org",
+        "purl.oclc.org",
+        "www.w3.org",
+    ]
+    script_dirs = [
+        REPO_ROOT / "platform" / "scripts" / "build",
+        REPO_ROOT / "platform" / "scripts" / "fixes",
+        REPO_ROOT / "platform" / "scripts" / "downloads",
+    ]
+    bad = []
+    for folder in script_dirs:
+        for script in list(folder.rglob("*.py")) + list(folder.rglob("*.ps1")):
+            text = script.read_text(encoding="utf-8", errors="ignore")
+            urls = re.findall(r"https?://[^\"'\s<>]+", text)
+            external_urls = [
+                url for url in urls
+                if not any(host in url for host in allowed_technical_hosts)
+            ]
+            if external_urls:
+                bad.append((script.relative_to(REPO_ROOT), external_urls))
+    assert not bad, f"URLs de fuentes hardcodeadas en platform/: {bad}"
 
 
 def test_repo_root_layout():

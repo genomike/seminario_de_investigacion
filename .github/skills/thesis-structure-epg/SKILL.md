@@ -7,7 +7,7 @@ description: Estructura obligatoria, orden de secciones y numeración de capítu
 
 ## Fuente de autoridad
 
-[documentos_apoyo/Guía metodológica para la elaboración del proyecto de tesis.pdf](../../../documentos_apoyo/).
+[platform/templates/guides/Guía metodológica para la elaboración del proyecto de tesis.pdf](../../../platform/templates/guides/).
 Cualquier divergencia con APA 7 se resuelve a favor de la guía institucional
 (la EPG manda sobre APA en estructura).
 
