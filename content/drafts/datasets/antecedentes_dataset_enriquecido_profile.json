@@ -1,0 +1,14 @@
+{
+  "generated_at_utc": "2026-04-30T02:38:19.742915+00:00",
+  "record_count": 31,
+  "international_records": 21,
+  "national_records": 10,
+  "records_with_pdf_match": 26,
+  "records_with_txt_match": 25,
+  "records_with_both_pdf_txt_match": 24,
+  "records_with_normative_warning": 0,
+  "files": {
+    "csv": "content/drafts/datasets/antecedentes_dataset_enriquecido.csv",
+    "json": "content/drafts/datasets/antecedentes_dataset_enriquecido.json"
+  }
+}
